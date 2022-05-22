@@ -1,6 +1,8 @@
 {
   "name": "creature-builder",
   "version": "0.1.1",
+  "description": "Creature builder built for the No Man's Sky Hub built by AssistantNMS",
+  "author": "AssistantNMS (Kurt Lourens)",
   "main": "public/electron.js",
   "private": true,
   "dependencies": {
@@ -28,7 +30,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "dev": "concurrently -k \"npm start\" \"npm:electron\"",
-    "electron": "wait-on tcp:3000 && electron ."
+    "electron": "wait-on tcp:3000 && electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.assistantapps.nms.creaturebuilder",
+    "mac": {
+      "category": "your.app.category.type"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +61,7 @@
   "devDependencies": {
     "concurrently": "^7.2.0",
     "electron": "^18.2.4",
+    "electron-builder": "^23.0.3",
     "wait-on": "^6.0.1"
   }
 }

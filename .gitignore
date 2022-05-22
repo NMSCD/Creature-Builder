@@ -22,3 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 favicon_package_v0.16 (2).zip
+
+/dist
