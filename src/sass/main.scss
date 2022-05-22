@@ -36,3 +36,21 @@
         border-bottom-left-radius: 0 !important;
     }
 }
+
+footer {
+    margin-top: 3em;
+    text-align: center;
+
+    hr {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    p {
+        margin-top: 2em;
+    }
+
+    a {
+        color: rgb(255, 149, 167);
+    }
+}

@@ -1,7 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BuilderApp } from './builderApp';
+import { AppShell } from './appShell';
 import { CustomThemeProvider } from './themeProvider';
 
 import './sass/main.scss';
@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <ChakraProvider>
       <CustomThemeProvider>
-        <BuilderApp />
+        <AppShell />
       </CustomThemeProvider>
     </ChakraProvider>
   </React.StrictMode>

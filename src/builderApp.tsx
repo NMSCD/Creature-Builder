@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Box, Center, Container, Flex, Select, Textarea } from '@chakra-ui/react'
 import petJsonData from './assets/IPetData.json'
 import { PetMainDetails } from './contracts/petDetails';
-import { Header } from './components/core/header';
 import { AttributeDropDown } from './components/attributeDropDown';
+import { descriptorId } from './helper/idHelper';
 
 export const BuilderApp: React.FC = () => {
   const [selectedPet, setSelectedPet] = useState<PetMainDetails>({} as any);
@@ -58,7 +58,7 @@ export const BuilderApp: React.FC = () => {
 
     const descriptors: Array<string> = localMappingString.split(',');
     const displayDescrips = descriptors.map(descr => `^${descr}`);
-    // displayDescrips.push('^1234567');
+    displayDescrips.push(`^${descriptorId()}`);
 
     const finalObj = {
       "CreatureId": `^${selectedPet.CreatureId}`,
@@ -68,11 +68,10 @@ export const BuilderApp: React.FC = () => {
   }
 
   return (
-    <Box w='100%' pt={4}>
-      <Header />
+    <>
       <Container>
         <Select
-          placeholder='Select option'
+          placeholder='Select creature type'
           value={selectedPet.CreatureId}
           onChange={onChangeCreatureDropDown}
         >
@@ -119,7 +118,7 @@ export const BuilderApp: React.FC = () => {
           </Box>
         </Flex>
       </Box>
-    </Box>
+    </>
   );
 }
 
