@@ -1,6 +1,6 @@
 {
   "name": "creature-builder",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "description": "Creature builder built for the No Man's Sky Hub built by AssistantNMS",
   "author": "AssistantNMS (Kurt Lourens)",
   "main": "public/electron.js",
@@ -36,8 +36,11 @@
   },
   "build": {
     "appId": "com.assistantapps.nms.creaturebuilder",
-    "mac": {
-      "category": "your.app.category.type"
+    "productName": "Creature Builder",
+    "win": {
+      "asar": false,
+      "target": "nsis",
+      "icon": "build/assets/favicon/android-chrome-512x512.png"
     }
   },
   "eslintConfig": {
