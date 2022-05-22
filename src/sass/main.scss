@@ -3,6 +3,19 @@
 //     // color: white;
 // }
 
+
+.hidden-in-desktop {
+    @media screen and (min-width: 980px) {
+        display: none;
+    }
+}
+
+.hidden-in-mobile {
+    @media screen and (max-width: 980px) {
+        display: none;
+    }
+}
+
 .max-1-line {
     overflow: hidden;
     text-overflow: ellipsis;

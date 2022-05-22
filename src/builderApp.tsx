@@ -92,18 +92,18 @@ export const BuilderApp: React.FC = () => {
 
       <Box className="attributes">
         <Flex>
-          <Box flex="2" mt="3">
+          <Box flex="2" mt="3" className="hidden-in-mobile">
             {
               (selectedPet.CreatureId != null) &&
               <Textarea
+                minH="20em"
                 height="100%"
                 readOnly={true}
                 value={getJsonFromMappings(mappingString)}
               />
             }
           </Box>
-          <Box width="20px">
-          </Box>
+          <Box width="20px" className="hidden-in-mobile"></Box>
           <Box flex="5">
             {
               (selectedPet.Details ?? []).map((details, index) => (
@@ -117,6 +117,17 @@ export const BuilderApp: React.FC = () => {
             }
           </Box>
         </Flex>
+        <Box mt="12" className="hidden-in-desktop">
+          {
+            (selectedPet.CreatureId != null) &&
+            <Textarea
+              minH="20em"
+              height="100%"
+              readOnly={true}
+              value={getJsonFromMappings(mappingString)}
+            />
+          }
+        </Box>
       </Box>
     </>
   );
