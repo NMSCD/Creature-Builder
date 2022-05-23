@@ -26,7 +26,7 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
         const selectedItem = petData[selectedItemIndex];
 
         if ((selectedItem?.Children?.length ?? 0) < 1) {
-            setSelectedPetDescrips({} as any);
+            setSelectedPetDescrips([]);
             return;
         }
 
@@ -58,7 +58,7 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
                 </Box>
             </Flex>
             {
-                selectedPetDescrips.map(selectedPetDescrip => (
+                (selectedPetDescrips ?? []).map(selectedPetDescrip => (
                     <AttributeDropDown
                         key={selectedPetDescrip.GroupId + ' descriptor'}
                         isNested={true}
