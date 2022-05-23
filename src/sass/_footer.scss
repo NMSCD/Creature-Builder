@@ -1,0 +1,18 @@
+footer {
+    margin-top: 3em;
+    margin-bottom: 5em;
+    text-align: center;
+
+    hr {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    p {
+        margin-top: 2em;
+    }
+
+    a {
+        color: lighten($brand-primary, 10%);
+    }
+}

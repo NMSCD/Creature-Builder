@@ -10,7 +10,7 @@ interface IProps {
 }
 
 export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
-    const [selectedPetDescrip, setSelectedPetDescrip] = useState<PetDetails>(props.petDetail?.Descriptors?.[0]?.Children?.[0]);
+    const [selectedPetDescrips, setSelectedPetDescrips] = useState<Array<PetDetails>>(props.petDetail?.Descriptors?.[0]?.Children ?? []);
 
     const onChangeDescriptorDropDown = (e: any) => {
         e?.persist?.();
@@ -26,17 +26,18 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
         const selectedItem = petData[selectedItemIndex];
 
         if ((selectedItem?.Children?.length ?? 0) < 1) {
-            setSelectedPetDescrip({} as any);
+            setSelectedPetDescrips({} as any);
             return;
         }
 
-        const selectedChild = selectedItem.Children[0];
-        setSelectedPetDescrip(selectedChild);
+        const selectedChildren = selectedItem.Children;
+        setSelectedPetDescrips(selectedChildren);
     }
 
     return (
         <Box
             key={props.petDetail.GroupId + 'main'}
+            data-key={props.petDetail.GroupId}
             mt="3"
             ml={(props.isNested ?? false) ? `${depthSpacingInPx}px` : '0'}
         >
@@ -57,13 +58,13 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
                 </Box>
             </Flex>
             {
-                (selectedPetDescrip?.GroupId != null) && (
+                selectedPetDescrips.map(selectedPetDescrip => (
                     <AttributeDropDown
                         key={selectedPetDescrip.GroupId + ' descriptor'}
                         isNested={true}
                         petDetail={selectedPetDescrip}
                     />
-                )
+                ))
             }
         </Box>
     );

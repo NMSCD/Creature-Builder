@@ -1,8 +1,20 @@
-// body {
-//     // background-color: #414141 !important;
-//     // color: white;
-// }
+@import "./var";
+@import "./scrollbar";
+@import "./footer";
 
+body {
+    ::selection {
+        background: $brand-primary;
+        color: white;
+        /* WebKit/Blink Browsers */
+    }
+
+    ::-moz-selection {
+        background: $brand-primary;
+        color: white;
+        /* Gecko Browsers */
+    }
+}
 
 .hidden-in-desktop {
     @media screen and (min-width: 980px) {
@@ -14,6 +26,26 @@
     @media screen and (max-width: 980px) {
         display: none;
     }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
 }
 
 .max-1-line {
@@ -47,24 +79,5 @@
     .chakra-select {
         border-top-left-radius: 0 !important;
         border-bottom-left-radius: 0 !important;
-    }
-}
-
-footer {
-    margin-top: 3em;
-    margin-bottom: 5em;
-    text-align: center;
-
-    hr {
-        width: 50%;
-        margin: 0 auto;
-    }
-
-    p {
-        margin-top: 2em;
-    }
-
-    a {
-        color: rgb(255, 149, 167);
     }
 }

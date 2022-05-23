@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Center, Container, Flex, Select, Textarea } from '@chakra-ui/react'
+import { Box, Center, Container, Flex, Select, } from '@chakra-ui/react'
 import petJsonData from './assets/IPetData.json'
 import { PetMainDetails } from './contracts/petDetails';
 import { AttributeDropDown } from './components/attributeDropDown';
 import { descriptorId } from './helper/idHelper';
+import { JsonViewer } from './components/jsonViewer';
 
 export const BuilderApp: React.FC = () => {
   const [selectedPet, setSelectedPet] = useState<PetMainDetails>({} as any);
@@ -13,7 +14,7 @@ export const BuilderApp: React.FC = () => {
     const interval = setInterval(() => {
       const newValueArr = getDescriptorValue();
       const newValue = newValueArr.join(',');
-      setMappingString(latestMappingString => {
+      setMappingString((latestMappingString: string) => {
         if (latestMappingString !== newValue) {
           console.log('update UI');
           return newValue;
@@ -95,11 +96,8 @@ export const BuilderApp: React.FC = () => {
           <Box flex="2" mt="3" className="hidden-in-mobile">
             {
               (selectedPet.CreatureId != null) &&
-              <Textarea
-                minH="20em"
-                height="100%"
-                readOnly={true}
-                value={getJsonFromMappings(mappingString)}
+              <JsonViewer
+                json={getJsonFromMappings(mappingString)}
               />
             }
           </Box>
@@ -120,11 +118,8 @@ export const BuilderApp: React.FC = () => {
         <Box mt="12" className="hidden-in-desktop">
           {
             (selectedPet.CreatureId != null) &&
-            <Textarea
-              minH="20em"
-              height="100%"
-              readOnly={true}
-              value={getJsonFromMappings(mappingString)}
+            <JsonViewer
+              json={getJsonFromMappings(mappingString)}
             />
           }
         </Box>

@@ -23,6 +23,21 @@ function createWindow() {
             : `file://${path.join(__dirname, "../build/index.html")}`
     );
 
+    win.webContents.session.webRequest.onBeforeSendHeaders(
+        (details, callback) => {
+          callback({ requestHeaders: { Origin: '*', ...details.requestHeaders } });
+        },
+      );
+    
+      win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
+        callback({
+          responseHeaders: {
+            'Access-Control-Allow-Origin': ['*'],
+            ...details.responseHeaders,
+          },
+        });
+      });
+
     // Open the DevTools.
     // if (isDev) {
     //     win.webContents.openDevTools({ mode: "detach" });

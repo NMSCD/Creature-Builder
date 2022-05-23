@@ -5,6 +5,7 @@ import { AppShell } from './appShell';
 import { CustomThemeProvider } from './themeProvider';
 
 import './sass/main.scss';
+import "../node_modules/react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById('creature-builder') as HTMLElement
@@ -13,7 +14,7 @@ root.render(
   <React.StrictMode>
     <ChakraProvider>
       <CustomThemeProvider>
-        <AppShell />
+        <AppShell key="app-shell" />
       </CustomThemeProvider>
     </ChakraProvider>
   </React.StrictMode>
