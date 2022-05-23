@@ -38,6 +38,7 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
         <Box
             key={props.petDetail.GroupId + 'main'}
             data-key={props.petDetail.GroupId}
+            className="noselect"
             mt="3"
             ml={(props.isNested ?? false) ? `${depthSpacingInPx}px` : '0'}
         >

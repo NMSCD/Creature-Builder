@@ -72,6 +72,7 @@ export const BuilderApp: React.FC = () => {
     <>
       <Container>
         <Select
+          className="noselect"
           placeholder='Select creature type'
           value={selectedPet.CreatureId}
           onChange={onChangeCreatureDropDown}
@@ -87,7 +88,7 @@ export const BuilderApp: React.FC = () => {
 
       {
         (selectedPet.CreatureId == null) && (
-          <Center>Please select a creature type from the drop down</Center>
+          <Center className="noselect" draggable="false">Please select a creature type from the drop down</Center>
         )
       }
 
