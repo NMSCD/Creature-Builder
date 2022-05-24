@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Box } from '@chakra-ui/react'
-import { Header } from './components/core/header';
-import { Footer } from './components/core/footer';
-import { BuilderApp } from './builderApp';
-import { AssistantAppsApiService } from './services/api/AssistantAppsApiService';
-import { PlatformType } from './contracts/generated/AssistantApps/Enum/platformType';
+import { Box } from '@chakra-ui/react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { ToastService } from './services/toastService';
+import { BuilderApp } from './builderApp';
+import { Footer } from './components/core/footer';
+import { Header } from './components/core/header';
 import { currentServerVersionNum } from './constants/assistantApps';
+import { PlatformType } from './contracts/generated/AssistantApps/Enum/platformType';
+import { DependencyInjectionContext } from './integration/DependencyInjectionProvider';
 
 export const AppShell: React.FC = () => {
     const [hasCheckedUpdate, setHasCheckedUpdate] = useState<boolean>(false);
+    const services = useContext(DependencyInjectionContext);
 
     useEffect(() => {
         updateCheck();
@@ -18,25 +18,23 @@ export const AppShell: React.FC = () => {
     }, []);
 
     const updateCheck = async () => {
-        const service = new AssistantAppsApiService(); // move to Dependency Injection
-        const apiResult = await service.getLatest([PlatformType.Windows]);
+        const apiResult = await services.assistantAppsApiService.getLatest([PlatformType.Windows]);
         console.log({ updateCheck: { ...apiResult }, hasCheckedUpdate })
         if (apiResult.isSuccess === false) return;
 
         const versionNumFromServer = apiResult.value?.buildNumber ?? 0;
         if (versionNumFromServer > currentServerVersionNum) {
             setHasCheckedUpdate((hasChecked: boolean) => {
-                if (!hasChecked)
-                    showUpdateToastMessage();
+                if (hasChecked == false) {
+                    services.toastService.info(
+                        <span className="noselect">There is an update available!</span>,
+                        { autoClose: 20000 }
+                    )
+                }
 
                 return true;
             })
         }
-    }
-
-    const showUpdateToastMessage = () => {
-        const service = new ToastService(); // move to Dependency Injection
-        service.info(<span className="noselect">There is an update available!</span>, { autoClose: 20000 })
     }
 
     return (

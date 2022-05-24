@@ -6,6 +6,7 @@ import { CustomThemeProvider } from './themeProvider';
 
 import './sass/main.scss';
 import "../node_modules/react-toastify/dist/ReactToastify.css";
+import { DependencyInjectionProvider } from './integration/DependencyInjectionProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('creature-builder') as HTMLElement
@@ -14,7 +15,9 @@ root.render(
   <React.StrictMode>
     <ChakraProvider>
       <CustomThemeProvider>
-        <AppShell key="app-shell" />
+        <DependencyInjectionProvider>
+          <AppShell key="app-shell" />
+        </DependencyInjectionProvider>
       </CustomThemeProvider>
     </ChakraProvider>
   </React.StrictMode>
