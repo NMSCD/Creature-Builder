@@ -62,7 +62,7 @@ export const BuilderApp: React.FC = () => {
     displayDescrips.push(`^${descriptorId()}`);
 
     const finalObj = {
-      "CreatureId": `^${selectedPet.CreatureId}`,
+      "CreatureID": `^${selectedPet.CreatureId}`,
       "Descriptors": displayDescrips,
     };
     return JSON.stringify(finalObj, undefined, 4);

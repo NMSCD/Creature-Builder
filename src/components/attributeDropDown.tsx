@@ -48,7 +48,7 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
                         {props.petDetail.GroupId}
                     </Box>
                 </Center>
-                <Box flex='1'>
+                <Box flex="1">
                     <Select placeholder={props.placeholder} onChange={onChangeDescriptorDropDown}>
                         {
                             (props.petDetail?.Descriptors ?? []).map((descrip, index) => (
