@@ -1,5 +1,4 @@
-import fs from 'fs';
-import util from 'util';
+import { promises as fs } from 'fs';
 
 import { IStorageService } from './interface/IStorageService';
 
@@ -7,8 +6,7 @@ export class StorageService implements IStorageService {
 
 
     writeFile = (filename: string, content: string): void => {
-        const writeFileAsync = util.promisify(fs.writeFile);
-        writeFileAsync(filename, content,
+        await fs.writeFile(filename, content,
             (err) => {
                 if (err) {
                     return console.log(err);
@@ -19,8 +17,7 @@ export class StorageService implements IStorageService {
     }
 
     readFile = async <T>(filename: string): Promise<T> => {
-        const readFileAsync = util.promisify(fs.readFile);
-        var content = await readFileAsync(filename);
+        var content = await fs.readFile(filename);
         console.log(content);
         return content as any;
     }
