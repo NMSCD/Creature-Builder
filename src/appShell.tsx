@@ -1,12 +1,13 @@
 import { Box } from '@chakra-ui/react';
 import React, { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { BuilderApp } from './builderApp';
+import { BuilderPage } from './page/builderPage';
 import { Footer } from './components/core/footer';
 import { Header } from './components/core/header';
 import { currentServerVersionNum } from './constants/assistantApps';
 import { PlatformType } from './contracts/generated/AssistantApps/Enum/platformType';
 import { DependencyInjectionContext } from './integration/DependencyInjectionProvider';
+import { LoginPage } from './page/loginPage';
 
 export const AppShell: React.FC = () => {
     const [hasCheckedUpdate, setHasCheckedUpdate] = useState<boolean>(false);
@@ -40,7 +41,8 @@ export const AppShell: React.FC = () => {
     return (
         <Box key="app-shell-box" w='100%' pt={4}>
             <Header />
-            <BuilderApp />
+            <BuilderPage />
+            <LoginPage />
             <Footer />
             <ToastContainer
                 position="bottom-right"

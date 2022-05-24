@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Center, Container, Flex, Select, } from '@chakra-ui/react'
-import petJsonData from './assets/IPetData.json'
-import { PetMainDetails } from './contracts/petDetails';
-import { AttributeDropDown } from './components/attributeDropDown';
-import { descriptorId } from './helper/idHelper';
-import { JsonViewer } from './components/jsonViewer';
+import petJsonData from '../assets/IPetData.json'
+import { PetMainDetails } from '../contracts/petDetails';
+import { AttributeDropDown } from '../components/attributeDropDown';
+import { descriptorId } from '../helper/idHelper';
+import { JsonViewer } from '../components/jsonViewer';
 
-export const BuilderApp: React.FC = () => {
+export const BuilderPage: React.FC = () => {
   const [selectedPet, setSelectedPet] = useState<PetMainDetails>({} as any);
   const [mappingString, setMappingString] = useState<string>('');
 
