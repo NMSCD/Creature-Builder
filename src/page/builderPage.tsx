@@ -5,6 +5,7 @@ import { PetMainDetails } from '../contracts/petDetails';
 import { AttributeDropDown } from '../components/attributeDropDown';
 import { descriptorId } from '../helper/idHelper';
 import { JsonViewer } from '../components/jsonViewer';
+import { RouterGuard } from '../components/routerGuard';
 
 export const BuilderPage: React.FC = () => {
   const [selectedPet, setSelectedPet] = useState<PetMainDetails>({} as any);
@@ -70,6 +71,7 @@ export const BuilderPage: React.FC = () => {
 
   return (
     <>
+      <RouterGuard />
       <Container>
         <Select
           placeholder='Select creature type'

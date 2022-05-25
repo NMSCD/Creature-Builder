@@ -1,3 +1,4 @@
+import { isElectron } from "../helper/electronHelper";
 import { AssistantAppsApiService } from "../services/api/AssistantAppsApiService";
 import { EncryptionService } from '../services/encryptionService';
 import { IStorageService } from '../services/interface/IStorageService';
@@ -26,7 +27,3 @@ export const registerServices = (): IDependencyInjection => {
     };
 }
 
-const isElectron = () => {
-    const userAgent = navigator.userAgent.toLowerCase();
-    return (userAgent?.indexOf?.(' electron/') !== -1);
-}

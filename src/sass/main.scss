@@ -4,6 +4,10 @@
 @import "./footer";
 
 body {
+    a {
+        color: lighten($brand-primary, 10%);
+    }
+
     ::selection {
         background: $brand-primary;
         color: white;
