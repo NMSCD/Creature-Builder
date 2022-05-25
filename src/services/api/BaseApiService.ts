@@ -23,8 +23,9 @@ export class BaseApiService {
       return {
         isSuccess: false,
         value: anyObject,
-        errorMessage: (ex as any).message
-      }
+        errorMessage: (ex as any).message,
+        excBody: (ex as any)?.response?.data,
+      } as any
     }
   }
 

@@ -1,4 +1,4 @@
-import { ResultWithValue, ResultWithValueAndPagination } from '../../contracts/results/ResultWithValue';
+import { Result, ResultWithValue, ResultWithValueAndPagination } from '../../contracts/results/ResultWithValue';
 import { BaseApiService } from './BaseApiService';
 import { VersionViewModel } from '../../contracts/generated/AssistantApps/ViewModel/Version/versionViewModel';
 import { VersionSearchViewModel } from '../../contracts/generated/AssistantApps/ViewModel/Version/versionSearchViewModel';
@@ -29,7 +29,6 @@ export class AssistantAppsApiService extends BaseApiService {
         return result as ResultWithValueAndPagination<Array<VersionViewModel>>;
     }
 
-
     getLatest(platforms: Array<PlatformType>): Promise<ResultWithValue<VersionViewModel>> {
         let queryPath = '';
         for (const queryParam in platforms) {
@@ -42,5 +41,32 @@ export class AssistantAppsApiService extends BaseApiService {
         const url = `${ApiUrls.appVersion}/${assistantAppsAppGuid}?${queryPath}`;
 
         return this.get<VersionViewModel>(url);
+    }
+
+    async activateLicence(licenceKey: string): Promise<ResultWithValue<string>> {
+        const url = `${ApiUrls.licenceActivate}/${assistantAppsAppGuid}/${licenceKey}`;
+        const apiResonse = await this.get<string>(url);
+        if (apiResonse.isSuccess) return apiResonse;
+
+        const errorList: Array<string> = [];
+        const errProp = (apiResonse as any)?.excBody;
+        if (typeof errProp === 'object') {
+            const errorObj = errProp?.errors ?? {};
+            for (const errProp in errorObj) {
+                if (Object.prototype.hasOwnProperty.call(errorObj, errProp)) {
+                    const mesg = errorObj[errProp];
+                    errorList.push(mesg);
+                }
+            }
+        } else {
+            errorList.push(errProp ?? '');
+        }
+
+        return { ...apiResonse, errorMessage: errorList.join('. ') };
+    }
+
+    verifyLicence(licenceHash: string): Promise<Result> {
+        const url = `${ApiUrls.licenceVerify}/${assistantAppsAppGuid}/${licenceHash}`;
+        return this.get(url);
     }
 }

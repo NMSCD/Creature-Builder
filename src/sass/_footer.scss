@@ -12,7 +12,11 @@ footer {
         margin-top: 2em;
     }
 
-    a {
-        color: lighten($brand-primary, 10%);
+    &.small {
+        margin-top: 0;
+        margin-bottom: 0;
+        hr {
+            display: none;
+        }
     }
 }
