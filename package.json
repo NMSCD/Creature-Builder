@@ -45,8 +45,8 @@
     "build": "react-scripts build",
     "dev": "concurrently -k \"npm start\" \"npm:electron\"",
     "electron": "wait-on tcp:3000 && electron .",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "pack": "electron-builder --dir --publish=never",
+    "dist": "electron-builder --publish=never"
   },
   "build": {
     "appId": "com.assistantapps.nms.creaturebuilder",

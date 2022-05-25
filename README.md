@@ -1,6 +1,12 @@
 # Getting Started with Creature Builder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a tool to help people craft NMS creatures by allowing you to select the parts that can be used together.
+
+
+## Automated Build
+
+[![Build Status](https://dev.azure.com/khaoznet/NMS%20Assistant/_apis/build/status/NMSCD.Creature-Builder?branchName=main)](https://dev.azure.com/khaoznet/NMS%20Assistant/_build/latest?definitionId=82&branchName=main)
+
 
 ## Get started
 
