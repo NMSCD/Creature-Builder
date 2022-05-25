@@ -22,15 +22,16 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'mkdir pipelineOutput'
+    workingDirectory: '$(Pipeline.Workspace)'
 
 - task: CopyFiles@2
   inputs:
     SourceFolder: 'dist'
     Contents: '*Setup*.exe*'
-    TargetFolder: 'pipelineOutput'
+    TargetFolder: '$(Pipeline.Workspace)/pipelineOutput'
 
-- task: PublishPipelineArtifact@1
+- task: PublishBuildArtifacts@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)/pipelineOutput'
-    artifact: 'drop'
-    publishLocation: 'pipeline'
+    PathtoPublish: '$(Pipeline.Workspace)/pipelineOutput'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
