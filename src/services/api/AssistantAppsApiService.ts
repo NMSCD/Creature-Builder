@@ -66,7 +66,7 @@ export class AssistantAppsApiService extends BaseApiService {
     }
 
     verifyLicence(licenceHash: string): Promise<Result> {
-        const url = `${ApiUrls.licenceActivate}/${assistantAppsAppGuid}/${licenceHash}`;
+        const url = `${ApiUrls.licenceVerify}/${assistantAppsAppGuid}/${licenceHash}`;
         return this.get(url);
     }
 }

@@ -5,9 +5,10 @@ import { DependencyInjectionContext } from '../integration/DependencyInjectionPr
 import { StorageKey } from '../constants/storageKey';
 import { LicenceContents } from '../contracts/file/licenceFile';
 import { Routes } from '../constants/routes';
+import { developmentLicenceKey } from '../constants/licence';
 
 export const RouterGuard: React.FC = () => {
-    const { storageService, toastService } = useContext(DependencyInjectionContext);
+    const { storageService, toastService, assistantAppsApiService } = useContext(DependencyInjectionContext);
     const [, setLocation] = useLocation();
 
     useEffect(() => {
@@ -27,7 +28,18 @@ export const RouterGuard: React.FC = () => {
                 )
                 setLocation(Routes.login);
             }
+
+            if (licenceContents.licenceHash === developmentLicenceKey) {
+                return;
+            }
+
+            const verifyResult = await assistantAppsApiService.verifyLicence(licenceContents.licenceHash);
+            if (verifyResult.isSuccess === false) {
+                setLocation(Routes.login);
+            }
+
         } catch (e: any) {
+            console.error({ ...e });
             setLocation(Routes.login);
         }
     }

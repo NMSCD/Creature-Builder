@@ -10,6 +10,6 @@ export class EncryptionService {
 
     decrypt = (encr: string): string => {
         const decryptedString = CryptoJS.AES.decrypt(encr, this._key);
-        return decryptedString.toString();
+        return decryptedString.toString(CryptoJS.enc.Utf8);
     }
 }

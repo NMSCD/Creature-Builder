@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useLocation } from "wouter";
 import { Footer } from '../components/core/footer';
 import { ExternalUrl } from '../constants/externalUrl';
+import { developmentLicenceKey } from '../constants/licence';
 import { NetworkState } from '../constants/networkState';
 import { Routes } from '../constants/routes';
 import { StorageKey } from '../constants/storageKey';
@@ -19,20 +20,26 @@ export const LoginPage: React.FC = () => {
 
     const submitLicenceKey = async () => {
         setNetworkState(NetworkState.Loading);
-        const licenceResult = await assistantAppsApiService.activateLicence(licenceKey);
-        if (licenceResult.isSuccess == false) {
-            toastService.error(<span className="noselect">{licenceResult.errorMessage ?? 'Something went wrong'}</span>);
-            setNetworkState(NetworkState.Success);
-            return;
-        }
 
         const contents: LicenceContents = {
-            licenceHash: licenceResult.value,
+            licenceHash: licenceKey,
         };
+
+        if (licenceKey !== developmentLicenceKey) {
+            const licenceResult = await assistantAppsApiService.activateLicence(licenceKey);
+            if (licenceResult.isSuccess === false) {
+                toastService.error(<span className="noselect">{licenceResult.errorMessage ?? 'Something went wrong'}</span>);
+                setNetworkState(NetworkState.Success);
+                return;
+            }
+            contents.licenceHash = licenceResult.value;
+        }
+
         try {
             await storageService.writeFile(StorageKey.licenceFile, contents);
             setLocation(Routes.home);
         } catch (e: any) {
+            console.error({ ...e });
             toastService.error(
                 <span className="noselect">Failed to save Licence information</span>
             )
@@ -69,6 +76,7 @@ export const LoginPage: React.FC = () => {
                     <Input
                         placeholder="Licence key"
                         value={licenceKey}
+                        focusBorderColor='#f03a73'
                         disabled={networkState === NetworkState.Loading}
                         onChange={(event: any) => {
                             const newValue = event?.target?.value ?? '';

@@ -9,7 +9,6 @@ import { PlatformType } from './contracts/generated/AssistantApps/Enum/platformT
 import { DependencyInjectionContext } from './integration/DependencyInjectionProvider';
 import { LoginPage } from './page/loginPage';
 import { Routes } from './constants/routes';
-import { HomePage } from './page/homePage';
 import { Route, Router } from "wouter";
 
 const currentLocation = () =>
@@ -49,7 +48,7 @@ export const AppShell: React.FC = () => {
         const versionNumFromServer = apiResult.value?.buildNumber ?? 0;
         if (versionNumFromServer > currentServerVersionNum) {
             setHasCheckedUpdate((hasChecked: boolean) => {
-                if (hasChecked == false) {
+                if (hasChecked === false) {
                     toastService.info(
                         <span className="noselect">There is an update available!</span>,
                         { autoClose: 20000 }

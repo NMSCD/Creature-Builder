@@ -21,9 +21,7 @@ export const registerServices = (): IDependencyInjection => {
         toastService: new ToastService(),
 
         assistantAppsApiService: new AssistantAppsApiService(),
-        storageService: isElectron()
-            ? new StorageService(_enc)
-            : new LocalStorageService(_enc),
+        storageService: new LocalStorageService(_enc),
     };
 }
 

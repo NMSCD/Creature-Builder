@@ -14,6 +14,7 @@ export class LocalStorageService implements IStorageService {
     writeFile = async <T>(filename: string, content: T): Promise<void> => {
         const contentString = JSON.stringify(content);
         const encrypted = this._enc.encrypt(contentString);
+        const decrypted = this._enc.decrypt(encrypted ?? '');
         localStorage.setItem(filename, encrypted);
     }
 

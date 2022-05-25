@@ -13,7 +13,7 @@ interface IDependencyInjectionProviderProps {
 export const DependencyInjectionProvider: React.FC<IDependencyInjectionProviderProps> = (
     props: IDependencyInjectionProviderProps
 ) => {
-    const { children, overriddenServices: overriddenServices } = props;
+    const { children, overriddenServices } = props;
 
     const defaultDeps = registerServices();
     const services: IDependencyInjection = {
