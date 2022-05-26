@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Center, Flex, Select } from '@chakra-ui/react';
 import { depthSpacingInPx } from '../constants/UIConstant';
 import { PetDetails } from '../contracts/petDetails';
@@ -10,7 +10,13 @@ interface IProps {
 }
 
 export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
-    const [selectedPetDescrips, setSelectedPetDescrips] = useState<Array<PetDetails>>(props.petDetail?.Descriptors?.[0]?.Children ?? []);
+    const groupId = props.petDetail.GroupId;
+    const initialChildren = props.petDetail?.Descriptors?.[0]?.Children ?? [];
+    const [selectedPetDescrips, setSelectedPetDescrips] = useState<Array<PetDetails> | undefined>();
+
+    useEffect(() => {
+        setSelectedPetDescrips(undefined);
+    }, [props.petDetail.GroupId, props.petDetail.Descriptors?.length])
 
     const onChangeDescriptorDropDown = (e: any) => {
         e?.persist?.();
@@ -26,7 +32,7 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
         const selectedItem = petData[selectedItemIndex];
 
         if ((selectedItem?.Children?.length ?? 0) < 1) {
-            setSelectedPetDescrips([]);
+            setSelectedPetDescrips(undefined);
             return;
         }
 
@@ -36,16 +42,15 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
 
     return (
         <Box
-            key={props.petDetail.GroupId + 'main'}
-            data-key={props.petDetail.GroupId}
-            className="noselect"
+            key={groupId + 'main'}
+            data-key={groupId}
             mt="3"
             ml={(props.isNested ?? false) ? `${depthSpacingInPx}px` : '0'}
         >
             <Flex>
                 <Center width={`${depthSpacingInPx}px`} className="group">
                     <Box className="inner" width="100%">
-                        {props.petDetail.GroupId}
+                        {groupId}
                     </Box>
                 </Center>
                 <Box flex="1">
@@ -59,9 +64,10 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
                 </Box>
             </Flex>
             {
-                (selectedPetDescrips ?? []).map(selectedPetDescrip => (
+                (selectedPetDescrips ?? initialChildren).map(selectedPetDescrip => (
                     <AttributeDropDown
-                        key={selectedPetDescrip.GroupId + ' descriptor'}
+                        key={groupId + '-' + selectedPetDescrip.GroupId + ' descriptor'}
+                        data-key={groupId + '-' + selectedPetDescrip.GroupId + ' descriptor'}
                         isNested={true}
                         petDetail={selectedPetDescrip}
                     />
