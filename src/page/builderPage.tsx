@@ -10,8 +10,10 @@ import { RouterGuard } from '../components/routerGuard';
 export const BuilderPage: React.FC = () => {
   const [selectedPet, setSelectedPet] = useState<PetMainDetails>({} as any);
   const [mappingString, setMappingString] = useState<string>('');
+  const [intervalTrigger, setIntervalTrigger] = useState<number>(0);
 
   useEffect(() => {
+    if (intervalTrigger < 1) return;
     const interval = setInterval(() => {
       const newValueArr = getDescriptorValue();
       const newValue = newValueArr.join(',');
@@ -20,14 +22,18 @@ export const BuilderPage: React.FC = () => {
           console.log('update UI');
           return newValue;
         }
+        console.log('nothing to change');
+        clearInterval(interval);
         return latestMappingString;
       });
-    }, 1000);
+    }, 50);
 
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [intervalTrigger]);
+
+  const triggerJsonInterval = () => setIntervalTrigger((oldValue) => oldValue + 1);
 
   const onChangeCreatureDropDown = (e: any) => {
     e?.persist?.();
@@ -38,6 +44,7 @@ export const BuilderPage: React.FC = () => {
     const selectedItemIndex = petData.findIndex(p => p.CreatureId === creatureId);
     const selectedItem: any = petData[selectedItemIndex];
     setSelectedPet(selectedItem);
+    triggerJsonInterval();
   }
 
   const getDescriptorValue = (): Array<string> => {
@@ -112,6 +119,7 @@ export const BuilderPage: React.FC = () => {
                   <AttributeDropDown
                     key={details.GroupId + 'main'}
                     petDetail={details}
+                    triggerJsonUpdate={triggerJsonInterval}
                   />
                 </Box>
               ))

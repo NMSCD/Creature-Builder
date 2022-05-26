@@ -7,6 +7,7 @@ interface IProps {
     petDetail: PetDetails;
     placeholder?: string;
     isNested?: boolean;
+    triggerJsonUpdate: () => void;
 }
 
 export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
@@ -28,6 +29,8 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
             .filter(descrip => descrip != null);
         const selectedItemIndex = petData.findIndex(p => p.Id === descriptorId);
         if (selectedItemIndex < 0) return;
+
+        props.triggerJsonUpdate();
 
         const selectedItem = petData[selectedItemIndex];
 
@@ -70,6 +73,7 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
                         data-key={groupId + '-' + selectedPetDescrip.GroupId + ' descriptor'}
                         isNested={true}
                         petDetail={selectedPetDescrip}
+                        triggerJsonUpdate={props.triggerJsonUpdate}
                     />
                 ))
             }
