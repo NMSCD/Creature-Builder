@@ -11,8 +11,11 @@ steps:
     npm install
   displayName: 'npm install'
 
-- script: |
-    PUBLIC_URL="." npm run build
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      PUBLIC_URL="." npm run build
   displayName: 'npm build react app'
 
 - script: |
@@ -21,21 +24,13 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'ls'
-
-- task: CmdLine@2
-  inputs:
-    script: 'ls'
-    workingDirectory: 'dist'
-
-- task: CmdLine@2
-  inputs:
     script: 'mkdir pipelineOutput'
     workingDirectory: '$(Pipeline.Workspace)'
 
 - task: CopyFiles@2
   inputs:
-    Contents: '**Setup*.exe*'
+    SourceFolder: 'dist'
+    Contents: '*Setup*.exe*'
     TargetFolder: '$(Pipeline.Workspace)/pipelineOutput'
 
 - task: PublishBuildArtifacts@1
