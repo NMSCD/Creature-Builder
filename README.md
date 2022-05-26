@@ -31,5 +31,13 @@ You will also see any lint errors in the console.
 ### How to package into windows installer
 
 - Update the `constant/assistantApps.ts` file with latest build number and whatIsNew guid
+
+##### Automated CI / CD
+
+- Trigger build and release in Azure DevOps
+
+
+##### Manual process:
+
 - `PUBLIC_URL="." npm run build` (This is specific to BASH terminal)
 - `npm run dist`
