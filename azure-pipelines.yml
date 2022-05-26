@@ -21,6 +21,15 @@ steps:
 
 - task: CmdLine@2
   inputs:
+    script: 'ls'
+
+- task: CmdLine@2
+  inputs:
+    script: 'ls'
+    workingDirectory: 'dist'
+
+- task: CmdLine@2
+  inputs:
     script: 'mkdir pipelineOutput'
     workingDirectory: '$(Pipeline.Workspace)'
 
