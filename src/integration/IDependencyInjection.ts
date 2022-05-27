@@ -1,9 +1,7 @@
-import { isElectron } from "../helper/electronHelper";
 import { AssistantAppsApiService } from "../services/api/AssistantAppsApiService";
 import { EncryptionService } from '../services/encryptionService';
 import { IStorageService } from '../services/interface/IStorageService';
 import { LocalStorageService } from '../services/localStorageService';
-import { StorageService } from '../services/storageService';
 import { ToastService } from "../services/toastService";
 
 export interface IDependencyInjection {

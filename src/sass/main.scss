@@ -78,11 +78,27 @@ body {
     }
 }
 
+.json-viewer {
+    pre {
+        width: 100%;
+    }
+}
+
 .attributes {
     margin: 0 2em;
 
-    .chakra-select {
+    .chakra-select,
+    .chakra-input {
         border-top-left-radius: 0 !important;
         border-bottom-left-radius: 0 !important;
+    }
+
+    .chakra-form-control {
+        padding: 0.5em 1em;
+        border-radius: 7px;
+        background-color: rgba(255, 255, 255, 0.08);
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.16);
+        }
     }
 }

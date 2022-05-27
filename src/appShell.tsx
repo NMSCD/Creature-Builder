@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { BuilderPage } from './page/builderPage';
+import { BuilderPage } from './page/builder/builderPage';
 import { Footer } from './components/core/footer';
 import { Header } from './components/core/header';
 import { currentServerVersionNum } from './constants/assistantApps';
