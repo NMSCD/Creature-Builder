@@ -46,8 +46,8 @@ steps:
     action: 'create'
     target: '$(Build.SourceVersion)'
     tagSource: 'gitTag'
-    tagPattern: '0.1.*'
-    title: 'Release 0.1.*'
+    tagPattern: '0.2.*'
+    title: 'Release 0.2.*'
     releaseNotesFilePath: './release-notes.txt'
     assets: '$(Pipeline.Workspace)/pipelineOutput'
     addChangeLog: false
