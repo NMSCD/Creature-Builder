@@ -1,0 +1,3 @@
+- Faster UI updates
+- Corrected AssistantApps constants
+- More creature editing controls
