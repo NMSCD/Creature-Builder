@@ -13,3 +13,8 @@ export const descriptorId = () => {
     const characters = '0123456789';
     return makeIdFromChars(characters, 10);
 }
+
+export const newRandomSeed = () => {
+    const characters = '0123456789ABCDEF';
+    return '0x' + makeIdFromChars(characters, 16);
+}

@@ -3,4 +3,6 @@ export const ApiUrls = {
     versionSearch: 'version/search',
     licenceActivate: 'licence/activate',
     licenceVerify: 'licence/verify',
+
+    authUrl: 'Account/Login',
 }

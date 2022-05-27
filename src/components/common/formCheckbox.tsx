@@ -8,7 +8,7 @@ interface IFormCheckBox {
     propName: string;
     displayName: string;
     width: string;
-    modifyJsonObj: (name: string, value: string) => void;
+    modifyJsonObj: (name: string, value: any) => void;
 }
 export const PastedJsonFormCheckbox: React.FC<IFormCheckBox> = (props: IFormCheckBox) => {
 

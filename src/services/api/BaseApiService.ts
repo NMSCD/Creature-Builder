@@ -46,4 +46,8 @@ export class BaseApiService {
       }
     }
   }
+
+  setInterceptors = (token: string) => {
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+  };
 }

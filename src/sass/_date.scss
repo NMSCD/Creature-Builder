@@ -1,0 +1,29 @@
+#main input[type=datetime] {
+    background-color: rgba(222, 222, 222, 0.25);
+    border-color: #dddddd;
+}
+
+
+input[type=datetime] {
+    background-color: rgba(255, 255, 255, 0.075);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+input[type=datetime] {
+    height: 2.75em;
+}
+
+input[type=datetime] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    border-radius: 8px;
+    border: solid 1px;
+    color: inherit;
+    display: block;
+    outline: 0;
+    padding: 0 1em;
+    text-decoration: none;
+    width: 100%;
+}

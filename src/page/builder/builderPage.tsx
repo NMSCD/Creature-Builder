@@ -51,7 +51,7 @@ export const BuilderPage: React.FC = () => {
     triggerJsonInterval();
   }
 
-  const modifyJsonObj = (name: string, value: string) => {
+  const modifyJsonObj = (name: string, value: any) => {
     console.log(name, value);
     setPastedJson((orig) => ({
       ...orig,
@@ -79,7 +79,7 @@ export const BuilderPage: React.FC = () => {
 
     const descriptors: Array<string> = localMappingString.split(',');
     const displayDescrips = descriptors.map(descr => `^${descr}`);
-    displayDescrips.push(`^${descriptorId()}`);
+    displayDescrips.push(descriptorId());
 
     const finalObj = {
       ...pastedJson,

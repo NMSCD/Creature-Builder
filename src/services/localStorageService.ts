@@ -1,9 +1,11 @@
+import { StorageItem } from '../contracts/storageItem';
+import { isInTheFuture, oneHourFromNow } from '../helper/dateHelper';
 import { anyObject } from '../helper/typescriptHacks';
 import { EncryptionService } from './encryptionService';
 
-import { IStorageService } from './interface/IStorageService';
+import { IAuthStorageService } from './interface/IAuthStorageService';
 
-export class LocalStorageService implements IStorageService {
+export class LocalStorageService implements IAuthStorageService {
 
     private _enc: EncryptionService = anyObject;
 
@@ -11,17 +13,31 @@ export class LocalStorageService implements IStorageService {
         this._enc = enc;
     }
 
-    writeFile = async <T>(filename: string, content: T): Promise<void> => {
-        const contentString = JSON.stringify(content);
-        const encrypted = this._enc.encrypt(contentString);
-        localStorage.setItem(filename, encrypted);
-    }
-
-    readFile = async <T>(filename: string): Promise<T> => {
+    get = async <T>(filename: string): Promise<T> => {
         const contentString = localStorage.getItem(filename);
         const decrypted = this._enc.decrypt(contentString ?? '');
-        const content: T = JSON.parse(decrypted);
+        const content: StorageItem<T> = JSON.parse(decrypted);
 
-        return content;
+        if (content != null && content.data != null && content.expiryDate != null) {
+            if (isInTheFuture(content.expiryDate)) {
+                return content.data;
+            }
+        }
+
+        // eslint-disable-next-line no-throw-literal
+        throw 'Item not found or expired';
+    }
+
+    set = async <T>(filename: string, content: T, expiry?: Date): Promise<void> => {
+        const oneHourFromNw = oneHourFromNow();
+
+        const item: StorageItem<T> = {
+            data: content,
+            expiryDate: expiry || oneHourFromNw
+        };
+
+        const contentString = JSON.stringify(item);
+        const encrypted = this._enc.encrypt(contentString);
+        localStorage.setItem(filename, encrypted);
     }
 }

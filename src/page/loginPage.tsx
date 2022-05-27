@@ -90,6 +90,7 @@ export const LoginPage: React.FC = () => {
                         disabled={networkState === NetworkState.Loading}
                         onClick={() => submitLicenceKey()}
                     >SUBMIT</Button>
+
                     {
                         (networkState === NetworkState.Error) && (
                             <Box textAlign="center">
