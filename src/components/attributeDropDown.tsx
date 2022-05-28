@@ -65,6 +65,7 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
                 <Box flex="1">
                     <Select
                         placeholder={props.placeholder}
+                        className="descriptor"
                         disabled={(props.petDetail?.Descriptors ?? []).length < 2}
                         onChange={onChangeDescriptorDropDown}
                     >

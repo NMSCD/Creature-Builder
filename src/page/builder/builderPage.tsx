@@ -63,7 +63,7 @@ export const BuilderPage: React.FC = () => {
   const getDescriptorValue = (): Array<string> => {
     let descriptors: Array<string> = [];
 
-    const selectElems = document.querySelectorAll('.attributes .chakra-select');
+    const selectElems = document.querySelectorAll('.attributes .chakra-select.descriptor');
     for (let selectElemIndex = 0; selectElemIndex < selectElems.length; selectElemIndex++) {
       const selectElem: any = selectElems[selectElemIndex];
       const selectedOptions: any = selectElem?.selectedOptions;
