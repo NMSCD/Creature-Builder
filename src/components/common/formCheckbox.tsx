@@ -25,7 +25,7 @@ export const PastedJsonFormCheckbox: React.FC<IFormCheckBox> = (props: IFormChec
             justifyContent="space-between"
             className="noselect"
             width={props.width}
-            onClick={() => props.modifyJsonObj(props.propName, (!currentValue).toString())}
+            onClick={() => props.modifyJsonObj(props.propName, (!currentValue))}
         >
             <FormLabel htmlFor={props.propName} mb="0">{props.displayName}</FormLabel>
             <Switch
