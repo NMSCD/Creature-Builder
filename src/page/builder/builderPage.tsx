@@ -8,12 +8,13 @@ import { JsonViewer } from '../../components/jsonViewer';
 import { RouterGuard } from '../../components/routerGuard';
 import { CreatureSave } from '../../contracts/creatureSave';
 import { BuilderPageComponents } from './builderPageComponents';
+import { defaultPetJson } from '../../constants/creatureDefault';
 
 export const BuilderPage: React.FC = () => {
   const [selectedPet, setSelectedPet] = useState<PetMainDetails>({} as any);
   const [mappingString, setMappingString] = useState<string>('');
   const [intervalTrigger, setIntervalTrigger] = useState<number>(0);
-  const [pastedJson, setPastedJson] = useState<CreatureSave>({} as any);
+  const [pastedJson, setPastedJson] = useState<CreatureSave>(defaultPetJson());
 
   const petData: Array<PetMainDetails> = petJsonData as any;
 

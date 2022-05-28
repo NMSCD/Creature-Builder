@@ -17,7 +17,11 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
 
     useEffect(() => {
         setSelectedPetDescrips(undefined);
-    }, [props.petDetail.GroupId, props.petDetail.Descriptors?.length])
+    }, [
+        props.petDetail.GroupId,
+        props.petDetail.Descriptors,
+        props.petDetail.Descriptors?.length
+    ]);
 
     const onChangeDescriptorDropDown = (e: any) => {
         e?.persist?.();
@@ -33,9 +37,10 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
         props.triggerJsonUpdate();
 
         const selectedItem = petData[selectedItemIndex];
+        console.log(selectedItem);
 
         if ((selectedItem?.Children?.length ?? 0) < 1) {
-            setSelectedPetDescrips(undefined);
+            setSelectedPetDescrips([]);
             return;
         }
 
@@ -58,7 +63,11 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
                     </Box>
                 </Center>
                 <Box flex="1">
-                    <Select placeholder={props.placeholder} onChange={onChangeDescriptorDropDown}>
+                    <Select
+                        placeholder={props.placeholder}
+                        disabled={(props.petDetail?.Descriptors ?? []).length < 2}
+                        onChange={onChangeDescriptorDropDown}
+                    >
                         {
                             (props.petDetail?.Descriptors ?? []).map((descrip, index) => (
                                 <option key={descrip.Id + index} value={descrip.Id}>{descrip.Id}</option>

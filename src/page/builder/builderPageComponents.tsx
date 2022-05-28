@@ -132,6 +132,15 @@ export const BuilderPageComponents: React.FC<IBuilderPageComponentsProps> = (pro
                 </WrapItem>
                 <WrapItem>
                     <PastedJsonFormCheckbox
+                        propName="HasBeenSummoned"
+                        displayName="Has Been Summoned"
+                        width="250px"
+                        pastedJson={props.pastedJson}
+                        modifyJsonObj={props.modifyJsonObj}
+                    />
+                </WrapItem>
+                <WrapItem>
+                    <PastedJsonFormCheckbox
                         propName="AllowUnmodifiedReroll"
                         displayName="Allow Unmodified Reroll"
                         width="270px"
