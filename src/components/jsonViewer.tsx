@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { InputGroup, InputRightElement } from '@chakra-ui/react';
+import { Button, InputGroup, InputRightElement } from '@chakra-ui/react';
 import { atomOneDarkReasonable } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { CopyIcon } from '@chakra-ui/icons';
 import { DependencyInjectionContext } from '../integration/DependencyInjectionProvider';
+import { JsonExplanationBottomModalSheet } from './dialog/jsonExplanationBottomModalSheet';
 
 interface IProps {
     json: string;
@@ -12,6 +13,7 @@ interface IProps {
 }
 
 export const JsonViewer: React.FC<IProps> = (props: IProps) => {
+    const [isJsonExplanationOpen, setJsonExplanationOpen] = useState<boolean>(false);
     const { toastService } = useContext(DependencyInjectionContext);
 
     const copyJson = () => {
@@ -25,6 +27,7 @@ export const JsonViewer: React.FC<IProps> = (props: IProps) => {
             <SyntaxHighlighter
                 language="json"
                 style={atomOneDarkReasonable}
+                customStyle={{ borderRadius: '7px' }}
             >
                 {props.json}
             </SyntaxHighlighter>
@@ -37,6 +40,17 @@ export const JsonViewer: React.FC<IProps> = (props: IProps) => {
                         mt="1em" mr="1em"
                     />
                 }
+            />
+            <Button
+                pos="absolute" top="0" left="0"
+                transform="translateY(-125%)"
+                onClick={() => setJsonExplanationOpen(true)}
+            >
+                <span>How to use the JSON</span>
+            </Button>
+            <JsonExplanationBottomModalSheet
+                isDetailPaneOpen={isJsonExplanationOpen}
+                setDetailPaneOpen={setJsonExplanationOpen}
             />
         </InputGroup>
     );

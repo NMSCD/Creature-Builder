@@ -22,6 +22,10 @@ body {
     }
 }
 
+.react-modal-sheet-container {
+    background-color: $brand-primary-background !important;
+}
+
 .hidden-in-desktop {
     @media screen and (min-width: 980px) {
         display: none;
