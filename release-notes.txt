@@ -1,1 +1,3 @@
 - Fix final descriptor not having the ^ prefix
+- Add refresh button next to create dropdown to go back to initial screen
+- Fixed size modifier lower and upper bounds

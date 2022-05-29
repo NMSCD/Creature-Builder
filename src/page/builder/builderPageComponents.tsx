@@ -217,6 +217,8 @@ export const BuilderPageComponents: React.FC<IBuilderPageComponentsProps> = (pro
                         propName="Scale"
                         displayName="Scale"
                         width="270px"
+                        min={1}
+                        max={16.99}
                         pastedJson={props.pastedJson}
                         modifyJsonObj={props.modifyJsonObj}
                     />
@@ -227,6 +229,8 @@ export const BuilderPageComponents: React.FC<IBuilderPageComponentsProps> = (pro
                         propName="Trust"
                         displayName="Trust"
                         width="270px"
+                        min={0.01}
+                        max={99}
                         pastedJson={props.pastedJson}
                         modifyJsonObj={props.modifyJsonObj}
                     />

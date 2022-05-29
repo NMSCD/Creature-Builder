@@ -1,6 +1,7 @@
 import React, { } from 'react';
 import { FormControl, FormLabel, Slider, SliderFilledTrack, SliderThumb, SliderTrack, } from '@chakra-ui/react'
 import { CreatureSave } from '../../contracts/creatureSave';
+import { clamp } from '../../helper/mathHelper';
 
 
 interface IFormSlider {
@@ -8,14 +9,15 @@ interface IFormSlider {
     propName: string;
     displayName: string;
     width: string;
+    min?: number;
+    max?: number;
     modifyJsonObj: (name: string, value: any) => void;
 }
 export const PastedJsonFormSlider: React.FC<IFormSlider> = (props: IFormSlider) => {
 
     const currentValue = (props?.pastedJson as any)?.[props.propName] ?? 0.1;
-
-    const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max)
-
+    const max = props.max ?? 99;
+    const min = props.min ?? 1;
 
     return (
         <FormControl
@@ -30,7 +32,7 @@ export const PastedJsonFormSlider: React.FC<IFormSlider> = (props: IFormSlider) 
             <Slider
                 id={props.propName}
                 defaultValue={currentValue * 100}
-                onChange={(value: any) => props.modifyJsonObj(props.propName, (clamp(value, 1, 99) / 100))}
+                onChange={(value: any) => props.modifyJsonObj(props.propName, (clamp(value, 0.01, 100) * (max - min)) / 100)}
             >
                 <SliderTrack>
                     <SliderFilledTrack />
