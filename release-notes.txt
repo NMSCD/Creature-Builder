@@ -1,4 +1,1 @@
-- Add default create data on choosing creature type
-- Show when drop downs do not have multiple options
-- Fixed a few bugs that caused dropdowns not to hide
-- Fix creature type and biome being included in descriptors list
+- Fix final descriptor not having the ^ prefix

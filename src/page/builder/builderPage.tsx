@@ -80,7 +80,7 @@ export const BuilderPage: React.FC = () => {
 
     const descriptors: Array<string> = localMappingString.split(',');
     const displayDescrips = descriptors.map(descr => `^${descr}`);
-    displayDescrips.push(descriptorId());
+    displayDescrips.push('^' + descriptorId());
 
     const finalObj = {
       ...pastedJson,
