@@ -113,7 +113,7 @@ export const BuilderPage: React.FC = () => {
         triggerJsonInterval();
       }
     } catch (e: any) {
-      console.log(e);
+      toastService.error('Something went wrong while trying to use the provided JSON. Please ensure only valid JSON is pasted.');
     }
   }
 
