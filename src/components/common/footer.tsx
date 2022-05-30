@@ -1,15 +1,15 @@
 import React from 'react';
 import packageJson from '../../../package.json';
-import { ExternalUrl } from '../../constants/externalUrl';
+import { AssistantNmsHomeLink, MeogiYouTubeChannel, NMSHubDiscordLink } from '../core/link';
 
 const FooterContent: React.FC = () => {
     return (
         <p className="copyright">
             <span>Built by </span>
-            <a href={ExternalUrl.assistantNMS} target="_blank" rel="noopener noreferrer">AssistantNMS</a>.<br />
+            <AssistantNmsHomeLink />.<br />
             <span>Tested by </span>
-            <a href={ExternalUrl.meogiYT} target="_blank" rel="noopener noreferrer">Meogi</a><span> and </span>
-            <a href={ExternalUrl.nmsHubDiscord} target="_blank" rel="noopener noreferrer">NMS Hub</a>.<br /><br />
+            <MeogiYouTubeChannel /><span> and </span>
+            <NMSHubDiscordLink />.<br /><br />
             <span>v {packageJson.version}</span>
         </p>
     );

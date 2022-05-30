@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Box, Button, Center, Input, Spinner, ThemeTypings, Text } from '@chakra-ui/react';
 import { useLocation } from "wouter";
-import { Footer } from '../components/core/footer';
+import { Footer } from '../components/common/footer';
 import { ExternalUrl } from '../constants/externalUrl';
 import { developmentLicenceKey } from '../constants/licence';
 import { NetworkState } from '../contracts/enum/networkState';
