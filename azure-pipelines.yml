@@ -36,7 +36,7 @@ stages:
 
       - task: PublishBuildArtifacts@1
         inputs:
-          PathtoPublish: 'react-web.zip'
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/react-web.zip'
           ArtifactName: 'react-drop'
           publishLocation: 'Container'
 
