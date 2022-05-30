@@ -13,6 +13,7 @@ import { DependencyInjectionContext } from '../integration/DependencyInjectionPr
 import { newRandomSeed } from '../helper/idHelper';
 import { patronOAuthUrl } from '../integration/patreonOAuth';
 import { ResultWithValue } from '../contracts/results/ResultWithValue';
+import { AssistantNmsHomeLink, NMSHubDiscordLink } from '../components/core/link';
 
 export const LoginPage: React.FC = () => {
     const [licenceKey, setLicenceKey] = useState<string>('');
@@ -109,9 +110,8 @@ export const LoginPage: React.FC = () => {
                     }
 
                     <div className="explanation">
-                        AssistantNMS<br />
                         Application access restricted. <br />
-                        Please contact <a href={ExternalUrl.nmsHubDiscord} target="_blank" rel="noopener noreferrer" title="NMS Hub">NMS Hub</a> for access.
+                        Please contact <NMSHubDiscordLink /> or <AssistantNmsHomeLink /> for access.
                     </div>
                     <Input
                         placeholder="Licence key"
