@@ -50,7 +50,7 @@ stages:
     - task: DownloadPipelineArtifact@2
       inputs:
         buildType: 'current'
-        artifactName: 'drop'
+        artifactName: 'react-drop'
         targetPath: '$(System.ArtifactsDirectory)'
 
     - task: IISWebAppDeploymentOnMachineGroup@0
