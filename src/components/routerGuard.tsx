@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useLocation } from "wouter";
-import { isElectron } from '../helper/electronHelper';
+import { isDevMode } from '../helper/envHelper';
 import { DependencyInjectionContext } from '../integration/DependencyInjectionProvider';
 import { StorageKey } from '../constants/storageKey';
 import { LicenceContents } from '../contracts/file/licenceFile';
@@ -12,9 +12,7 @@ export const RouterGuard: React.FC = () => {
     const [, setLocation] = useLocation();
 
     useEffect(() => {
-        if (isElectron()) {
-            loadLicenceFromStorage();
-        }
+        loadLicenceFromStorage();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -29,7 +27,7 @@ export const RouterGuard: React.FC = () => {
                 setLocation(Routes.login);
             }
 
-            if (licenceContents.licenceHash === developmentLicenceKey) {
+            if (isDevMode() && licenceContents.licenceHash === developmentLicenceKey) {
                 return;
             }
 

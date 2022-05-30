@@ -32,19 +32,19 @@ $login-height: 400;
     }
 
     /* Form which you dont need */
-    .nmscd-login-box {
+    .nms-login-box {
         position: relative;
         margin-top: 50px;
         text-align: center;
         z-index: 1;
     }
 
-    .nmscd-login-box > * {
+    .nms-login-box > * {
         display: inline-block;
         width: #{$login-width - 50}px;
     }
 
-    .nmscd-icon {
+    .nms-icon {
         width: 120px;
         height: 120px;
         padding: 10px;

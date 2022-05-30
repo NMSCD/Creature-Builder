@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Center, Spinner } from '@chakra-ui/react';
 import { useLocation } from "wouter";
-import { isElectron } from '../helper/electronHelper';
 import { DependencyInjectionContext } from '../integration/DependencyInjectionProvider';
 import { StorageKey } from '../constants/storageKey';
 import { LicenceContents } from '../contracts/file/licenceFile';
@@ -13,11 +12,7 @@ export const HomePage: React.FC = () => {
     const [, setLocation] = useLocation();
 
     useEffect(() => {
-        if (isElectron()) {
-            loadLicenceFromStorage();
-        } else {
-            setLocation(Routes.login);
-        }
+        loadLicenceFromStorage();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -38,10 +33,10 @@ export const HomePage: React.FC = () => {
 
     return (
         <>
+            <RouterGuard />
             <Center className="login-page">
                 <Spinner size='xl' />
             </Center>
-            <RouterGuard />
         </>
     );
 }

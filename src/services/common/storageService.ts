@@ -1,4 +1,4 @@
-import { anyObject } from '../helper/typescriptHacks';
+import { anyObject } from '../../helper/typescriptHacks';
 import { EncryptionService } from './encryptionService';
 
 import { IStorageService } from './interface/IStorageService';

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { toast, ToastOptions } from 'react-toastify';
-import { defaultToastProps } from '../constants/ToastOptions';
+import { defaultToastProps } from '../../constants/ToastOptions';
 
 export class ToastService {
 

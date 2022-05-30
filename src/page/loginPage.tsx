@@ -1,32 +1,65 @@
-import { Box, Button, Center, Input, Spinner, ThemeTypings } from '@chakra-ui/react';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Box, Button, Center, Input, Spinner, ThemeTypings, Text } from '@chakra-ui/react';
 import { useLocation } from "wouter";
 import { Footer } from '../components/core/footer';
 import { ExternalUrl } from '../constants/externalUrl';
 import { developmentLicenceKey } from '../constants/licence';
-import { NetworkState } from '../constants/networkState';
+import { NetworkState } from '../contracts/enum/networkState';
 import { Routes } from '../constants/routes';
 import { StorageKey } from '../constants/storageKey';
 import { LicenceContents } from '../contracts/file/licenceFile';
+import { isDevMode } from '../helper/envHelper';
 import { DependencyInjectionContext } from '../integration/DependencyInjectionProvider';
+import { newRandomSeed } from '../helper/idHelper';
+import { patronOAuthUrl } from '../integration/patreonOAuth';
+import { ResultWithValue } from '../contracts/results/ResultWithValue';
 
 export const LoginPage: React.FC = () => {
     const [licenceKey, setLicenceKey] = useState<string>('');
     const [btnColourScheme, setBtnColourScheme] = useState<ThemeTypings["colorSchemes"]>();
     const [networkState, setNetworkState] = useState<NetworkState>(NetworkState.Pending);
+    const [deviceId, setDeviceId] = useState<string>();
     const [, setLocation] = useLocation();
-    const { storageService, toastService, assistantAppsApiService } =
+    const { storageService, toastService, assistantAppsApiService, oAuthClient } =
         useContext(DependencyInjectionContext);
 
-    const submitLicenceKey = async () => {
+    useEffect(() => {
+        console.log({ deviceId });
+        if (deviceId == null || oAuthClient.isConnected() === false) {
+            setTimeout(() => {
+                setDeviceId(newRandomSeed());
+            }, 1000);
+            return;
+        }
+
+        oAuthClient.joinGroup(deviceId);
+        oAuthClient.listenToOAuth(handlePatreonPayload);
+
+        return () => {
+            oAuthClient.leaveGroup(deviceId);
+            oAuthClient.removeListenToOAuth(handlePatreonPayload);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [deviceId]);
+
+    const handlePatreonPayload = async (payload: any): Promise<void> => activateLicenceKeyBase(
+        (_: string) => assistantAppsApiService.activateLicenceForPatron(deviceId!)
+    )
+
+    const submitLicenceKey = async () => activateLicenceKeyBase(
+        (licenceKey: string) => assistantAppsApiService.activateLicence(licenceKey)
+    );
+
+    const activateLicenceKeyBase = async (activateLicence: (licenceKey: string) => Promise<ResultWithValue<string>>) => {
+        if (networkState === NetworkState.Loading) return;
         setNetworkState(NetworkState.Loading);
 
         const contents: LicenceContents = {
             licenceHash: licenceKey,
         };
 
-        if (licenceKey !== developmentLicenceKey) {
-            const licenceResult = await assistantAppsApiService.activateLicence(licenceKey);
+        if (isDevMode() && licenceKey !== developmentLicenceKey) {
+            const licenceResult = await activateLicence(licenceKey);
             if (licenceResult.isSuccess === false) {
                 toastService.error(<span className="noselect">{licenceResult.errorMessage ?? 'Something went wrong'}</span>);
                 setNetworkState(NetworkState.Success);
@@ -48,28 +81,35 @@ export const LoginPage: React.FC = () => {
         setNetworkState(NetworkState.Success);
     }
 
+    const patreonRedirect = () => {
+        if (deviceId == null) return;
+        const url = patronOAuthUrl(deviceId);
+        console.log('patreon-url', url);
+        window.open(url, "mywindow", "resizable=1,width=800,height=800");
+    }
+
     return (
         <Center className="login-page" flexDirection="column">
             <Box className="blurred-box">
-                <div className="nmscd-login-box">
+                <div className="nms-login-box">
                     {
                         (networkState === NetworkState.Loading)
                             ? (
-                                <Center className="nmscd-icon">
+                                <Center className="nms-icon">
                                     <Spinner size="xl" mt="1.5em" />
                                 </Center>
                             )
                             : (
                                 <img
-                                    src="https://avatars.githubusercontent.com/u/62565964?s=200"
-                                    alt="NMSCD"
-                                    className="nmscd-icon"
+                                    src="https://avatars.githubusercontent.com/u/54021133?s=200"
+                                    alt="AssistantNMS"
+                                    className="nms-icon"
                                 />
                             )
                     }
 
                     <div className="explanation">
-                        NMSCD<br />
+                        AssistantNMS<br />
                         Application access restricted. <br />
                         Please contact <a href={ExternalUrl.nmsHubDiscord} target="_blank" rel="noopener noreferrer" title="NMS Hub">NMS Hub</a> for access.
                     </div>
@@ -89,7 +129,17 @@ export const LoginPage: React.FC = () => {
                         colorScheme={btnColourScheme}
                         disabled={networkState === NetworkState.Loading}
                         onClick={() => submitLicenceKey()}
-                    >SUBMIT</Button>
+                    >Submit Licence Key</Button>
+                    <Text mt={3}>OR</Text>
+                    <Button
+                        mt={3}
+                        backgroundColor="#FF424D"
+                        _hover={{ backgroundColor: '#ff8742' }}
+                        isLoading={oAuthClient.isConnected() === false}
+                        loadingText="Log in with Patreon"
+                        disabled={networkState === NetworkState.Loading || oAuthClient.isConnected() === false}
+                        onClick={() => patreonRedirect()}
+                    >Log in with Patreon</Button>
 
                     {
                         (networkState === NetworkState.Error) && (

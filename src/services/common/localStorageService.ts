@@ -1,6 +1,6 @@
-import { StorageItem } from '../contracts/storageItem';
-import { isInTheFuture, oneHourFromNow } from '../helper/dateHelper';
-import { anyObject } from '../helper/typescriptHacks';
+import { StorageItem } from '../../contracts/storageItem';
+import { isInTheFuture, oneHourFromNow } from '../../helper/dateHelper';
+import { anyObject } from '../../helper/typescriptHacks';
 import { EncryptionService } from './encryptionService';
 
 import { IAuthStorageService } from './interface/IAuthStorageService';

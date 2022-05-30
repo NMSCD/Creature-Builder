@@ -5,10 +5,10 @@ import { VersionViewModel } from '../../contracts/generated/AssistantApps/ViewMo
 import { VersionSearchViewModel } from '../../contracts/generated/AssistantApps/ViewModel/Version/versionSearchViewModel';
 import { PlatformType } from '../../contracts/generated/AssistantApps/Enum/platformType';
 import { ApiUrls } from '../../constants/apiUrls';
-import { assistantAppsAppGuid } from '../../constants/assistantApps';
+import { assistantAppsApiUrl, assistantAppsAppGuid } from '../../constants/assistantApps';
 import { OAuthUserViewModel } from '../../contracts/generated/AssistantApps/ViewModel/oAuthUserViewModel';
 import { getExpiryDateUtc } from '../../helper/dateHelper';
-import { IAuthStorageService } from '../interface/IAuthStorageService';
+import { IAuthStorageService } from '../common/interface/IAuthStorageService';
 import { anyObject } from '../../helper/typescriptHacks';
 import { ILoginProps } from '../../contracts/login';
 
@@ -20,7 +20,7 @@ export class AssistantAppsApiService extends BaseApiService {
     private _store: IAuthStorageService = anyObject;
 
     constructor(store: IAuthStorageService) {
-        super('https://api.assistantapps.com');
+        super(assistantAppsApiUrl);
         this._store = store;
     }
 
@@ -54,6 +54,29 @@ export class AssistantAppsApiService extends BaseApiService {
 
     async activateLicence(licenceKey: string): Promise<ResultWithValue<string>> {
         const url = `${ApiUrls.licenceActivate}/${assistantAppsAppGuid}/${licenceKey}`;
+        const apiResonse = await this.get<string>(url);
+        if (apiResonse.isSuccess) return apiResonse;
+
+        const errorList: Array<string> = [];
+        const errProp = (apiResonse as any)?.excBody;
+        if (typeof errProp === 'object') {
+            const errorObj = errProp?.errors ?? {};
+            for (const errProp in errorObj) {
+                if (Object.prototype.hasOwnProperty.call(errorObj, errProp)) {
+                    const mesg = errorObj[errProp];
+                    errorList.push(mesg);
+                }
+            }
+        } else {
+            errorList.push(errProp ?? '');
+        }
+
+        return { ...apiResonse, errorMessage: errorList.join('. ') };
+    }
+
+    async activateLicenceForPatron(uniqueId: string): Promise<ResultWithValue<string>> {
+        debugger;
+        const url = `${ApiUrls.licenceActivateForPatron}/${assistantAppsAppGuid}/${uniqueId}`;
         const apiResonse = await this.get<string>(url);
         if (apiResonse.isSuccess) return apiResonse;
 
