@@ -52,6 +52,16 @@ stages:
         buildType: 'current'
         targetPath: '$(System.ArtifactsDirectory)'
 
+    - task: CmdLine@2
+      inputs:
+        script: 'ls'
+        workingDirectory: '$(System.ArtifactsDirectory)'
+
+    - task: CmdLine@2
+      inputs:
+        script: 'ls'
+        workingDirectory: '$(System.ArtifactsDirectory)/react-drop'
+
     - task: IISWebAppDeploymentOnMachineGroup@0
       inputs:
         WebSiteName: 'NoMansSkyAssistant.Creature'
