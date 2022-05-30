@@ -52,20 +52,10 @@ stages:
         buildType: 'current'
         targetPath: '$(System.ArtifactsDirectory)'
 
-    - task: CmdLine@2
-      inputs:
-        script: 'ls'
-        workingDirectory: '$(System.ArtifactsDirectory)'
-
-    - task: CmdLine@2
-      inputs:
-        script: 'ls'
-        workingDirectory: '$(System.ArtifactsDirectory)/react-drop'
-
     - task: IISWebAppDeploymentOnMachineGroup@0
       inputs:
         WebSiteName: 'NoMansSkyAssistant.Creature'
-        Package: '$(System.ArtifactsDirectory)\**\react-web.zip'
+        Package: '$(System.ArtifactsDirectory)/react-drop/react-web.zip'
 
 # - script: |
 #     npm run dist
