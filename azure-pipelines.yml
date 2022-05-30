@@ -18,25 +18,31 @@ steps:
       PUBLIC_URL="." npm run build
   displayName: 'npm build react app'
 
-- script: |
-    npm run dist
-  displayName: 'package electron app'
-
-- task: CmdLine@2
-  inputs:
-    script: 'mkdir pipelineOutput'
-    workingDirectory: '$(Pipeline.Workspace)'
-
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: 'dist'
-    Contents: '*Setup*.exe*'
-    TargetFolder: '$(Pipeline.Workspace)/pipelineOutput'
-
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Pipeline.Workspace)/pipelineOutput'
-    ArtifactName: 'drop'
+    PathtoPublish: 'dist'
+    ArtifactName: 'react-drop'
     publishLocation: 'Container'
+
+# - script: |
+#     npm run dist
+#   displayName: 'package electron app'
+
+# - task: CmdLine@2
+#   inputs:
+#     script: 'mkdir pipelineOutput'
+#     workingDirectory: '$(Pipeline.Workspace)'
+
+# - task: CopyFiles@2
+#   inputs:
+#     SourceFolder: 'dist'
+#     Contents: '*Setup*.exe*'
+#     TargetFolder: '$(Pipeline.Workspace)/pipelineOutput'
+
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Pipeline.Workspace)/pipelineOutput'
+#     ArtifactName: 'drop'
+#     publishLocation: 'Container'
 
 
