@@ -26,9 +26,17 @@ stages:
             PUBLIC_URL="." npm run build
         displayName: 'npm build react app'
 
+      - task: ArchiveFiles@2
+        inputs:
+          rootFolderOrFile: 'build'
+          includeRootFolder: false
+          archiveType: 'zip'
+          archiveFile: '$(Build.ArtifactStagingDirectory)/react-web.zip'
+          replaceExistingArchive: true
+
       - task: PublishBuildArtifacts@1
         inputs:
-          PathtoPublish: 'build'
+          PathtoPublish: 'react-web.zip'
           ArtifactName: 'react-drop'
           publishLocation: 'Container'
 
