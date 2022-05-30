@@ -28,7 +28,7 @@ stages:
 
       - task: PublishBuildArtifacts@1
         inputs:
-          PathtoPublish: 'dist'
+          PathtoPublish: 'build'
           ArtifactName: 'react-drop'
           publishLocation: 'Container'
 
