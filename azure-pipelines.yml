@@ -55,7 +55,7 @@ stages:
     - task: IISWebAppDeploymentOnMachineGroup@0
       inputs:
         WebSiteName: 'NoMansSkyAssistant.Creature'
-        Package: '$(System.DefaultWorkingDirectory)\**\*.zip'
+        Package: '$(System.ArtifactsDirectory)\**\react-web.zip'
 
 # - script: |
 #     npm run dist
