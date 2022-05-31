@@ -20,7 +20,7 @@ export interface IFooterProps {
 }
 export const Footer: React.FC<IFooterProps> = (props: IFooterProps) => {
     return (
-        <footer className={props.className}>
+        <footer className={'footer ' + (props.className ?? '')}>
             <hr />
             <FooterContent />
         </footer>

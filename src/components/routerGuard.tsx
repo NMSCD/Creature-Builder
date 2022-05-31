@@ -20,11 +20,8 @@ export const RouterGuard: React.FC = () => {
         try {
             const licenceContents = await storageService.readFile<LicenceContents>(StorageKey.licenceFile);
             console.log({ ...licenceContents });
-            if (licenceContents == null) {
-                toastService.warn(
-                    <span className="noselect">Licence details not found</span>
-                )
-                setLocation(Routes.login);
+            if (licenceContents == null || licenceContents.licenceHash == null) {
+                throw new Error('Licence contents invalid')
             }
 
             if (isDevMode() && licenceContents.licenceHash === developmentLicenceKey) {
@@ -37,7 +34,13 @@ export const RouterGuard: React.FC = () => {
             }
 
         } catch (e: any) {
-            console.error({ ...e });
+            console.error(e, { ...e });
+            toastService.warn(
+                (<span className="noselect">Licence details not found</span>),
+                {
+                    toastId: 'noLicence'
+                }
+            )
             setLocation(Routes.login);
         }
     }

@@ -2,9 +2,11 @@
 @import "./scrollbar";
 @import "./login";
 @import "./date";
+@import "./page";
 @import "./footer";
 
 body {
+    padding-right: 0 !important;
     a {
         color: lighten($brand-primary, 10%);
     }

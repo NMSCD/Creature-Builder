@@ -10,6 +10,8 @@ import { DependencyInjectionContext } from './integration/DependencyInjectionPro
 import { LoginPage } from './page/loginPage';
 import { Routes } from './constants/routes';
 import { Route, Router } from "wouter";
+import { HomePage } from './page/homePage';
+import { AppDrawer } from './components/common/appDrawer';
 
 const currentLocation = () =>
     window.location.hash.replace(/^#/, "") || "/";
@@ -65,9 +67,11 @@ export const AppShell: React.FC = () => {
             <Header />
             <Router hook={useHashLocation}>
                 <Route path={Routes.login} component={LoginPage} />
-                <Route component={BuilderPage} />
+                <Route path={Routes.builder} component={BuilderPage} />
+                <Route component={HomePage} />
             </Router>
             <Footer />
+            <AppDrawer />
             <ToastContainer
                 position="bottom-right"
                 theme="colored"

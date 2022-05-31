@@ -150,16 +150,16 @@ export const BuilderPage: React.FC = () => {
         (!creatureIdIsNotNull) && (
           <>
             <Center className="noselect" draggable="false">
-              <Text align="center">Please select a creature type from the drop down<br />
+              <Text align="center">
                 <strong>OR</strong><br />
-                paste the JSON of your NMS creature</Text>
+                paste the JSON of your NMS creature below</Text>
             </Center>
             <Container mt="2em">
               <Center>
                 <InputGroup height="100%">
                   <Textarea
-                    minH="20em"
-                    height="100%"
+                    minH="10em"
+                    style={{ textAlign: 'center' }}
                     value={getJsonFromMappings('')}
                     placeholder="Here you can add Creature JSON from a NMS Save Editor"
                     onChange={getMappingsFromJson}
