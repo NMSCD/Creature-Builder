@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <httpProtocol>
+            <customHeaders>
+                {{#each headers}}
+                <add name="{{name}}" value="{{{value}}}" />
+                {{/each}}
+            </customHeaders>
+        </httpProtocol>
+        <rewrite>
+            <rules>
+                {{#each redirects}}
+                <rule name="RedirectTo{{pattern}}" stopProcessing="true">
+                    <match url="^(.*){{pattern}}(.*)" ignoreCase="true" />
+                    <action type="Redirect" url="{{{urlref url}}}" appendQueryString="false" redirectType="Permanent" />
+                </rule>
+                {{/each}}
+            </rules>
+        </rewrite>
+    </system.webServer>
+</configuration>

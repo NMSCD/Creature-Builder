@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="application-name" content="{{meta.appName}}">
+    <title>{{meta.title}}</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="index" href="{{rootUrl}}">
+    <link rel="canonical" href="{{rootUrl}}">
+    <meta name="referrer" content="no-referrer">
+    <link rel="manifest" href="manifest.json">
+    <link rel="author" href="humans.txt">
+    <link rel="me" href="{{kurt.email}}">
+    <link rel="me" href="{{kurt.website}}" type="text/html">
+    <link rel="search" href="opensearch.xml" type="application/opensearchdescription+xml" title="Search Title">
+
+    <meta name="theme-color" content="{{theme.colour}}">
+    <meta name="subject" content="{{meta.description}}">
+    <meta name="description" content="{{meta.description}}">
+    <meta name="rating" content="General">
+    <meta name="robots" content="index,follow">
+
+    <!-- Google -->
+    <meta name="googlebot" content="index,follow">
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Apple -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{images.apple.x57}}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{images.apple.x60}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{images.apple.x72}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{images.apple.x76}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{images.apple.x114}}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{images.apple.x120}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{images.apple.x144}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{images.apple.x152}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{images.apple.x180}}">
+    <link rel="mask-icon" href="{{images.maskIcon}}" color="{{theme.maskColour}}">
+    <!-- <link rel="apple-touch-startup-image" href="/path/to/launch.png"> -->
+    <meta name="apple-mobile-web-app-title" content="{{meta.appName}}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="{{theme.appleStatusBar}}">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="{{twitter.metaImageSize}}">
+    <meta name="twitter:site" content="{{twitter.handle}}">
+    <meta name="twitter:creator" content="{{kurt.twitter}}">
+    <meta name="twitter:url" content="{{rootUrl}}">
+    <meta name="twitter:title" content="{{meta.appName}}">
+    <meta name="twitter:description" content="{{meta.description}}">
+    <meta name="twitter:image" content="{{images.twitter}}">
+    <meta name="twitter:image:alt" content="{{twitter.imageAlt}}">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="{{rootUrl}}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{meta.title}}">
+    <meta property="og:image" content="{{images.facebook}}">
+    <meta property="og:image:alt" content="{{twitter.imageAlt}}">
+    <meta property="og:description" content="{{meta.description}}">
+    <meta property="og:site_name" content="{{meta.title}}">
+    <meta property="og:locale" content="en_UK">
+    <meta property="article:author" content="{{kurt.name}}">
+
+    <!-- Microsoft -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta name="msapplication-TileColor" content="{{theme.maskColour}}">
+    <meta name="msapplication-starturl" content="/?pwa-app" />
+
+    {{#each preconnectLinks}}
+    <link rel="preconnect" href="{{this}}">
+    {{/each}}
+
+    {{!-- JSON-LD --}}
+    <script nonce="schema" type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "Person",
+            "name": "{{kurt.name}}",
+            "givenName": "{{kurt.name}}",
+            "familyName": "{{kurt.name}}",
+            "additionalName": "{{kurt.additionalName}}",
+            "url": "{{rootUrl}}",
+            "image": "{{kurt.image}}",
+            "description": "{{meta.description}}",
+            "jobTitle": "{{kurt.jobTitle}}",
+            "owns": [
+                {
+                    "@type": "OwnershipInfo",
+                    "name": "{{meta.appName}}",
+                    "url": "{{rootUrl}}"
+                }
+            ]
+        }
+    </script>
+</head>
+
+<body class="chakra-ui-dark">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="creature-builder"></div>
+</body>
+
+<script async defer src="./assets/js/bundle.js"></script>
+
+</html>

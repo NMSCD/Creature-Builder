@@ -1,0 +1,11 @@
+/* TEAM */
+Software Engineer: Kurt Lourens
+Contact: hi [at] kurtlourens.com
+Twitter: @KhaozTopsy
+From: Almere, The Netherlands
+
+/* SITE */
+Last update: 2022-05-31
+Language: English
+Doctype:HTML5
+IDE: Visual Studio Code

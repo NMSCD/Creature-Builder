@@ -1,0 +1,145 @@
+{
+    "headers": [
+        "Content-Security-Policy",
+        "X-Content-Security-Policy",
+        "X-WebKit-CSP"
+    ],
+    "options": [
+        {
+            "name": "default-src",
+            "values": [
+                "'none'"
+            ]
+        },
+        {
+            "name": "script-src",
+            "values": [
+                "'self'",
+                "'report-sample'",
+                "'unsafe-inline'",
+                "gitcdn.xyz",
+                "hcaptcha.com",
+                "newassets.hcaptcha.com",
+                "platform.twitter.com",
+                "cdn.syndication.twimg.com",
+                "www.google-analytics.com"
+            ]
+        },
+        {
+            "name": "style-src",
+            "values": [
+                "'self'",
+                "'report-sample'",
+                "'unsafe-inline'",
+                "nmscd.github.io",
+                "fonts.googleapis.com",
+                "platform.twitter.com"
+            ]
+        },
+        {
+            "name": "img-src",
+            "values": [
+                "'self'",
+                "data:",
+                "gitcdn.xyz",
+                "github-readme-stats.vercel.app",
+                "raw.githubusercontent.com",
+                "kurtlourens.com",
+                "cdn.assistantapps.com",
+                "blog.kurtlourens.com",
+                "khaoznet.visualstudio.com",
+                "vsrm.dev.azure.com",
+                "khaoznet.vsrm.visualstudio.com",
+                "abs.twimg.com",
+                "pbs.twimg.com"
+            ]
+        },
+        {
+            "name": "font-src",
+            "values": [
+                "'self'",
+                "data:",
+                "nmscd.github.io",
+                "fonts.gstatic.com"
+            ]
+        },
+        {
+            "name": "connect-src",
+            "values": [
+                "kurtlourens.com",
+                "api.assistantapps.com",
+                "playground.kurtlourens.com",
+                "wttr.in"
+            ]
+        },
+        {
+            "name": "manifest-src",
+            "values": [
+                "https://kurtlourens.com/manifest.json",
+                "https://playground.kurtlourens.com/manifest.json"
+            ]
+        },
+        {
+            "name": "base-uri",
+            "values": [
+                "'self'"
+            ]
+        },
+        {
+            "name": "form-action",
+            "values": [
+                "'none'"
+            ]
+        },
+        {
+            "name": "report-uri",
+            "values": [
+                "'none'"
+            ]
+        },
+        {
+            "name": "media-src",
+            "values": [
+                "'self'",
+                "data:"
+            ]
+        },
+        {
+            "name": "frame-src",
+            "values": [
+                "discord.com",
+                "www.google.com",
+                "api.assistantapps.com",
+                "api.nmsassistant.com",
+                "app.nmsassistant.com",
+                "scrapassistant.com",
+                "api.scrapassistant.com",
+                "kurtlourens.com",
+                "monitor.kurtlourens.com",
+                "presentation.kurtlourens.com",
+                "open.spotify.com",
+                "cristurm.github.io",
+                "culture.entelect.co.za",
+                "newassets.hcaptcha.com",
+                "github1s.com",
+                "platform.twitter.com",
+                "cspscanner.com",
+                "classic.minecraft.net",
+                "d07riv.github.io",
+                "flutterpro.dev"
+            ]
+        },
+        {
+            "name": "frame-ancestors",
+            "values": [
+                "app.nmsassistant.com",
+                "kurtlourens.com",
+                "playground.kurtlourens.com"
+            ]
+        },
+        {
+            "name": "upgrade-insecure-requests",
+            "values": []
+        }
+    ]
+}

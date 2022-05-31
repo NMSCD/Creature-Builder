@@ -1,0 +1,1 @@
+var CreatureBuilder;window.onload=function(){},CreatureBuilder={};
