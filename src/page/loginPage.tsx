@@ -129,10 +129,10 @@ export const LoginPage: React.FC = () => {
                         disabled={networkState === NetworkState.Loading}
                         onClick={() => submitLicenceKey()}
                     >Submit Licence Key</Button>
-                    <Text mt={3} display="none">OR</Text>
+                    <Text mt={3} className="hidden">OR</Text>
                     <Button
                         mt={3}
-                        display="none"
+                        className="hidden"
                         backgroundColor="#FF424D"
                         _hover={{ backgroundColor: '#ff8742' }}
                         isLoading={oAuthClient.isConnected() === false}
