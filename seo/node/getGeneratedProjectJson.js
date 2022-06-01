@@ -24,7 +24,7 @@ async function generateFullJson() {
     fullJson = { 
         ...siteData,
         headers: [
-            ...cspContent.headers.map(csp => ({ "name": csp, "value": header })),
+            // ...cspContent.headers.map(csp => ({ "name": csp, "value": header })),
             ...siteData.headers,
         ],
     };
