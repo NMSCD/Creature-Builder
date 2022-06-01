@@ -3,7 +3,6 @@ import { Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHe
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { Routes } from '../../constants/routes';
-import { isElectron } from '../../helper/envHelper';
 import { AssistantNmsHomeLink, MeogiYouTubeChannel, NMSHubDiscordLink } from '../core/link';
 import { HiddenInElectron } from './electronVisible';
 

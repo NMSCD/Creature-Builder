@@ -1,5 +1,5 @@
 import React, { } from 'react';
-import { FormControl, FormLabel, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Tooltip, } from '@chakra-ui/react'
+import { FormControl, FormLabel, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Tooltip, } from '@chakra-ui/react'
 import { CreatureSave } from '../../contracts/creatureSave';
 import { clamp } from '../../helper/mathHelper';
 
