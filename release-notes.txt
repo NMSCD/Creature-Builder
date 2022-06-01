@@ -1,3 +1,8 @@
-- Fix final descriptor not having the ^ prefix
-- Add refresh button next to create dropdown to go back to initial screen
-- Fixed size modifier lower and upper bounds
+- Added homepage
+  - SEO
+  - Screenshots
+- Added About page
+- Improved login screen
+- How to use JSON notes
+- Fix Creature dropdown names
+- Better error messages
