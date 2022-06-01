@@ -7,10 +7,12 @@ import { PastedJsonFormCheckbox } from '../../components/common/formCheckbox';
 import { PastedJsonFormDatePicker } from '../../components/common/formDatePicker';
 import { newRandomSeed } from '../../helper/idHelper';
 import { PastedJsonFormSlider } from '../../components/common/formSlider';
+import { clamp, moodHelper, traitHelper } from '../../helper/mathHelper';
 
 interface IBuilderPageComponentsProps {
     creatureId: string;
     pastedJson?: CreatureSave;
+    regenDescriptoId: () => void;
     modifyJsonObj: (name: string, value: any) => void;
 }
 
@@ -80,8 +82,8 @@ export const BuilderPageComponents: React.FC<IBuilderPageComponentsProps> = (pro
                     </Flex>
                 </WrapItem>
                 <WrapItem>
-                    <Flex width="250px">
-                        <Center width={`${depthSpacingInPx}px`} className="group noselect">
+                    <Flex width="300px">
+                        <Center width={`${depthSpacingInPx * 1.5}px`} className="group noselect">
                             <Box className="inner" width="100%">
                                 Creature Type
                             </Box>
@@ -153,6 +155,11 @@ export const BuilderPageComponents: React.FC<IBuilderPageComponentsProps> = (pro
             <Wrap spacing={8} mt="1.5em">
                 <WrapItem>
                     <Button
+                        onClick={() => props.regenDescriptoId()}
+                    ><RepeatIcon />&nbsp;Regen Descriptor Id</Button>
+                </WrapItem>
+                <WrapItem>
+                    <Button
                         onClick={() => props.modifyJsonObj('CreatureSeed', [true, newRandomSeed()])}
                     ><RepeatIcon />&nbsp;Regen Creature Seed</Button>
                 </WrapItem>
@@ -197,6 +204,7 @@ export const BuilderPageComponents: React.FC<IBuilderPageComponentsProps> = (pro
                     <PastedJsonFormDatePicker
                         propName="LastTrustIncreaseTime"
                         displayName="Last Trust Increase Time"
+                        enableTooltip={true}
                         pastedJson={props.pastedJson}
                         modifyJsonObj={props.modifyJsonObj}
                     />
@@ -205,6 +213,7 @@ export const BuilderPageComponents: React.FC<IBuilderPageComponentsProps> = (pro
                     <PastedJsonFormDatePicker
                         propName="LastTrustDecreaseTime"
                         displayName="Last Trust Decrease Time"
+                        enableTooltip={true}
                         pastedJson={props.pastedJson}
                         modifyJsonObj={props.modifyJsonObj}
                     />
@@ -217,8 +226,17 @@ export const BuilderPageComponents: React.FC<IBuilderPageComponentsProps> = (pro
                         propName="Scale"
                         displayName="Scale"
                         width="270px"
-                        min={1}
-                        max={16.99}
+                        min={0}
+                        max={15.99}
+                        valueMapper={(_, currV, min, max) => {
+                            if (isNaN(currV)) return currV;
+                            try {
+                                const localV = ((clamp(currV, 0.01, 100) * (max - min)) / 100)
+                                return parseFloat((localV).toFixed(6));
+                            } catch (e: any) {
+                                return currV;
+                            }
+                        }}
                         pastedJson={props.pastedJson}
                         modifyJsonObj={props.modifyJsonObj}
                     />
@@ -229,8 +247,122 @@ export const BuilderPageComponents: React.FC<IBuilderPageComponentsProps> = (pro
                         propName="Trust"
                         displayName="Trust"
                         width="270px"
-                        min={0.01}
-                        max={99}
+                        min={0}
+                        max={0.9999}
+                        valueMapper={(_, currV) => {
+                            if (isNaN(currV)) return currV;
+                            return currV / 100;
+                        }}
+                        displayMapper={currV => {
+                            if (isNaN(currV)) return currV;
+                            return Math.round(currV * 100) + ' %';
+                        }}
+                        pastedJson={props.pastedJson}
+                        modifyJsonObj={props.modifyJsonObj}
+                    />
+                </WrapItem>
+            </Wrap>
+
+            <Wrap spacing={8} mt="1.5em">
+                <WrapItem>
+                    <PastedJsonFormSlider
+                        propName="Traits"
+                        displayName="Playfulness Helpfulness"
+                        width="270px"
+                        min={0}
+                        max={1}
+                        getPropValue={(jsonValue: any) => jsonValue?.[0]}
+                        defaultValueMapper={(currentValue: number, min: number, max: number) => {
+                            if (isNaN(currentValue)) return currentValue;
+                            return ((currentValue + 1) / 2) * 100;
+                        }}
+                        valueMapper={traitHelper(0)}
+                        displayMapper={currV => {
+                            if (isNaN(currV)) return currV;
+                            return Math.round(currV * 100) + ' %';
+                        }}
+                        pastedJson={props.pastedJson}
+                        modifyJsonObj={props.modifyJsonObj}
+                    />
+                </WrapItem>
+
+                <WrapItem>
+                    <PastedJsonFormSlider
+                        propName="Traits"
+                        displayName="Gentleness Aggression"
+                        width="270px"
+                        min={0}
+                        max={1}
+                        getPropValue={(jsonValue: any) => jsonValue?.[1]}
+                        defaultValueMapper={(currentValue: number, min: number, max: number) => {
+                            if (isNaN(currentValue)) return currentValue;
+                            return ((currentValue + 1) / 2) * 100;
+                        }}
+                        valueMapper={traitHelper(1)}
+                        displayMapper={currV => {
+                            if (isNaN(currV)) return currV;
+                            return Math.round(currV * 100) + ' %';
+                        }}
+                        pastedJson={props.pastedJson}
+                        modifyJsonObj={props.modifyJsonObj}
+                    />
+                </WrapItem>
+
+                <WrapItem>
+                    <PastedJsonFormSlider
+                        propName="Traits"
+                        displayName="Devotion Independence"
+                        width="270px"
+                        min={0}
+                        max={1}
+                        getPropValue={(jsonValue: any) => jsonValue?.[2]}
+                        defaultValueMapper={(currentValue: number, min: number, max: number) => {
+                            if (isNaN(currentValue)) return currentValue;
+                            return ((currentValue + 1) / 2) * 100;
+                        }}
+                        valueMapper={traitHelper(2)}
+                        displayMapper={currV => {
+                            if (isNaN(currV)) return currV;
+                            return Math.round(currV * 100) + ' %';
+                        }}
+                        pastedJson={props.pastedJson}
+                        modifyJsonObj={props.modifyJsonObj}
+                    />
+                </WrapItem>
+            </Wrap>
+
+            <Wrap spacing={8} mt="1.5em">
+                <WrapItem>
+                    <PastedJsonFormSlider
+                        propName="Moods"
+                        displayName="Mood 1"
+                        width="270px"
+                        min={0}
+                        max={1}
+                        getPropValue={(jsonValue: any) => jsonValue?.[0]}
+                        valueMapper={moodHelper(0)}
+                        displayMapper={currV => {
+                            if (isNaN(currV)) return currV;
+                            return Math.round(currV * 100) + ' %';
+                        }}
+                        pastedJson={props.pastedJson}
+                        modifyJsonObj={props.modifyJsonObj}
+                    />
+                </WrapItem>
+
+                <WrapItem>
+                    <PastedJsonFormSlider
+                        propName="Moods"
+                        displayName="Mood 2"
+                        width="270px"
+                        min={0}
+                        max={1}
+                        getPropValue={(jsonValue: any) => jsonValue?.[1]}
+                        valueMapper={moodHelper(1)}
+                        displayMapper={currV => {
+                            if (isNaN(currV)) return currV;
+                            return Math.round(currV * 100) + ' %';
+                        }}
                         pastedJson={props.pastedJson}
                         modifyJsonObj={props.modifyJsonObj}
                     />

@@ -1,6 +1,7 @@
 [
   {
     "CreatureId": "ANTELOPE",
+    "FriendlyName": "ANTELOPE",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -822,6 +823,7 @@
   },
   {
     "CreatureId": "ANTELOPEROBOT",
+    "FriendlyName": "ANTELOPEROBOT",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -971,547 +973,8 @@
     ]
   },
   {
-    "CreatureId": "ANTELOPETWOLEGS",
-    "Details": [
-      {
-        "GroupId": "_HEAD_",
-        "Descriptors": [
-          {
-            "Id": "_HEAD_AEATER",
-            "Name": "_Head_AEater",
-            "Children": [
-              {
-                "GroupId": "_AEHACCS_",
-                "Descriptors": [
-                  {
-                    "Id": "_AEHACCS_1",
-                    "Name": "_AEHAccs_1",
-                    "Children": [
-                      {
-                        "GroupId": "_AEHEARA_",
-                        "Descriptors": [
-                          {
-                            "Id": "_AEHEARA_NULL",
-                            "Name": "_AEHEarA_NULL"
-                          },
-                          {
-                            "Id": "_AEHEARA_1",
-                            "Name": "_AEHEarA_1"
-                          },
-                          {
-                            "Id": "_AEHEARA_2",
-                            "Name": "_AEHEarA_2"
-                          },
-                          {
-                            "Id": "_AEHEARA_3",
-                            "Name": "_AEHEarA_3"
-                          },
-                          {
-                            "Id": "_AEHEARA_4",
-                            "Name": "_AEHEarA_4"
-                          },
-                          {
-                            "Id": "_AEHEARA_6",
-                            "Name": "_AEHEarA_6"
-                          },
-                          {
-                            "Id": "_AEHEARA_5",
-                            "Name": "_AEHEarA_5"
-                          }
-                        ]
-                      },
-                      {
-                        "GroupId": "_AEHTOPA_",
-                        "Descriptors": [
-                          {
-                            "Id": "_AEHTOPA_NULL",
-                            "Name": "_AEHTopA_NULL"
-                          },
-                          {
-                            "Id": "_AEHTOPA_1",
-                            "Name": "_AEHTopA_1"
-                          },
-                          {
-                            "Id": "_AEHTOPA_2",
-                            "Name": "_AEHTopA_2"
-                          },
-                          {
-                            "Id": "_AEHTOPA_4",
-                            "Name": "_AEHTopA_4"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_AEHACCS_2",
-                    "Name": "_AEHAccs_2",
-                    "Children": [
-                      {
-                        "GroupId": "_AEHACCSB_",
-                        "Descriptors": [
-                          {
-                            "Id": "_AEHACCSB_1",
-                            "Name": "_AEHAccsB_1"
-                          },
-                          {
-                            "Id": "_AEHACCSB_2",
-                            "Name": "_AEHAccsB_2"
-                          },
-                          {
-                            "Id": "_AEHACCSB_3",
-                            "Name": "_AEHAccsB_3"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_BUFF",
-            "Name": "_Head_Buff",
-            "Children": [
-              {
-                "GroupId": "_HBTEETH_",
-                "Descriptors": [
-                  {
-                    "Id": "_HBTEETH_1",
-                    "Name": "_HBTeeth_1"
-                  },
-                  {
-                    "Id": "_HBTEETH_2",
-                    "Name": "_HBTeeth_2"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_BHHORNS_",
-                "Descriptors": [
-                  {
-                    "Id": "_BHHORNS_NULL",
-                    "Name": "_BHHorns_NULL"
-                  },
-                  {
-                    "Id": "_BHHORNS_1",
-                    "Name": "_BHHorns_1"
-                  },
-                  {
-                    "Id": "_BHHORNS_2",
-                    "Name": "_BHHorns_2"
-                  },
-                  {
-                    "Id": "_BHHORNS_3",
-                    "Name": "_BHHorns_3"
-                  },
-                  {
-                    "Id": "_BHHORNS_4",
-                    "Name": "_BHHorns_4"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_BHEARS_",
-                "Descriptors": [
-                  {
-                    "Id": "_BHEARS_4",
-                    "Name": "_BHEars_4"
-                  },
-                  {
-                    "Id": "_BHEARS_3",
-                    "Name": "_BHEars_3"
-                  },
-                  {
-                    "Id": "_BHEARS_1",
-                    "Name": "_BHEars_1"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HDACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_HDACC_4XRARE",
-                    "Name": "_HDAcc_4xRARE"
-                  },
-                  {
-                    "Id": "_HDACC_NONE",
-                    "Name": "_HDAcc_none"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_BHNOSE_",
-                "Descriptors": [
-                  {
-                    "Id": "_BHNOSE_2XRARE",
-                    "Name": "_BHNose_2xRARE"
-                  },
-                  {
-                    "Id": "_BHNOSE_NULL",
-                    "Name": "_BHNose_NULL"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_DEER",
-            "Name": "_Head_Deer",
-            "Children": [
-              {
-                "GroupId": "_HDTEETH_",
-                "Descriptors": [
-                  {
-                    "Id": "_HDTEETH_1",
-                    "Name": "_HDTeeth_1"
-                  },
-                  {
-                    "Id": "_HDTEETH_2",
-                    "Name": "_HDTeeth_2"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HDEARS_",
-                "Descriptors": [
-                  {
-                    "Id": "_HDEARS_NULL",
-                    "Name": "_HDEars_NULL"
-                  },
-                  {
-                    "Id": "_HDEARS_1",
-                    "Name": "_HDEars_1"
-                  },
-                  {
-                    "Id": "_HDEARS_9",
-                    "Name": "_HDEars_9"
-                  },
-                  {
-                    "Id": "_HDEARS_3",
-                    "Name": "_HDEars_3"
-                  },
-                  {
-                    "Id": "_HDEARS_4",
-                    "Name": "_HDEars_4"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HDHORNS_",
-                "Descriptors": [
-                  {
-                    "Id": "_HDHORNS_NULL",
-                    "Name": "_HDHorns_NULL"
-                  },
-                  {
-                    "Id": "_HDHORNS_1",
-                    "Name": "_HDHorns_1"
-                  },
-                  {
-                    "Id": "_HDHORNS_2",
-                    "Name": "_HDHorns_2"
-                  },
-                  {
-                    "Id": "_HDHORNS_3",
-                    "Name": "_HDHorns_3"
-                  },
-                  {
-                    "Id": "_HDHORNS_4",
-                    "Name": "_HDHorns_4"
-                  },
-                  {
-                    "Id": "_HDHORNS_5",
-                    "Name": "_HDHorns_5"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_GDANE",
-            "Name": "_Head_GDane",
-            "Children": [
-              {
-                "GroupId": "_GDACCS_",
-                "Descriptors": [
-                  {
-                    "Id": "_GDACCS_1",
-                    "Name": "_GDAccs_1",
-                    "Children": [
-                      {
-                        "GroupId": "_GDNOSE_",
-                        "Descriptors": [
-                          {
-                            "Id": "_GDNOSE_NULL",
-                            "Name": "_GDNose_NULL"
-                          }
-                        ]
-                      },
-                      {
-                        "GroupId": "_GDEAR_",
-                        "Descriptors": [
-                          {
-                            "Id": "_GDEAR_NULL",
-                            "Name": "_GDEar_NULL"
-                          },
-                          {
-                            "Id": "_GDEAR_1",
-                            "Name": "_GDEar_1"
-                          },
-                          {
-                            "Id": "_GDEAR_2",
-                            "Name": "_GDEar_2"
-                          },
-                          {
-                            "Id": "_GDEAR_3",
-                            "Name": "_GDEar_3"
-                          },
-                          {
-                            "Id": "_GDEAR_4",
-                            "Name": "_GDEar_4"
-                          },
-                          {
-                            "Id": "_GDEAR_5",
-                            "Name": "_GDEar_5"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_GDACCS_2",
-                    "Name": "_GDAccs_2",
-                    "Children": [
-                      {
-                        "GroupId": "_GDPLATE_",
-                        "Descriptors": [
-                          {
-                            "Id": "_GDPLATE_1",
-                            "Name": "_GDPlate_1"
-                          },
-                          {
-                            "Id": "_GDPLATE_2",
-                            "Name": "_GDPlate_2"
-                          },
-                          {
-                            "Id": "_GDPLATE_3",
-                            "Name": "_GDPlate_3"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HGDTEETH_",
-                "Descriptors": [
-                  {
-                    "Id": "_HGDTEETH_1",
-                    "Name": "_HGDTeeth_1"
-                  },
-                  {
-                    "Id": "_HGDTEETH_2",
-                    "Name": "_HGDTeeth_2"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "GroupId": "_BODY_",
-        "Descriptors": [
-          {
-            "Id": "_BODY_BUFF",
-            "Name": "_Body_Buff",
-            "Children": [
-              {
-                "GroupId": "_B2LB_",
-                "Descriptors": [
-                  {
-                    "Id": "_B2LB_NULL",
-                    "Name": "_B2LB_NULL"
-                  },
-                  {
-                    "Id": "_B2LB_2",
-                    "Name": "_B2LB_2"
-                  },
-                  {
-                    "Id": "_B2LB_11",
-                    "Name": "_B2LB_11"
-                  },
-                  {
-                    "Id": "_B2LB_3",
-                    "Name": "_B2LB_3"
-                  },
-                  {
-                    "Id": "_B2LB_9",
-                    "Name": "_B2LB_9"
-                  },
-                  {
-                    "Id": "_B2LB_5",
-                    "Name": "_B2LB_5"
-                  },
-                  {
-                    "Id": "_B2LB_8",
-                    "Name": "_B2LB_8"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_BODY_CHICKEN",
-            "Name": "_Body_Chicken"
-          },
-          {
-            "Id": "_BODY_DEER",
-            "Name": "_Body_Deer",
-            "Children": [
-              {
-                "GroupId": "_B2LD_",
-                "Descriptors": [
-                  {
-                    "Id": "_B2LD_2",
-                    "Name": "_B2LD_2"
-                  },
-                  {
-                    "Id": "_B2LD_3",
-                    "Name": "_B2LD_3"
-                  },
-                  {
-                    "Id": "_B2LD_8",
-                    "Name": "_B2LD_8"
-                  },
-                  {
-                    "Id": "_B2LD_4",
-                    "Name": "_B2LD_4"
-                  },
-                  {
-                    "Id": "_B2LD_5",
-                    "Name": "_B2LD_5"
-                  },
-                  {
-                    "Id": "_B2LD_7",
-                    "Name": "_B2LD_7"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "GroupId": "_TAIL_",
-        "Descriptors": [
-          {
-            "Id": "_TAIL_1",
-            "Name": "_Tail_1"
-          },
-          {
-            "Id": "_TAIL_2",
-            "Name": "_Tail_2",
-            "Children": [
-              {
-                "GroupId": "_FINB_",
-                "Descriptors": [
-                  {
-                    "Id": "_FINB_0",
-                    "Name": "_finB_0"
-                  },
-                  {
-                    "Id": "_FINB_1XRARE",
-                    "Name": "_finB_1xRARE"
-                  },
-                  {
-                    "Id": "_FINB_3XRARE",
-                    "Name": "_finB_3xRARE"
-                  },
-                  {
-                    "Id": "_FINB_2XRARE",
-                    "Name": "_finB_2xRARE"
-                  },
-                  {
-                    "Id": "_FINB_0B",
-                    "Name": "_finB_0B"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_TAIL_3",
-            "Name": "_Tail_3",
-            "Children": [
-              {
-                "GroupId": "_FIN_",
-                "Descriptors": [
-                  {
-                    "Id": "_FIN_1XRARE",
-                    "Name": "_Fin_1xRARE"
-                  },
-                  {
-                    "Id": "_FIN_0",
-                    "Name": "_Fin_0"
-                  },
-                  {
-                    "Id": "_FIN_2XRARE",
-                    "Name": "_Fin_2xRARE"
-                  },
-                  {
-                    "Id": "_FIN_0B",
-                    "Name": "_Fin_0B"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "CreatureId": "BEETLE",
-    "Details": [
-      {
-        "GroupId": "_SHELL_",
-        "Descriptors": [
-          {
-            "Id": "_SHELL_BIG",
-            "Name": "_Shell_Big"
-          },
-          {
-            "Id": "_SHELL_REG",
-            "Name": "_Shell_Reg"
-          },
-          {
-            "Id": "_SHELL_SPIKY",
-            "Name": "_Shell_Spiky"
-          }
-        ]
-      },
-      {
-        "GroupId": "_HEAD_",
-        "Descriptors": [
-          {
-            "Id": "_HEAD_RHINO",
-            "Name": "_Head_Rhino"
-          },
-          {
-            "Id": "_HEAD_ROUND",
-            "Name": "_Head_Round"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "CreatureId": "BIRD",
+    "FriendlyName": "BIRD",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -1673,6 +1136,7 @@
   },
   {
     "CreatureId": "BIRDFLOCK",
+    "FriendlyName": "BIRDFLOCK",
     "Details": [
       {
         "GroupId": "_WEIRD_",
@@ -1687,6 +1151,7 @@
   },
   {
     "CreatureId": "BLOB",
+    "FriendlyName": "BLOB",
     "Details": [
       {
         "GroupId": "_BODY_",
@@ -2115,6 +1580,7 @@
   },
   {
     "CreatureId": "BONECAT",
+    "FriendlyName": "BONECAT",
     "Details": [
       {
         "GroupId": "_BONECAT_",
@@ -2294,6 +1760,7 @@
   },
   {
     "CreatureId": "BUTTERFLY",
+    "FriendlyName": "BUTTERFLY",
     "Details": [
       {
         "GroupId": "_INSECT_",
@@ -2619,6 +2086,7 @@
   },
   {
     "CreatureId": "BUTTERFLYFLOCK",
+    "FriendlyName": "BUTTERFLYFLOCK",
     "Details": [
       {
         "GroupId": "_WEIRD_",
@@ -2633,6 +2101,7 @@
   },
   {
     "CreatureId": "CAT",
+    "FriendlyName": "CAT",
     "Details": [
       {
         "GroupId": "_BODY_",
@@ -3950,6 +3419,7 @@
   },
   {
     "CreatureId": "COW",
+    "FriendlyName": "COW",
     "Details": [
       {
         "GroupId": "_TAIL_",
@@ -5036,6 +4506,7 @@
   },
   {
     "CreatureId": "COWFLOATING",
+    "FriendlyName": "COWFLOATING",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -5658,6 +5129,7 @@
   },
   {
     "CreatureId": "COWHINDLEGS",
+    "FriendlyName": "COWHINDLEGS",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -6270,670 +5742,8 @@
     ]
   },
   {
-    "CreatureId": "COWSWIM",
-    "Details": [
-      {
-        "GroupId": "_TAIL_",
-        "Descriptors": [
-          {
-            "Id": "_TAIL_ALIEN",
-            "Name": "_Tail_Alien",
-            "Children": [
-              {
-                "GroupId": "_TAACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_TAACC_0",
-                    "Name": "_TAacc_0"
-                  },
-                  {
-                    "Id": "_TAACC_1",
-                    "Name": "_TAacc_1"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_TAIL_COW",
-            "Name": "_Tail_Cow"
-          },
-          {
-            "Id": "_TAIL_TURTLE",
-            "Name": "_Tail_Turtle"
-          }
-        ]
-      },
-      {
-        "GroupId": "_COW_",
-        "Descriptors": [
-          {
-            "Id": "_COW_SWIM",
-            "Name": "_Cow_Swim"
-          }
-        ]
-      },
-      {
-        "GroupId": "_BODY_",
-        "Descriptors": [
-          {
-            "Id": "_BODY_COW",
-            "Name": "_Body_Cow",
-            "Children": [
-              {
-                "GroupId": "_BCA_",
-                "Descriptors": [
-                  {
-                    "Id": "_BCA_BLANK1",
-                    "Name": "_BCA_Blank1"
-                  },
-                  {
-                    "Id": "_BCA_COWHUMP",
-                    "Name": "_BCA_CowHump",
-                    "Children": [
-                      {
-                        "GroupId": "_EXT_",
-                        "Descriptors": [
-                          {
-                            "Id": "_EXT_BLANKYO3",
-                            "Name": "_Ext_BlankYo3"
-                          },
-                          {
-                            "Id": "_EXT_BACKSPINES",
-                            "Name": "_Ext_BackSpinesxRARE"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_BCA_ROCKSXRARE",
-                    "Name": "_BCA_RocksxRARE",
-                    "Children": [
-                      {
-                        "GroupId": "_EXT_",
-                        "Descriptors": [
-                          {
-                            "Id": "_EXT_MINE",
-                            "Name": "_Ext_Mine"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_BCA_BACKSPINES",
-                    "Name": "_BCA_BackSpinesxRARE"
-                  },
-                  {
-                    "Id": "_BCA_STEGSPIKES",
-                    "Name": "_BCA_StegSpikesxRARE"
-                  },
-                  {
-                    "Id": "_BCA_TURTSHELLX",
-                    "Name": "_BCA_TurtShellxRARE"
-                  },
-                  {
-                    "Id": "_BCA_BACKFINXRA",
-                    "Name": "_BCA_BackFinxRARE"
-                  },
-                  {
-                    "Id": "_BCA_LUMPXRARE",
-                    "Name": "_BCA_LumpxRARE"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_BODY_ROCK",
-            "Name": "_Body_Rock",
-            "Children": [
-              {
-                "GroupId": "_BCA_",
-                "Descriptors": [
-                  {
-                    "Id": "_BCA_BLANK2",
-                    "Name": "_BCA_Blank2"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_BRA_",
-                "Descriptors": [
-                  {
-                    "Id": "_BRA_ROCKS1XRAR",
-                    "Name": "_BRA_Rocks1xRARE",
-                    "Children": [
-                      {
-                        "GroupId": "_EXT_",
-                        "Descriptors": [
-                          {
-                            "Id": "_EXT_MINE2",
-                            "Name": "_Ext_Mine2"
-                          },
-                          {
-                            "Id": "_EXT_BLANKYO2",
-                            "Name": "_Ext_BlankYo2"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_BRA_ARMSPINESX",
-                    "Name": "_BRA_ArmSpinesxRARE"
-                  },
-                  {
-                    "Id": "_BRA_BACKSPINES",
-                    "Name": "_BRA_BackSpinesxRARE"
-                  },
-                  {
-                    "Id": "_BRA_STEGSPIKES",
-                    "Name": "_BRA_StegSpikesxRARE"
-                  },
-                  {
-                    "Id": "_BRA_TURTSHELLX",
-                    "Name": "_BRA_TurtShellxRARE"
-                  },
-                  {
-                    "Id": "_BRA_BACKFINXRA",
-                    "Name": "_BRA_BackFinxRARE"
-                  },
-                  {
-                    "Id": "_BRA_LUMP1XRARE",
-                    "Name": "_BRA_Lump1xRARE"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "GroupId": "_HEAD_",
-        "Descriptors": [
-          {
-            "Id": "_HEAD_ALIENBIRD",
-            "Name": "_Head_AlienBird",
-            "Children": [
-              {
-                "GroupId": "_HABACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_HABACC_BLANK",
-                    "Name": "_HABAcc_Blank"
-                  },
-                  {
-                    "Id": "_HABACC_1",
-                    "Name": "_HABAcc_1"
-                  },
-                  {
-                    "Id": "_HABACC_2",
-                    "Name": "_HABAcc_2"
-                  },
-                  {
-                    "Id": "_HABACC_3",
-                    "Name": "_HABAcc_3"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_ALIENTYPE",
-            "Name": "_Head_AlienType",
-            "Children": [
-              {
-                "GroupId": "_WEIRD_",
-                "Descriptors": [
-                  {
-                    "Id": "_WEIRD_CONNECT",
-                    "Name": "_Weird_Connect",
-                    "Children": [
-                      {
-                        "GroupId": "_SHAPEN_",
-                        "Descriptors": [
-                          {
-                            "Id": "_SHAPEN_1",
-                            "Name": "_Shapen_1",
-                            "Children": [
-                              {
-                                "GroupId": "_NOSE1_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_NOSE1_A",
-                                    "Name": "_Nose1_A"
-                                  }
-                                ]
-                              },
-                              {
-                                "GroupId": "_EYES1_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_EYES1_A",
-                                    "Name": "_Eyes1_A"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_WEIRD_FLARED",
-                    "Name": "_Weird_Flared",
-                    "Children": [
-                      {
-                        "GroupId": "_FRUITF_",
-                        "Descriptors": [
-                          {
-                            "Id": "_FRUITF_NONE",
-                            "Name": "_FruitF_None"
-                          },
-                          {
-                            "Id": "_FRUITF_A",
-                            "Name": "_FruitF_A"
-                          }
-                        ]
-                      },
-                      {
-                        "GroupId": "_FLARETOP_",
-                        "Descriptors": [
-                          {
-                            "Id": "_FLARETOP_4",
-                            "Name": "_FlareTop_4"
-                          },
-                          {
-                            "Id": "_FLARETOP_2",
-                            "Name": "_FlareTop_2",
-                            "Children": [
-                              {
-                                "GroupId": "_EYES2_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_EYES2_A",
-                                    "Name": "_Eyes2_A"
-                                  }
-                                ]
-                              }
-                            ]
-                          },
-                          {
-                            "Id": "_FLARETOP_1",
-                            "Name": "_FlareTop_1"
-                          },
-                          {
-                            "Id": "_FLARETOP_NONE",
-                            "Name": "_FlareTop_None"
-                          },
-                          {
-                            "Id": "_FLARETOP_3",
-                            "Name": "_FlareTop_3",
-                            "Children": [
-                              {
-                                "GroupId": "_EYES3_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_EYES3_A",
-                                    "Name": "_Eyes3_A"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "GroupId": "_EYESF_",
-                        "Descriptors": [
-                          {
-                            "Id": "_EYESF_NONE",
-                            "Name": "_EyesF_None"
-                          },
-                          {
-                            "Id": "_EYESF_A",
-                            "Name": "_EyesF_A"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_WEIRD_LONG",
-                    "Name": "_Weird_Long",
-                    "Children": [
-                      {
-                        "GroupId": "_EARSL_",
-                        "Descriptors": [
-                          {
-                            "Id": "_EARSL_A",
-                            "Name": "_EarsL_A"
-                          },
-                          {
-                            "Id": "_EARSL_NONE",
-                            "Name": "_EarsL_None"
-                          }
-                        ]
-                      },
-                      {
-                        "GroupId": "_EYESL_",
-                        "Descriptors": [
-                          {
-                            "Id": "_EYESL_A",
-                            "Name": "_EyesL_A"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_WEIRD_STUMP",
-                    "Name": "_Weird_Stump",
-                    "Children": [
-                      {
-                        "GroupId": "_EYESS_",
-                        "Descriptors": [
-                          {
-                            "Id": "_EYESS_A",
-                            "Name": "_EyesS_A"
-                          }
-                        ]
-                      },
-                      {
-                        "GroupId": "_HORNSS_",
-                        "Descriptors": [
-                          {
-                            "Id": "_HORNSS_A",
-                            "Name": "_HornsS_A"
-                          },
-                          {
-                            "Id": "_HORNSS_NONE",
-                            "Name": "_HornsS_None"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_WEIRD_HTAIL1",
-                    "Name": "_Weird_HTail1",
-                    "Children": [
-                      {
-                        "GroupId": "_EYETAIL1_",
-                        "Descriptors": [
-                          {
-                            "Id": "_EYETAIL1_A",
-                            "Name": "_EyeTail1_A"
-                          },
-                          {
-                            "Id": "_EYETAIL1_NONE",
-                            "Name": "_EyeTail1_None"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_WEIRD_HTAIL2",
-                    "Name": "_Weird_HTail2"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_DIVIDE_",
-                "Descriptors": [
-                  {
-                    "Id": "_DIVIDE_1",
-                    "Name": "_Divide_1"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_BUG",
-            "Name": "_Head_Bug",
-            "Children": [
-              {
-                "GroupId": "_HBUGACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_HBUGACC_BLANK",
-                    "Name": "_HBugAcc_Blank"
-                  },
-                  {
-                    "Id": "_HBUGACC_1",
-                    "Name": "_HBugAcc_1"
-                  },
-                  {
-                    "Id": "_HBUGACC_2",
-                    "Name": "_HBugAcc_2"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_COW",
-            "Name": "_Head_Cow",
-            "Children": [
-              {
-                "GroupId": "_HCE_",
-                "Descriptors": [
-                  {
-                    "Id": "_HCE_BLANK",
-                    "Name": "_HCE_Blank"
-                  },
-                  {
-                    "Id": "_HCE_COWEARS",
-                    "Name": "_HCE_CowEars"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HCH_",
-                "Descriptors": [
-                  {
-                    "Id": "_HCH_BLANK",
-                    "Name": "_HCH_Blank"
-                  },
-                  {
-                    "Id": "_HCH_COWHORN",
-                    "Name": "_HCH_CowHorn"
-                  },
-                  {
-                    "Id": "_HCH_LORISHORN",
-                    "Name": "_HCH_LorisHorn"
-                  },
-                  {
-                    "Id": "_HCH_ANTHORN",
-                    "Name": "_HCH_AntHorn"
-                  },
-                  {
-                    "Id": "_HCH_NOSEBONE",
-                    "Name": "_HCH_NoseBone"
-                  },
-                  {
-                    "Id": "_HCH_HEADBONE",
-                    "Name": "_HCH_HeadBone"
-                  },
-                  {
-                    "Id": "_HCH_HEADPLATE",
-                    "Name": "_HCH_HeadPlate"
-                  },
-                  {
-                    "Id": "_HCH_MULTIHORN",
-                    "Name": "_HCH_MultiHorn"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_COWSKEW",
-            "Name": "_Head_CowSkew",
-            "Children": [
-              {
-                "GroupId": "_HCSE_",
-                "Descriptors": [
-                  {
-                    "Id": "_HCSE_COWEARS",
-                    "Name": "_HCSE_CowEars"
-                  },
-                  {
-                    "Id": "_HCSE_BLANK",
-                    "Name": "_HCSE_Blank"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HCSH_",
-                "Descriptors": [
-                  {
-                    "Id": "_HCSH_HEADACC",
-                    "Name": "_HCSH_HeadAcc"
-                  },
-                  {
-                    "Id": "_HCSH_HEADBONE",
-                    "Name": "_HCSH_HeadBone"
-                  },
-                  {
-                    "Id": "_HCSH_ANTHORN",
-                    "Name": "_HCSH_AntHorn"
-                  },
-                  {
-                    "Id": "_HCSH_LORISHORN",
-                    "Name": "_HCSH_LorisHorn"
-                  },
-                  {
-                    "Id": "_HCSH_COWHORN",
-                    "Name": "_HCSH_CowHorn"
-                  },
-                  {
-                    "Id": "_HCSH_BLANK",
-                    "Name": "_HCSH_Blank"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_LORIS",
-            "Name": "_Head_Loris",
-            "Children": [
-              {
-                "GroupId": "_HLH_",
-                "Descriptors": [
-                  {
-                    "Id": "_HLH_MULTIHORN3",
-                    "Name": "_HLH_MultiHorn3"
-                  },
-                  {
-                    "Id": "_HLH_NOSEBONE",
-                    "Name": "_HLH_NoseBone"
-                  },
-                  {
-                    "Id": "_HLH_HEADPLATE",
-                    "Name": "_HLH_HeadPlate"
-                  },
-                  {
-                    "Id": "_HLH_ANTHORN",
-                    "Name": "_HLH_AntHorn"
-                  },
-                  {
-                    "Id": "_HLH_COWHORN",
-                    "Name": "_HLH_CowHorn"
-                  },
-                  {
-                    "Id": "_HLH_LORISHORN",
-                    "Name": "_HLH_LorisHorn"
-                  },
-                  {
-                    "Id": "_HLH_BLANK",
-                    "Name": "_HLH_Blank"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HLE_",
-                "Descriptors": [
-                  {
-                    "Id": "_HLE_1",
-                    "Name": "_HLE_1"
-                  },
-                  {
-                    "Id": "_HLE_BLANK",
-                    "Name": "_HLE_Blank"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_REX",
-            "Name": "_Head_Rex",
-            "Children": [
-              {
-                "GroupId": "_HREXACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_HREXACC_1",
-                    "Name": "_HRexAcc_1"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "CreatureId": "DIGGER",
-    "Details": [
-      {
-        "GroupId": "_DIGGER_",
-        "Descriptors": [
-          {
-            "Id": "_DIGGER_A",
-            "Name": "_Digger_A"
-          },
-          {
-            "Id": "_DIGGER_B",
-            "Name": "_Digger_B"
-          },
-          {
-            "Id": "_DIGGER_C",
-            "Name": "_Digger_C",
-            "Children": [
-              {
-                "GroupId": "_SPIKES_",
-                "Descriptors": [
-                  {
-                    "Id": "_SPIKES_NULL",
-                    "Name": "_Spikes_Null"
-                  },
-                  {
-                    "Id": "_SPIKES_A",
-                    "Name": "_Spikes_A"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_DIGGER_D",
-            "Name": "_Digger_D"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "CreatureId": "DRILL",
+    "FriendlyName": "DRILL",
     "Details": [
       {
         "GroupId": "_DRILL_",
@@ -7006,6 +5816,7 @@
   },
   {
     "CreatureId": "FIEND",
+    "FriendlyName": "FIEND",
     "Details": [
       {
         "GroupId": "_FIEND_",
@@ -7020,6 +5831,7 @@
   },
   {
     "CreatureId": "FISHFIEND",
+    "FriendlyName": "FISHFIEND",
     "Details": [
       {
         "GroupId": "_FISHFIEND_",
@@ -7034,6 +5846,7 @@
   },
   {
     "CreatureId": "FISHFIENDSMALL",
+    "FriendlyName": "FISHFIENDSMALL",
     "Details": [
       {
         "GroupId": "_FISH_",
@@ -7141,6 +5954,7 @@
   },
   {
     "CreatureId": "FISHFLOCK",
+    "FriendlyName": "FISHFLOCK",
     "Details": [
       {
         "GroupId": "_WEIRD_",
@@ -7154,49 +5968,526 @@
     ]
   },
   {
-    "CreatureId": "FLOATERCREATURE",
+    "CreatureId": "SPIDERFLOAT",
+    "FriendlyName": "FLOATSPIDER",
     "Details": [
       {
-        "GroupId": "_STRANGE_",
+        "GroupId": "_MANTIS_",
         "Descriptors": [
           {
-            "Id": "_STRANGE_FLOAT",
-            "Name": "_Strange_Float",
+            "Id": "_MANTIS_A",
+            "Name": "_Mantis_A",
             "Children": [
               {
-                "GroupId": "_FLOAT_",
+                "GroupId": "_ARMS_",
                 "Descriptors": [
                   {
-                    "Id": "_FLOAT_RADIALWAVE",
-                    "Name": "_Float_RadialWave"
+                    "Id": "_ARMS_NULL",
+                    "Name": "_Arms_NULL"
                   },
                   {
-                    "Id": "_FLOAT_TRAILORB",
-                    "Name": "_Float_TrailOrb"
+                    "Id": "_ARMS_1",
+                    "Name": "_Arms_1"
                   },
                   {
-                    "Id": "_FLOAT_METALORB",
-                    "Name": "_Float_Metalorb"
+                    "Id": "_ARMS_2",
+                    "Name": "_Arms_2"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_BODY_",
+                "Descriptors": [
+                  {
+                    "Id": "_BODY_1XRARE",
+                    "Name": "_Body_1xRARE",
+                    "Children": [
+                      {
+                        "GroupId": "_TRUNK_",
+                        "Descriptors": [
+                          {
+                            "Id": "_TRUNK_NULL",
+                            "Name": "_Trunk_NULL"
+                          },
+                          {
+                            "Id": "_TRUNK_NULL2",
+                            "Name": "_Trunk_NULL2"
+                          },
+                          {
+                            "Id": "_TRUNK_1XRARE",
+                            "Name": "_Trunk_1xRARE",
+                            "Children": [
+                              {
+                                "GroupId": "_CAP1_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_CAP1_3",
+                                    "Name": "_Cap1_3",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_CAPFILL5_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_CAPFILL5_1",
+                                            "Name": "_CapFill5_1"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "Id": "_CAP1_2",
+                                    "Name": "_Cap1_2",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_CAPFILL2_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_CAPFILL2_1",
+                                            "Name": "_CapFill2_1"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "Id": "_CAP1_1",
+                                    "Name": "_Cap1_1"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "Id": "_TRUNK_2XRARE",
+                            "Name": "_Trunk_2xRare",
+                            "Children": [
+                              {
+                                "GroupId": "_CAPB_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_CAPB_11",
+                                    "Name": "_CapB_11",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_CAPFILLB_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_CAPFILLB_1",
+                                            "Name": "_CapFillB_1"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "Id": "_CAPB_12",
+                                    "Name": "_CapB_12",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_CAPFILL2B_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_CAPFILL2B_1",
+                                            "Name": "_CapFill2B_1"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
-                    "Id": "_FLOAT_EYEFISH",
-                    "Name": "_Float_EyeFish"
-                  },
+                    "Id": "_BODY_2",
+                    "Name": "_Body_2",
+                    "Children": [
+                      {
+                        "GroupId": "_NECK_",
+                        "Descriptors": [
+                          {
+                            "Id": "_NECK_BUG",
+                            "Name": "_Neck_Bug",
+                            "Children": [
+                              {
+                                "GroupId": "_ACC1_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_ACC1_FINFLAPS",
+                                    "Name": "_Acc1_finFlaps"
+                                  },
+                                  {
+                                    "Id": "_ACC1_MANTISTAIL",
+                                    "Name": "_Acc1_MantisTail"
+                                  },
+                                  {
+                                    "Id": "_ACC1_BORDER",
+                                    "Name": "_Acc1_Border"
+                                  },
+                                  {
+                                    "Id": "_ACC1_BULBSIDE",
+                                    "Name": "_Acc1_BulbSide",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_ACC5_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_ACC5_SPIKES",
+                                            "Name": "_Acc5_Spikes"
+                                          },
+                                          {
+                                            "Id": "_ACC5_NONE",
+                                            "Name": "_Acc5_none"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "Id": "_ACC1_BULBTOP",
+                                    "Name": "_Acc1_BulbTop",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_ACC2_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_ACC2_BULBHAT",
+                                            "Name": "_Acc2_BulbHat",
+                                            "Children": [
+                                              {
+                                                "GroupId": "_ACC3_",
+                                                "Descriptors": [
+                                                  {
+                                                    "Id": "_ACC3_NONE",
+                                                    "Name": "_Acc3_none"
+                                                  },
+                                                  {
+                                                    "Id": "_ACC3_SPIKES",
+                                                    "Name": "_Acc3_Spikes"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "GroupId": "_ALTH_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_ALTH_MANTS",
+                                    "Name": "_AltH_Mants",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_MANTNA_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_MANTNA_1",
+                                            "Name": "_MAntna_1"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "GroupId": "_MEYE_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_MEYE_2",
+                                            "Name": "_MEye_2"
+                                          },
+                                          {
+                                            "Id": "_MEYE_1",
+                                            "Name": "_MEye_1"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "Id": "_ALTH_MANTB",
+                                    "Name": "_AltH_MantB",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_MANTNA_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_MANTNA_2",
+                                            "Name": "_MAntna_2"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "GroupId": "_MEYYE_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_MEYYE_2",
+                                            "Name": "_MEyye_2"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "GroupId": "_MOUT_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_MOUT_A",
+                                            "Name": "_Mout_A"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "Id": "_ALTH_3",
+                                    "Name": "_AltH_3"
+                                  },
+                                  {
+                                    "Id": "_ALTH_2",
+                                    "Name": "_AltH_2"
+                                  },
+                                  {
+                                    "Id": "_ALTH_1",
+                                    "Name": "_AltH_1",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_EYES_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_EYES_1",
+                                            "Name": "_Eyes_1"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "GroupId": "_MOUTH_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_MOUTH_1",
+                                            "Name": "_Mouth_1"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "Id": "_ALTH_5",
+                                    "Name": "_AltH_5"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "Id": "_NECK_ALT",
+                            "Name": "_Neck_Alt",
+                            "Children": [
+                              {
+                                "GroupId": "_TAIL_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_TAIL_NULL1",
+                                    "Name": "_Tail_Null1"
+                                  },
+                                  {
+                                    "Id": "_TAIL_MANTISTAIL",
+                                    "Name": "_Tail_MantisTail"
+                                  }
+                                ]
+                              },
+                              {
+                                "GroupId": "_HEAD_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_HEAD_MUFFIN",
+                                    "Name": "_Head_Muffin",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_ALTH2_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_ALTH2_BULBB",
+                                            "Name": "_AltH2_BulbB",
+                                            "Children": [
+                                              {
+                                                "GroupId": "_EYES_",
+                                                "Descriptors": [
+                                                  {
+                                                    "Id": "_EYES_B",
+                                                    "Name": "_Eyes_B"
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "GroupId": "_AT_",
+                                                "Descriptors": [
+                                                  {
+                                                    "Id": "_AT_SPIKES",
+                                                    "Name": "_AT_Spikes"
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "GroupId": "_MOUTH_",
+                                                "Descriptors": [
+                                                  {
+                                                    "Id": "_MOUTH_B",
+                                                    "Name": "_Mouth_B"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "Id": "_HEAD_STALKS",
+                                    "Name": "_Head_Stalks",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_MOUTHS_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_MOUTHS_1",
+                                            "Name": "_Mouths_1"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "GroupId": "_ATC_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_ATC_BORDER",
+                                            "Name": "_ATC_Border",
+                                            "Children": [
+                                              {
+                                                "GroupId": "_JELLYFINGERS_",
+                                                "Descriptors": [
+                                                  {
+                                                    "Id": "_JELLYFINGERS_1",
+                                                    "Name": "_JellyFingers_1"
+                                                  },
+                                                  {
+                                                    "Id": "_JELLYFINGERS_NONE",
+                                                    "Name": "_JellyFingers_none"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "GroupId": "_EYESD_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_EYESD_1",
+                                            "Name": "_EyesD_1"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "Id": "_NECK_CRAB",
+                            "Name": "_Neck_Crab",
+                            "Children": [
+                              {
+                                "GroupId": "_ACCR_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_ACCR_BORDER",
+                                    "Name": "_ACCR_Border"
+                                  },
+                                  {
+                                    "Id": "_ACCR_NONE",
+                                    "Name": "_ACCR_none"
+                                  },
+                                  {
+                                    "Id": "_ACCR_MANTISTAIL",
+                                    "Name": "_ACCR_MantisTail"
+                                  },
+                                  {
+                                    "Id": "_ACCR_FINFLAPS",
+                                    "Name": "_ACCR_FinFLaps"
+                                  },
+                                  {
+                                    "Id": "_ACCR_BULBSIDE",
+                                    "Name": "_ACCR_BulbSide",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_ACCRC_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_ACCRC_SPIKES",
+                                            "Name": "_ACCRc_Spikes"
+                                          },
+                                          {
+                                            "Id": "_ACCRC_NONE",
+                                            "Name": "_ACCRc_none"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "Id": "_ACCR_BULBTOP",
+                                    "Name": "_ACCR_BulbTop",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_ACCR_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_ACCR_BULBHAT",
+                                            "Name": "_ACCR_BulbHat",
+                                            "Children": [
+                                              {
+                                                "GroupId": "_ACCRB_",
+                                                "Descriptors": [
+                                                  {
+                                                    "Id": "_ACCRB_NONE",
+                                                    "Name": "_ACCRb_none"
+                                                  },
+                                                  {
+                                                    "Id": "_ACCRB_SPIKES",
+                                                    "Name": "_ACCRb_Spikes"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "GroupId": "_LEGS_",
+                "Descriptors": [
                   {
-                    "Id": "_FLOAT_ROSEFISH",
-                    "Name": "_Float_RoseFish"
-                  },
-                  {
-                    "Id": "_FLOAT_FLATCREATURE",
-                    "Name": "_Float_FlatCreature"
-                  },
-                  {
-                    "Id": "_FLOAT_RIDGEEEL",
-                    "Name": "_Float_RidgeEel"
-                  },
-                  {
-                    "Id": "_FLOAT_ELEPHLOATER",
-                    "Name": "_Float_Elephloater"
+                    "Id": "_LEGS_2",
+                    "Name": "_Legs_2"
                   }
                 ]
               }
@@ -7207,7 +6498,44 @@
     ]
   },
   {
+    "CreatureId": "BEETLE",
+    "FriendlyName": "FLYINGBEETLE",
+    "Details": [
+      {
+        "GroupId": "_SHELL_",
+        "Descriptors": [
+          {
+            "Id": "_SHELL_BIG",
+            "Name": "_Shell_Big"
+          },
+          {
+            "Id": "_SHELL_REG",
+            "Name": "_Shell_Reg"
+          },
+          {
+            "Id": "_SHELL_SPIKY",
+            "Name": "_Shell_Spiky"
+          }
+        ]
+      },
+      {
+        "GroupId": "_HEAD_",
+        "Descriptors": [
+          {
+            "Id": "_HEAD_RHINO",
+            "Name": "_Head_Rhino"
+          },
+          {
+            "Id": "_HEAD_ROUND",
+            "Name": "_Head_Round"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "CreatureId": "FLYINGLIZARD",
+    "FriendlyName": "FLYINGLIZARD",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -7345,6 +6673,7 @@
   },
   {
     "CreatureId": "FLYINGSNAKE",
+    "FriendlyName": "FLYINGSNAKE",
     "Details": [
       {
         "GroupId": "_SNAKE_",
@@ -7676,21 +7005,8 @@
     ]
   },
   {
-    "CreatureId": "FREIGHTERFIEND",
-    "Details": [
-      {
-        "GroupId": "_FIEND_",
-        "Descriptors": [
-          {
-            "Id": "_FIEND_BODY",
-            "Name": "_Fiend_Body"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "CreatureId": "GROUNDCREATURE",
+    "FriendlyName": "GROUNDCREATURE",
     "Details": [
       {
         "GroupId": "_GROUND_",
@@ -7721,6 +7037,7 @@
   },
   {
     "CreatureId": "GRUNT",
+    "FriendlyName": "GRUNT",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -8071,6 +7388,7 @@
   },
   {
     "CreatureId": "GRUNTCREATETEST",
+    "FriendlyName": "GRUNTCREATETEST",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -8145,6 +7463,7 @@
   },
   {
     "CreatureId": "GRUNTTEST",
+    "FriendlyName": "GRUNTTEST",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -8218,7 +7537,196 @@
     ]
   },
   {
+    "CreatureId": "PROC_JELLYFISH",
+    "FriendlyName": "JELLYFISH",
+    "Details": [
+      {
+        "GroupId": "_PROC_",
+        "Descriptors": [
+          {
+            "Id": "_PROC_JELLYFISH",
+            "Name": "_Proc_Jellyfish",
+            "Children": [
+              {
+                "GroupId": "_FBBODY_",
+                "Descriptors": [
+                  {
+                    "Id": "_FBBODY_1",
+                    "Name": "_FbBody_1",
+                    "Children": [
+                      {
+                        "GroupId": "_TYPE_",
+                        "Descriptors": [
+                          {
+                            "Id": "_TYPE_1",
+                            "Name": "_Type_1",
+                            "Children": [
+                              {
+                                "GroupId": "_EYESTALKS_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_EYESTALKS_3",
+                                    "Name": "_Eyestalks_3",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_BALLZ_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_BALLZ_1",
+                                            "Name": "_Ballz_1"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "Id": "_EYESTALKS_1",
+                                    "Name": "_Eyestalks_1"
+                                  },
+                                  {
+                                    "Id": "_EYESTALKS_2",
+                                    "Name": "_Eyestalks_2"
+                                  }
+                                ]
+                              },
+                              {
+                                "GroupId": "_TENDRILS_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_TENDRILS_2",
+                                    "Name": "_Tendrils_2"
+                                  },
+                                  {
+                                    "Id": "_TENDRILS_1",
+                                    "Name": "_Tendrils_1"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_FBBODY_2",
+                    "Name": "_FbBody_2",
+                    "Children": [
+                      {
+                        "GroupId": "_BOTTOM_",
+                        "Descriptors": [
+                          {
+                            "Id": "_BOTTOM_4",
+                            "Name": "_Bottom_4"
+                          },
+                          {
+                            "Id": "_BOTTOM_2",
+                            "Name": "_Bottom_2"
+                          },
+                          {
+                            "Id": "_BOTTOM_5",
+                            "Name": "_Bottom_5"
+                          },
+                          {
+                            "Id": "_BOTTOM_1",
+                            "Name": "_Bottom_1"
+                          },
+                          {
+                            "Id": "_BOTTOM_3",
+                            "Name": "_Bottom_3",
+                            "Children": [
+                              {
+                                "GroupId": "_PLINGERS_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_PLINGERS_1",
+                                    "Name": "_Plingers_1"
+                                  },
+                                  {
+                                    "Id": "_PLINGERS_2",
+                                    "Name": "_Plingers_2"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "GroupId": "_TOP_",
+                        "Descriptors": [
+                          {
+                            "Id": "_TOP_1",
+                            "Name": "_Top_1"
+                          },
+                          {
+                            "Id": "_TOP_2",
+                            "Name": "_Top_2",
+                            "Children": [
+                              {
+                                "GroupId": "_EYESD_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_EYESD_2",
+                                    "Name": "_EyesD_2"
+                                  },
+                                  {
+                                    "Id": "_EYESD_1",
+                                    "Name": "_EyesD_1"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "Id": "_TOP_3",
+                            "Name": "_Top_3",
+                            "Children": [
+                              {
+                                "GroupId": "_FILL_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_FILL_1",
+                                    "Name": "_Fill_1"
+                                  },
+                                  {
+                                    "Id": "_FILL_2",
+                                    "Name": "_Fill_2"
+                                  },
+                                  {
+                                    "Id": "_FILL_3",
+                                    "Name": "_Fill_3",
+                                    "Children": [
+                                      {
+                                        "GroupId": "_TIP_",
+                                        "Descriptors": [
+                                          {
+                                            "Id": "_TIP_1",
+                                            "Name": "_Tip_1"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "CreatureId": "LARGEBUTTERFLY",
+    "FriendlyName": "LARGEBUTTERFLY",
     "Details": [
       {
         "GroupId": "_FWINGS_",
@@ -8306,7 +7814,50 @@
     ]
   },
   {
+    "CreatureId": "DIGGER",
+    "FriendlyName": "MOLE",
+    "Details": [
+      {
+        "GroupId": "_DIGGER_",
+        "Descriptors": [
+          {
+            "Id": "_DIGGER_A",
+            "Name": "_Digger_A"
+          },
+          {
+            "Id": "_DIGGER_B",
+            "Name": "_Digger_B"
+          },
+          {
+            "Id": "_DIGGER_C",
+            "Name": "_Digger_C",
+            "Children": [
+              {
+                "GroupId": "_SPIKES_",
+                "Descriptors": [
+                  {
+                    "Id": "_SPIKES_NULL",
+                    "Name": "_Spikes_Null"
+                  },
+                  {
+                    "Id": "_SPIKES_A",
+                    "Name": "_Spikes_A"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_DIGGER_D",
+            "Name": "_Digger_D"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "CreatureId": "PETACCESSORIES",
+    "FriendlyName": "PETACCESSORIES",
     "Details": [
       {
         "GroupId": "_GRP_",
@@ -9619,6 +9170,7 @@
   },
   {
     "CreatureId": "PLOW",
+    "FriendlyName": "PLOUGH",
     "Details": [
       {
         "GroupId": "_PLOW_",
@@ -9668,179 +9220,188 @@
     ]
   },
   {
-    "CreatureId": "PROC_JELLYFISH",
+    "CreatureId": "WEIRDDIGGER",
+    "FriendlyName": "PROTODIGGER",
     "Details": [
       {
-        "GroupId": "_PROC_",
+        "GroupId": "_WEIRD_",
         "Descriptors": [
           {
-            "Id": "_PROC_JELLYFISH",
-            "Name": "_Proc_Jellyfish",
+            "Id": "_WEIRD_CRYSTAL",
+            "Name": "_Weird_Crystal"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "CreatureId": "FLOATERCREATURE",
+    "FriendlyName": "PROTOFLYER",
+    "Details": [
+      {
+        "GroupId": "_STRANGE_",
+        "Descriptors": [
+          {
+            "Id": "_STRANGE_FLOAT",
+            "Name": "_Strange_Float",
             "Children": [
               {
-                "GroupId": "_FBBODY_",
+                "GroupId": "_FLOAT_",
                 "Descriptors": [
                   {
-                    "Id": "_FBBODY_1",
-                    "Name": "_FbBody_1",
+                    "Id": "_FLOAT_RADIALWAVE",
+                    "Name": "_Float_RadialWave"
+                  },
+                  {
+                    "Id": "_FLOAT_TRAILORB",
+                    "Name": "_Float_TrailOrb"
+                  },
+                  {
+                    "Id": "_FLOAT_METALORB",
+                    "Name": "_Float_Metalorb"
+                  },
+                  {
+                    "Id": "_FLOAT_EYEFISH",
+                    "Name": "_Float_EyeFish"
+                  },
+                  {
+                    "Id": "_FLOAT_ROSEFISH",
+                    "Name": "_Float_RoseFish"
+                  },
+                  {
+                    "Id": "_FLOAT_FLATCREATURE",
+                    "Name": "_Float_FlatCreature"
+                  },
+                  {
+                    "Id": "_FLOAT_RIDGEEEL",
+                    "Name": "_Float_RidgeEel"
+                  },
+                  {
+                    "Id": "_FLOAT_ELEPHLOATER",
+                    "Name": "_Float_Elephloater"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "CreatureId": "ROLLERCREATURE",
+    "FriendlyName": "PROTOROLLER",
+    "Details": [
+      {
+        "GroupId": "_STRANGE_",
+        "Descriptors": [
+          {
+            "Id": "_STRANGE_ROLL",
+            "Name": "_Strange_Roll",
+            "Children": [
+              {
+                "GroupId": "_ROLL_",
+                "Descriptors": [
+                  {
+                    "Id": "_ROLL_SINGLEJOINT",
+                    "Name": "_Roll_SingleJoint",
                     "Children": [
                       {
-                        "GroupId": "_TYPE_",
+                        "GroupId": "_ROLL_",
                         "Descriptors": [
                           {
-                            "Id": "_TYPE_1",
-                            "Name": "_Type_1",
+                            "Id": "_ROLL_BEETLE",
+                            "Name": "_Roll_Beetle"
+                          },
+                          {
+                            "Id": "_ROLL_TUBES",
+                            "Name": "_Roll_Tubes"
+                          },
+                          {
+                            "Id": "_ROLL_BLOB",
+                            "Name": "_Roll_Blob"
+                          },
+                          {
+                            "Id": "_ROLL_EYES",
+                            "Name": "_Roll_Eyes"
+                          },
+                          {
+                            "Id": "_ROLL_TENDRIL",
+                            "Name": "_Roll_Tendril",
                             "Children": [
-                              {
-                                "GroupId": "_EYESTALKS_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_EYESTALKS_3",
-                                    "Name": "_Eyestalks_3",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_BALLZ_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_BALLZ_1",
-                                            "Name": "_Ballz_1"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "Id": "_EYESTALKS_1",
-                                    "Name": "_Eyestalks_1"
-                                  },
-                                  {
-                                    "Id": "_EYESTALKS_2",
-                                    "Name": "_Eyestalks_2"
-                                  }
-                                ]
-                              },
                               {
                                 "GroupId": "_TENDRILS_",
                                 "Descriptors": [
                                   {
-                                    "Id": "_TENDRILS_2",
-                                    "Name": "_Tendrils_2"
+                                    "Id": "_TENDRILS_A",
+                                    "Name": "_Tendrils_A"
                                   },
                                   {
-                                    "Id": "_TENDRILS_1",
-                                    "Name": "_Tendrils_1"
+                                    "Id": "_TENDRILS_B",
+                                    "Name": "_Tendrils_B"
+                                  },
+                                  {
+                                    "Id": "_TENDRILS_C",
+                                    "Name": "_Tendrils_C"
                                   }
                                 ]
                               }
                             ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_FBBODY_2",
-                    "Name": "_FbBody_2",
-                    "Children": [
-                      {
-                        "GroupId": "_BOTTOM_",
-                        "Descriptors": [
-                          {
-                            "Id": "_BOTTOM_4",
-                            "Name": "_Bottom_4"
                           },
                           {
-                            "Id": "_BOTTOM_2",
-                            "Name": "_Bottom_2"
+                            "Id": "_ROLL_FATBUG",
+                            "Name": "_Roll_FatBug"
                           },
                           {
-                            "Id": "_BOTTOM_5",
-                            "Name": "_Bottom_5"
+                            "Id": "_ROLL_CLOCKBALL",
+                            "Name": "_Roll_ClockBall"
                           },
                           {
-                            "Id": "_BOTTOM_1",
-                            "Name": "_Bottom_1"
-                          },
-                          {
-                            "Id": "_BOTTOM_3",
-                            "Name": "_Bottom_3",
+                            "Id": "_ROLL_ENGERYBALL",
+                            "Name": "_Roll_Engeryball",
                             "Children": [
                               {
-                                "GroupId": "_PLINGERS_",
+                                "GroupId": "_INTERNAL_",
                                 "Descriptors": [
                                   {
-                                    "Id": "_PLINGERS_1",
-                                    "Name": "_Plingers_1"
+                                    "Id": "_INTERNAL_0",
+                                    "Name": "_Internal_0"
                                   },
                                   {
-                                    "Id": "_PLINGERS_2",
-                                    "Name": "_Plingers_2"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "GroupId": "_TOP_",
-                        "Descriptors": [
-                          {
-                            "Id": "_TOP_1",
-                            "Name": "_Top_1"
-                          },
-                          {
-                            "Id": "_TOP_2",
-                            "Name": "_Top_2",
-                            "Children": [
-                              {
-                                "GroupId": "_EYESD_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_EYESD_2",
-                                    "Name": "_EyesD_2"
+                                    "Id": "_INTERNAL_A",
+                                    "Name": "_Internal_A"
                                   },
                                   {
-                                    "Id": "_EYESD_1",
-                                    "Name": "_EyesD_1"
+                                    "Id": "_INTERNAL_B",
+                                    "Name": "_Internal_B"
+                                  },
+                                  {
+                                    "Id": "_INTERNAL_C",
+                                    "Name": "_Internal_C"
                                   }
                                 ]
                               }
                             ]
                           },
                           {
-                            "Id": "_TOP_3",
-                            "Name": "_Top_3",
-                            "Children": [
-                              {
-                                "GroupId": "_FILL_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_FILL_1",
-                                    "Name": "_Fill_1"
-                                  },
-                                  {
-                                    "Id": "_FILL_2",
-                                    "Name": "_Fill_2"
-                                  },
-                                  {
-                                    "Id": "_FILL_3",
-                                    "Name": "_Fill_3",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_TIP_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_TIP_1",
-                                            "Name": "_Tip_1"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
+                            "Id": "_ROLL_BUBBLE",
+                            "Name": "_Roll_Bubble"
+                          },
+                          {
+                            "Id": "_ROLL_LINKS",
+                            "Name": "_Roll_Links"
+                          },
+                          {
+                            "Id": "_ROLL_SLIME",
+                            "Name": "_Roll_Slime"
+                          },
+                          {
+                            "Id": "_ROLL_CURL",
+                            "Name": "_Roll_Curl"
+                          },
+                          {
+                            "Id": "_ROLL_WHEEL",
+                            "Name": "_Roll_Wheel"
                           }
                         ]
                       }
@@ -9856,6 +9417,7 @@
   },
   {
     "CreatureId": "ROCKCREATURE",
+    "FriendlyName": "ROCKCREATURE",
     "Details": [
       {
         "GroupId": "_MANTIS_",
@@ -9972,6 +9534,7 @@
   },
   {
     "CreatureId": "ROCKSPIDER",
+    "FriendlyName": "ROCKSPIDER",
     "Details": [
       {
         "GroupId": "_ROCKSPIDER_",
@@ -10101,6 +9664,7 @@
   },
   {
     "CreatureId": "RODENT",
+    "FriendlyName": "RODENT",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -10659,611 +10223,8 @@
     ]
   },
   {
-    "CreatureId": "RODENTSWIM",
-    "Details": [
-      {
-        "GroupId": "_HEAD_",
-        "Descriptors": [
-          {
-            "Id": "_HEAD_BIRD",
-            "Name": "_Head_Bird",
-            "Children": [
-              {
-                "GroupId": "_HBACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_HBACC_0",
-                    "Name": "_HBAcc_0"
-                  },
-                  {
-                    "Id": "_HBACC_1",
-                    "Name": "_HBAcc_1"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HBEARS_",
-                "Descriptors": [
-                  {
-                    "Id": "_HBEARS_0",
-                    "Name": "_HBEars_0"
-                  },
-                  {
-                    "Id": "_HBEARS_1",
-                    "Name": "_HBEars_1"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_GDANE",
-            "Name": "_Head_GDane",
-            "Children": [
-              {
-                "GroupId": "_HGDEARS_",
-                "Descriptors": [
-                  {
-                    "Id": "_HGDEARS_1",
-                    "Name": "_HGDEars_1"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_LIZARD",
-            "Name": "_Head_Lizard",
-            "Children": [
-              {
-                "GroupId": "__HLACC_",
-                "Descriptors": [
-                  {
-                    "Id": "__HLACC_0",
-                    "Name": "__HLAcc_0"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HLNECK_",
-                "Descriptors": [
-                  {
-                    "Id": "_HLNECK_0",
-                    "Name": "_HLNeck_0"
-                  },
-                  {
-                    "Id": "_HLNECK_1",
-                    "Name": "_HLNeck_1"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HLEARS_",
-                "Descriptors": [
-                  {
-                    "Id": "_HLEARS_0",
-                    "Name": "_HLEars_0"
-                  },
-                  {
-                    "Id": "_HLEARS_1",
-                    "Name": "_HLEars_1"
-                  },
-                  {
-                    "Id": "_HLEARS_2",
-                    "Name": "_HLEars_2"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HLACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_HLACC_1",
-                    "Name": "_HLAcc_1"
-                  },
-                  {
-                    "Id": "_HLACC_2",
-                    "Name": "_HLAcc_2"
-                  },
-                  {
-                    "Id": "_HLACC_3",
-                    "Name": "_HLAcc_3"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_RODENT",
-            "Name": "_Head_Rodent",
-            "Children": [
-              {
-                "GroupId": "_RHACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_RHACC_0",
-                    "Name": "_RHAcc_0"
-                  },
-                  {
-                    "Id": "_RHACC_1",
-                    "Name": "_RHAcc_1"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HREARS_",
-                "Descriptors": [
-                  {
-                    "Id": "_HREARS_0",
-                    "Name": "_HREars_0"
-                  },
-                  {
-                    "Id": "_HREARS_1",
-                    "Name": "_HREars_1"
-                  },
-                  {
-                    "Id": "_HREARS_2",
-                    "Name": "_HREars_2"
-                  },
-                  {
-                    "Id": "_HREARS_3",
-                    "Name": "_HREars_3"
-                  },
-                  {
-                    "Id": "_HREARS_4",
-                    "Name": "_HREars_4"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_SLOTH",
-            "Name": "_Head_Sloth",
-            "Children": [
-              {
-                "GroupId": "_HSACCA_",
-                "Descriptors": [
-                  {
-                    "Id": "_HSACCA_1",
-                    "Name": "_HSAccA_1",
-                    "Children": [
-                      {
-                        "GroupId": "_HS1EAR_",
-                        "Descriptors": [
-                          {
-                            "Id": "_HS1EAR_0",
-                            "Name": "_HS1Ear_0"
-                          },
-                          {
-                            "Id": "_HS1EAR_1",
-                            "Name": "_HS1Ear_1"
-                          }
-                        ]
-                      },
-                      {
-                        "GroupId": "_HSACC1_",
-                        "Descriptors": [
-                          {
-                            "Id": "_HSACC1_0",
-                            "Name": "_HSAcc1_0"
-                          },
-                          {
-                            "Id": "_HSACC1_1",
-                            "Name": "_HSAcc1_1"
-                          },
-                          {
-                            "Id": "_HSACC1_2",
-                            "Name": "_HSAcc1_2"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_HSACCA_2",
-                    "Name": "_HSAccA_2",
-                    "Children": [
-                      {
-                        "GroupId": "_SH2EAR_",
-                        "Descriptors": [
-                          {
-                            "Id": "_SH2EAR_1",
-                            "Name": "_SH2Ear_1"
-                          },
-                          {
-                            "Id": "_SH2EAR_2",
-                            "Name": "_SH2Ear_2"
-                          },
-                          {
-                            "Id": "_SH2EAR_3",
-                            "Name": "_SH2Ear_3"
-                          },
-                          {
-                            "Id": "_SH2EAR_4",
-                            "Name": "_SH2Ear_4"
-                          },
-                          {
-                            "Id": "_SH2EAR_5",
-                            "Name": "_SH2Ear_5"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_TAPIR",
-            "Name": "_Head_Tapir",
-            "Children": [
-              {
-                "GroupId": "_TPHEARS_",
-                "Descriptors": [
-                  {
-                    "Id": "_TPHEARS_0",
-                    "Name": "_TPHEars_0"
-                  },
-                  {
-                    "Id": "_TPHEARS_1",
-                    "Name": "_TPHEars_1"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_TPHACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_TPHACC_0",
-                    "Name": "_TPHAcc_0"
-                  },
-                  {
-                    "Id": "_TPHACC_1",
-                    "Name": "_TPHAcc_1"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_TAZ",
-            "Name": "_Head_Taz",
-            "Children": [
-              {
-                "GroupId": "_HTAZEARS_",
-                "Descriptors": [
-                  {
-                    "Id": "_HTAZEARS_0",
-                    "Name": "_HTazEars_0"
-                  },
-                  {
-                    "Id": "_HTAZEARS_1",
-                    "Name": "_HTazEars_1"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_HTAZACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_HTAZACC_0",
-                    "Name": "_HTazAcc_0"
-                  },
-                  {
-                    "Id": "_HTAZACC_1",
-                    "Name": "_HTazAcc_1"
-                  },
-                  {
-                    "Id": "_HTAZACC_2",
-                    "Name": "_HTazAcc_2"
-                  },
-                  {
-                    "Id": "_HTAZACC_3",
-                    "Name": "_HTazAcc_3"
-                  },
-                  {
-                    "Id": "_HTAZACC_4",
-                    "Name": "_HTazAcc_4"
-                  },
-                  {
-                    "Id": "_HTAZACC_5",
-                    "Name": "_HTazAcc_5"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_TURTLE",
-            "Name": "_Head_Turtle",
-            "Children": [
-              {
-                "GroupId": "_THACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_THACC_1",
-                    "Name": "_THAcc_1"
-                  },
-                  {
-                    "Id": "_THACC_2",
-                    "Name": "_THAcc_2"
-                  },
-                  {
-                    "Id": "_THACC_3",
-                    "Name": "_THAcc_3"
-                  },
-                  {
-                    "Id": "_THACC_4",
-                    "Name": "_THAcc_4"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "GroupId": "_BODY_",
-        "Descriptors": [
-          {
-            "Id": "_BODY_LIZARD",
-            "Name": "_Body_Lizard",
-            "Children": [
-              {
-                "GroupId": "_LIZBOD_",
-                "Descriptors": [
-                  {
-                    "Id": "_LIZBOD_0",
-                    "Name": "_LizBod_0"
-                  },
-                  {
-                    "Id": "_LIZBOD_1",
-                    "Name": "_LizBod_1"
-                  },
-                  {
-                    "Id": "_LIZBOD_2",
-                    "Name": "_LizBod_2"
-                  },
-                  {
-                    "Id": "_LIZBOD_3",
-                    "Name": "_LizBod_3"
-                  },
-                  {
-                    "Id": "_LIZBOD_4",
-                    "Name": "_LizBod_4"
-                  },
-                  {
-                    "Id": "_LIZBOD_5",
-                    "Name": "_LizBod_5"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_BODY_RODENT",
-            "Name": "_Body_Rodent",
-            "Children": [
-              {
-                "GroupId": "_TAZBACK_",
-                "Descriptors": [
-                  {
-                    "Id": "_TAZBACK_0",
-                    "Name": "_TazBack_0"
-                  },
-                  {
-                    "Id": "_TAZBACK_1",
-                    "Name": "_TazBack_1"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_BODY_SLOTH",
-            "Name": "_Body_Sloth",
-            "Children": [
-              {
-                "GroupId": "_SBACK_",
-                "Descriptors": [
-                  {
-                    "Id": "_SBACK_0",
-                    "Name": "_SBack_0"
-                  },
-                  {
-                    "Id": "_SBACK_1",
-                    "Name": "_SBack_1"
-                  },
-                  {
-                    "Id": "_SBACK_2",
-                    "Name": "_SBack_2"
-                  },
-                  {
-                    "Id": "_SBACK_3",
-                    "Name": "_SBack_3"
-                  },
-                  {
-                    "Id": "_SBACK_4",
-                    "Name": "_SBack_4"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "GroupId": "_TAIL_",
-        "Descriptors": [
-          {
-            "Id": "_TAIL_BIRD",
-            "Name": "_Tail_Bird"
-          },
-          {
-            "Id": "_TAIL_LIZARD",
-            "Name": "_Tail_Lizard",
-            "Children": [
-              {
-                "GroupId": "_TAILACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_TAILACC_0",
-                    "Name": "_TailAcc_0"
-                  },
-                  {
-                    "Id": "_TAILACC_1",
-                    "Name": "_TailAcc_1"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_TAIL_MONKEY",
-            "Name": "_Tail_Monkey"
-          },
-          {
-            "Id": "_TAIL_RODENT",
-            "Name": "_Tail_Rodent"
-          },
-          {
-            "Id": "_TAIL_SLOTH",
-            "Name": "_Tail_Sloth"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "CreatureId": "ROLLERCREATURE",
-    "Details": [
-      {
-        "GroupId": "_STRANGE_",
-        "Descriptors": [
-          {
-            "Id": "_STRANGE_ROLL",
-            "Name": "_Strange_Roll",
-            "Children": [
-              {
-                "GroupId": "_ROLL_",
-                "Descriptors": [
-                  {
-                    "Id": "_ROLL_SINGLEJOINT",
-                    "Name": "_Roll_SingleJoint",
-                    "Children": [
-                      {
-                        "GroupId": "_ROLL_",
-                        "Descriptors": [
-                          {
-                            "Id": "_ROLL_BEETLE",
-                            "Name": "_Roll_Beetle"
-                          },
-                          {
-                            "Id": "_ROLL_TUBES",
-                            "Name": "_Roll_Tubes"
-                          },
-                          {
-                            "Id": "_ROLL_BLOB",
-                            "Name": "_Roll_Blob"
-                          },
-                          {
-                            "Id": "_ROLL_EYES",
-                            "Name": "_Roll_Eyes"
-                          },
-                          {
-                            "Id": "_ROLL_TENDRIL",
-                            "Name": "_Roll_Tendril",
-                            "Children": [
-                              {
-                                "GroupId": "_TENDRILS_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_TENDRILS_A",
-                                    "Name": "_Tendrils_A"
-                                  },
-                                  {
-                                    "Id": "_TENDRILS_B",
-                                    "Name": "_Tendrils_B"
-                                  },
-                                  {
-                                    "Id": "_TENDRILS_C",
-                                    "Name": "_Tendrils_C"
-                                  }
-                                ]
-                              }
-                            ]
-                          },
-                          {
-                            "Id": "_ROLL_FATBUG",
-                            "Name": "_Roll_FatBug"
-                          },
-                          {
-                            "Id": "_ROLL_CLOCKBALL",
-                            "Name": "_Roll_ClockBall"
-                          },
-                          {
-                            "Id": "_ROLL_ENGERYBALL",
-                            "Name": "_Roll_Engeryball",
-                            "Children": [
-                              {
-                                "GroupId": "_INTERNAL_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_INTERNAL_0",
-                                    "Name": "_Internal_0"
-                                  },
-                                  {
-                                    "Id": "_INTERNAL_A",
-                                    "Name": "_Internal_A"
-                                  },
-                                  {
-                                    "Id": "_INTERNAL_B",
-                                    "Name": "_Internal_B"
-                                  },
-                                  {
-                                    "Id": "_INTERNAL_C",
-                                    "Name": "_Internal_C"
-                                  }
-                                ]
-                              }
-                            ]
-                          },
-                          {
-                            "Id": "_ROLL_BUBBLE",
-                            "Name": "_Roll_Bubble"
-                          },
-                          {
-                            "Id": "_ROLL_LINKS",
-                            "Name": "_Roll_Links"
-                          },
-                          {
-                            "Id": "_ROLL_SLIME",
-                            "Name": "_Roll_Slime"
-                          },
-                          {
-                            "Id": "_ROLL_CURL",
-                            "Name": "_Roll_Curl"
-                          },
-                          {
-                            "Id": "_ROLL_WHEEL",
-                            "Name": "_Roll_Wheel"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
     "CreatureId": "SANDWORM",
+    "FriendlyName": "SANDWORM",
     "Details": [
       {
         "GroupId": "_SNAKE_",
@@ -11526,7 +10487,23 @@
     ]
   },
   {
+    "CreatureId": "FREIGHTERFIEND",
+    "FriendlyName": "SCUTTLER",
+    "Details": [
+      {
+        "GroupId": "_FIEND_",
+        "Descriptors": [
+          {
+            "Id": "_FIEND_BODY",
+            "Name": "_Fiend_Body"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "CreatureId": "SEASNAKE",
+    "FriendlyName": "SEASNAKE",
     "Details": [
       {
         "GroupId": "_SNAKE_",
@@ -11775,6 +10752,7 @@
   },
   {
     "CreatureId": "SHARK",
+    "FriendlyName": "SHARK",
     "Details": [
       {
         "GroupId": "_SHARK_",
@@ -12341,6 +11319,7 @@
   },
   {
     "CreatureId": "SIXLEGCAT",
+    "FriendlyName": "SIXLEGCAT",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -13237,6 +12216,7 @@
   },
   {
     "CreatureId": "SIXLEGGEDCOW",
+    "FriendlyName": "SIXLEGGEDCOW",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -13636,6 +12616,7 @@
   },
   {
     "CreatureId": "SMALLBIRD",
+    "FriendlyName": "SMALLBIRD",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -13797,6 +12778,7 @@
   },
   {
     "CreatureId": "SMALLFISH",
+    "FriendlyName": "SMALLFISH",
     "Details": [
       {
         "GroupId": "_FISH_",
@@ -14192,6 +13174,7 @@
   },
   {
     "CreatureId": "SPIDER",
+    "FriendlyName": "SPIDER",
     "Details": [
       {
         "GroupId": "_MANTIS_",
@@ -14925,536 +13908,8 @@
     ]
   },
   {
-    "CreatureId": "SPIDERFLOAT",
-    "Details": [
-      {
-        "GroupId": "_MANTIS_",
-        "Descriptors": [
-          {
-            "Id": "_MANTIS_A",
-            "Name": "_Mantis_A",
-            "Children": [
-              {
-                "GroupId": "_ARMS_",
-                "Descriptors": [
-                  {
-                    "Id": "_ARMS_NULL",
-                    "Name": "_Arms_NULL"
-                  },
-                  {
-                    "Id": "_ARMS_1",
-                    "Name": "_Arms_1"
-                  },
-                  {
-                    "Id": "_ARMS_2",
-                    "Name": "_Arms_2"
-                  }
-                ]
-              },
-              {
-                "GroupId": "_BODY_",
-                "Descriptors": [
-                  {
-                    "Id": "_BODY_1XRARE",
-                    "Name": "_Body_1xRARE",
-                    "Children": [
-                      {
-                        "GroupId": "_TRUNK_",
-                        "Descriptors": [
-                          {
-                            "Id": "_TRUNK_NULL",
-                            "Name": "_Trunk_NULL"
-                          },
-                          {
-                            "Id": "_TRUNK_NULL2",
-                            "Name": "_Trunk_NULL2"
-                          },
-                          {
-                            "Id": "_TRUNK_1XRARE",
-                            "Name": "_Trunk_1xRARE",
-                            "Children": [
-                              {
-                                "GroupId": "_CAP1_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_CAP1_3",
-                                    "Name": "_Cap1_3",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_CAPFILL5_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_CAPFILL5_1",
-                                            "Name": "_CapFill5_1"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "Id": "_CAP1_2",
-                                    "Name": "_Cap1_2",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_CAPFILL2_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_CAPFILL2_1",
-                                            "Name": "_CapFill2_1"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "Id": "_CAP1_1",
-                                    "Name": "_Cap1_1"
-                                  }
-                                ]
-                              }
-                            ]
-                          },
-                          {
-                            "Id": "_TRUNK_2XRARE",
-                            "Name": "_Trunk_2xRare",
-                            "Children": [
-                              {
-                                "GroupId": "_CAPB_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_CAPB_11",
-                                    "Name": "_CapB_11",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_CAPFILLB_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_CAPFILLB_1",
-                                            "Name": "_CapFillB_1"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "Id": "_CAPB_12",
-                                    "Name": "_CapB_12",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_CAPFILL2B_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_CAPFILL2B_1",
-                                            "Name": "_CapFill2B_1"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Id": "_BODY_2",
-                    "Name": "_Body_2",
-                    "Children": [
-                      {
-                        "GroupId": "_NECK_",
-                        "Descriptors": [
-                          {
-                            "Id": "_NECK_BUG",
-                            "Name": "_Neck_Bug",
-                            "Children": [
-                              {
-                                "GroupId": "_ACC1_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_ACC1_FINFLAPS",
-                                    "Name": "_Acc1_finFlaps"
-                                  },
-                                  {
-                                    "Id": "_ACC1_MANTISTAIL",
-                                    "Name": "_Acc1_MantisTail"
-                                  },
-                                  {
-                                    "Id": "_ACC1_BORDER",
-                                    "Name": "_Acc1_Border"
-                                  },
-                                  {
-                                    "Id": "_ACC1_BULBSIDE",
-                                    "Name": "_Acc1_BulbSide",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_ACC5_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_ACC5_SPIKES",
-                                            "Name": "_Acc5_Spikes"
-                                          },
-                                          {
-                                            "Id": "_ACC5_NONE",
-                                            "Name": "_Acc5_none"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "Id": "_ACC1_BULBTOP",
-                                    "Name": "_Acc1_BulbTop",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_ACC2_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_ACC2_BULBHAT",
-                                            "Name": "_Acc2_BulbHat",
-                                            "Children": [
-                                              {
-                                                "GroupId": "_ACC3_",
-                                                "Descriptors": [
-                                                  {
-                                                    "Id": "_ACC3_NONE",
-                                                    "Name": "_Acc3_none"
-                                                  },
-                                                  {
-                                                    "Id": "_ACC3_SPIKES",
-                                                    "Name": "_Acc3_Spikes"
-                                                  }
-                                                ]
-                                              }
-                                            ]
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "GroupId": "_ALTH_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_ALTH_MANTS",
-                                    "Name": "_AltH_Mants",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_MANTNA_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_MANTNA_1",
-                                            "Name": "_MAntna_1"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "GroupId": "_MEYE_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_MEYE_2",
-                                            "Name": "_MEye_2"
-                                          },
-                                          {
-                                            "Id": "_MEYE_1",
-                                            "Name": "_MEye_1"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "Id": "_ALTH_MANTB",
-                                    "Name": "_AltH_MantB",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_MANTNA_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_MANTNA_2",
-                                            "Name": "_MAntna_2"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "GroupId": "_MEYYE_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_MEYYE_2",
-                                            "Name": "_MEyye_2"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "GroupId": "_MOUT_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_MOUT_A",
-                                            "Name": "_Mout_A"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "Id": "_ALTH_3",
-                                    "Name": "_AltH_3"
-                                  },
-                                  {
-                                    "Id": "_ALTH_2",
-                                    "Name": "_AltH_2"
-                                  },
-                                  {
-                                    "Id": "_ALTH_1",
-                                    "Name": "_AltH_1",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_EYES_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_EYES_1",
-                                            "Name": "_Eyes_1"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "GroupId": "_MOUTH_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_MOUTH_1",
-                                            "Name": "_Mouth_1"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "Id": "_ALTH_5",
-                                    "Name": "_AltH_5"
-                                  }
-                                ]
-                              }
-                            ]
-                          },
-                          {
-                            "Id": "_NECK_ALT",
-                            "Name": "_Neck_Alt",
-                            "Children": [
-                              {
-                                "GroupId": "_TAIL_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_TAIL_NULL1",
-                                    "Name": "_Tail_Null1"
-                                  },
-                                  {
-                                    "Id": "_TAIL_MANTISTAIL",
-                                    "Name": "_Tail_MantisTail"
-                                  }
-                                ]
-                              },
-                              {
-                                "GroupId": "_HEAD_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_HEAD_MUFFIN",
-                                    "Name": "_Head_Muffin",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_ALTH2_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_ALTH2_BULBB",
-                                            "Name": "_AltH2_BulbB",
-                                            "Children": [
-                                              {
-                                                "GroupId": "_EYES_",
-                                                "Descriptors": [
-                                                  {
-                                                    "Id": "_EYES_B",
-                                                    "Name": "_Eyes_B"
-                                                  }
-                                                ]
-                                              },
-                                              {
-                                                "GroupId": "_AT_",
-                                                "Descriptors": [
-                                                  {
-                                                    "Id": "_AT_SPIKES",
-                                                    "Name": "_AT_Spikes"
-                                                  }
-                                                ]
-                                              },
-                                              {
-                                                "GroupId": "_MOUTH_",
-                                                "Descriptors": [
-                                                  {
-                                                    "Id": "_MOUTH_B",
-                                                    "Name": "_Mouth_B"
-                                                  }
-                                                ]
-                                              }
-                                            ]
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "Id": "_HEAD_STALKS",
-                                    "Name": "_Head_Stalks",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_MOUTHS_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_MOUTHS_1",
-                                            "Name": "_Mouths_1"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "GroupId": "_ATC_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_ATC_BORDER",
-                                            "Name": "_ATC_Border",
-                                            "Children": [
-                                              {
-                                                "GroupId": "_JELLYFINGERS_",
-                                                "Descriptors": [
-                                                  {
-                                                    "Id": "_JELLYFINGERS_1",
-                                                    "Name": "_JellyFingers_1"
-                                                  },
-                                                  {
-                                                    "Id": "_JELLYFINGERS_NONE",
-                                                    "Name": "_JellyFingers_none"
-                                                  }
-                                                ]
-                                              }
-                                            ]
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "GroupId": "_EYESD_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_EYESD_1",
-                                            "Name": "_EyesD_1"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
-                          },
-                          {
-                            "Id": "_NECK_CRAB",
-                            "Name": "_Neck_Crab",
-                            "Children": [
-                              {
-                                "GroupId": "_ACCR_",
-                                "Descriptors": [
-                                  {
-                                    "Id": "_ACCR_BORDER",
-                                    "Name": "_ACCR_Border"
-                                  },
-                                  {
-                                    "Id": "_ACCR_NONE",
-                                    "Name": "_ACCR_none"
-                                  },
-                                  {
-                                    "Id": "_ACCR_MANTISTAIL",
-                                    "Name": "_ACCR_MantisTail"
-                                  },
-                                  {
-                                    "Id": "_ACCR_FINFLAPS",
-                                    "Name": "_ACCR_FinFLaps"
-                                  },
-                                  {
-                                    "Id": "_ACCR_BULBSIDE",
-                                    "Name": "_ACCR_BulbSide",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_ACCRC_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_ACCRC_SPIKES",
-                                            "Name": "_ACCRc_Spikes"
-                                          },
-                                          {
-                                            "Id": "_ACCRC_NONE",
-                                            "Name": "_ACCRc_none"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "Id": "_ACCR_BULBTOP",
-                                    "Name": "_ACCR_BulbTop",
-                                    "Children": [
-                                      {
-                                        "GroupId": "_ACCR_",
-                                        "Descriptors": [
-                                          {
-                                            "Id": "_ACCR_BULBHAT",
-                                            "Name": "_ACCR_BulbHat",
-                                            "Children": [
-                                              {
-                                                "GroupId": "_ACCRB_",
-                                                "Descriptors": [
-                                                  {
-                                                    "Id": "_ACCRB_NONE",
-                                                    "Name": "_ACCRb_none"
-                                                  },
-                                                  {
-                                                    "Id": "_ACCRB_SPIKES",
-                                                    "Name": "_ACCRb_Spikes"
-                                                  }
-                                                ]
-                                              }
-                                            ]
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "GroupId": "_LEGS_",
-                "Descriptors": [
-                  {
-                    "Id": "_LEGS_2",
-                    "Name": "_Legs_2"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
     "CreatureId": "STRIDER",
+    "FriendlyName": "STRIDER",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -15911,7 +14366,1110 @@
     ]
   },
   {
+    "CreatureId": "COWSWIM",
+    "FriendlyName": "SWIMCOW",
+    "Details": [
+      {
+        "GroupId": "_TAIL_",
+        "Descriptors": [
+          {
+            "Id": "_TAIL_ALIEN",
+            "Name": "_Tail_Alien",
+            "Children": [
+              {
+                "GroupId": "_TAACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_TAACC_0",
+                    "Name": "_TAacc_0"
+                  },
+                  {
+                    "Id": "_TAACC_1",
+                    "Name": "_TAacc_1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_TAIL_COW",
+            "Name": "_Tail_Cow"
+          },
+          {
+            "Id": "_TAIL_TURTLE",
+            "Name": "_Tail_Turtle"
+          }
+        ]
+      },
+      {
+        "GroupId": "_COW_",
+        "Descriptors": [
+          {
+            "Id": "_COW_SWIM",
+            "Name": "_Cow_Swim"
+          }
+        ]
+      },
+      {
+        "GroupId": "_BODY_",
+        "Descriptors": [
+          {
+            "Id": "_BODY_COW",
+            "Name": "_Body_Cow",
+            "Children": [
+              {
+                "GroupId": "_BCA_",
+                "Descriptors": [
+                  {
+                    "Id": "_BCA_BLANK1",
+                    "Name": "_BCA_Blank1"
+                  },
+                  {
+                    "Id": "_BCA_COWHUMP",
+                    "Name": "_BCA_CowHump",
+                    "Children": [
+                      {
+                        "GroupId": "_EXT_",
+                        "Descriptors": [
+                          {
+                            "Id": "_EXT_BLANKYO3",
+                            "Name": "_Ext_BlankYo3"
+                          },
+                          {
+                            "Id": "_EXT_BACKSPINES",
+                            "Name": "_Ext_BackSpinesxRARE"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_BCA_ROCKSXRARE",
+                    "Name": "_BCA_RocksxRARE",
+                    "Children": [
+                      {
+                        "GroupId": "_EXT_",
+                        "Descriptors": [
+                          {
+                            "Id": "_EXT_MINE",
+                            "Name": "_Ext_Mine"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_BCA_BACKSPINES",
+                    "Name": "_BCA_BackSpinesxRARE"
+                  },
+                  {
+                    "Id": "_BCA_STEGSPIKES",
+                    "Name": "_BCA_StegSpikesxRARE"
+                  },
+                  {
+                    "Id": "_BCA_TURTSHELLX",
+                    "Name": "_BCA_TurtShellxRARE"
+                  },
+                  {
+                    "Id": "_BCA_BACKFINXRA",
+                    "Name": "_BCA_BackFinxRARE"
+                  },
+                  {
+                    "Id": "_BCA_LUMPXRARE",
+                    "Name": "_BCA_LumpxRARE"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_BODY_ROCK",
+            "Name": "_Body_Rock",
+            "Children": [
+              {
+                "GroupId": "_BCA_",
+                "Descriptors": [
+                  {
+                    "Id": "_BCA_BLANK2",
+                    "Name": "_BCA_Blank2"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_BRA_",
+                "Descriptors": [
+                  {
+                    "Id": "_BRA_ROCKS1XRAR",
+                    "Name": "_BRA_Rocks1xRARE",
+                    "Children": [
+                      {
+                        "GroupId": "_EXT_",
+                        "Descriptors": [
+                          {
+                            "Id": "_EXT_MINE2",
+                            "Name": "_Ext_Mine2"
+                          },
+                          {
+                            "Id": "_EXT_BLANKYO2",
+                            "Name": "_Ext_BlankYo2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_BRA_ARMSPINESX",
+                    "Name": "_BRA_ArmSpinesxRARE"
+                  },
+                  {
+                    "Id": "_BRA_BACKSPINES",
+                    "Name": "_BRA_BackSpinesxRARE"
+                  },
+                  {
+                    "Id": "_BRA_STEGSPIKES",
+                    "Name": "_BRA_StegSpikesxRARE"
+                  },
+                  {
+                    "Id": "_BRA_TURTSHELLX",
+                    "Name": "_BRA_TurtShellxRARE"
+                  },
+                  {
+                    "Id": "_BRA_BACKFINXRA",
+                    "Name": "_BRA_BackFinxRARE"
+                  },
+                  {
+                    "Id": "_BRA_LUMP1XRARE",
+                    "Name": "_BRA_Lump1xRARE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "GroupId": "_HEAD_",
+        "Descriptors": [
+          {
+            "Id": "_HEAD_ALIENBIRD",
+            "Name": "_Head_AlienBird",
+            "Children": [
+              {
+                "GroupId": "_HABACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_HABACC_BLANK",
+                    "Name": "_HABAcc_Blank"
+                  },
+                  {
+                    "Id": "_HABACC_1",
+                    "Name": "_HABAcc_1"
+                  },
+                  {
+                    "Id": "_HABACC_2",
+                    "Name": "_HABAcc_2"
+                  },
+                  {
+                    "Id": "_HABACC_3",
+                    "Name": "_HABAcc_3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_ALIENTYPE",
+            "Name": "_Head_AlienType",
+            "Children": [
+              {
+                "GroupId": "_WEIRD_",
+                "Descriptors": [
+                  {
+                    "Id": "_WEIRD_CONNECT",
+                    "Name": "_Weird_Connect",
+                    "Children": [
+                      {
+                        "GroupId": "_SHAPEN_",
+                        "Descriptors": [
+                          {
+                            "Id": "_SHAPEN_1",
+                            "Name": "_Shapen_1",
+                            "Children": [
+                              {
+                                "GroupId": "_NOSE1_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_NOSE1_A",
+                                    "Name": "_Nose1_A"
+                                  }
+                                ]
+                              },
+                              {
+                                "GroupId": "_EYES1_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_EYES1_A",
+                                    "Name": "_Eyes1_A"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_WEIRD_FLARED",
+                    "Name": "_Weird_Flared",
+                    "Children": [
+                      {
+                        "GroupId": "_FRUITF_",
+                        "Descriptors": [
+                          {
+                            "Id": "_FRUITF_NONE",
+                            "Name": "_FruitF_None"
+                          },
+                          {
+                            "Id": "_FRUITF_A",
+                            "Name": "_FruitF_A"
+                          }
+                        ]
+                      },
+                      {
+                        "GroupId": "_FLARETOP_",
+                        "Descriptors": [
+                          {
+                            "Id": "_FLARETOP_4",
+                            "Name": "_FlareTop_4"
+                          },
+                          {
+                            "Id": "_FLARETOP_2",
+                            "Name": "_FlareTop_2",
+                            "Children": [
+                              {
+                                "GroupId": "_EYES2_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_EYES2_A",
+                                    "Name": "_Eyes2_A"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "Id": "_FLARETOP_1",
+                            "Name": "_FlareTop_1"
+                          },
+                          {
+                            "Id": "_FLARETOP_NONE",
+                            "Name": "_FlareTop_None"
+                          },
+                          {
+                            "Id": "_FLARETOP_3",
+                            "Name": "_FlareTop_3",
+                            "Children": [
+                              {
+                                "GroupId": "_EYES3_",
+                                "Descriptors": [
+                                  {
+                                    "Id": "_EYES3_A",
+                                    "Name": "_Eyes3_A"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "GroupId": "_EYESF_",
+                        "Descriptors": [
+                          {
+                            "Id": "_EYESF_NONE",
+                            "Name": "_EyesF_None"
+                          },
+                          {
+                            "Id": "_EYESF_A",
+                            "Name": "_EyesF_A"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_WEIRD_LONG",
+                    "Name": "_Weird_Long",
+                    "Children": [
+                      {
+                        "GroupId": "_EARSL_",
+                        "Descriptors": [
+                          {
+                            "Id": "_EARSL_A",
+                            "Name": "_EarsL_A"
+                          },
+                          {
+                            "Id": "_EARSL_NONE",
+                            "Name": "_EarsL_None"
+                          }
+                        ]
+                      },
+                      {
+                        "GroupId": "_EYESL_",
+                        "Descriptors": [
+                          {
+                            "Id": "_EYESL_A",
+                            "Name": "_EyesL_A"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_WEIRD_STUMP",
+                    "Name": "_Weird_Stump",
+                    "Children": [
+                      {
+                        "GroupId": "_EYESS_",
+                        "Descriptors": [
+                          {
+                            "Id": "_EYESS_A",
+                            "Name": "_EyesS_A"
+                          }
+                        ]
+                      },
+                      {
+                        "GroupId": "_HORNSS_",
+                        "Descriptors": [
+                          {
+                            "Id": "_HORNSS_A",
+                            "Name": "_HornsS_A"
+                          },
+                          {
+                            "Id": "_HORNSS_NONE",
+                            "Name": "_HornsS_None"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_WEIRD_HTAIL1",
+                    "Name": "_Weird_HTail1",
+                    "Children": [
+                      {
+                        "GroupId": "_EYETAIL1_",
+                        "Descriptors": [
+                          {
+                            "Id": "_EYETAIL1_A",
+                            "Name": "_EyeTail1_A"
+                          },
+                          {
+                            "Id": "_EYETAIL1_NONE",
+                            "Name": "_EyeTail1_None"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_WEIRD_HTAIL2",
+                    "Name": "_Weird_HTail2"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_DIVIDE_",
+                "Descriptors": [
+                  {
+                    "Id": "_DIVIDE_1",
+                    "Name": "_Divide_1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_BUG",
+            "Name": "_Head_Bug",
+            "Children": [
+              {
+                "GroupId": "_HBUGACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_HBUGACC_BLANK",
+                    "Name": "_HBugAcc_Blank"
+                  },
+                  {
+                    "Id": "_HBUGACC_1",
+                    "Name": "_HBugAcc_1"
+                  },
+                  {
+                    "Id": "_HBUGACC_2",
+                    "Name": "_HBugAcc_2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_COW",
+            "Name": "_Head_Cow",
+            "Children": [
+              {
+                "GroupId": "_HCE_",
+                "Descriptors": [
+                  {
+                    "Id": "_HCE_BLANK",
+                    "Name": "_HCE_Blank"
+                  },
+                  {
+                    "Id": "_HCE_COWEARS",
+                    "Name": "_HCE_CowEars"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HCH_",
+                "Descriptors": [
+                  {
+                    "Id": "_HCH_BLANK",
+                    "Name": "_HCH_Blank"
+                  },
+                  {
+                    "Id": "_HCH_COWHORN",
+                    "Name": "_HCH_CowHorn"
+                  },
+                  {
+                    "Id": "_HCH_LORISHORN",
+                    "Name": "_HCH_LorisHorn"
+                  },
+                  {
+                    "Id": "_HCH_ANTHORN",
+                    "Name": "_HCH_AntHorn"
+                  },
+                  {
+                    "Id": "_HCH_NOSEBONE",
+                    "Name": "_HCH_NoseBone"
+                  },
+                  {
+                    "Id": "_HCH_HEADBONE",
+                    "Name": "_HCH_HeadBone"
+                  },
+                  {
+                    "Id": "_HCH_HEADPLATE",
+                    "Name": "_HCH_HeadPlate"
+                  },
+                  {
+                    "Id": "_HCH_MULTIHORN",
+                    "Name": "_HCH_MultiHorn"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_COWSKEW",
+            "Name": "_Head_CowSkew",
+            "Children": [
+              {
+                "GroupId": "_HCSE_",
+                "Descriptors": [
+                  {
+                    "Id": "_HCSE_COWEARS",
+                    "Name": "_HCSE_CowEars"
+                  },
+                  {
+                    "Id": "_HCSE_BLANK",
+                    "Name": "_HCSE_Blank"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HCSH_",
+                "Descriptors": [
+                  {
+                    "Id": "_HCSH_HEADACC",
+                    "Name": "_HCSH_HeadAcc"
+                  },
+                  {
+                    "Id": "_HCSH_HEADBONE",
+                    "Name": "_HCSH_HeadBone"
+                  },
+                  {
+                    "Id": "_HCSH_ANTHORN",
+                    "Name": "_HCSH_AntHorn"
+                  },
+                  {
+                    "Id": "_HCSH_LORISHORN",
+                    "Name": "_HCSH_LorisHorn"
+                  },
+                  {
+                    "Id": "_HCSH_COWHORN",
+                    "Name": "_HCSH_CowHorn"
+                  },
+                  {
+                    "Id": "_HCSH_BLANK",
+                    "Name": "_HCSH_Blank"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_LORIS",
+            "Name": "_Head_Loris",
+            "Children": [
+              {
+                "GroupId": "_HLH_",
+                "Descriptors": [
+                  {
+                    "Id": "_HLH_MULTIHORN3",
+                    "Name": "_HLH_MultiHorn3"
+                  },
+                  {
+                    "Id": "_HLH_NOSEBONE",
+                    "Name": "_HLH_NoseBone"
+                  },
+                  {
+                    "Id": "_HLH_HEADPLATE",
+                    "Name": "_HLH_HeadPlate"
+                  },
+                  {
+                    "Id": "_HLH_ANTHORN",
+                    "Name": "_HLH_AntHorn"
+                  },
+                  {
+                    "Id": "_HLH_COWHORN",
+                    "Name": "_HLH_CowHorn"
+                  },
+                  {
+                    "Id": "_HLH_LORISHORN",
+                    "Name": "_HLH_LorisHorn"
+                  },
+                  {
+                    "Id": "_HLH_BLANK",
+                    "Name": "_HLH_Blank"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HLE_",
+                "Descriptors": [
+                  {
+                    "Id": "_HLE_1",
+                    "Name": "_HLE_1"
+                  },
+                  {
+                    "Id": "_HLE_BLANK",
+                    "Name": "_HLE_Blank"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_REX",
+            "Name": "_Head_Rex",
+            "Children": [
+              {
+                "GroupId": "_HREXACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_HREXACC_1",
+                    "Name": "_HRexAcc_1"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "CreatureId": "RODENTSWIM",
+    "FriendlyName": "SWIMRODENT",
+    "Details": [
+      {
+        "GroupId": "_HEAD_",
+        "Descriptors": [
+          {
+            "Id": "_HEAD_BIRD",
+            "Name": "_Head_Bird",
+            "Children": [
+              {
+                "GroupId": "_HBACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_HBACC_0",
+                    "Name": "_HBAcc_0"
+                  },
+                  {
+                    "Id": "_HBACC_1",
+                    "Name": "_HBAcc_1"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HBEARS_",
+                "Descriptors": [
+                  {
+                    "Id": "_HBEARS_0",
+                    "Name": "_HBEars_0"
+                  },
+                  {
+                    "Id": "_HBEARS_1",
+                    "Name": "_HBEars_1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_GDANE",
+            "Name": "_Head_GDane",
+            "Children": [
+              {
+                "GroupId": "_HGDEARS_",
+                "Descriptors": [
+                  {
+                    "Id": "_HGDEARS_1",
+                    "Name": "_HGDEars_1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_LIZARD",
+            "Name": "_Head_Lizard",
+            "Children": [
+              {
+                "GroupId": "__HLACC_",
+                "Descriptors": [
+                  {
+                    "Id": "__HLACC_0",
+                    "Name": "__HLAcc_0"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HLNECK_",
+                "Descriptors": [
+                  {
+                    "Id": "_HLNECK_0",
+                    "Name": "_HLNeck_0"
+                  },
+                  {
+                    "Id": "_HLNECK_1",
+                    "Name": "_HLNeck_1"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HLEARS_",
+                "Descriptors": [
+                  {
+                    "Id": "_HLEARS_0",
+                    "Name": "_HLEars_0"
+                  },
+                  {
+                    "Id": "_HLEARS_1",
+                    "Name": "_HLEars_1"
+                  },
+                  {
+                    "Id": "_HLEARS_2",
+                    "Name": "_HLEars_2"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HLACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_HLACC_1",
+                    "Name": "_HLAcc_1"
+                  },
+                  {
+                    "Id": "_HLACC_2",
+                    "Name": "_HLAcc_2"
+                  },
+                  {
+                    "Id": "_HLACC_3",
+                    "Name": "_HLAcc_3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_RODENT",
+            "Name": "_Head_Rodent",
+            "Children": [
+              {
+                "GroupId": "_RHACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_RHACC_0",
+                    "Name": "_RHAcc_0"
+                  },
+                  {
+                    "Id": "_RHACC_1",
+                    "Name": "_RHAcc_1"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HREARS_",
+                "Descriptors": [
+                  {
+                    "Id": "_HREARS_0",
+                    "Name": "_HREars_0"
+                  },
+                  {
+                    "Id": "_HREARS_1",
+                    "Name": "_HREars_1"
+                  },
+                  {
+                    "Id": "_HREARS_2",
+                    "Name": "_HREars_2"
+                  },
+                  {
+                    "Id": "_HREARS_3",
+                    "Name": "_HREars_3"
+                  },
+                  {
+                    "Id": "_HREARS_4",
+                    "Name": "_HREars_4"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_SLOTH",
+            "Name": "_Head_Sloth",
+            "Children": [
+              {
+                "GroupId": "_HSACCA_",
+                "Descriptors": [
+                  {
+                    "Id": "_HSACCA_1",
+                    "Name": "_HSAccA_1",
+                    "Children": [
+                      {
+                        "GroupId": "_HS1EAR_",
+                        "Descriptors": [
+                          {
+                            "Id": "_HS1EAR_0",
+                            "Name": "_HS1Ear_0"
+                          },
+                          {
+                            "Id": "_HS1EAR_1",
+                            "Name": "_HS1Ear_1"
+                          }
+                        ]
+                      },
+                      {
+                        "GroupId": "_HSACC1_",
+                        "Descriptors": [
+                          {
+                            "Id": "_HSACC1_0",
+                            "Name": "_HSAcc1_0"
+                          },
+                          {
+                            "Id": "_HSACC1_1",
+                            "Name": "_HSAcc1_1"
+                          },
+                          {
+                            "Id": "_HSACC1_2",
+                            "Name": "_HSAcc1_2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_HSACCA_2",
+                    "Name": "_HSAccA_2",
+                    "Children": [
+                      {
+                        "GroupId": "_SH2EAR_",
+                        "Descriptors": [
+                          {
+                            "Id": "_SH2EAR_1",
+                            "Name": "_SH2Ear_1"
+                          },
+                          {
+                            "Id": "_SH2EAR_2",
+                            "Name": "_SH2Ear_2"
+                          },
+                          {
+                            "Id": "_SH2EAR_3",
+                            "Name": "_SH2Ear_3"
+                          },
+                          {
+                            "Id": "_SH2EAR_4",
+                            "Name": "_SH2Ear_4"
+                          },
+                          {
+                            "Id": "_SH2EAR_5",
+                            "Name": "_SH2Ear_5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_TAPIR",
+            "Name": "_Head_Tapir",
+            "Children": [
+              {
+                "GroupId": "_TPHEARS_",
+                "Descriptors": [
+                  {
+                    "Id": "_TPHEARS_0",
+                    "Name": "_TPHEars_0"
+                  },
+                  {
+                    "Id": "_TPHEARS_1",
+                    "Name": "_TPHEars_1"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_TPHACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_TPHACC_0",
+                    "Name": "_TPHAcc_0"
+                  },
+                  {
+                    "Id": "_TPHACC_1",
+                    "Name": "_TPHAcc_1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_TAZ",
+            "Name": "_Head_Taz",
+            "Children": [
+              {
+                "GroupId": "_HTAZEARS_",
+                "Descriptors": [
+                  {
+                    "Id": "_HTAZEARS_0",
+                    "Name": "_HTazEars_0"
+                  },
+                  {
+                    "Id": "_HTAZEARS_1",
+                    "Name": "_HTazEars_1"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HTAZACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_HTAZACC_0",
+                    "Name": "_HTazAcc_0"
+                  },
+                  {
+                    "Id": "_HTAZACC_1",
+                    "Name": "_HTazAcc_1"
+                  },
+                  {
+                    "Id": "_HTAZACC_2",
+                    "Name": "_HTazAcc_2"
+                  },
+                  {
+                    "Id": "_HTAZACC_3",
+                    "Name": "_HTazAcc_3"
+                  },
+                  {
+                    "Id": "_HTAZACC_4",
+                    "Name": "_HTazAcc_4"
+                  },
+                  {
+                    "Id": "_HTAZACC_5",
+                    "Name": "_HTazAcc_5"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_TURTLE",
+            "Name": "_Head_Turtle",
+            "Children": [
+              {
+                "GroupId": "_THACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_THACC_1",
+                    "Name": "_THAcc_1"
+                  },
+                  {
+                    "Id": "_THACC_2",
+                    "Name": "_THAcc_2"
+                  },
+                  {
+                    "Id": "_THACC_3",
+                    "Name": "_THAcc_3"
+                  },
+                  {
+                    "Id": "_THACC_4",
+                    "Name": "_THAcc_4"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "GroupId": "_BODY_",
+        "Descriptors": [
+          {
+            "Id": "_BODY_LIZARD",
+            "Name": "_Body_Lizard",
+            "Children": [
+              {
+                "GroupId": "_LIZBOD_",
+                "Descriptors": [
+                  {
+                    "Id": "_LIZBOD_0",
+                    "Name": "_LizBod_0"
+                  },
+                  {
+                    "Id": "_LIZBOD_1",
+                    "Name": "_LizBod_1"
+                  },
+                  {
+                    "Id": "_LIZBOD_2",
+                    "Name": "_LizBod_2"
+                  },
+                  {
+                    "Id": "_LIZBOD_3",
+                    "Name": "_LizBod_3"
+                  },
+                  {
+                    "Id": "_LIZBOD_4",
+                    "Name": "_LizBod_4"
+                  },
+                  {
+                    "Id": "_LIZBOD_5",
+                    "Name": "_LizBod_5"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_BODY_RODENT",
+            "Name": "_Body_Rodent",
+            "Children": [
+              {
+                "GroupId": "_TAZBACK_",
+                "Descriptors": [
+                  {
+                    "Id": "_TAZBACK_0",
+                    "Name": "_TazBack_0"
+                  },
+                  {
+                    "Id": "_TAZBACK_1",
+                    "Name": "_TazBack_1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_BODY_SLOTH",
+            "Name": "_Body_Sloth",
+            "Children": [
+              {
+                "GroupId": "_SBACK_",
+                "Descriptors": [
+                  {
+                    "Id": "_SBACK_0",
+                    "Name": "_SBack_0"
+                  },
+                  {
+                    "Id": "_SBACK_1",
+                    "Name": "_SBack_1"
+                  },
+                  {
+                    "Id": "_SBACK_2",
+                    "Name": "_SBack_2"
+                  },
+                  {
+                    "Id": "_SBACK_3",
+                    "Name": "_SBack_3"
+                  },
+                  {
+                    "Id": "_SBACK_4",
+                    "Name": "_SBack_4"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "GroupId": "_TAIL_",
+        "Descriptors": [
+          {
+            "Id": "_TAIL_BIRD",
+            "Name": "_Tail_Bird"
+          },
+          {
+            "Id": "_TAIL_LIZARD",
+            "Name": "_Tail_Lizard",
+            "Children": [
+              {
+                "GroupId": "_TAILACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_TAILACC_0",
+                    "Name": "_TailAcc_0"
+                  },
+                  {
+                    "Id": "_TAILACC_1",
+                    "Name": "_TailAcc_1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_TAIL_MONKEY",
+            "Name": "_Tail_Monkey"
+          },
+          {
+            "Id": "_TAIL_RODENT",
+            "Name": "_Tail_Rodent"
+          },
+          {
+            "Id": "_TAIL_SLOTH",
+            "Name": "_Tail_Sloth"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "CreatureId": "TREX",
+    "FriendlyName": "TREX",
     "Details": [
       {
         "GroupId": "_TREX_",
@@ -16914,6 +16472,7 @@
   },
   {
     "CreatureId": "TRICERATOPS",
+    "FriendlyName": "TRICERATOPS",
     "Details": [
       {
         "GroupId": "_HEAD_",
@@ -17990,7 +17549,514 @@
     ]
   },
   {
+    "CreatureId": "ANTELOPETWOLEGS",
+    "FriendlyName": "TWOLEGANTELOPE",
+    "Details": [
+      {
+        "GroupId": "_HEAD_",
+        "Descriptors": [
+          {
+            "Id": "_HEAD_AEATER",
+            "Name": "_Head_AEater",
+            "Children": [
+              {
+                "GroupId": "_AEHACCS_",
+                "Descriptors": [
+                  {
+                    "Id": "_AEHACCS_1",
+                    "Name": "_AEHAccs_1",
+                    "Children": [
+                      {
+                        "GroupId": "_AEHEARA_",
+                        "Descriptors": [
+                          {
+                            "Id": "_AEHEARA_NULL",
+                            "Name": "_AEHEarA_NULL"
+                          },
+                          {
+                            "Id": "_AEHEARA_1",
+                            "Name": "_AEHEarA_1"
+                          },
+                          {
+                            "Id": "_AEHEARA_2",
+                            "Name": "_AEHEarA_2"
+                          },
+                          {
+                            "Id": "_AEHEARA_3",
+                            "Name": "_AEHEarA_3"
+                          },
+                          {
+                            "Id": "_AEHEARA_4",
+                            "Name": "_AEHEarA_4"
+                          },
+                          {
+                            "Id": "_AEHEARA_6",
+                            "Name": "_AEHEarA_6"
+                          },
+                          {
+                            "Id": "_AEHEARA_5",
+                            "Name": "_AEHEarA_5"
+                          }
+                        ]
+                      },
+                      {
+                        "GroupId": "_AEHTOPA_",
+                        "Descriptors": [
+                          {
+                            "Id": "_AEHTOPA_NULL",
+                            "Name": "_AEHTopA_NULL"
+                          },
+                          {
+                            "Id": "_AEHTOPA_1",
+                            "Name": "_AEHTopA_1"
+                          },
+                          {
+                            "Id": "_AEHTOPA_2",
+                            "Name": "_AEHTopA_2"
+                          },
+                          {
+                            "Id": "_AEHTOPA_4",
+                            "Name": "_AEHTopA_4"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_AEHACCS_2",
+                    "Name": "_AEHAccs_2",
+                    "Children": [
+                      {
+                        "GroupId": "_AEHACCSB_",
+                        "Descriptors": [
+                          {
+                            "Id": "_AEHACCSB_1",
+                            "Name": "_AEHAccsB_1"
+                          },
+                          {
+                            "Id": "_AEHACCSB_2",
+                            "Name": "_AEHAccsB_2"
+                          },
+                          {
+                            "Id": "_AEHACCSB_3",
+                            "Name": "_AEHAccsB_3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_BUFF",
+            "Name": "_Head_Buff",
+            "Children": [
+              {
+                "GroupId": "_HBTEETH_",
+                "Descriptors": [
+                  {
+                    "Id": "_HBTEETH_1",
+                    "Name": "_HBTeeth_1"
+                  },
+                  {
+                    "Id": "_HBTEETH_2",
+                    "Name": "_HBTeeth_2"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_BHHORNS_",
+                "Descriptors": [
+                  {
+                    "Id": "_BHHORNS_NULL",
+                    "Name": "_BHHorns_NULL"
+                  },
+                  {
+                    "Id": "_BHHORNS_1",
+                    "Name": "_BHHorns_1"
+                  },
+                  {
+                    "Id": "_BHHORNS_2",
+                    "Name": "_BHHorns_2"
+                  },
+                  {
+                    "Id": "_BHHORNS_3",
+                    "Name": "_BHHorns_3"
+                  },
+                  {
+                    "Id": "_BHHORNS_4",
+                    "Name": "_BHHorns_4"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_BHEARS_",
+                "Descriptors": [
+                  {
+                    "Id": "_BHEARS_4",
+                    "Name": "_BHEars_4"
+                  },
+                  {
+                    "Id": "_BHEARS_3",
+                    "Name": "_BHEars_3"
+                  },
+                  {
+                    "Id": "_BHEARS_1",
+                    "Name": "_BHEars_1"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HDACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_HDACC_4XRARE",
+                    "Name": "_HDAcc_4xRARE"
+                  },
+                  {
+                    "Id": "_HDACC_NONE",
+                    "Name": "_HDAcc_none"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_BHNOSE_",
+                "Descriptors": [
+                  {
+                    "Id": "_BHNOSE_2XRARE",
+                    "Name": "_BHNose_2xRARE"
+                  },
+                  {
+                    "Id": "_BHNOSE_NULL",
+                    "Name": "_BHNose_NULL"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_DEER",
+            "Name": "_Head_Deer",
+            "Children": [
+              {
+                "GroupId": "_HDTEETH_",
+                "Descriptors": [
+                  {
+                    "Id": "_HDTEETH_1",
+                    "Name": "_HDTeeth_1"
+                  },
+                  {
+                    "Id": "_HDTEETH_2",
+                    "Name": "_HDTeeth_2"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HDEARS_",
+                "Descriptors": [
+                  {
+                    "Id": "_HDEARS_NULL",
+                    "Name": "_HDEars_NULL"
+                  },
+                  {
+                    "Id": "_HDEARS_1",
+                    "Name": "_HDEars_1"
+                  },
+                  {
+                    "Id": "_HDEARS_9",
+                    "Name": "_HDEars_9"
+                  },
+                  {
+                    "Id": "_HDEARS_3",
+                    "Name": "_HDEars_3"
+                  },
+                  {
+                    "Id": "_HDEARS_4",
+                    "Name": "_HDEars_4"
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HDHORNS_",
+                "Descriptors": [
+                  {
+                    "Id": "_HDHORNS_NULL",
+                    "Name": "_HDHorns_NULL"
+                  },
+                  {
+                    "Id": "_HDHORNS_1",
+                    "Name": "_HDHorns_1"
+                  },
+                  {
+                    "Id": "_HDHORNS_2",
+                    "Name": "_HDHorns_2"
+                  },
+                  {
+                    "Id": "_HDHORNS_3",
+                    "Name": "_HDHorns_3"
+                  },
+                  {
+                    "Id": "_HDHORNS_4",
+                    "Name": "_HDHorns_4"
+                  },
+                  {
+                    "Id": "_HDHORNS_5",
+                    "Name": "_HDHorns_5"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_GDANE",
+            "Name": "_Head_GDane",
+            "Children": [
+              {
+                "GroupId": "_GDACCS_",
+                "Descriptors": [
+                  {
+                    "Id": "_GDACCS_1",
+                    "Name": "_GDAccs_1",
+                    "Children": [
+                      {
+                        "GroupId": "_GDNOSE_",
+                        "Descriptors": [
+                          {
+                            "Id": "_GDNOSE_NULL",
+                            "Name": "_GDNose_NULL"
+                          }
+                        ]
+                      },
+                      {
+                        "GroupId": "_GDEAR_",
+                        "Descriptors": [
+                          {
+                            "Id": "_GDEAR_NULL",
+                            "Name": "_GDEar_NULL"
+                          },
+                          {
+                            "Id": "_GDEAR_1",
+                            "Name": "_GDEar_1"
+                          },
+                          {
+                            "Id": "_GDEAR_2",
+                            "Name": "_GDEar_2"
+                          },
+                          {
+                            "Id": "_GDEAR_3",
+                            "Name": "_GDEar_3"
+                          },
+                          {
+                            "Id": "_GDEAR_4",
+                            "Name": "_GDEar_4"
+                          },
+                          {
+                            "Id": "_GDEAR_5",
+                            "Name": "_GDEar_5"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Id": "_GDACCS_2",
+                    "Name": "_GDAccs_2",
+                    "Children": [
+                      {
+                        "GroupId": "_GDPLATE_",
+                        "Descriptors": [
+                          {
+                            "Id": "_GDPLATE_1",
+                            "Name": "_GDPlate_1"
+                          },
+                          {
+                            "Id": "_GDPLATE_2",
+                            "Name": "_GDPlate_2"
+                          },
+                          {
+                            "Id": "_GDPLATE_3",
+                            "Name": "_GDPlate_3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "GroupId": "_HGDTEETH_",
+                "Descriptors": [
+                  {
+                    "Id": "_HGDTEETH_1",
+                    "Name": "_HGDTeeth_1"
+                  },
+                  {
+                    "Id": "_HGDTEETH_2",
+                    "Name": "_HGDTeeth_2"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "GroupId": "_BODY_",
+        "Descriptors": [
+          {
+            "Id": "_BODY_BUFF",
+            "Name": "_Body_Buff",
+            "Children": [
+              {
+                "GroupId": "_B2LB_",
+                "Descriptors": [
+                  {
+                    "Id": "_B2LB_NULL",
+                    "Name": "_B2LB_NULL"
+                  },
+                  {
+                    "Id": "_B2LB_2",
+                    "Name": "_B2LB_2"
+                  },
+                  {
+                    "Id": "_B2LB_11",
+                    "Name": "_B2LB_11"
+                  },
+                  {
+                    "Id": "_B2LB_3",
+                    "Name": "_B2LB_3"
+                  },
+                  {
+                    "Id": "_B2LB_9",
+                    "Name": "_B2LB_9"
+                  },
+                  {
+                    "Id": "_B2LB_5",
+                    "Name": "_B2LB_5"
+                  },
+                  {
+                    "Id": "_B2LB_8",
+                    "Name": "_B2LB_8"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_BODY_CHICKEN",
+            "Name": "_Body_Chicken"
+          },
+          {
+            "Id": "_BODY_DEER",
+            "Name": "_Body_Deer",
+            "Children": [
+              {
+                "GroupId": "_B2LD_",
+                "Descriptors": [
+                  {
+                    "Id": "_B2LD_2",
+                    "Name": "_B2LD_2"
+                  },
+                  {
+                    "Id": "_B2LD_3",
+                    "Name": "_B2LD_3"
+                  },
+                  {
+                    "Id": "_B2LD_8",
+                    "Name": "_B2LD_8"
+                  },
+                  {
+                    "Id": "_B2LD_4",
+                    "Name": "_B2LD_4"
+                  },
+                  {
+                    "Id": "_B2LD_5",
+                    "Name": "_B2LD_5"
+                  },
+                  {
+                    "Id": "_B2LD_7",
+                    "Name": "_B2LD_7"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "GroupId": "_TAIL_",
+        "Descriptors": [
+          {
+            "Id": "_TAIL_1",
+            "Name": "_Tail_1"
+          },
+          {
+            "Id": "_TAIL_2",
+            "Name": "_Tail_2",
+            "Children": [
+              {
+                "GroupId": "_FINB_",
+                "Descriptors": [
+                  {
+                    "Id": "_FINB_0",
+                    "Name": "_finB_0"
+                  },
+                  {
+                    "Id": "_FINB_1XRARE",
+                    "Name": "_finB_1xRARE"
+                  },
+                  {
+                    "Id": "_FINB_3XRARE",
+                    "Name": "_finB_3xRARE"
+                  },
+                  {
+                    "Id": "_FINB_2XRARE",
+                    "Name": "_finB_2xRARE"
+                  },
+                  {
+                    "Id": "_FINB_0B",
+                    "Name": "_finB_0B"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_TAIL_3",
+            "Name": "_Tail_3",
+            "Children": [
+              {
+                "GroupId": "_FIN_",
+                "Descriptors": [
+                  {
+                    "Id": "_FIN_1XRARE",
+                    "Name": "_Fin_1xRARE"
+                  },
+                  {
+                    "Id": "_FIN_0",
+                    "Name": "_Fin_0"
+                  },
+                  {
+                    "Id": "_FIN_2XRARE",
+                    "Name": "_Fin_2xRARE"
+                  },
+                  {
+                    "Id": "_FIN_0B",
+                    "Name": "_Fin_0B"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "CreatureId": "WEIRDBUTTERFLY",
+    "FriendlyName": "WEIRDBUTTERFLY",
     "Details": [
       {
         "GroupId": "_SHELLFLY1_",
@@ -18008,35 +18074,8 @@
     ]
   },
   {
-    "CreatureId": "WEIRDDIGGER",
-    "Details": [
-      {
-        "GroupId": "_WEIRD_",
-        "Descriptors": [
-          {
-            "Id": "_WEIRD_CRYSTAL",
-            "Name": "_Weird_Crystal"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "CreatureId": "WEIRDFLOCK",
-    "Details": [
-      {
-        "GroupId": "_WEIRD_",
-        "Descriptors": [
-          {
-            "Id": "_WEIRD_CRYSTAL",
-            "Name": "_Weird_Crystal"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "CreatureId": "WEIRDRIG",
+    "FriendlyName": "WEIRDFLOAT or WEIRDROLL",
     "Details": [
       {
         "GroupId": "_WEIRD_",
@@ -18115,7 +18154,23 @@
     ]
   },
   {
+    "CreatureId": "WEIRDFLOCK",
+    "FriendlyName": "WEIRDFLOCK",
+    "Details": [
+      {
+        "GroupId": "_WEIRD_",
+        "Descriptors": [
+          {
+            "Id": "_WEIRD_CRYSTAL",
+            "Name": "_Weird_Crystal"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "CreatureId": "WEIRDRIGGROUND",
+    "FriendlyName": "WEIRDRIGGROUND",
     "Details": [
       {
         "GroupId": "_CRYSTAL_",

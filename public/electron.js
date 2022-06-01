@@ -25,6 +25,11 @@ function createWindow() {
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
 
+  win.webContents.on('new-window', function(e, url) {
+    e.preventDefault();
+    require('electron').shell.openExternal(url);
+  });
+
   win.webContents.session.webRequest.onBeforeSendHeaders(
     (details, callback) => {
       callback({ requestHeaders: { Origin: '*', ...details.requestHeaders } });

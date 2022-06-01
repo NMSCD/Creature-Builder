@@ -12,6 +12,9 @@ import { Routes } from './constants/routes';
 import { Route, Router } from "wouter";
 import { HomePage } from './page/homePage';
 import { AppDrawer } from './components/common/appDrawer';
+import { AboutPage } from './page/aboutPage';
+import { isElectron } from './helper/envHelper';
+import { NotFoundPage } from './page/notFoundPage';
 
 const currentLocation = () =>
     window.location.hash.replace(/^#/, "") || "/";
@@ -68,7 +71,13 @@ export const AppShell: React.FC = () => {
             <Router hook={useHashLocation}>
                 <Route path={Routes.login} component={LoginPage} />
                 <Route path={Routes.builder} component={BuilderPage} />
-                <Route component={HomePage} />
+                <Route path={Routes.about} component={AboutPage} />
+                {
+                    isElectron()
+                        ? <Route path="/" component={BuilderPage} />
+                        : <Route path="/" component={HomePage} />
+                }
+                <Route path="/:rest*" component={NotFoundPage} />
             </Router>
             <Footer />
             <AppDrawer />

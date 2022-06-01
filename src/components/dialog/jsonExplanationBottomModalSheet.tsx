@@ -1,4 +1,4 @@
-import { Container, Divider, Text } from '@chakra-ui/react';
+import { Container, Divider, Text, Kbd } from '@chakra-ui/react';
 import React from 'react';
 import { BasicImage } from '../core/image';
 import { GoatFungusSaveEditorLink } from '../core/link';
@@ -32,11 +32,11 @@ export const JsonExplanationBottomModalSheet: React.FC<IProps> = (props: IProps)
                 <Text>Select a pet you wish to edit. In the above image, pet '[3]' was selected.</Text>
                 <Text>The JSON for the selected pet is displayed on the right.</Text>
                 <br />
-                <Text>Use <kbd>ctrl</kbd> + <kbd>a</kbd> (to select everything) and <kbd>ctrl</kbd> + <kbd>c</kbd> (to copy) all the pet JSON.</Text>
+                <Text>Use <Kbd>ctrl</Kbd> <Kbd>a</Kbd> (to select everything) and <Kbd>ctrl</Kbd> <Kbd>c</Kbd> (to copy) all the pet JSON.</Text>
                 <Text>Paste that JSON into this tool to edit the JSON.</Text>
                 <br />
                 <Text>Once complete, you can copy the JSON from this tool and</Text>
-                <Text>paste it back into the gotafungus Save Editor using <kbd>ctrl</kbd> + <kbd>v</kbd> (to paste)</Text>
+                <Text>paste it back into the gotafungus Save Editor using <Kbd>ctrl</Kbd> <Kbd>v</Kbd> (to paste)</Text>
                 <Divider mt="3em" mb="3em" />
             </Container>
         </BottomModalSheet >

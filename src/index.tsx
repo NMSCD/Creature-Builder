@@ -3,10 +3,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { AppShell } from './appShell';
 import { CustomThemeProvider } from './themeProvider';
+import { DependencyInjectionProvider } from './integration/DependencyInjectionProvider';
 
 import './sass/main.scss';
 import "../node_modules/react-toastify/dist/ReactToastify.css";
-import { DependencyInjectionProvider } from './integration/DependencyInjectionProvider';
+import 'react-medium-image-zoom/dist/styles.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('creature-builder') as HTMLElement

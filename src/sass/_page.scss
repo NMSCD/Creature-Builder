@@ -1,6 +1,32 @@
-.home-page-content {
+.home-page-content,
+.about-page-content {
     section {
         margin-bottom: 2em;
         padding: 0 4em;
+    }
+}
+
+.home-page-content {
+    img.round {
+        border: 1px solid gray;
+        border-radius: 20px;
+        padding: 1em;
+    }
+}
+
+.about-page-content {
+    a {
+        text-decoration: none !important;
+
+        &.credit-row {
+            display: inline-block;
+            margin-top: 0.5em;
+            width: 100%;
+            color: white;
+        }
+    }
+
+    .chakra-accordion__panel {
+        color: rgba(255, 255, 255, 0.6);
     }
 }

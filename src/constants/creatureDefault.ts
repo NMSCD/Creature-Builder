@@ -5,7 +5,7 @@ export const defaultPetJson = (): CreatureSave => {
     const timeInEpoch = dateToEpoch(friendlyDate());
 
     return {
-        Scale: 0.5,
+        Scale: 5.545454545,
         CreatureID: "^",
         Descriptors: [
             "^000000000"

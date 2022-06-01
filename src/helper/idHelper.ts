@@ -9,7 +9,7 @@ export const makeIdFromChars = (characters: string, length: number) => {
     return result;
 }
 
-export const descriptorId = () => {
+export const newDescriptorId = () => {
     const characters = '0123456789';
     return makeIdFromChars(characters, 10);
 }

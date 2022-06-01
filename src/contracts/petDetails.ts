@@ -1,6 +1,7 @@
 
 export interface PetMainDetails {
     CreatureId: string;
+    FriendlyName: string;
     Details: Array<PetDetails>
 }
 

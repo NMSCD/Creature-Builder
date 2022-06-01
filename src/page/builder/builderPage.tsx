@@ -4,17 +4,19 @@ import { RepeatIcon } from '@chakra-ui/icons';
 import petJsonData from '../../assets/IPetData.json'
 import { PetMainDetails } from '../../contracts/petDetails';
 import { AttributeDropDown } from '../../components/attributeDropDown';
-import { descriptorId } from '../../helper/idHelper';
+import { newDescriptorId } from '../../helper/idHelper';
 import { JsonViewer } from '../../components/jsonViewer';
 import { RouterGuard } from '../../components/routerGuard';
 import { CreatureSave } from '../../contracts/creatureSave';
 import { BuilderPageComponents } from './builderPageComponents';
 import { defaultPetJson } from '../../constants/creatureDefault';
 import { DependencyInjectionContext } from '../../integration/DependencyInjectionProvider';
+import { BasePage } from '../basePage';
 
 export const BuilderPage: React.FC = () => {
   const [selectedPet, setSelectedPet] = useState<PetMainDetails>({} as any);
   const [mappingString, setMappingString] = useState<string>('');
+  const [descriptorId, setDescriptorId] = useState<string>(newDescriptorId());
   const [intervalTrigger, setIntervalTrigger] = useState<number>(0);
   const [pastedJson, setPastedJson] = useState<CreatureSave>(defaultPetJson());
   const { toastService } = useContext(DependencyInjectionContext);
@@ -29,6 +31,7 @@ export const BuilderPage: React.FC = () => {
       setMappingString((latestMappingString: string) => {
         if (latestMappingString !== newValue) {
           console.log('update UI');
+          setDescriptorId(newDescriptorId());
           return newValue;
         }
         console.log('nothing to change');
@@ -56,7 +59,7 @@ export const BuilderPage: React.FC = () => {
   }
 
   const modifyJsonObj = (name: string, value: any) => {
-    console.log(name, value);
+    console.log('modifyJsonObj', name, value);
     setPastedJson((orig) => ({
       ...orig,
       [name]: value
@@ -83,7 +86,6 @@ export const BuilderPage: React.FC = () => {
 
     const descriptors: Array<string> = localMappingString.split(',');
     const displayDescrips = descriptors.map(descr => `^${descr}`);
-    displayDescrips.push('^' + descriptorId());
 
     const finalObj = {
       ...pastedJson,
@@ -118,9 +120,15 @@ export const BuilderPage: React.FC = () => {
   }
 
   const creatureIdIsNotNull = (selectedPet.CreatureId != null);
+  const jsonViewerNode = (
+    <JsonViewer
+      json={getJsonFromMappings(mappingString + ',' + descriptorId)}
+      getMappingsFromJson={getMappingsFromJson}
+    />
+  );
 
   return (
-    <>
+    <BasePage>
       <RouterGuard />
       <Container>
         <HStack>
@@ -132,8 +140,8 @@ export const BuilderPage: React.FC = () => {
             onChange={onChangeCreatureDropDown}
           >
             {
-              petJsonData.map((pet, index) => (
-                <option key={pet.CreatureId + index} value={pet.CreatureId}>{pet.CreatureId}</option>
+              petData.map((pet, index) => (
+                <option key={pet.CreatureId + index} value={pet.CreatureId}>{pet.FriendlyName}</option>
               ))
             }
           </Select>
@@ -179,10 +187,7 @@ export const BuilderPage: React.FC = () => {
               <Box flex="2" mt="3" className="hidden-in-mobile">
                 {
                   (selectedPet.CreatureId != null) &&
-                  <JsonViewer
-                    json={getJsonFromMappings(mappingString)}
-                    getMappingsFromJson={getMappingsFromJson}
-                  />
+                  jsonViewerNode
                 }
               </Box>
               <Box width="20px" className="hidden-in-mobile"></Box>
@@ -204,6 +209,7 @@ export const BuilderPage: React.FC = () => {
                     <BuilderPageComponents
                       creatureId={selectedPet.CreatureId}
                       pastedJson={pastedJson}
+                      regenDescriptoId={() => setDescriptorId(newDescriptorId())}
                       modifyJsonObj={modifyJsonObj}
                     />
                   )
@@ -212,16 +218,13 @@ export const BuilderPage: React.FC = () => {
               </Box>
             </Flex>
             <Box mt="12" className="hidden-in-desktop">
-              <JsonViewer
-                json={getJsonFromMappings(mappingString)}
-                getMappingsFromJson={getMappingsFromJson}
-              />
+              {jsonViewerNode}
             </Box>
           </Box>
         )
       }
 
-    </>
+    </BasePage>
   );
 }
 

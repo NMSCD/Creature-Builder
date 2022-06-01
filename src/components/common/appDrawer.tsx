@@ -1,9 +1,11 @@
-import { ChevronRightIcon, HamburgerIcon } from '@chakra-ui/icons';
+import { ChevronRightIcon, EditIcon, ExternalLinkIcon, HamburgerIcon, InfoOutlineIcon, UnlockIcon } from '@chakra-ui/icons';
 import { Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, List, ListIcon, ListItem, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { Routes } from '../../constants/routes';
-import { AssistantNmsHomeLink, NMSHubDiscordLink } from '../core/link';
+import { isElectron } from '../../helper/envHelper';
+import { AssistantNmsHomeLink, MeogiYouTubeChannel, NMSHubDiscordLink } from '../core/link';
+import { HiddenInElectron } from './electronVisible';
 
 interface IAppDrawer {
 }
@@ -38,7 +40,7 @@ export const AppDrawer: React.FC<IAppDrawer> = (props: IAppDrawer) => {
                 onClose={() => setMenuOpen(false)}
             >
                 <DrawerOverlay />
-                <DrawerContent>
+                <DrawerContent className="app-drawer">
                     <DrawerCloseButton />
                     <DrawerHeader>Menu</DrawerHeader>
                     <Divider mb={2} />
@@ -46,16 +48,22 @@ export const AppDrawer: React.FC<IAppDrawer> = (props: IAppDrawer) => {
                     <DrawerBody>
                         <Text mb={2}>Pages</Text>
                         <List spacing={3}>
+                            <HiddenInElectron>
+                                <ListItem>
+                                    <ListIcon as={ChevronRightIcon} />
+                                    <Link to={Routes.home} onClick={onMenuClick}>Home</Link>
+                                </ListItem>
+                            </HiddenInElectron>
                             <ListItem>
-                                <ListIcon as={ChevronRightIcon} />
-                                <Link to={Routes.home} onClick={onMenuClick}>Home</Link>
+                                <ListIcon as={InfoOutlineIcon} />
+                                <Link to={Routes.home + Routes.about} onClick={onMenuClick}>About</Link>
                             </ListItem>
                             <ListItem>
-                                <ListIcon as={ChevronRightIcon} />
+                                <ListIcon as={UnlockIcon} />
                                 <Link to={Routes.home + Routes.login} onClick={onMenuClick}>Login</Link>
                             </ListItem>
                             <ListItem>
-                                <ListIcon as={ChevronRightIcon} />
+                                <ListIcon as={EditIcon} />
                                 <Link to={Routes.home + Routes.builder} onClick={onMenuClick}>Builder</Link>
                             </ListItem>
                         </List>
@@ -63,10 +71,13 @@ export const AppDrawer: React.FC<IAppDrawer> = (props: IAppDrawer) => {
                         <Text mb={2}>Links</Text>
                         <List spacing={3}>
                             <ListItem>
-                                <AssistantNmsHomeLink />
+                                <AssistantNmsHomeLink />&nbsp;<ExternalLinkIcon />
                             </ListItem>
                             <ListItem>
-                                <NMSHubDiscordLink />
+                                <MeogiYouTubeChannel />&nbsp;<ExternalLinkIcon />
+                            </ListItem>
+                            <ListItem>
+                                <NMSHubDiscordLink />&nbsp;<ExternalLinkIcon />
                             </ListItem>
                         </List>
                     </DrawerBody>

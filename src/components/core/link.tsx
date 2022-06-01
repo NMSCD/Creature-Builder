@@ -43,6 +43,9 @@ export const BasicLink = (props: IProps) => {
 }
 
 export const AssistantNmsHomeLink = () => (<BasicLink href={Site.assistantNMS.website} title="AssistantNMS">AssistantNMS</BasicLink>);
+export const AssistantAppsDiscordLink = (props: any) => (<BasicLink href={Site.assistantApps.discord} title="AssistantApps">{props.children ?? 'AssistantApps Discord'}</BasicLink>);
 export const MeogiYouTubeChannel = () => (<BasicLink href={ExternalUrl.meogiYT} title="Meogi">Meogi</BasicLink>);
-export const NMSHubDiscordLink = () => (<BasicLink href={ExternalUrl.nmsHubDiscord} title="NMS Hub">NMS Hub</BasicLink>);
+export const NMSHubDiscordLink = (props: any) => (<BasicLink href={ExternalUrl.nmsHubDiscord} title="NMS Hub">{props.children ?? 'NMS Hub'}</BasicLink>);
 export const GoatFungusSaveEditorLink = () => (<BasicLink href={ExternalUrl.goatFungusSaveEditor} title="goatfungus Save Editor">goatfungus Save Editor</BasicLink>);
+export const NMSCDLink = () => (<BasicLink href={ExternalUrl.nmscd} title="NMSCD">NMSCD</BasicLink>);
+export const MBINCompilerLink = () => (<BasicLink href={ExternalUrl.mbinCompiler} title="MBINCompiler">MBINCompiler</BasicLink>);

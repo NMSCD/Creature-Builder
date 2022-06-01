@@ -1,5 +1,5 @@
 import React, { } from 'react';
-import { Box, Center, Flex, Input, } from '@chakra-ui/react'
+import { Box, Center, Flex, Input, Tooltip, } from '@chakra-ui/react'
 import { CreatureSave } from '../../contracts/creatureSave';
 import { dateFromEpoch, dateToEpoch, friendlyDate } from '../../helper/dateHelper';
 import { depthSpacingInPx } from '../../constants/UIConstant';
@@ -9,6 +9,7 @@ interface IFormDatePicker {
     pastedJson?: CreatureSave;
     propName: string;
     displayName: string;
+    enableTooltip?: boolean;
     modifyJsonObj: (name: string, value: any) => void;
 }
 export const PastedJsonFormDatePicker: React.FC<IFormDatePicker> = (props: IFormDatePicker) => {
@@ -24,7 +25,9 @@ export const PastedJsonFormDatePicker: React.FC<IFormDatePicker> = (props: IForm
         <Flex width="370px">
             <Center width={`${depthSpacingInPx * 1.5}px`} className="group noselect">
                 <Box className="inner" width="100%">
-                    {props.displayName}
+                    <Tooltip isDisabled={props.enableTooltip !== true} label={props.displayName} placement='top'>
+                        {props.displayName}
+                    </Tooltip>
                 </Box>
             </Center>
             <Box flex="1">

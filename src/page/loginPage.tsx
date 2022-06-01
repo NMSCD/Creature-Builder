@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Box, Button, Center, Input, Spinner, ThemeTypings, Text } from '@chakra-ui/react';
+import { Box, Button, Center, Input, Spinner, ThemeTypings, Text, Image } from '@chakra-ui/react';
 import { useLocation } from "wouter";
 import { Footer } from '../components/common/footer';
 import { developmentLicenceKey } from '../constants/licence';
@@ -13,14 +13,19 @@ import { newRandomSeed } from '../helper/idHelper';
 import { patronOAuthUrl } from '../integration/patreonOAuth';
 import { ResultWithValue } from '../contracts/results/ResultWithValue';
 import { AssistantNmsHomeLink, NMSHubDiscordLink } from '../components/core/link';
+import { ExternalImages } from '../constants/externalUrl';
+import { OAuthClient } from '../services/signal/OAuthClient';
+import { BasePage } from './basePage';
 
 export const LoginPage: React.FC = () => {
     const [licenceKey, setLicenceKey] = useState<string>('');
     const [btnColourScheme, setBtnColourScheme] = useState<ThemeTypings["colorSchemes"]>();
     const [networkState, setNetworkState] = useState<NetworkState>(NetworkState.Pending);
     const [deviceId, setDeviceId] = useState<string>();
+    const [oAuthClient] = useState<OAuthClient>(new OAuthClient());
+
     const [, setLocation] = useLocation();
-    const { storageService, toastService, assistantAppsApiService, oAuthClient } =
+    const { storageService, toastService, assistantAppsApiService } =
         useContext(DependencyInjectionContext);
 
     useEffect(() => {
@@ -70,7 +75,7 @@ export const LoginPage: React.FC = () => {
 
         try {
             await storageService.writeFile(StorageKey.licenceFile, contents);
-            setLocation(Routes.home);
+            setLocation(Routes.builder);
         } catch (e: any) {
             console.error({ ...e });
             toastService.error(
@@ -89,69 +94,76 @@ export const LoginPage: React.FC = () => {
     }
 
     return (
-        <Center className="login-page" flexDirection="column">
-            <Box className="blurred-box">
-                <div className="nms-login-box">
-                    {
-                        (networkState === NetworkState.Loading)
-                            ? (
-                                <Center className="nms-icon">
-                                    <Spinner size="xl" mt="1.5em" />
-                                </Center>
-                            )
-                            : (
-                                <img
-                                    src="https://avatars.githubusercontent.com/u/54021133?s=200"
-                                    alt="AssistantNMS"
-                                    className="nms-icon"
-                                />
-                            )
-                    }
+        <BasePage>
+            <Center className="login-page" flexDirection="column">
+                <Box className="blurred-box">
+                    <div className="nms-login-box">
+                        {
+                            (networkState === NetworkState.Loading)
+                                ? (
+                                    <Center className="nms-icon">
+                                        <Spinner size="xl" mt="1.5em" />
+                                    </Center>
+                                )
+                                : (
+                                    <Image
+                                        src={ExternalImages.assistantNMS}
+                                        alt="AssistantNMS"
+                                        className="nms-icon"
+                                    />
+                                )
+                        }
 
-                    <div className="explanation">
-                        Application access restricted. <br />
-                        Please contact <NMSHubDiscordLink /> or <AssistantNmsHomeLink /> for access.
+                        <div className="explanation">
+                            Application access restricted. <br />
+                            Please contact <NMSHubDiscordLink /> or <AssistantNmsHomeLink /> for access.
+                        </div>
+                        <Input
+                            placeholder="Licence key"
+                            value={licenceKey}
+                            focusBorderColor='#f03a73'
+                            disabled={networkState === NetworkState.Loading}
+                            onKeyDown={(e: any) => {
+                                if (e.key === 'Enter') {
+                                    submitLicenceKey();
+                                }
+                            }}
+                            onChange={(event: any) => {
+                                const newValue = event?.target?.value ?? '';
+                                setLicenceKey(newValue);
+                                setBtnColourScheme(newValue.length > 0 ? 'red' : undefined);
+                            }}
+                        />
+                        <Button
+                            mt={3}
+                            colorScheme={btnColourScheme}
+                            disabled={networkState === NetworkState.Loading}
+                            onClick={() => submitLicenceKey()}
+                        >Submit Licence Key</Button>
+                        <Text mt={3} className="hidden">OR</Text>
+                        <Button
+                            mt={3}
+                            className="hidden"
+                            backgroundColor="#FF424D"
+                            _hover={{ backgroundColor: '#ff8742' }}
+                            isLoading={oAuthClient.isConnected() === false}
+                            loadingText="Log in with Patreon"
+                            disabled={networkState === NetworkState.Loading || oAuthClient.isConnected() === false}
+                            onClick={() => patreonRedirect()}
+                        >Log in with Patreon</Button>
+
+                        {
+                            (networkState === NetworkState.Error) && (
+                                <Box textAlign="center">
+                                    Something went wrong activating your key
+                                </Box>
+                            )
+                        }
                     </div>
-                    <Input
-                        placeholder="Licence key"
-                        value={licenceKey}
-                        focusBorderColor='#f03a73'
-                        disabled={networkState === NetworkState.Loading}
-                        onChange={(event: any) => {
-                            const newValue = event?.target?.value ?? '';
-                            setLicenceKey(newValue);
-                            setBtnColourScheme(newValue.length > 0 ? 'red' : undefined);
-                        }}
-                    />
-                    <Button
-                        mt={3}
-                        colorScheme={btnColourScheme}
-                        disabled={networkState === NetworkState.Loading}
-                        onClick={() => submitLicenceKey()}
-                    >Submit Licence Key</Button>
-                    <Text mt={3} className="hidden">OR</Text>
-                    <Button
-                        mt={3}
-                        className="hidden"
-                        backgroundColor="#FF424D"
-                        _hover={{ backgroundColor: '#ff8742' }}
-                        isLoading={oAuthClient.isConnected() === false}
-                        loadingText="Log in with Patreon"
-                        disabled={networkState === NetworkState.Loading || oAuthClient.isConnected() === false}
-                        onClick={() => patreonRedirect()}
-                    >Log in with Patreon</Button>
-
-                    {
-                        (networkState === NetworkState.Error) && (
-                            <Box textAlign="center">
-                                Something went wrong activating your key
-                            </Box>
-                        )
-                    }
-                </div>
-            </Box>
-            <Footer className="small" />
-        </Center>
+                </Box>
+                <Footer className="small" />
+            </Center>
+        </BasePage>
     );
 }
 
