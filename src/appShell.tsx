@@ -9,7 +9,7 @@ import { PlatformType } from './contracts/generated/AssistantApps/Enum/platformT
 import { DependencyInjectionContext } from './integration/DependencyInjectionProvider';
 import { LoginPage } from './page/loginPage';
 import { Routes } from './constants/routes';
-import { Route, Router } from "wouter";
+import { Route, Router, useLocation } from "wouter";
 import { HomePage } from './page/homePage';
 import { AppDrawer } from './components/common/appDrawer';
 import { AboutPage } from './page/aboutPage';
