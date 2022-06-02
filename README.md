@@ -40,4 +40,4 @@ You will also see any lint errors in the console.
 ##### Manual process:
 
 - `PUBLIC_URL="." npm run build` (This is specific to BASH terminal)
-- `npm run dist`
+- `npm run electron:dist`
