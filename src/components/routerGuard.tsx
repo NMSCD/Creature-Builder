@@ -20,7 +20,11 @@ export const RouterGuard: React.FC = () => {
         try {
             const licenceContents = await storageService.readFile<LicenceContents>(StorageKey.licenceFile);
             console.log({ ...licenceContents });
-            if (licenceContents == null || licenceContents.licenceHash == null) {
+            if (
+                licenceContents == null ||
+                licenceContents.licenceHash == null ||
+                licenceContents.licenceHash.length < 3
+            ) {
                 throw new Error('Licence contents invalid')
             }
 
