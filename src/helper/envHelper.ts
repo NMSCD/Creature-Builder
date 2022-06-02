@@ -5,5 +5,15 @@ export const isElectron = (): boolean => {
     return (userAgent?.indexOf?.('electron/') !== -1);
 }
 export const isDevMode = (): boolean => {
-    return '_self' in React.createElement('div');
+    try {
+        const isDev = '_self' in React.createElement('div');
+        if (isDev === true) {
+            console.log('isDevMode');
+        }
+        return isDev;
+    }
+    catch (e: any) {
+        console.error(e);
+        return false;
+    }
 }

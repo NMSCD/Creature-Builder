@@ -67,17 +67,24 @@ export const LoginPage: React.FC = () => {
         setNetworkState(NetworkState.Loading);
 
         const contents: LicenceContents = {
-            licenceHash: licenceKey,
+            licenceHash: '',
         };
 
-        if (isDevMode() && licenceKey !== developmentLicenceKey) {
+        const devMode = isDevMode();
+        if (devMode === true && licenceKey !== developmentLicenceKey) {
             const licenceResult = await activateLicence(licenceKey);
             if (licenceResult.isSuccess === false) {
                 toastService.error(<span className="noselect">{licenceResult.errorMessage ?? 'Something went wrong'}</span>);
-                setNetworkState(NetworkState.Success);
+                setNetworkState(NetworkState.Error);
                 return;
             }
             contents.licenceHash = licenceResult.value;
+        }
+
+        if (contents.licenceHash == null || contents.licenceHash.length < 3) {
+            toastService.error(<span className="noselect">{'Something went wrong'}</span>);
+            setNetworkState(NetworkState.Error);
+            return;
         }
 
         try {
