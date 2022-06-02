@@ -74,10 +74,10 @@ export const AppShell: React.FC = () => {
                 <Route path={Routes.about} component={AboutPage} />
                 {
                     isElectron()
-                        ? <Route path="/:rest*" component={BuilderPage} />
-                        : <Route path="/:rest*" component={HomePage} />
+                        ? <Route path="/" component={BuilderPage} />
+                        : <Route path="/" component={HomePage} />
                 }
-                {/* <Route path="/:rest*" component={NotFoundPage} /> */}
+                <Route path="/:rest*" component={NotFoundPage} />
             </Router>
             <Footer />
             <AppDrawer />

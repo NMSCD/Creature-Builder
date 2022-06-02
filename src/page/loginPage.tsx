@@ -21,7 +21,8 @@ export const LoginPage: React.FC = () => {
     const [licenceKey, setLicenceKey] = useState<string>('');
     const [btnColourScheme, setBtnColourScheme] = useState<ThemeTypings["colorSchemes"]>();
     const [networkState, setNetworkState] = useState<NetworkState>(NetworkState.Pending);
-    const [deviceId, setDeviceId] = useState<string>();
+    const [attemptNum, setAttemptNum] = useState<number>(0);
+    const [deviceId, setDeviceId] = useState<string>(newRandomSeed());
     const [oAuthClient] = useState<OAuthClient>(new OAuthClient());
 
     const [, setLocation] = useLocation();
@@ -29,23 +30,29 @@ export const LoginPage: React.FC = () => {
         useContext(DependencyInjectionContext);
 
     useEffect(() => {
-        console.log({ deviceId });
+        if (attemptNum > 10) {
+            console.log('Max num attempts reached');
+            return;
+        }
+
         if (deviceId == null || oAuthClient.isConnected() === false) {
             setTimeout(() => {
-                setDeviceId(newRandomSeed());
+                setAttemptNum((prev) => prev + 1);
             }, 1000);
             return;
         }
 
+        console.log({ deviceId });
         oAuthClient.joinGroup(deviceId);
         oAuthClient.listenToOAuth(handlePatreonPayload);
+        setDeviceId(deviceId);
 
         return () => {
             oAuthClient.leaveGroup(deviceId);
             oAuthClient.removeListenToOAuth(handlePatreonPayload);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [deviceId]);
+    }, [attemptNum]);
 
     const handlePatreonPayload = async (payload: any): Promise<void> => activateLicenceKeyBase(
         (_: string) => assistantAppsApiService.activateLicenceForPatron(deviceId!)

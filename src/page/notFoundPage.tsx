@@ -2,13 +2,18 @@ import { Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 
 export const NotFoundPage: React.FC = () => {
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         const handler = () => {
+            console.log('Check for base page elems');
             const hasBaseElem = hasBasePageElem();
             setIsVisible(!hasBaseElem);
         };
+
+        setTimeout(() => {
+            handler();
+        }, 1000);
 
         window.addEventListener("hashchange", handler);
         return () => window.removeEventListener("hashchange", handler);
