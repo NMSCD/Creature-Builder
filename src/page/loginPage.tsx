@@ -71,7 +71,8 @@ export const LoginPage: React.FC = () => {
         };
 
         const devMode = isDevMode();
-        if (devMode === true && licenceKey !== developmentLicenceKey) {
+        const skipActivate = devMode === true && licenceKey === developmentLicenceKey;
+        if (skipActivate === false) {
             const licenceResult = await activateLicence(licenceKey);
             if (licenceResult.isSuccess === false) {
                 toastService.error(<span className="noselect">{licenceResult.errorMessage ?? 'Something went wrong'}</span>);
