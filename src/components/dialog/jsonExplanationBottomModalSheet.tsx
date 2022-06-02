@@ -22,11 +22,11 @@ export const JsonExplanationBottomModalSheet: React.FC<IProps> = (props: IProps)
                 <br />
                 <Text>Open the save editor and select the save file that you want to edit.</Text>
                 <Text>Then select the <b>Edit Raw JSON</b> option as shown below.</Text>
-                <BasicImage imageUrl="/assets/img/goatFungusRawJson.png" alt="goatFungus raw json" style={{ margin: '0 auto' }} />
+                <BasicImage imageUrl="./assets/img/goatFungusRawJson.png" alt="goatFungus raw json" style={{ margin: '0 auto' }} />
                 <br />
                 <br />
                 <Text>Then expand the <b>PlayerStateData</b> and <b>Pets</b> options as shown below.</Text>
-                <BasicImage imageUrl="/assets/img/goatFungusRawJsonPetEdit.png" alt="goatFungus raw json" style={{ margin: '0 auto' }} />
+                <BasicImage imageUrl="./assets/img/goatFungusRawJsonPetEdit.png" alt="goatFungus raw json" style={{ margin: '0 auto' }} />
                 <br />
                 <br />
                 <Text>Select a pet you wish to edit. In the above image, pet '[3]' was selected.</Text>

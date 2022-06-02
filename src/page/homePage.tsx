@@ -19,7 +19,7 @@ export const HomePage: React.FC = () => {
                     <Spacer className="hidden-in-mobile" maxW="200px" />
                     <Box p={5}>
                         <Zoom zoomMargin={50} overlayBgColorEnd="rgba(0, 0, 0, 0.85)">
-                            <Image src="/assets/img/easyToUse.png" className="round" maxH="350px" draggable={false} />
+                            <Image src="./assets/img/easyToUse.png" className="round" maxH="350px" draggable={false} />
                         </Zoom>
                     </Box>
                     <Box flex='1' p={5}>
@@ -50,7 +50,7 @@ export const HomePage: React.FC = () => {
                     </Box>
                     <Box p={5}>
                         <Zoom zoomMargin={50} overlayBgColorEnd="rgba(0, 0, 0, 0.85)">
-                            <Image src="/assets/img/easyToUse2.png" className="round" maxH="350px" draggable={false} />
+                            <Image src="./assets/img/easyToUse2.png" className="round" maxH="350px" draggable={false} />
                         </Zoom>
                     </Box>
                     <Spacer className="hidden-in-mobile" maxW="200px" />
@@ -63,7 +63,7 @@ export const HomePage: React.FC = () => {
                 <Flex direction='row'>
                     <Spacer className="hidden-in-mobile" maxW="200px" />
                     <Box p={5}>
-                        <Image src="/assets/img/underConstruction.svg" className="round" maxH="300px" draggable={false} />
+                        <Image src="./assets/img/underConstruction.svg" className="round" maxH="300px" draggable={false} />
                     </Box>
                     <Box flex='1' p={5}>
                         <Center height="100%">
