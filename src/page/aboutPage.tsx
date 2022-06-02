@@ -14,7 +14,7 @@ export const AboutPage: React.FC = () => {
 
             <section>
                 <Container>
-                    <Text textAlign="center">This project was started because <MeogiYouTubeChannel /> was looking to improve the companions their were creating for the community.</Text>
+                    <Text textAlign="center">This project was started because <MeogiYouTubeChannel /> was looking to improve the companions they were creating for the community.</Text>
                     <br />
                     <Text textAlign="center">
                         Using the knowledge of how companions are built in NMS from <MeogiYouTubeChannel /> and <NMSHubDiscordLink /> and the technical abillities from <AssistantNmsHomeLink />&nbsp;
