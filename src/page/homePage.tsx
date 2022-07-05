@@ -15,14 +15,14 @@ export const HomePage: React.FC = () => {
             <br />
 
             <section>
-                <Flex direction='row'>
+                <Flex direction="row">
                     <Spacer className="hidden-in-mobile" maxW="200px" />
                     <Box p={5}>
                         <Zoom zoomMargin={50} overlayBgColorEnd="rgba(0, 0, 0, 0.85)">
                             <Image src="./assets/img/easyToUse.png" className="round" maxH="350px" draggable={false} />
                         </Zoom>
                     </Box>
-                    <Box flex='1' p={5}>
+                    <Box flex="1" p={5}>
                         <Center height="100%">
                             <VStack align="stretch">
                                 <Heading fontSize={30}>Simplified UI</Heading>
@@ -38,9 +38,9 @@ export const HomePage: React.FC = () => {
             <br />
 
             <section>
-                <Flex direction='row'>
+                <Flex direction="row">
                     <Spacer className="hidden-in-mobile" maxW="200px" />
-                    <Box flex='1' p={5}>
+                    <Box flex="1" p={5}>
                         <Center height="100%">
                             <VStack align="stretch">
                                 <Heading fontSize={30}>Valid &amp; Safe to use JSON</Heading>
@@ -60,12 +60,12 @@ export const HomePage: React.FC = () => {
             <br />
 
             <section>
-                <Flex direction='row'>
+                <Flex direction="row">
                     <Spacer className="hidden-in-mobile" maxW="200px" />
                     <Box p={5}>
                         <Image src="./assets/img/underConstruction.svg" className="round" maxH="300px" draggable={false} />
                     </Box>
-                    <Box flex='1' p={5}>
+                    <Box flex="1" p={5}>
                         <Center height="100%">
                             <VStack align="stretch">
                                 <Heading fontSize={30}>Actively being worked on</Heading>

@@ -7,7 +7,7 @@ import { NetworkState } from '../contracts/enum/networkState';
 import { Routes } from '../constants/routes';
 import { StorageKey } from '../constants/storageKey';
 import { LicenceContents } from '../contracts/file/licenceFile';
-import { isDevMode } from '../helper/envHelper';
+import { isDevMode, isElectron } from '../helper/envHelper';
 import { DependencyInjectionContext } from '../integration/DependencyInjectionProvider';
 import { newRandomSeed } from '../helper/idHelper';
 import { patronOAuthUrl } from '../integration/patreonOAuth';
@@ -155,12 +155,12 @@ export const LoginPage: React.FC = () => {
                             disabled={networkState === NetworkState.Loading}
                             onClick={() => submitLicenceKey()}
                         >Submit Licence Key</Button>
-                        <Text mt={3} className="hidden">OR</Text>
+                        <Text mt={3} className={isElectron() ? ' hidden' : ''}>OR</Text>
                         <Button
                             mt={3}
-                            className="hidden"
                             backgroundColor="#FF424D"
                             _hover={{ backgroundColor: '#ff8742' }}
+                            className={isElectron() ? ' hidden' : ''}
                             isLoading={oAuthClient.isConnected() === false}
                             loadingText="Log in with Patreon"
                             disabled={networkState === NetworkState.Loading || oAuthClient.isConnected() === false}
