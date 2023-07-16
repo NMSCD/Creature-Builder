@@ -2,7 +2,8 @@ export const ExternalUrl = {
     nmsHubDiscord: 'https://discord.gg/5hrYrjtWQg',
     meogiYT: 'https://www.youtube.com/c/MEOGI',
     assistantNMS: 'https://nmsassistant.com',
-    nmscd: 'https://nmscd.github.io',
+    nmscd: 'https://nmscd.com',
+    githubRepo: 'https://github.com/NMSCD/Creature-Builder',
     goatFungusSaveEditor: 'https://github.com/goatfungus/NMSSaveEditor',
     mbinCompiler: 'https://github.com/monkeyman192/MBINCompiler',
 }

@@ -6,7 +6,6 @@ import { PetMainDetails } from '../../contracts/petDetails';
 import { AttributeDropDown } from '../../components/attributeDropDown';
 import { newDescriptorId } from '../../helper/idHelper';
 import { JsonViewer } from '../../components/jsonViewer';
-import { RouterGuard } from '../../components/routerGuard';
 import { CreatureSave } from '../../contracts/creatureSave';
 import { BuilderPageComponents } from './builderPageComponents';
 import { defaultPetJson } from '../../constants/creatureDefault';
@@ -129,7 +128,6 @@ export const BuilderPage: React.FC = () => {
 
   return (
     <BasePage>
-      <RouterGuard />
       <Container>
         <HStack>
           <Select
@@ -153,7 +151,6 @@ export const BuilderPage: React.FC = () => {
         </HStack>
         <Box w='100%' p={4} color='white'></Box>
       </Container>
-
       {
         (!creatureIdIsNotNull) && (
           <>

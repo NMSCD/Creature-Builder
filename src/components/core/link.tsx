@@ -48,4 +48,5 @@ export const MeogiYouTubeChannel = () => (<BasicLink href={ExternalUrl.meogiYT} 
 export const NMSHubDiscordLink = (props: any) => (<BasicLink href={ExternalUrl.nmsHubDiscord} title="NMS Hub">{props.children ?? 'NMS Hub'}</BasicLink>);
 export const GoatFungusSaveEditorLink = () => (<BasicLink href={ExternalUrl.goatFungusSaveEditor} title="goatfungus Save Editor">goatfungus Save Editor</BasicLink>);
 export const NMSCDLink = () => (<BasicLink href={ExternalUrl.nmscd} title="NMSCD">NMSCD</BasicLink>);
+export const NMSCDRepoLink = () => (<BasicLink href={ExternalUrl.githubRepo} title="Github Repo">Github Repo</BasicLink>);
 export const MBINCompilerLink = () => (<BasicLink href={ExternalUrl.mbinCompiler} title="MBINCompiler">MBINCompiler</BasicLink>);

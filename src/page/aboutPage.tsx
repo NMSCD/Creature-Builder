@@ -1,9 +1,10 @@
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Container, Divider, Text } from '@chakra-ui/react';
 import React from 'react';
 import { AboutCreditRow } from '../components/aboutCreditRow';
-import { AssistantNmsHomeLink, MeogiYouTubeChannel, NMSHubDiscordLink, MBINCompilerLink, AssistantAppsDiscordLink } from '../components/core/link';
+import { AssistantNmsHomeLink, MeogiYouTubeChannel, NMSHubDiscordLink, MBINCompilerLink, AssistantAppsDiscordLink, NMSCDRepoLink } from '../components/core/link';
 import { ExternalImages, ExternalUrl } from '../constants/externalUrl';
 import { BasePage } from './basePage';
+import { AppImages } from '../constants/image';
 
 export const AboutPage: React.FC = () => {
     return (
@@ -58,20 +59,21 @@ export const AboutPage: React.FC = () => {
                                 <AccordionIcon />
                             </AccordionButton>
                             <AccordionPanel pb={4}>
-                                <Text>You will need to get in contact with <NMSHubDiscordLink /> or <AssistantNmsHomeLink /> to get a licence key.</Text>
+                                <s><Text>You will need to get in contact with <NMSHubDiscordLink /> or <AssistantNmsHomeLink /> to get a licence key.</Text></s>
+                                <Text><br />This tool is now completely is now free! 🥳</Text>
                             </AccordionPanel>
                         </AccordionItem>
 
                         <AccordionItem>
                             <AccordionButton>
                                 <Box flex='1' textAlign='left'>
-                                    <Text fontSize={18}>Why is access limited to select individuals?</Text>
+                                    <Text fontSize={18}>Why was access limited to select individuals?</Text>
                                 </Box>
                                 <AccordionIcon />
                             </AccordionButton>
                             <AccordionPanel pb={4}>
-                                <Text>This is because the tool is still under construction and requires a lot of testing. Invalid pet JSON can easily break NMS saves. We are doing our best to ensure that the tool will be safe for everyone to use.</Text>
-                                <Text mt={3}>We also do not want people abusing the tool and using it to sell creatures to the community.</Text>
+                                <Text>This was because the tool was still under construction and required a lot of testing. Invalid pet JSON can easily break NMS saves. We did our best to ensure that the tool will be safe for everyone to use.</Text>
+                                <Text mt={3}>We also did not (and still do not) want people abusing the tool and using it to sell creatures to the community.</Text>
                             </AccordionPanel>
                         </AccordionItem>
 
@@ -83,7 +85,9 @@ export const AboutPage: React.FC = () => {
                                 <AccordionIcon />
                             </AccordionButton>
                             <AccordionPanel pb={4}>
-                                <Text>You can reach out to:</Text>
+                                <Text>You create an issue on the <NMSCDRepoLink /></Text>
+                                <br />
+                                <Text>Otherwise, you can reach out to:</Text>
                                 <Text>- <b>KhaozTopsy</b> on the <AssistantAppsDiscordLink /></Text>
                                 <Text>- <b>Meogi</b> on the <NMSHubDiscordLink>NMS Hub Discord</NMSHubDiscordLink></Text>
                                 <Text>- <b>Invisible</b> on the <NMSHubDiscordLink>NMS Hub Discord</NMSHubDiscordLink></Text>
@@ -111,16 +115,16 @@ export const AboutPage: React.FC = () => {
                         link={ExternalUrl.assistantNMS}
                     />
                     <AboutCreditRow
-                        imageUrl={ExternalImages.meogi}
-                        heading="Meogi"
-                        subtitle="Companion knowledge and Testing"
-                        link={ExternalUrl.meogiYT}
-                    />
-                    <AboutCreditRow
-                        imageUrl={ExternalImages.nmsHub}
+                        imageUrl={AppImages.nmsHub}
                         heading="Invisible from NMS Hub"
                         subtitle="Companion knowledge and Testing"
                         link={ExternalUrl.assistantNMS}
+                    />
+                    <AboutCreditRow
+                        imageUrl={AppImages.meogi}
+                        heading="Meogi"
+                        subtitle="Companion knowledge and Testing"
+                        link={ExternalUrl.meogiYT}
                     />
                     <AboutCreditRow
                         imageUrl={ExternalImages.monkeyMan}

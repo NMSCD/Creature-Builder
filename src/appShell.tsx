@@ -13,7 +13,6 @@ import { Route, Router } from "wouter";
 import { HomePage } from './page/homePage';
 import { AppDrawer } from './components/common/appDrawer';
 import { AboutPage } from './page/aboutPage';
-import { isElectron } from './helper/envHelper';
 import { NotFoundPage } from './page/notFoundPage';
 
 const currentLocation = () =>
@@ -72,11 +71,7 @@ export const AppShell: React.FC = () => {
                 <Route path={Routes.login} component={LoginPage} />
                 <Route path={Routes.builder} component={BuilderPage} />
                 <Route path={Routes.about} component={AboutPage} />
-                {
-                    isElectron()
-                        ? <Route path="/" component={BuilderPage} />
-                        : <Route path="/" component={HomePage} />
-                }
+                <Route path="/" component={HomePage} />
                 <Route path="/:rest*" component={NotFoundPage} />
             </Router>
             <Footer />

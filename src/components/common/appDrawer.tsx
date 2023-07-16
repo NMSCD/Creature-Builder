@@ -1,9 +1,9 @@
-import { ChevronRightIcon, EditIcon, ExternalLinkIcon, HamburgerIcon, InfoOutlineIcon, UnlockIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon, EditIcon, ExternalLinkIcon, HamburgerIcon, QuestionOutlineIcon } from '@chakra-ui/icons';
 import { Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, List, ListIcon, ListItem, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { Routes } from '../../constants/routes';
-import { AssistantNmsHomeLink, MeogiYouTubeChannel, NMSHubDiscordLink } from '../core/link';
+import { AssistantNmsHomeLink, MeogiYouTubeChannel, NMSCDLink, NMSHubDiscordLink } from '../core/link';
 import { HiddenInElectron } from './electronVisible';
 
 interface IAppDrawer {
@@ -49,21 +49,17 @@ export const AppDrawer: React.FC<IAppDrawer> = (props: IAppDrawer) => {
                         <List spacing={3}>
                             <HiddenInElectron>
                                 <ListItem>
-                                    <ListIcon as={ChevronRightIcon} />
+                                    <ListIcon as={ArrowForwardIcon} />
                                     <Link to={Routes.home} onClick={onMenuClick}>Home</Link>
                                 </ListItem>
                             </HiddenInElectron>
                             <ListItem>
-                                <ListIcon as={InfoOutlineIcon} />
-                                <Link to={Routes.home + Routes.about} onClick={onMenuClick}>About</Link>
-                            </ListItem>
-                            <ListItem>
-                                <ListIcon as={UnlockIcon} />
-                                <Link to={Routes.home + Routes.login} onClick={onMenuClick}>Login</Link>
-                            </ListItem>
-                            <ListItem>
                                 <ListIcon as={EditIcon} />
                                 <Link to={Routes.home + Routes.builder} onClick={onMenuClick}>Builder</Link>
+                            </ListItem>
+                            <ListItem>
+                                <ListIcon as={QuestionOutlineIcon} />
+                                <Link to={Routes.home + Routes.about} onClick={onMenuClick}>About</Link>
                             </ListItem>
                         </List>
                         <Divider mt={5} mb={5} />
@@ -71,6 +67,9 @@ export const AppDrawer: React.FC<IAppDrawer> = (props: IAppDrawer) => {
                         <List spacing={3}>
                             <ListItem>
                                 <AssistantNmsHomeLink />&nbsp;<ExternalLinkIcon />
+                            </ListItem>
+                            <ListItem>
+                                <NMSCDLink />&nbsp;<ExternalLinkIcon />
                             </ListItem>
                             <ListItem>
                                 <MeogiYouTubeChannel />&nbsp;<ExternalLinkIcon />
