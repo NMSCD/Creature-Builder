@@ -5,7 +5,7 @@
   This is a tool to help people craft NMS creatures by allowing you to select the parts that can be used together.
 
   [![Supported by the No Man's Sky Community Developers & Designers](https://raw.githubusercontent.com/NMSCD/About/master/badge/purple-ftb.svg)][nmscd] <br />
-  ![madeWithLove](./.github/badges/built-with-love.svg)
+  ![madeWithLove](./.github/img/built-with-love.svg)
 
   <br /> 
   
