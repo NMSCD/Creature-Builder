@@ -24,10 +24,27 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: Build TS
+      - name: Install packages
         run: |
           npm ci --force
+
+      - name: Rebuild SEO
+        run: |
+          npm run seo
+
+      - name: Build TS
+        run: |
           PUBLIC_URL="." npm run build
+
+      - name: Edit .gitignore
+        run: |
+          cd public
+          echo "/github-pages-deploy-action-temp-deployment-folder" > ./.gitignore
+
+      - name: Add .nojekyll
+        run: |
+          cd public
+          touch .nojekyll
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.3.4
