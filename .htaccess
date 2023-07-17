@@ -1,0 +1,3 @@
+Header add Set-Cookie: "cross-site-cookie=name; SameSite=None; Secure"
+Header add X-Clacks-Overhead: "GNU Eddison the Magic Doggo"
+Header add Clacks-Overhead: "GNU Eddison the Magic Doggo"
