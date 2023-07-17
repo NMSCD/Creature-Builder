@@ -78,6 +78,7 @@ module.exports = (env, argv) => {
                     moveNonHtmlHandlebarGeneratedFile('sitemap.xml', filename);
                     moveNonHtmlHandlebarGeneratedFile('opensearch.xml', filename);
                     moveNonHtmlHandlebarGeneratedFile('humans.txt', filename);
+                    moveNonHtmlHandlebarGeneratedFile('CNAME', filename);
                 }
             }),
         ],

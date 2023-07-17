@@ -1,5 +1,6 @@
 {
-    "rootUrl": "https://creature.nmsassistant.com",
+    "rootUrl": "https://creature.nmscd.com",
+    "cname": "creature.nmscd.com",
     "kurt": {
         "name": "Kurt Lourens",
         "email": "mailto:hi@kurtlourens.com",
@@ -48,8 +49,8 @@
             "x152": "assets/favicon/apple-icon-152x152.png",
             "x180": "assets/favicon/apple-icon-180x180.png"
         },
-        "twitter": "https://www.mugshotbot.com/m?mode=dark&color=purple&pattern=bubbles&url=https://creature.nmsassistant.com",
-        "facebook": "https://www.mugshotbot.com/m?mode=dark&color=purple&pattern=bubbles&url=https://creature.nmsassistant.com"
+        "twitter": "https://www.mugshotbot.com/m?mode=dark&color=purple&pattern=bubbles&url=https://creature.nmscd.com",
+        "facebook": "https://www.mugshotbot.com/m?mode=dark&color=purple&pattern=bubbles&url=https://creature.nmscd.com"
     },
     "headers": [
         {

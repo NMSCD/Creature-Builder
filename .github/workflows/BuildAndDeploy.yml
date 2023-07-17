@@ -40,6 +40,9 @@ jobs:
         run: |
           cd public
           echo "/github-pages-deploy-action-temp-deployment-folder" > ./.gitignore
+          echo "" >> ./.gitignore
+          echo "preload.js" >> ./.gitignore
+          echo "electron.js" >> ./.gitignore
 
       - name: Add .nojekyll
         run: |
