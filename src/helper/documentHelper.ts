@@ -24,10 +24,10 @@ export const toggleHtmlNodeClass = (selector: string, className: string, desired
 
     if (desiredValue != null) {
         const hasClass = htmlTag.classList.contains(className);
-        if (desiredValue === false && hasClass != false) {
+        if (desiredValue === false && hasClass !== false) {
             htmlTag.classList.remove(className);
         }
-        if (desiredValue === true && hasClass != true) {
+        if (desiredValue === true && hasClass !== true) {
             htmlTag.classList.add(className);
         }
     }
