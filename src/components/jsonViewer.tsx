@@ -5,6 +5,7 @@ import { atomOneDarkReasonable } from 'react-syntax-highlighter/dist/esm/styles/
 import { CopyIcon } from '@chakra-ui/icons';
 import { DependencyInjectionContext } from '../integration/DependencyInjectionProvider';
 import { JsonExplanationBottomModalSheet } from './dialog/jsonExplanationBottomModalSheet';
+import { toggleHtmlNodeClass } from '../helper/documentHelper';
 
 interface IProps {
     json: string;
@@ -15,6 +16,11 @@ interface IProps {
 export const JsonViewer: React.FC<IProps> = (props: IProps) => {
     const [isJsonExplanationOpen, setJsonExplanationOpen] = useState<boolean>(false);
     const { toastService } = useContext(DependencyInjectionContext);
+
+    const toggleJsonExplanation = (isOpen: boolean) => {
+        toggleHtmlNodeClass('body', 'noscroll', isOpen);
+        setJsonExplanationOpen(isOpen);
+    }
 
     const copyJson = () => {
         navigator?.clipboard?.writeText?.(props.json)?.then?.(() => {
@@ -44,13 +50,13 @@ export const JsonViewer: React.FC<IProps> = (props: IProps) => {
             <Button
                 pos="absolute" top="0" left="0"
                 transform="translateY(-125%)"
-                onClick={() => setJsonExplanationOpen(true)}
+                onClick={() => toggleJsonExplanation(true)}
             >
                 <span>How to use the JSON</span>
             </Button>
             <JsonExplanationBottomModalSheet
                 isDetailPaneOpen={isJsonExplanationOpen}
-                setDetailPaneOpen={setJsonExplanationOpen}
+                setDetailPaneOpen={toggleJsonExplanation}
             />
         </InputGroup>
     );

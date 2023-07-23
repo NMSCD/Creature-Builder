@@ -17,3 +17,21 @@ export const setChakraToDarkMode = () => {
         }
     }
 }
+
+export const toggleHtmlNodeClass = (selector: string, className: string, desiredValue?: boolean): void => {
+    const htmlTag = document.querySelector(selector);
+    if (htmlTag == null) return;
+
+    if (desiredValue != null) {
+        const hasClass = htmlTag.classList.contains(className);
+        if (desiredValue === false && hasClass != false) {
+            htmlTag.classList.remove(className);
+        }
+        if (desiredValue === true && hasClass != true) {
+            htmlTag.classList.add(className);
+        }
+    }
+    else {
+        htmlTag.classList.toggle(className);
+    }
+};

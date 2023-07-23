@@ -8,6 +8,11 @@
 
 body {
     padding-right: 0 !important;
+
+    &.noscroll {
+        overflow: hidden;
+    }
+
     a {
         color: lighten($brand-primary, 10%);
     }
@@ -122,4 +127,8 @@ body {
 
 .chakra-button__spinner {
     display: inline-block !important;
+}
+
+.react-modal-sheet-container {
+    max-height: 70vh !important;
 }
