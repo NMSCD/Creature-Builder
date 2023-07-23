@@ -134,7 +134,7 @@ export const BuilderPage: React.FC = () => {
             className="noselect"
             mr="0.5em"
             placeholder='Select creature type'
-            value={selectedPet.CreatureId}
+            value={selectedPet?.CreatureId ?? 'nothing-selected'}
             onChange={onChangeCreatureDropDown}
           >
             {
