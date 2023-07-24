@@ -18,7 +18,11 @@ export const PastedJsonFormDatePicker: React.FC<IFormDatePicker> = (props: IForm
 
     const eventToEpoch = (event: any) => {
         const dateString = event.target.value ?? currentDateValue;
-        props.modifyJsonObj(props.propName, dateToEpoch(dateString));
+        const epochTime = dateToEpoch(dateString);
+        if (epochTime < 1470744000) return;
+        if (epochTime > (dateToEpoch((new Date()).toISOString()))) return;
+
+        props.modifyJsonObj(props.propName, epochTime);
     }
 
     return (
@@ -34,6 +38,7 @@ export const PastedJsonFormDatePicker: React.FC<IFormDatePicker> = (props: IForm
                 <Input type="datetime-local"
                     value={currentDateValue}
                     onChange={eventToEpoch}
+                    min="2016-08-16T12:00:00"
                 />
             </Box>
         </Flex>
