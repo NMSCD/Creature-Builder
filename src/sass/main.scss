@@ -101,6 +101,9 @@ body {
 .json-viewer {
     pre {
         width: 100%;
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
     }
 }
 

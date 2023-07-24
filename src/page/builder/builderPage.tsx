@@ -91,7 +91,7 @@ export const BuilderPage: React.FC = () => {
       "CreatureID": `^${selectedPet.CreatureId}`,
       "Descriptors": displayDescrips,
     };
-    return JSON.stringify(finalObj, undefined, 4);
+    return JSON.stringify(finalObj, undefined, '\t');
   }
 
   const getMappingsFromJson = (event: any): void => {
