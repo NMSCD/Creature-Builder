@@ -822,157 +822,6 @@
     ]
   },
   {
-    "CreatureId": "ANTELOPEROBOT",
-    "FriendlyName": "ANTELOPEROBOT",
-    "Details": [
-      {
-        "GroupId": "_HEAD_",
-        "Descriptors": [
-          {
-            "Id": "_HEAD_CURVEB",
-            "Name": "_Head_CurveB",
-            "Children": [
-              {
-                "GroupId": "_CURVEBACC_",
-                "Descriptors": [
-                  {
-                    "Id": "_CURVEBACC_2",
-                    "Name": "_CurveBAcc_2"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "Id": "_HEAD_DISC",
-            "Name": "_Head_Disc"
-          },
-          {
-            "Id": "_HEAD_WEDGEINVERTED",
-            "Name": "_Head_WedgeInverted"
-          }
-        ]
-      },
-      {
-        "GroupId": "_ACC_",
-        "Descriptors": [
-          {
-            "Id": "_ACC_BACKCANISTERS",
-            "Name": "_Acc_BackCanisters"
-          },
-          {
-            "Id": "_ACC_BACKDISC",
-            "Name": "_Acc_BackDisc"
-          },
-          {
-            "Id": "_ACC_BACKMAGNET",
-            "Name": "_Acc_BackMagnet"
-          },
-          {
-            "Id": "_ACC_BACKORB",
-            "Name": "_Acc_BackOrb"
-          },
-          {
-            "Id": "_ACC_BACKSHROOMS",
-            "Name": "_Acc_BackShrooms"
-          },
-          {
-            "Id": "_ACC_NONE",
-            "Name": "_Acc_None"
-          }
-        ]
-      },
-      {
-        "GroupId": "_RIBCAGE_",
-        "Descriptors": [
-          {
-            "Id": "_RIBCAGE_1",
-            "Name": "_Ribcage_1"
-          }
-        ]
-      },
-      {
-        "GroupId": "_LEGSBACK_",
-        "Descriptors": [
-          {
-            "Id": "_LEGSBACK_1",
-            "Name": "_LegsBack_1"
-          }
-        ]
-      },
-      {
-        "GroupId": "_PLATING_",
-        "Descriptors": [
-          {
-            "Id": "_PLATING_1",
-            "Name": "_Plating_1"
-          },
-          {
-            "Id": "_PLATING_2",
-            "Name": "_Plating_2"
-          }
-        ]
-      },
-      {
-        "GroupId": "_CORDSLEGBACK_",
-        "Descriptors": [
-          {
-            "Id": "_CORDSLEGBACK_",
-            "Name": "_CordsLegBack_"
-          }
-        ]
-      },
-      {
-        "GroupId": "_BODY_",
-        "Descriptors": [
-          {
-            "Id": "_BODY_1",
-            "Name": "_Body_1"
-          }
-        ]
-      },
-      {
-        "GroupId": "_LEGSFRONT_",
-        "Descriptors": [
-          {
-            "Id": "_LEGSFRONT_1",
-            "Name": "_LegsFront_1"
-          }
-        ]
-      },
-      {
-        "GroupId": "_CORDSLEGFRONT_",
-        "Descriptors": [
-          {
-            "Id": "_CORDSLEGFRONT_",
-            "Name": "_CordsLegFront_"
-          }
-        ]
-      },
-      {
-        "GroupId": "_SHOULDERACC_",
-        "Descriptors": [
-          {
-            "Id": "_SHOULDERACC_CANISTERS",
-            "Name": "_ShoulderAcc_Canisters"
-          },
-          {
-            "Id": "_SHOULDERACC_DISCS",
-            "Name": "_ShoulderAcc_Discs"
-          },
-          {
-            "Id": "_SHOULDERACC_HEX",
-            "Name": "_ShoulderAcc_Hex"
-          },
-          {
-            "Id": "_SHOULDERACC_NONE",
-            "Name": "_ShoulderAcc_None"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "CreatureId": "BIRD",
     "FriendlyName": "BIRD",
     "Details": [
@@ -9410,6 +9259,157 @@
                 ]
               }
             ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "CreatureId": "ANTELOPEROBOT",
+    "FriendlyName": "ROBOTANTELOPE",
+    "Details": [
+      {
+        "GroupId": "_HEAD_",
+        "Descriptors": [
+          {
+            "Id": "_HEAD_CURVEB",
+            "Name": "_Head_CurveB",
+            "Children": [
+              {
+                "GroupId": "_CURVEBACC_",
+                "Descriptors": [
+                  {
+                    "Id": "_CURVEBACC_2",
+                    "Name": "_CurveBAcc_2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Id": "_HEAD_DISC",
+            "Name": "_Head_Disc"
+          },
+          {
+            "Id": "_HEAD_WEDGEINVERTED",
+            "Name": "_Head_WedgeInverted"
+          }
+        ]
+      },
+      {
+        "GroupId": "_ACC_",
+        "Descriptors": [
+          {
+            "Id": "_ACC_BACKCANISTERS",
+            "Name": "_Acc_BackCanisters"
+          },
+          {
+            "Id": "_ACC_BACKDISC",
+            "Name": "_Acc_BackDisc"
+          },
+          {
+            "Id": "_ACC_BACKMAGNET",
+            "Name": "_Acc_BackMagnet"
+          },
+          {
+            "Id": "_ACC_BACKORB",
+            "Name": "_Acc_BackOrb"
+          },
+          {
+            "Id": "_ACC_BACKSHROOMS",
+            "Name": "_Acc_BackShrooms"
+          },
+          {
+            "Id": "_ACC_NONE",
+            "Name": "_Acc_None"
+          }
+        ]
+      },
+      {
+        "GroupId": "_RIBCAGE_",
+        "Descriptors": [
+          {
+            "Id": "_RIBCAGE_1",
+            "Name": "_Ribcage_1"
+          }
+        ]
+      },
+      {
+        "GroupId": "_LEGSBACK_",
+        "Descriptors": [
+          {
+            "Id": "_LEGSBACK_1",
+            "Name": "_LegsBack_1"
+          }
+        ]
+      },
+      {
+        "GroupId": "_PLATING_",
+        "Descriptors": [
+          {
+            "Id": "_PLATING_1",
+            "Name": "_Plating_1"
+          },
+          {
+            "Id": "_PLATING_2",
+            "Name": "_Plating_2"
+          }
+        ]
+      },
+      {
+        "GroupId": "_CORDSLEGBACK_",
+        "Descriptors": [
+          {
+            "Id": "_CORDSLEGBACK_",
+            "Name": "_CordsLegBack_"
+          }
+        ]
+      },
+      {
+        "GroupId": "_BODY_",
+        "Descriptors": [
+          {
+            "Id": "_BODY_1",
+            "Name": "_Body_1"
+          }
+        ]
+      },
+      {
+        "GroupId": "_LEGSFRONT_",
+        "Descriptors": [
+          {
+            "Id": "_LEGSFRONT_1",
+            "Name": "_LegsFront_1"
+          }
+        ]
+      },
+      {
+        "GroupId": "_CORDSLEGFRONT_",
+        "Descriptors": [
+          {
+            "Id": "_CORDSLEGFRONT_",
+            "Name": "_CordsLegFront_"
+          }
+        ]
+      },
+      {
+        "GroupId": "_SHOULDERACC_",
+        "Descriptors": [
+          {
+            "Id": "_SHOULDERACC_CANISTERS",
+            "Name": "_ShoulderAcc_Canisters"
+          },
+          {
+            "Id": "_SHOULDERACC_DISCS",
+            "Name": "_ShoulderAcc_Discs"
+          },
+          {
+            "Id": "_SHOULDERACC_HEX",
+            "Name": "_ShoulderAcc_Hex"
+          },
+          {
+            "Id": "_SHOULDERACC_NONE",
+            "Name": "_ShoulderAcc_None"
           }
         ]
       }

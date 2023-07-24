@@ -60,7 +60,7 @@ export const AboutPage: React.FC = () => {
                             </AccordionButton>
                             <AccordionPanel pb={4}>
                                 <s><Text>You will need to get in contact with <NMSHubDiscordLink /> or <AssistantNmsHomeLink /> to get a licence key.</Text></s>
-                                <Text><br />This tool is now completely is now free! 🥳</Text>
+                                <Text><br />This tool is now completely free! 🥳</Text>
                             </AccordionPanel>
                         </AccordionItem>
 
