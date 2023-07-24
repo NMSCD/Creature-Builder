@@ -127,6 +127,12 @@ export const AboutPage: React.FC = () => {
                         link={ExternalUrl.meogiYT}
                     />
                     <AboutCreditRow
+                        imageUrl={AppImages.silent}
+                        heading="Silent"
+                        subtitle="Bug hunter"
+                        link={ExternalUrl.silent}
+                    />
+                    <AboutCreditRow
                         imageUrl={ExternalImages.monkeyMan}
                         heading="MBINCompiler"
                         subtitle="Making NMS data mining possible"
