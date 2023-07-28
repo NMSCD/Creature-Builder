@@ -1,16 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Box, Center, Container, Flex, InputGroup, Select, HStack, Text, Textarea, } from '@chakra-ui/react'
 import { RepeatIcon } from '@chakra-ui/icons';
-import petJsonData from '../../assets/IPetData.json'
-import { PetMainDetails } from '../../contracts/petDetails';
+import { Box, Button, Container, Flex, HStack, Select } from '@chakra-ui/react';
+import React, { useContext, useEffect, useState } from 'react';
+import petJsonData from '../../assets/IPetData.json';
 import { AttributeDropDown } from '../../components/attributeDropDown';
-import { newDescriptorId } from '../../helper/idHelper';
-import { JsonViewer } from '../../components/jsonViewer';
-import { CreatureSave } from '../../contracts/creatureSave';
-import { BuilderPageComponents } from './builderPageComponents';
 import { defaultPetJson } from '../../constants/creatureDefault';
+import { CreatureSave } from '../../contracts/creatureSave';
+import { PetMainDetails } from '../../contracts/petDetails';
+import { newDescriptorId } from '../../helper/idHelper';
 import { DependencyInjectionContext } from '../../integration/DependencyInjectionProvider';
 import { BasePage } from '../basePage';
+import { BuilderPageControls } from './builderPageControls';
+import { BuilderPageIntro } from './builderPageIntro';
+import { BuilderPageResultPreview } from './builderPageResultPreview';
 
 export const BuilderPage: React.FC = () => {
   const [selectedPet, setSelectedPet] = useState<PetMainDetails>({} as any);
@@ -119,12 +120,6 @@ export const BuilderPage: React.FC = () => {
   }
 
   const creatureIdIsNotNull = (selectedPet.CreatureId != null);
-  const jsonViewerNode = (
-    <JsonViewer
-      json={getJsonFromMappings(mappingString + ',' + descriptorId)}
-      getMappingsFromJson={getMappingsFromJson}
-    />
-  );
 
   return (
     <BasePage>
@@ -153,26 +148,10 @@ export const BuilderPage: React.FC = () => {
       </Container>
       {
         (!creatureIdIsNotNull) && (
-          <>
-            <Center className="noselect" draggable="false">
-              <Text align="center">
-                <strong>OR</strong><br />
-                paste the JSON of your NMS creature below</Text>
-            </Center>
-            <Container mt="2em">
-              <Center>
-                <InputGroup height="100%">
-                  <Textarea
-                    minH="10em"
-                    style={{ textAlign: 'center' }}
-                    value={getJsonFromMappings('')}
-                    placeholder="Here you can add Creature JSON from a NMS Save Editor"
-                    onChange={getMappingsFromJson}
-                  />
-                </InputGroup>
-              </Center>
-            </Container>
-          </>
+          <BuilderPageIntro
+            getJsonFromMappings={getJsonFromMappings}
+            getMappingsFromJson={getMappingsFromJson}
+          />
         )
       }
 
@@ -181,14 +160,15 @@ export const BuilderPage: React.FC = () => {
 
           <Box className="attributes">
             <Flex>
-              <Box flex="2" mt="3" className="hidden-in-mobile">
-                {
-                  (selectedPet.CreatureId != null) &&
-                  jsonViewerNode
-                }
-              </Box>
+              <BuilderPageResultPreview
+                selectedPet={selectedPet}
+                mappingString={mappingString}
+                descriptorId={descriptorId}
+                getJsonFromMappings={getJsonFromMappings}
+                getMappingsFromJson={getMappingsFromJson}
+              />
               <Box width="20px" className="hidden-in-mobile"></Box>
-              <Box flex="5">
+              <Box flex="5" className="builder-controls">
                 {
                   (selectedPet.Details ?? []).map((details, index) => (
                     <Box key={details.GroupId + index}>
@@ -203,7 +183,7 @@ export const BuilderPage: React.FC = () => {
 
                 {
                   (pastedJson.CreatureID != null) && (
-                    <BuilderPageComponents
+                    <BuilderPageControls
                       creatureId={selectedPet.CreatureId}
                       pastedJson={pastedJson}
                       regenDescriptoId={() => setDescriptorId(newDescriptorId())}
@@ -214,8 +194,10 @@ export const BuilderPage: React.FC = () => {
 
               </Box>
             </Flex>
-            <Box mt="12" className="hidden-in-desktop">
-              {jsonViewerNode}
+            <Box mt="12" className="hidden-in-desktop ta-center">
+              <Button width="100%" colorScheme="green">
+                <span>Copy JSON result</span>
+              </Button>
             </Box>
           </Box>
         )
