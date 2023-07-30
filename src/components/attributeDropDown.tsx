@@ -37,7 +37,7 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
         props.triggerJsonUpdate();
 
         const selectedItem = petData[selectedItemIndex];
-        console.log('selectedItem', selectedItem);
+        // console.log('selectedItem', selectedItem);
 
         if ((selectedItem?.Children?.length ?? 0) < 1) {
             setSelectedPetDescrips([]);

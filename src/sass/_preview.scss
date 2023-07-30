@@ -1,0 +1,21 @@
+.builder-controls,
+.builder-preview {
+    transition: all 250ms;
+}
+
+.obj-preview {
+    width: 100%;
+    min-width: 50vh;
+    min-height: 50vh;
+
+    &.wrapper {
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 5px;
+        margin-bottom: 1em;
+    }
+
+    .disabled {
+        opacity: 0.2;
+    }
+}
