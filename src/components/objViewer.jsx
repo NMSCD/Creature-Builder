@@ -181,7 +181,7 @@ export class ObjViewer extends Component {
     animate = () => {
         this.controls.update();
 
-        const time = Date.now() * 0.0005;
+        // const time = Date.now() * 0.0005;
         const delta = this.clock.getDelta();
 
         if (this.state.enableRotate) {
