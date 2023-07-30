@@ -1,0 +1,7 @@
+# Blender 3.1.0
+# www.blender.org
+mtllib WEIRDDIGGER.mtl
+o WEIRDDIGGER.SCENE
+o RootJNT
+o BodyJNT
+o _Weird_Crystal
