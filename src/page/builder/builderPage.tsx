@@ -21,7 +21,8 @@ export const BuilderPage: React.FC = () => {
   const [pastedJson, setPastedJson] = useState<CreatureSave>(defaultPetJson());
   const { toastService } = useContext(DependencyInjectionContext);
 
-  const petData: Array<PetMainDetails> = petJsonData as any;
+  const petData: Array<PetMainDetails> = (petJsonData as any)
+    .filter((p: any) => p.CreatureId.includes('FLOCK') === false);
 
   useEffect(() => {
     if (intervalTrigger < 1) return;
@@ -60,9 +61,15 @@ export const BuilderPage: React.FC = () => {
 
   const modifyJsonObj = (name: string, value: any) => {
     console.log('modifyJsonObj', name, value);
+    if (name === 'Name') {
+      value = value.replaceAll('^', '');
+    }
+    if (name === 'CustomSpeciesName') {
+      value = `^${value.replaceAll('^', '')}`;
+    }
     setPastedJson((orig) => ({
       ...orig,
-      [name]: value
+      [name]: value,
     }));
   }
 

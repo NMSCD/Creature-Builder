@@ -1,7 +1,7 @@
 import { CloseIcon, RepeatIcon } from '@chakra-ui/icons';
 import { Center, Text } from '@chakra-ui/react';
 import { Component } from "react";
-import { Clock, PerspectiveCamera, PointLight, Scene, WebGLRenderer } from "three";
+import { Clock, PerspectiveCamera, HemisphereLight, Scene, SpotLight, WebGLRenderer } from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 
@@ -39,28 +39,43 @@ export class ObjViewer extends Component {
         this.camera.position.y = 5;
 
         this.renderer = new WebGLRenderer({ antialias: true });
+        this.renderer.shadowMap.enabled = true;
         this.renderer.setClearColor(bgColour);
         this.renderer.setSize(width, height);
         this.mount.appendChild(this.renderer.domElement);
 
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.controls.enablePan = false;
-        this.controls.maxDistance = 16;
-        this.controls.minDistance = 3;
+        this.controls.rotateSpeed = 0.5;
+        this.controls.maxDistance = 20;
+        this.controls.minDistance = 1;
 
-        this.light1 = new PointLight(0xff0040, 400);
+        const spotlightIntensity = 200;
+        this.light1 = new SpotLight(0xACAEAE, spotlightIntensity);
+        this.light1.castShadow = true;
+        this.light1.position.x = -10;
+        this.light1.position.y = 10;
+        this.light1.position.z = 10;
         this.scene.add(this.light1);
 
-        this.light2 = new PointLight(0x0040ff, 400);
+        this.light2 = new SpotLight(0x919394, spotlightIntensity);
+        this.light2.castShadow = true;
+        this.light2.position.x = 10;
+        this.light2.position.y = 10;
+        this.light2.position.z = 10;
         this.scene.add(this.light2);
 
-        this.light3 = new PointLight(0x80ff80, 400);
-        this.scene.add(this.light3);
+        // this.light3 = new SpotLight(0x80ff80, spotlightIntensity);
+        // this.light3.castShadow = true;
+        // this.scene.add(this.light3);
 
-        this.light4 = new PointLight(0xffaa00, 400);
-        this.scene.add(this.light4);
+        // this.light4 = new SpotLight(0xffaa00, spotlightIntensity);
+        // this.light4.castShadow = true;
+        // this.scene.add(this.light4);
 
         // this.scene.add(new AmbientLight(0x404040));
+        const hemiLight = new HemisphereLight(0xfefefe, 0x000000, 0.175);
+        this.scene.add(hemiLight);
 
         const objLoader = new OBJLoader();
         objLoader.load(
@@ -92,9 +107,13 @@ export class ObjViewer extends Component {
     }
 
     updateCreatureMeshes = () => {
-        this.scene.remove(this.creatureMesh);
-        if (this.origCreatureMesh == null) {
-            return;
+        try {
+            this.scene.remove(this.creatureMesh);
+            if (this.origCreatureMesh == null) {
+                return;
+            }
+        } catch (ex) {
+            throw ex;
         }
 
         // console.log(this.origCreatureMesh)
@@ -106,13 +125,21 @@ export class ObjViewer extends Component {
 
         const descriptorsToHide = this.props.meshesToHide.split(',');
         for (const meshToHide of descriptorsToHide) {
+            if (meshToHide.length < 1) continue;
+
             const removePart = this.creatureMesh.getObjectByName(meshToHide);
             if (removePart == null) {
-                console.warn(meshToHide);
+                console.warn(`mesh to hide not found: ${meshToHide}`);
                 continue;
             }
-            const parent = removePart.parent;
-            parent.remove(removePart);
+
+            try {
+                const parent = removePart.parent;
+                parent.remove(removePart);
+            } catch (ex) {
+                console.error(`couldd not remove mesh from parent: ${meshToHide}`);
+                return;
+            }
         }
 
         this.scene.add(this.creatureMesh);
@@ -127,6 +154,15 @@ export class ObjViewer extends Component {
         this.origCreatureMesh = object;
         this.origCreatureMesh.position.y = -1;
         this.origCreatureMesh.rotation.y = 180;
+
+        this.origCreatureMesh.traverse(n => {
+            if (n.isMesh) {
+                n.castShadow = true;
+                n.receiveShadow = true;
+                if (n.material.map) n.material.map.anisotropy = 16;
+                n.geometry.computeVertexNormals();
+            }
+        });
 
         this.updateCreatureMeshes();
 
@@ -149,24 +185,10 @@ export class ObjViewer extends Component {
         const delta = this.clock.getDelta();
 
         if (this.state.enableRotate) {
-            this.creatureMesh.rotation.y -= 0.5 * delta;
+            const rotationY = this.creatureMesh.rotation.y + (0.5 * delta);
+            this.creatureMesh.rotation.y = rotationY;
+            this.origCreatureMesh.rotation.y = rotationY;
         }
-
-        this.light1.position.x = Math.sin(time * 0.7) * 30;
-        this.light1.position.y = Math.cos(time * 0.5) * 40;
-        this.light1.position.z = Math.cos(time * 0.3) * 30;
-
-        this.light2.position.x = Math.cos(time * 0.3) * 30;
-        this.light2.position.y = Math.sin(time * 0.5) * 40;
-        this.light2.position.z = Math.sin(time * 0.7) * 30;
-
-        this.light3.position.x = Math.sin(time * 0.7) * 30;
-        this.light3.position.y = Math.cos(time * 0.3) * 40;
-        this.light3.position.z = Math.sin(time * 0.5) * 30;
-
-        this.light4.position.x = Math.sin(time * 0.3) * 30;
-        this.light4.position.y = Math.cos(time * 0.7) * 40;
-        this.light4.position.z = Math.sin(time * 0.5) * 30;
 
         this.renderer?.render?.(this.scene, this.camera);
         this.frameId = window.requestAnimationFrame(this.animate);
@@ -183,7 +205,7 @@ export class ObjViewer extends Component {
                         <Center
                             pos="absolute"
                             top="0"
-                            zIndex="-1"
+                            zIndex="1"
                             className="obj-preview"
                             backgroundColor={bgColour}
                             flexDir="column"
@@ -201,10 +223,12 @@ export class ObjViewer extends Component {
                             bottom="1em"
                             boxSize="30"
                             className={`pointer ${this.state.enableRotate ? '' : 'disabled'}`}
-                            onClick={() => this.setState((prev) => ({
-                                ...prev,
-                                enableRotate: !prev.enableRotate
-                            }))}
+                            onClick={() => this.setState((prev) => {
+                                return {
+                                    ...prev,
+                                    enableRotate: !prev.enableRotate
+                                };
+                            })}
                         />
                     )
                 }

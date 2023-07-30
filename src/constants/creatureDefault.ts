@@ -6,38 +6,38 @@ export const defaultPetJson = (): CreatureSave => {
 
     return {
         Scale: 5.545454545,
-        CreatureID: "^",
+        CreatureID: '^',
         Descriptors: [
-            "^000000000"
+            '^000000000'
         ],
         CreatureSeed: [
             true,
-            "0x0000000000000000"
+            '0x0000000000000000'
         ],
         CreatureSecondarySeed: [
             true,
-            "0x0000000000000000"
+            '0x0000000000000000'
         ],
-        SpeciesSeed: "0x0000000000000000",
-        GenusSeed: "0x0000000000000000",
-        CustomSpeciesName: "^",
+        SpeciesSeed: '0x0000000000000000',
+        GenusSeed: '0x0000000000000000',
+        CustomSpeciesName: '',
         Predator: false,
         UA: 1111111111111111,
         AllowUnmodifiedReroll: true,
         ColourBaseSeed: [
             true,
-            "0x0000000000000000"
+            '0x0000000000000000'
         ],
         BoneScaleSeed: [
             true,
-            "0x0000000000000000"
+            '0x0000000000000000'
         ],
         HasFur: true,
         Biome: {
-            Biome: "Lush"
+            Biome: 'Lush'
         },
         CreatureType: {
-            CreatureType: "Prey"
+            CreatureType: 'Prey'
         },
         BirthTime: timeInEpoch,
         LastEggTime: timeInEpoch,
@@ -45,13 +45,13 @@ export const defaultPetJson = (): CreatureSave => {
         LastTrustDecreaseTime: timeInEpoch,
         EggModified: false,
         HasBeenSummoned: true,
-        CustomName: "",
+        CustomName: '',
         Trust: 0.5,
         SenderData: {
-            LID: "",
-            UID: "",
-            USN: "",
-            PTK: "",
+            LID: '',
+            UID: '',
+            USN: '',
+            PTK: '',
             TS: 0
         },
         Traits: [

@@ -1,0 +1,7 @@
+# Blender 3.1.0
+# www.blender.org
+mtllib BIRDFLOCK.mtl
+o BIRDFLOCK.SCENE
+o RootJNT
+o BodyJNT
+o _Weird_Crystal
