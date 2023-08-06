@@ -7,15 +7,30 @@
     width: 100%;
     min-width: 50vh;
     min-height: 50vh;
+    transition: opacity 250ms ease-in-out;
+
+    &.bg {
+        background: var(--chakra-colors-chakra-body-bg);
+    }
 
     &.wrapper {
         position: relative;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        border-radius: 5px;
         margin-bottom: 1em;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        overflow: hidden;
     }
 
     .disabled {
         opacity: 0.2;
     }
+
+    .hide {
+        opacity: 0;
+    }
+}
+
+#creature-preview {
+    position: relative;
+    z-index: 2;
 }
