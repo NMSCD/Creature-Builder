@@ -1,8 +1,11 @@
-import { Box, Center, Flex, Heading, Image, Spacer, Text, VStack } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { Box, Button, Center, Flex, Heading, Image, Spacer, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
+import { Link } from 'wouter';
 import Zoom from 'react-medium-image-zoom';
 import { NMSCDLink } from '../components/core/link';
 import { BasePage } from './basePage';
+import { Routes } from '../constants/routes';
 
 export const HomePage: React.FC = () => {
 
@@ -10,6 +13,25 @@ export const HomePage: React.FC = () => {
         <BasePage className="home-page-content">
             <section>
                 <Text fontSize={30} textAlign="center">Build your dream companion!</Text>
+            </section>
+
+            <br />
+
+            <section className="call-to-action">
+                <Flex justify="center" paddingTop="0.5em" paddingBottom="1em">
+                    <Link to={Routes.builder}>
+                        <Button
+                            size="lg"
+                            colorScheme="pink"
+                            variant="solid"
+                            border="2px"
+                            borderColor="pink.400"
+                            rightIcon={<ArrowForwardIcon />}
+                        >
+                            <Text>Start building</Text>
+                        </Button>
+                    </Link>
+                </Flex>
             </section>
 
             <br />
