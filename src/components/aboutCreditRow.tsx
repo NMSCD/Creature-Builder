@@ -26,7 +26,7 @@ export const AboutCreditRow: React.FC<IAboutCreditRowProps> = (props: IAboutCred
                     borderTopRightRadius={5}
                     borderBottomRightRadius={5}
                 >
-                    <VStack align="stretch" >
+                    <VStack align="stretch" gap="0">
                         <Text pl={3} fontSize={22} mt="5px">{props.heading}</Text>
                         <Text pl={3} style={{ marginTop: '3px', opacity: '50%' }}>{props.subtitle}</Text>
                     </VStack>

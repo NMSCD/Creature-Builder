@@ -13,14 +13,15 @@ export const AppDrawer: React.FC<IAppDrawer> = (props: IAppDrawer) => {
     const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
 
     const onMenuClick = (e: any) => {
-        e?.preventDefault?.();
+        // e?.preventDefault?.();
 
-        const event = new Event('hashchange');
-        window.dispatchEvent(event);
+        setTimeout(() => {
+            const event = new Event('hashchange');
+            window.dispatchEvent(event);
+        }, 50);
 
         setMenuOpen(false);
     }
-
 
     return (
         <>

@@ -26,8 +26,8 @@ export const PastedJsonFormDatePicker: React.FC<IFormDatePicker> = (props: IForm
     }
 
     return (
-        <Flex width="370px">
-            <Center width={`${depthSpacingInPx * 1.5}px`} className="group noselect">
+        <Flex width="420px">
+            <Center width={`${depthSpacingInPx * 3}px`} className="group noselect">
                 <Box className="inner" width="100%">
                     <Tooltip isDisabled={props.enableTooltip !== true} label={props.displayName} placement='top'>
                         {props.displayName}
