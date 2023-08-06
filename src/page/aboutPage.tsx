@@ -138,6 +138,12 @@ export const AboutPage: React.FC = () => {
                         subtitle="Making NMS data mining possible"
                         link={ExternalUrl.assistantNMS}
                     />
+                    <AboutCreditRow
+                        imageUrl={ExternalImages.nmsdk}
+                        heading="NMSDK"
+                        subtitle="Extracting 3D models from the game files"
+                        link={ExternalUrl.nmsdk}
+                    />
                 </Container>
             </section>
         </BasePage>
