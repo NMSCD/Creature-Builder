@@ -1,9 +1,11 @@
 import { RepeatIcon } from '@chakra-ui/icons';
-import { Box, Button, Container, Flex, HStack, Select } from '@chakra-ui/react';
+import { Box, Button, Center, Container, Flex, HStack, Select, Text, Tooltip } from '@chakra-ui/react';
 import React, { useContext, useEffect, useState } from 'react';
 import petJsonData from '../../assets/IPetData.json';
-import { AttributeDropDown } from '../../components/attributeDropDown';
+import { DescriptorSelector } from '../../components/descriptorSelector';
 import { defaultPetJson } from '../../constants/creatureDefault';
+import { PetExtraInfo } from '../../constants/petExtraInfo';
+import { StorageKey } from '../../constants/storageKey';
 import { CreatureSave } from '../../contracts/creatureSave';
 import { PetMainDetails } from '../../contracts/petDetails';
 import { newDescriptorId } from '../../helper/idHelper';
@@ -12,20 +14,34 @@ import { BasePage } from '../basePage';
 import { BuilderPageControls } from './builderPageControls';
 import { BuilderPageIntro } from './builderPageIntro';
 import { BuilderPageResultPreview } from './builderPageResultPreview';
+import { BuilderPageSettingsRow, IBuilderPageSettings, initialSettings } from './builderPageSettingsRow';
 
 export const BuilderPage: React.FC = () => {
   const [selectedPet, setSelectedPet] = useState<PetMainDetails>({} as any);
   const [mappingString, setMappingString] = useState<string>('');
   const [descriptorId, setDescriptorId] = useState<string>(newDescriptorId());
   const [intervalTrigger, setIntervalTrigger] = useState<number>(0);
-  const [pastedJson, setPastedJson] = useState<CreatureSave>(defaultPetJson());
+  const [saveJson, setSaveJson] = useState<CreatureSave>(defaultPetJson());
+  const [settings, setSettings] = useState<IBuilderPageSettings>(initialSettings);
+
   const { toastService } = useContext(DependencyInjectionContext);
 
   const petData: Array<PetMainDetails> = (petJsonData as any)
     .filter((p: any) => p.CreatureId.includes('FLOCK') === false);
 
   useEffect(() => {
+    try {
+      const settingsFromLocalStor = localStorage.getItem(StorageKey.settings);
+      if (settingsFromLocalStor == null) return;
+      const settingsObj = JSON.parse(settingsFromLocalStor);
+      setSettings(settingsObj)
+    } catch (e: any) { }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     if (intervalTrigger < 1) return;
+    console.log('intervalTrigger');
     const interval = setInterval(() => {
       const newValueArr = getDescriptorValue();
       const newValue = newValueArr.join(',');
@@ -35,7 +51,7 @@ export const BuilderPage: React.FC = () => {
           setDescriptorId(newDescriptorId());
           return newValue;
         }
-        console.log('nothing to change');
+        // console.log('nothing to change');
         clearInterval(interval);
         return latestMappingString;
       });
@@ -44,6 +60,7 @@ export const BuilderPage: React.FC = () => {
     return () => {
       clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [intervalTrigger]);
 
   const triggerJsonInterval = () => setIntervalTrigger((oldValue) => oldValue + 1);
@@ -67,7 +84,7 @@ export const BuilderPage: React.FC = () => {
     if (name === 'CustomSpeciesName') {
       value = `^${value.replaceAll('^', '')}`;
     }
-    setPastedJson((orig) => ({
+    setSaveJson((orig) => ({
       ...orig,
       [name]: value,
     }));
@@ -76,13 +93,24 @@ export const BuilderPage: React.FC = () => {
   const getDescriptorValue = (): Array<string> => {
     let descriptors: Array<string> = [];
 
-    const selectElems = document.querySelectorAll('.attributes .chakra-select.descriptor');
-    for (let selectElemIndex = 0; selectElemIndex < selectElems.length; selectElemIndex++) {
-      const selectElem: any = selectElems[selectElemIndex];
-      const selectedOptions: any = selectElem?.selectedOptions;
-      const dropDownValue: any = selectedOptions?.[0]?.value;
-      if (dropDownValue == null) continue;
-      descriptors.push(dropDownValue);
+    if (settings.enforceDescriptorRestrictions) {
+      const selectElems = document.querySelectorAll('.attributes .chakra-select.descriptor');
+      for (let selectElemIndex = 0; selectElemIndex < selectElems.length; selectElemIndex++) {
+        const selectElem: any = selectElems[selectElemIndex];
+        const selectedOptions: any = selectElem?.selectedOptions;
+        const dropDownValue: any = selectedOptions?.[0]?.value;
+        if (dropDownValue == null) continue;
+        descriptors.push(dropDownValue);
+      }
+    }
+    else {
+      const checkBoxElems = document.querySelectorAll('.attributes .chakra-checkbox.descriptor');
+      for (let checkBoxElemIndex = 0; checkBoxElemIndex < checkBoxElems.length; checkBoxElemIndex++) {
+        const selectElem: any = checkBoxElems[checkBoxElemIndex];
+        const hasAttr = selectElem.hasAttribute('data-checked');
+        if (hasAttr === false) continue;
+        descriptors.push(selectElem.dataset.descriptor);
+      }
     }
 
     return descriptors;
@@ -95,7 +123,7 @@ export const BuilderPage: React.FC = () => {
     const displayDescrips = descriptors.map(descr => `^${descr}`);
 
     const finalObj = {
-      ...pastedJson,
+      ...saveJson,
       "CreatureID": `^${selectedPet.CreatureId}`,
       "Descriptors": displayDescrips,
     };
@@ -118,15 +146,45 @@ export const BuilderPage: React.FC = () => {
         }
         const selectedItem: any = petData[selectedItemIndex];
         setSelectedPet(selectedItem ?? {} as any);
-        setPastedJson(newObj);
-        triggerJsonInterval();
+
+        const descriptors = newObj.Descriptors.slice(0, newObj.Descriptors.length - 1);
+        setMappingString(descriptors.map(d => d.replaceAll('^', '')).join(','))
+        setSaveJson(newObj);
+        // triggerJsonInterval();
       }
     } catch (e: any) {
       toastService.error('Something went wrong while trying to use the provided JSON. Please ensure only valid JSON is pasted.');
     }
   }
 
+  const getFriendlyName = (grpId: string): string => {
+    if (settings.showSimplifiedNames !== true) return grpId;
+
+    const petExtra = PetExtraInfo[selectedPet.CreatureId];
+    if (petExtra == null) return grpId;
+    if (petExtra.attr == null) return grpId;
+
+    const petExtraAttr = petExtra.attr[grpId];
+    if (petExtraAttr == null) return grpId;
+
+    return petExtraAttr;
+  }
+
   const creatureIdIsNotNull = (selectedPet.CreatureId != null);
+  const builderSettings = (
+    <BuilderPageSettingsRow
+      key="builder-page-settings-row"
+      settings={settings}
+      setSettings={(func) => {
+        setSettings((prev) => {
+          const newV = func(prev);
+          localStorage.setItem(StorageKey.settings, JSON.stringify(newV));
+          return newV;
+        })
+      }}
+      triggerJsonInterval={triggerJsonInterval}
+    />
+  );
 
   return (
     <BasePage>
@@ -147,7 +205,9 @@ export const BuilderPage: React.FC = () => {
           </Select>
           {
             (creatureIdIsNotNull) && (
-              <RepeatIcon boxSize="30" className="pointer" onClick={() => setSelectedPet({} as any)} />
+              <Tooltip label="Reset selection">
+                <RepeatIcon boxSize="30" className="pointer" onClick={() => setSelectedPet({} as any)} />
+              </Tooltip>
             )
           }
         </HStack>
@@ -155,16 +215,19 @@ export const BuilderPage: React.FC = () => {
       </Container>
       {
         (!creatureIdIsNotNull) && (
-          <BuilderPageIntro
-            getJsonFromMappings={getJsonFromMappings}
-            getMappingsFromJson={getMappingsFromJson}
-          />
+          <>
+            <BuilderPageIntro getMappingsFromJson={getMappingsFromJson}>
+              <Center className="attributes" mx={0} my={10} flexDir="column">
+                <Text mb={1}>Settings</Text>
+                {builderSettings}
+              </Center>
+            </BuilderPageIntro>
+          </>
         )
       }
 
       {
         creatureIdIsNotNull && (
-
           <Box className="attributes">
             <Flex>
               <BuilderPageResultPreview
@@ -176,23 +239,20 @@ export const BuilderPage: React.FC = () => {
               />
               <Box width="20px" className="hidden-in-mobile"></Box>
               <Box flex="5" className="builder-controls">
-                {
-                  (selectedPet.Details ?? []).map((details, index) => (
-                    <Box key={details.GroupId + index}>
-                      <AttributeDropDown
-                        key={details.GroupId + 'main'}
-                        petDetail={details}
-                        triggerJsonUpdate={triggerJsonInterval}
-                      />
-                    </Box>
-                  ))
-                }
+                {builderSettings}
+                <DescriptorSelector
+                  petDetails={selectedPet.Details}
+                  selectedDescriptors={mappingString.split(',')}
+                  enforceDescriptorRestrictions={settings.enforceDescriptorRestrictions}
+                  getFriendlyName={getFriendlyName}
+                  triggerJsonInterval={triggerJsonInterval}
+                />
 
                 {
-                  (pastedJson.CreatureID != null) && (
+                  (saveJson.CreatureID != null) && (
                     <BuilderPageControls
                       creatureId={selectedPet.CreatureId}
-                      pastedJson={pastedJson}
+                      pastedJson={saveJson}
                       regenDescriptoId={() => setDescriptorId(newDescriptorId())}
                       modifyJsonObj={modifyJsonObj}
                     />
@@ -206,6 +266,7 @@ export const BuilderPage: React.FC = () => {
                 <span>Copy JSON result</span>
               </Button>
             </Box>
+            {/* <DonationFAB /> */}
           </Box>
         )
       }

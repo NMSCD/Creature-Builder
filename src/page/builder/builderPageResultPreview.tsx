@@ -2,11 +2,11 @@ import { Box, Button, Center, Spinner, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { JsonExplanationBottomModalSheet } from '../../components/dialog/jsonExplanationBottomModalSheet';
 import { JsonViewer } from '../../components/jsonViewer';
-import { ObjViewer } from '../../components/objViewer';
-import { PetDetailDescriptor, PetMainDetails } from '../../contracts/petDetails';
+import { ObjViewer } from '../../components/objViewer/objViewer';
+import { PetMainDetails } from '../../contracts/petDetails';
 import { delay } from '../../helper/asyncHelper';
+import { petGetDescriptorsToHide } from '../../helper/descriptorHelper';
 import { toggleHtmlNodeClass } from '../../helper/documentHelper';
-
 
 interface IBuilderPageResultPreviewProps {
     selectedPet: PetMainDetails;
@@ -32,51 +32,14 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
         setShowObjPreview(show);
     }
 
-    const recursiveGetDescriptorsToHide = (descriptor: PetDetailDescriptor, selectedDescriptors: Array<string>): Array<string> => {
-        const result: Array<string> = [];
-
-
-        if (descriptor.Children == null || descriptor.Children.length < 1) {
-            if (selectedDescriptors.includes(descriptor.Id)) {
-                return [];
-            }
-            return [descriptor.Name];
-        }
-
-        for (const child of descriptor.Children) {
-            if (child.Descriptors == null || child.Descriptors.length < 1) {
-                result.push(child.GroupId);
-                continue;
-            }
-
-            for (const innerDescriptor of child.Descriptors) {
-                const recursiveResults = recursiveGetDescriptorsToHide(innerDescriptor, selectedDescriptors);
-                for (const recurItem of recursiveResults) {
-                    result.push(recurItem);
-                }
-            }
-        }
-
-        return result;
-    }
-
     const getMeshesToHide = (selectedPet: PetMainDetails, mappingString: string): string => {
-        console.clear();
-        console.log(mappingString)
         const selectedDescriptors: Array<string> = mappingString.split(',');
-        const allDescriptorsToHide: Array<string> = [];
 
-        for (const detail of selectedPet.Details) {
-            for (const descriptor of detail.Descriptors) {
-                const recursiveResults = recursiveGetDescriptorsToHide(descriptor, selectedDescriptors);
-                for (const recurItem of recursiveResults) {
-                    allDescriptorsToHide.push(recurItem);
-                }
-            }
-        }
+        const allDescriptorsToHide: Array<string> = petGetDescriptorsToHide(
+            selectedPet,
+            selectedDescriptors
+        );
 
-        // console.log(selectedDescriptors);
-        console.log(allDescriptorsToHide);
         return allDescriptorsToHide.join(',');
     }
 
@@ -89,25 +52,27 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
     return (
         <Box
             flex={showPreview ? 3 : 2}
-            pos="relative" mt="3"
+            pos="relative"
             className="builder-preview hidden-in-mobile">
-            <Box
-                pos="absolute"
-                top="0"
-                left="0"
-                transform="translateY(-125%)"
-            >
-                <Button key="how-to" mr="1em" onClick={() => toggleJsonExplanation(true)}>
+            <Box mb="0.75em">
+                <Button key="how-to" mr="1em" colorScheme="gray" onClick={() => toggleJsonExplanation(true)}>
                     <span>How to use the JSON</span>
                 </Button>
                 <Button key={`showPrev: ${showPreview}`} colorScheme="orange" onClick={() => handleShowPreview(!showPreview)}>
-                    <span>{showPreview ? 'Disable' : 'Enable'} preview (experimental)</span>
+                    <span>{showPreview ? 'Disable' : 'Enable'} preview</span>
                 </Button>
             </Box>
             {
                 showPreview && (
                     <Box className="obj-preview wrapper">
-                        <Center pos="absolute" zIndex="-1" className="obj-preview" flexDir="column">
+                        <Center
+                            id="obj-preview-loader"
+                            pos="absolute"
+                            className="obj-preview bg"
+                            flexDir="column"
+                            borderRadius="10em"
+                            zIndex="0"
+                        >
                             <Spinner />
                             <Text mt="0.5em">Loading...</Text>
                         </Center>
@@ -115,7 +80,7 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
                             showObjPreview && (
                                 <ObjViewer
                                     key={`preview-${props.selectedPet.CreatureId}`}
-                                    file={props.selectedPet.CreatureId}
+                                    creatureId={props.selectedPet.CreatureId}
                                     meshesToHide={getMeshesToHide(props.selectedPet, props.mappingString)}
                                 />
                             )
