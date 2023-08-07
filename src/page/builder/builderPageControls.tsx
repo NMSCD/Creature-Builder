@@ -1,7 +1,7 @@
 import React, { } from 'react';
 import { Box, Button, Center, Divider, Flex, Input, Select, Wrap, WrapItem, } from '@chakra-ui/react'
 import { RepeatIcon } from '@chakra-ui/icons';
-import { biomeList, creatureType, depthSpacingInPx } from '../../constants/UIConstant';
+import { biomeList, controlSpacing, creatureType, depthSpacingInPx } from '../../constants/UIConstant';
 import { CreatureSave } from '../../contracts/creatureSave';
 import { PastedJsonFormCheckbox } from '../../components/common/formCheckbox';
 import { PastedJsonFormDatePicker } from '../../components/common/formDatePicker';
@@ -26,7 +26,7 @@ export const BuilderPageControls: React.FC<IBuilderPageControlsProps> = (props: 
         <>
             <Divider mt="2em" mb="2em" />
 
-            <Wrap spacing={8} mt="1.5em">
+            <Wrap spacing={controlSpacing} mt="1.5em">
                 <WrapItem>
                     <Flex width="300px">
                         <Center width={`${depthSpacingInPx}px`} className="group noselect">
@@ -59,7 +59,7 @@ export const BuilderPageControls: React.FC<IBuilderPageControlsProps> = (props: 
                 </WrapItem>
             </Wrap>
 
-            <Wrap spacing={8} mt="1.5em">
+            <Wrap spacing={controlSpacing} mt="1.5em">
                 <WrapItem>
                     <Flex width="250px">
                         <Center width={`${depthSpacingInPx}px`} className="group noselect">
@@ -104,7 +104,7 @@ export const BuilderPageControls: React.FC<IBuilderPageControlsProps> = (props: 
                 </WrapItem>
             </Wrap>
 
-            <Wrap spacing={8} mt="1.5em">
+            <Wrap spacing={controlSpacing} mt="1.5em">
                 <WrapItem>
                     <PastedJsonFormCheckbox
                         propName="Predator"
@@ -152,7 +152,7 @@ export const BuilderPageControls: React.FC<IBuilderPageControlsProps> = (props: 
                 </WrapItem>
             </Wrap>
 
-            <Wrap spacing={8} mt="1.5em">
+            <Wrap spacing={controlSpacing} mt="1.5em">
                 <WrapItem>
                     <Button
                         onClick={() => props.regenDescriptoId()}
@@ -180,7 +180,7 @@ export const BuilderPageControls: React.FC<IBuilderPageControlsProps> = (props: 
                 </WrapItem>
             </Wrap>
 
-            <Wrap spacing={8} mt="1.5em">
+            <Wrap spacing={controlSpacing} mt="1.5em">
                 <WrapItem>
                     <PastedJsonFormDatePicker
                         propName="BirthTime"
@@ -199,7 +199,7 @@ export const BuilderPageControls: React.FC<IBuilderPageControlsProps> = (props: 
                 </WrapItem>
             </Wrap>
 
-            <Wrap spacing={8} mt="1.5em">
+            <Wrap spacing={controlSpacing} mt="1.5em">
                 <WrapItem>
                     <PastedJsonFormDatePicker
                         propName="LastTrustIncreaseTime"
@@ -220,7 +220,7 @@ export const BuilderPageControls: React.FC<IBuilderPageControlsProps> = (props: 
                 </WrapItem>
             </Wrap>
 
-            <Wrap spacing={8} mt="1.5em">
+            <Wrap spacing={controlSpacing} mt="1.5em">
                 <WrapItem>
                     <PastedJsonFormSlider
                         propName="Scale"
@@ -263,7 +263,7 @@ export const BuilderPageControls: React.FC<IBuilderPageControlsProps> = (props: 
                 </WrapItem>
             </Wrap>
 
-            <Wrap spacing={8} mt="1.5em">
+            <Wrap spacing={controlSpacing} mt="1.5em">
                 <WrapItem>
                     <PastedJsonFormSlider
                         propName="Traits"
@@ -331,7 +331,7 @@ export const BuilderPageControls: React.FC<IBuilderPageControlsProps> = (props: 
                 </WrapItem>
             </Wrap>
 
-            <Wrap spacing={8} mt="1.5em">
+            <Wrap spacing={controlSpacing} mt="1.5em">
                 <WrapItem>
                     <PastedJsonFormSlider
                         propName="Moods"

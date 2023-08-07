@@ -2,6 +2,7 @@
 @import "./scrollbar";
 @import "./login";
 @import "./date";
+@import "./fab";
 @import "./page";
 @import "./preview";
 @import "./drawer";
@@ -59,6 +60,14 @@ body {
     cursor: pointer;
 }
 
+.drag {
+    cursor: grab;
+}
+
+.hold {
+    cursor: grabbing;
+}
+
 .noselect {
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -97,6 +106,10 @@ body {
     border-right-width: 1px;
     padding: 0 5px;
 
+    &.all {
+        border-radius: 6px;
+    }
+
     .inner {
         @extend .max-1-line;
         text-align: center;
@@ -133,10 +146,18 @@ body {
     }
 }
 
+// button.chakra-button {
+//     background: var(--chakra-colors-whiteAlpha-200);
+// }
+
 .chakra-button__spinner {
     display: inline-block !important;
 }
 
 .react-modal-sheet-container {
     max-height: 70vh !important;
+}
+
+.chakra-switch__thumb {
+    background: var(--chakra-colors-chakra-subtle-bg) !important;
 }

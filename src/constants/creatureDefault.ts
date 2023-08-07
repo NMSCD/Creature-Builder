@@ -1,6 +1,8 @@
 import { CreatureSave } from '../contracts/creatureSave';
 import { dateToEpoch, friendlyDate } from '../helper/dateHelper';
 
+export const noDescriptorOptionKey = '_NO_OPTION_';
+
 export const defaultPetJson = (): CreatureSave => {
     const timeInEpoch = dateToEpoch(friendlyDate());
 

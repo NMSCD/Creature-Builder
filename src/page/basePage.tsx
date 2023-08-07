@@ -8,7 +8,7 @@ interface IBaseProps {
 
 export const BasePage: React.FC<IBaseProps> = (props: IBaseProps) => {
     return (
-        <Box className={(props.className ?? '') + ' page'}>
+        <Box className={(props.className ?? '') + ' page'} draggable="false">
             {props.children}
         </Box>
     );

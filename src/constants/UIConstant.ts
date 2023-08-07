@@ -1,5 +1,6 @@
 export const depthSpacingInPx = 100;
-
+export const bgColour = '#1A202C';
+export const controlSpacing = 4;
 
 export const biomeList = [
     'Lush',

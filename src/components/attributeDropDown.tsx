@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from 'react';
 import { Box, Center, Flex, Select } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import { noDescriptorOptionKey } from '../constants/creatureDefault';
 import { depthSpacingInPx } from '../constants/UIConstant';
-import { PetDetails } from '../contracts/petDetails';
+import { PetDetailDescriptor, PetDetails } from '../contracts/petDetails';
 
 interface IProps {
     petDetail: PetDetails;
     placeholder?: string;
     isNested?: boolean;
+    defaultValue?: string;
+    selectedDescriptors: Array<string>;
     triggerJsonUpdate: () => void;
+    getFriendlyName: (grpId: string) => string;
 }
 
 export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
     const groupId = props.petDetail.GroupId;
-    const initialChildren = props.petDetail?.Descriptors?.[0]?.Children ?? [];
+    const descriptors = props.petDetail?.Descriptors ?? [];
     const [selectedPetDescrips, setSelectedPetDescrips] = useState<Array<PetDetails> | undefined>();
 
     useEffect(() => {
@@ -28,11 +32,15 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
         const descriptorId = e?.target?.value ?? '';
         if (descriptorId == null || descriptorId.length < 1) return;
 
-        const petData = (props.petDetail?.Descriptors ?? [])
-            // .flatMap(descrip => descrip.Children)
-            .filter(descrip => descrip != null);
+        const petData = descriptors.filter(descrip => descrip != null);
         const selectedItemIndex = petData.findIndex(p => p.Id === descriptorId);
-        if (selectedItemIndex < 0) return;
+        if (selectedItemIndex < 0) {
+            if (descriptorId === noDescriptorOptionKey) {
+                props.triggerJsonUpdate();
+            }
+
+            return;
+        }
 
         props.triggerJsonUpdate();
 
@@ -48,42 +56,83 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
         setSelectedPetDescrips(selectedChildren);
     }
 
+    const getPetDescrips = (petDetail: PetDetails, selectedDescriptors: Array<string>): Array<PetDetails> => {
+        if (selectedPetDescrips != null) return selectedPetDescrips;
+
+        for (const descriptor of petDetail?.Descriptors ?? []) {
+            if (selectedDescriptors.includes(descriptor.Id)) {
+                return descriptor.Children ?? []
+            }
+        }
+        return petDetail?.Descriptors?.[0]?.Children ?? [];
+    }
+
+    const getDefaultValue = (descriptors: Array<PetDetailDescriptor>, selectedDescriptors: Array<string>): string => {
+        for (const descriptor of descriptors) {
+            if (selectedDescriptors.includes(descriptor.Id)) {
+                return descriptor.Id;
+            }
+        }
+        return descriptors?.[0]?.Id;
+    }
+
+    // const getLocalDescriptors = (descriptors: Array<PetDetailDescriptor>, isNested?: boolean): Array<PetDetailDescriptor> => {
+    //     const addNoneOption = ((isNested ?? false) && descriptors.length < 2);
+
+    //     if (addNoneOption) {
+    //         const noneDescriptor = {
+    //             Id: noDescriptorOptionKey,
+    //             Name: 'NONE',
+    //             Children: [],
+    //         };
+    //         return [noneDescriptor, ...descriptors];
+    //     }
+
+    //     return descriptors;
+    // }
+
+    // const localDescriptors = getLocalDescriptors(descriptors, props.isNested);
+
     return (
         <Box
-            key={groupId + 'main'}
+            key={`${groupId}-main`}
             data-key={groupId}
             className="noselect"
-            mt="3"
+            draggable="false"
             ml={(props.isNested ?? false) ? `${depthSpacingInPx}px` : '0'}
         >
-            <Flex>
-                <Center width={`${depthSpacingInPx}px`} className="group">
-                    <Box className="inner" width="100%">
-                        {groupId}
+            <Flex mb="3" draggable="false">
+                <Center width={`${depthSpacingInPx}px`} className="group" draggable="false">
+                    <Box className="inner" width="100%" draggable="false">
+                        {props.getFriendlyName(groupId)}
                     </Box>
                 </Center>
-                <Box flex="1">
+                <Box flex="1" draggable="false">
                     <Select
                         placeholder={props.placeholder}
                         className="descriptor"
-                        disabled={(props.petDetail?.Descriptors ?? []).length < 2}
+                        draggable="false"
+                        defaultValue={getDefaultValue(descriptors, props.selectedDescriptors)}
+                        disabled={descriptors.length < 2}
                         onChange={onChangeDescriptorDropDown}
                     >
                         {
-                            (props.petDetail?.Descriptors ?? []).map((descrip, index) => (
-                                <option key={descrip.Id + index} value={descrip.Id}>{descrip.Id}</option>
+                            descriptors.map((descrip, index) => (
+                                <option key={descrip.Id + index} value={descrip.Id}>{props.getFriendlyName(descrip.Id)}</option>
                             ))
                         }
                     </Select>
                 </Box>
             </Flex>
             {
-                (selectedPetDescrips ?? initialChildren).map(selectedPetDescrip => (
+                (getPetDescrips(props.petDetail, props.selectedDescriptors)).map(selectedPetDescrip => (
                     <AttributeDropDown
-                        key={groupId + '-' + selectedPetDescrip.GroupId + ' descriptor'}
-                        data-key={groupId + '-' + selectedPetDescrip.GroupId + ' descriptor'}
+                        key={`${groupId}-${selectedPetDescrip.GroupId}-descriptor`}
+                        data-key={`${groupId}-${selectedPetDescrip.GroupId}-descriptor`}
                         isNested={true}
                         petDetail={selectedPetDescrip}
+                        selectedDescriptors={props.selectedDescriptors}
+                        getFriendlyName={props.getFriendlyName}
                         triggerJsonUpdate={props.triggerJsonUpdate}
                     />
                 ))
