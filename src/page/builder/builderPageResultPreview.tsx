@@ -1,33 +1,47 @@
 import { Box, Button, Center, Spinner, Text } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import { JsonExplanationBottomModalSheet } from '../../components/dialog/jsonExplanationBottomModalSheet';
+import React, { useContext, useEffect, useState } from 'react';
 import { JsonViewer } from '../../components/jsonViewer';
 import { ObjViewer } from '../../components/objViewer/objViewer';
+import { PetExtraInfo } from '../../constants/petExtraInfo';
 import { PetMainDetails } from '../../contracts/petDetails';
 import { delay } from '../../helper/asyncHelper';
 import { petGetDescriptorsToHide } from '../../helper/descriptorHelper';
-import { toggleHtmlNodeClass } from '../../helper/documentHelper';
+import { DependencyInjectionContext } from '../../integration/DependencyInjectionProvider';
+import { IBuilderPageSettings } from './builderPageSettingsRow';
 
 interface IBuilderPageResultPreviewProps {
     selectedPet: PetMainDetails;
     mappingString: string;
     descriptorId: string;
+    settings: IBuilderPageSettings;
+    setSettings: (func: (newState: IBuilderPageSettings) => IBuilderPageSettings) => void;
     getJsonFromMappings: (localMappingString: string) => string;
     getMappingsFromJson: (event: any) => void;
 }
 
 export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> = (props: IBuilderPageResultPreviewProps) => {
-    const [isJsonExplanationOpen, setJsonExplanationOpen] = useState<boolean>(false);
-    const [showPreview, setShowPreview] = useState<boolean>(false);
+    const { toastService } = useContext(DependencyInjectionContext);
+
+    const showPreview = props.settings.showModelPreview;
+    const showJsonPreview = props.settings.showJsonPreview;
+    const json = props.getJsonFromMappings(props.mappingString + ',' + props.descriptorId);
+
     const [showObjPreview, setShowObjPreview] = useState<boolean>(false);
 
-    const toggleJsonExplanation = (isOpen: boolean) => {
-        toggleHtmlNodeClass('body', 'noscroll', isOpen);
-        setJsonExplanationOpen(isOpen);
+    const copyJson = () => {
+        navigator?.clipboard?.writeText?.(json)?.then?.(() => {
+            toastService.success(<span>Copied!</span>)
+        });
     }
 
+    useEffect(() => {
+        const effectShowPreview = props.settings.showModelPreview;
+        if (effectShowPreview !== showObjPreview) {
+            handleShowPreview(effectShowPreview);
+        }
+    }, [props.settings.showModelPreview, showObjPreview]);
+
     const handleShowPreview = async (show: boolean) => {
-        setShowPreview(show);
         await delay(300);
         setShowObjPreview(show);
     }
@@ -43,34 +57,39 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
         return allDescriptorsToHide.join(',');
     }
 
+    const getFlex = (showModelPreview: boolean, showJsonPreview: boolean): number => {
+        if (showModelPreview === false && showJsonPreview === false) return 1;
+        if (showModelPreview) return 6;
+        return 4;
+    }
+
     if (props.selectedPet.CreatureId == null) {
         return (
             <Box flex="2" mt="3" className="hidden-in-mobile"></Box>
         );
     }
 
+    const creatureId = props.selectedPet.CreatureId;
+    const petExtraInfoObj = PetExtraInfo[creatureId];
+    const cameraInitZoom = petExtraInfoObj.initialZoom ?? 1;
+    const cameraPositionZ = petExtraInfoObj.initialCameraZ ?? 8;
+    const initPositionY = petExtraInfoObj.initialHeight ?? -1;
+
     return (
         <Box
-            flex={showPreview ? 3 : 2}
+            flex={getFlex(showPreview, showJsonPreview)}
             pos="relative"
             className="builder-preview hidden-in-mobile">
-            <Box mb="0.75em">
-                <Button key="how-to" mr="1em" colorScheme="gray" onClick={() => toggleJsonExplanation(true)}>
-                    <span>How to use the JSON</span>
-                </Button>
-                <Button key={`showPrev: ${showPreview}`} colorScheme="orange" onClick={() => handleShowPreview(!showPreview)}>
-                    <span>{showPreview ? 'Disable' : 'Enable'} preview</span>
-                </Button>
-            </Box>
             {
                 showPreview && (
-                    <Box className="obj-preview wrapper">
+                    <Box className="obj-preview noselect wrapper">
                         <Center
                             id="obj-preview-loader"
                             pos="absolute"
                             className="obj-preview bg"
                             flexDir="column"
                             borderRadius="10em"
+                            draggable="false"
                             zIndex="0"
                         >
                             <Spinner />
@@ -79,8 +98,11 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
                         {
                             showObjPreview && (
                                 <ObjViewer
-                                    key={`preview-${props.selectedPet.CreatureId}`}
-                                    creatureId={props.selectedPet.CreatureId}
+                                    key={`preview-${creatureId}`}
+                                    creatureId={creatureId}
+                                    cameraInitZoom={cameraInitZoom}
+                                    cameraPositionZ={cameraPositionZ}
+                                    initPositionY={initPositionY}
                                     meshesToHide={getMeshesToHide(props.selectedPet, props.mappingString)}
                                 />
                             )
@@ -88,14 +110,19 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
                     </Box>
                 )
             }
-            <JsonViewer
-                json={props.getJsonFromMappings(props.mappingString + ',' + props.descriptorId)}
-                getMappingsFromJson={props.getMappingsFromJson}
-            />
-            <JsonExplanationBottomModalSheet
-                isDetailPaneOpen={isJsonExplanationOpen}
-                setDetailPaneOpen={toggleJsonExplanation}
-            />
+            {
+                showJsonPreview
+                    ? (
+                        <JsonViewer
+                            json={json}
+                            copyJson={copyJson}
+                            getMappingsFromJson={props.getMappingsFromJson}
+                        />
+                    )
+                    : (
+                        <Button width="100%" colorScheme="purple" onClick={copyJson}>Copy JSON to clipboard</Button>
+                    )
+            }
         </Box>
     );
 }

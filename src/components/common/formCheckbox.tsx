@@ -31,6 +31,7 @@ export const PastedJsonFormCheckbox: React.FC<IFormCheckBox> = (props: IFormChec
             <Switch
                 id={props.propName}
                 isChecked={currentValue}
+                colorScheme="purple"
                 onChange={(chkbx: any) => props.modifyJsonObj(props.propName, (chkbx.target.checked ?? false))}
             />
         </FormControl>

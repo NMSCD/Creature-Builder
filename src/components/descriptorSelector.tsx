@@ -16,10 +16,10 @@ interface IProps {
 export const DescriptorSelector: React.FC<IProps> = (props: IProps) => {
 
     return (
-        <Box className="restricted">
+        <Box className="restricted" draggable="false">
             {
                 (props.petDetails ?? []).map((details, index) => (
-                    <Box key={details.GroupId + index}>
+                    <Box key={details.GroupId + index} draggable="false">
                         {
                             props.enforceDescriptorRestrictions
                                 ? (

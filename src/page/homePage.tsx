@@ -15,7 +15,7 @@ export const HomePage: React.FC = () => {
                 <Text fontSize={30} textAlign="center">Build your dream companion!</Text>
             </section>
 
-            <br />
+            <br className="noselect" />
 
             <section className="call-to-action">
                 <Flex justify="center" paddingTop="0.5em" paddingBottom="1em">
@@ -34,14 +34,14 @@ export const HomePage: React.FC = () => {
                 </Flex>
             </section>
 
-            <br />
+            <br className="noselect" />
 
             <section>
                 <Flex direction="row">
                     <Spacer className="hidden-in-mobile" maxW="200px" />
                     <Box p={5}>
                         <Zoom zoomMargin={50} overlayBgColorEnd="rgba(0, 0, 0, 0.85)">
-                            <Image src="./assets/img/easyToUse.png" className="round" maxH="350px" draggable={false} />
+                            <Image src="./assets/img/easyToUse.png" className="noselect round" maxH="350px" draggable={false} />
                         </Zoom>
                     </Box>
                     <Box flex="1" p={5}>
@@ -57,7 +57,7 @@ export const HomePage: React.FC = () => {
                 </Flex>
             </section>
 
-            <br />
+            <br className="noselect" />
 
             <section>
                 <Flex direction="row">
@@ -72,20 +72,20 @@ export const HomePage: React.FC = () => {
                     </Box>
                     <Box p={5}>
                         <Zoom zoomMargin={50} overlayBgColorEnd="rgba(0, 0, 0, 0.85)">
-                            <Image src="./assets/img/easyToUse2.png" className="round" maxH="350px" draggable={false} />
+                            <Image src="./assets/img/easyToUse2.png" className="noselect round" maxH="350px" draggable={false} />
                         </Zoom>
                     </Box>
                     <Spacer className="hidden-in-mobile" maxW="200px" />
                 </Flex>
             </section>
 
-            <br />
+            <br className="noselect" />
 
             <section>
                 <Flex direction="row">
                     <Spacer className="hidden-in-mobile" maxW="200px" />
                     <Box p={5}>
-                        <Image src="./assets/img/underConstruction.svg" className="round" maxH="300px" draggable={false} />
+                        <Image src="./assets/img/underConstruction.svg" className="noselect round" maxH="300px" draggable={false} />
                     </Box>
                     <Box flex="1" p={5}>
                         <Center height="100%">
@@ -100,8 +100,8 @@ export const HomePage: React.FC = () => {
             </section>
 
             <section>
-                <br />
-                <br />
+                <br className="noselect" />
+                <br className="noselect" />
             </section>
         </BasePage>
     );

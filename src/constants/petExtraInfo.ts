@@ -5,6 +5,7 @@ interface IPetExtraInfoAttrMapping {
 interface IPetExtraInfo {
     initialZoom?: number;
     initialHeight?: number;
+    initialCameraZ?: number;
     disablePreview?: boolean;
     attr?: IPetExtraInfoAttrMapping;
 }
@@ -26,7 +27,6 @@ export const PetExtraInfo: IPetExtraInfoContainer = {
         initialZoom: 0.6,
     },
     BONECAT: {
-        initialZoom: 1.25,
         initialHeight: -2,
     },
     BUTTERFLY: {
@@ -45,8 +45,8 @@ export const PetExtraInfo: IPetExtraInfoContainer = {
     COWFLOATING: {},
     COWHINDLEGS: {},
     DRILL: {
-        initialZoom: 2,
         initialHeight: 0.25,
+        initialCameraZ: 24,
     },
     FIEND: {
         initialZoom: 0.75,
@@ -56,21 +56,21 @@ export const PetExtraInfo: IPetExtraInfoContainer = {
         initialHeight: 0,
     },
     FISHFIENDSMALL: {
-        initialZoom: 1.5,
         initialHeight: 0,
+        initialCameraZ: 12,
     },
     SPIDERFLOAT: {
         initialZoom: 0.75,
         initialHeight: -0.5,
     },
     BEETLE: {
-        initialZoom: 2.5,
+        initialCameraZ: 24,
     },
     FLYINGLIZARD: {
-        initialZoom: 2,
+        initialCameraZ: 24,
     },
     FLYINGSNAKE: {
-        initialZoom: 2,
+        initialCameraZ: 24,
     },
     GROUNDCREATURE: {},
     GRUNT: {
@@ -113,18 +113,18 @@ export const PetExtraInfo: IPetExtraInfoContainer = {
         initialHeight: -0.25,
     },
     SANDWORM: {
-        initialZoom: 2,
+        initialCameraZ: 24,
     },
     FREIGHTERFIEND: {
         initialZoom: 0.75,
         initialHeight: -1,
     },
     SEASNAKE: {
-        initialZoom: 2,
+        initialCameraZ: 24,
     },
     SHARK: {
-        initialZoom: 1.5,
         initialHeight: 1,
+        initialCameraZ: 12,
     },
     SIXLEGCAT: {},
     SIXLEGGEDCOW: {},
@@ -151,7 +151,8 @@ export const PetExtraInfo: IPetExtraInfoContainer = {
         initialZoom: 0.5,
     },
     TRICERATOPS: {
-        initialZoom: 1.5,
+        initialCameraZ: 16,
+        initialHeight: -2,
     },
     ANTELOPETWOLEGS: {
         initialZoom: 0.5,

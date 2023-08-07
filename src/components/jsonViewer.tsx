@@ -1,26 +1,19 @@
 import { CopyIcon } from '@chakra-ui/icons';
-import { Box, InputGroup, InputRightElement } from '@chakra-ui/react';
-import React, { ReactNode, useContext } from 'react';
+import { Box, InputGroup, InputRightElement, Tooltip } from '@chakra-ui/react';
+import React, { ReactNode } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDarkReasonable } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-import { DependencyInjectionContext } from '../integration/DependencyInjectionProvider';
 
 interface IProps {
     json: string;
     placeholder?: string;
     children?: ReactNode;
     getMappingsFromJson: (event: any) => void;
+    copyJson: () => void;
 }
 
 export const JsonViewer: React.FC<IProps> = (props: IProps) => {
-    const { toastService } = useContext(DependencyInjectionContext);
-
-    const copyJson = () => {
-        navigator?.clipboard?.writeText?.(props.json)?.then?.(() => {
-            toastService.success(<span>Copied!</span>)
-        });
-    }
 
     return (
         <InputGroup height="100%" width="100%" className="json-viewer">
@@ -35,12 +28,14 @@ export const JsonViewer: React.FC<IProps> = (props: IProps) => {
                 </SyntaxHighlighter>
                 <InputRightElement
                     children={
-                        <CopyIcon
-                            className="pointer"
-                            fontSize={30}
-                            onClick={copyJson}
-                            mt="1em" mr="1em"
-                        />
+                        <Tooltip label="Copy JSON to clipboard">
+                            <CopyIcon
+                                className="pointer"
+                                fontSize={30}
+                                onClick={props.copyJson}
+                                mt="1em" mr="1em"
+                            />
+                        </Tooltip>
                     }
                 />
             </Box>

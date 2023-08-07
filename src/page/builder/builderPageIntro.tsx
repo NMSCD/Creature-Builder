@@ -30,6 +30,20 @@ export const BuilderPageIntro: React.FC<IBuilderPageIntroProps> = (props: IBuild
                 </Center>
                 {props.children}
             </Container>
+
+            {/* <Container>
+                <SimpleGrid columns={2} spacing={10}>
+                    <Card aspectRatio={1}>
+                        <Text>Start new creature</Text>
+                    </Card>
+                    <Card aspectRatio={1}>
+                        <Text>Paste JSON</Text>
+                    </Card>
+                    <Card aspectRatio={1}>
+                        <Text>Use a template</Text>
+                    </Card>
+                </SimpleGrid>
+            </Container> */}
         </>
     );
 }

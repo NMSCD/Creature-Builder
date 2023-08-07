@@ -2,6 +2,7 @@ import { Box, Card, Center, Checkbox, Flex, Wrap, WrapItem } from '@chakra-ui/re
 import React from 'react';
 import { controlSpacing, depthSpacingInPx } from '../constants/UIConstant';
 import { PetDetails } from '../contracts/petDetails';
+import { uuidv4 } from '../helper/guidHelper';
 
 interface IProps {
     petDetail: PetDetails;
@@ -15,7 +16,7 @@ interface IProps {
 
 export const AttributeMultiSelect: React.FC<IProps> = (props: IProps) => {
     const groupId = props.petDetail.GroupId;
-    const currentNodeId = `${groupId}-${props.petDetailIndex}-depth${props.depth ?? 0}-options`;
+    const currentNodeId = `${groupId}-${uuidv4()}-options`;
 
     const selectAllCheckBoxes = () => {
         const checkBoxElems = document.querySelectorAll(`#${currentNodeId} .chakra-checkbox.descriptor`);

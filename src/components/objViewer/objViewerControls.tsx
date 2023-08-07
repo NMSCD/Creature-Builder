@@ -8,14 +8,15 @@ import { ObjInfoModal } from './objInfoModal';
 
 interface IProps {
     creatureId: string;
+    enableRotate: boolean;
     onRepeatClick: (enable: boolean) => void;
     accessRenderer: () => any;
 }
 
 export const ObjViewerControls: React.FC<IProps> = (props: IProps) => {
-    const [, setEnableRotate] = useState<boolean>(false);
+    const [, setEnableRotate] = useState<boolean>(props.enableRotate);
 
-    const iconSize = '1.5em';
+    const iconSize = '3.5em';
 
     return (
         <>
@@ -24,8 +25,9 @@ export const ObjViewerControls: React.FC<IProps> = (props: IProps) => {
                 triggerNodeContent={(
                     <InfoOutlineIcon
                         pos="absolute"
-                        top="1em"
-                        left="1em"
+                        top="0"
+                        left="0"
+                        p="1em"
                         boxSize={iconSize}
                         className="pointer"
                     />
@@ -35,8 +37,9 @@ export const ObjViewerControls: React.FC<IProps> = (props: IProps) => {
             <Tooltip label="Download image">
                 <DownloadIcon
                     pos="absolute"
-                    top="1em"
-                    right="1em"
+                    top="0"
+                    right="0"
+                    p="1em"
                     boxSize={iconSize}
                     className="pointer"
                     onClick={async () => {
@@ -56,11 +59,11 @@ export const ObjViewerControls: React.FC<IProps> = (props: IProps) => {
                         const tempCanvasCtx = tempCanvas.getContext('2d');
                         if (tempCanvasCtx == null) return;
 
-                        const watermarkImgWidth = 100;
-                        const watermarkImgHeight = 50;
+                        const watermarkImgWidth = 150;
+                        const watermarkImgHeight = 80;
                         const watermarkImgPadding = 10;
                         const watermarkImgFromDataStr = await createImageFromSrcAsync(
-                            '/assets/img/banner.svg',
+                            '/assets/img/watermark.png',
                             watermarkImgWidth,
                             watermarkImgHeight
                         );
@@ -95,8 +98,9 @@ export const ObjViewerControls: React.FC<IProps> = (props: IProps) => {
             <Tooltip label="Toggle rotation">
                 <RepeatIcon
                     pos="absolute"
-                    right="1em"
-                    bottom="1em"
+                    right="0"
+                    bottom="0"
+                    p="1em"
                     boxSize={iconSize}
                     className="pointer"
                     onClick={() => {

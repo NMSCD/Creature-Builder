@@ -1,5 +1,6 @@
 import { Box, Center, Flex, Select } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
+import { noDescriptorOptionKey } from '../constants/creatureDefault';
 import { depthSpacingInPx } from '../constants/UIConstant';
 import { PetDetailDescriptor, PetDetails } from '../contracts/petDetails';
 
@@ -33,7 +34,13 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
 
         const petData = descriptors.filter(descrip => descrip != null);
         const selectedItemIndex = petData.findIndex(p => p.Id === descriptorId);
-        if (selectedItemIndex < 0) return;
+        if (selectedItemIndex < 0) {
+            if (descriptorId === noDescriptorOptionKey) {
+                props.triggerJsonUpdate();
+            }
+
+            return;
+        }
 
         props.triggerJsonUpdate();
 
@@ -69,23 +76,42 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
         return descriptors?.[0]?.Id;
     }
 
+    // const getLocalDescriptors = (descriptors: Array<PetDetailDescriptor>, isNested?: boolean): Array<PetDetailDescriptor> => {
+    //     const addNoneOption = ((isNested ?? false) && descriptors.length < 2);
+
+    //     if (addNoneOption) {
+    //         const noneDescriptor = {
+    //             Id: noDescriptorOptionKey,
+    //             Name: 'NONE',
+    //             Children: [],
+    //         };
+    //         return [noneDescriptor, ...descriptors];
+    //     }
+
+    //     return descriptors;
+    // }
+
+    // const localDescriptors = getLocalDescriptors(descriptors, props.isNested);
+
     return (
         <Box
             key={`${groupId}-main`}
             data-key={groupId}
             className="noselect"
+            draggable="false"
             ml={(props.isNested ?? false) ? `${depthSpacingInPx}px` : '0'}
         >
-            <Flex mb="3">
-                <Center width={`${depthSpacingInPx}px`} className="group">
-                    <Box className="inner" width="100%">
+            <Flex mb="3" draggable="false">
+                <Center width={`${depthSpacingInPx}px`} className="group" draggable="false">
+                    <Box className="inner" width="100%" draggable="false">
                         {props.getFriendlyName(groupId)}
                     </Box>
                 </Center>
-                <Box flex="1">
+                <Box flex="1" draggable="false">
                     <Select
                         placeholder={props.placeholder}
                         className="descriptor"
+                        draggable="false"
                         defaultValue={getDefaultValue(descriptors, props.selectedDescriptors)}
                         disabled={descriptors.length < 2}
                         onChange={onChangeDescriptorDropDown}

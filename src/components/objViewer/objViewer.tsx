@@ -2,16 +2,20 @@ import { CloseIcon } from '@chakra-ui/icons';
 import { Center, Text } from '@chakra-ui/react';
 import { Component, createRef } from "react";
 import { Camera, Clock, HemisphereLight, Object3D, PerspectiveCamera, Scene, SpotLight, WebGLRenderer } from "three";
-import { PetExtraInfo } from '../../constants/petExtraInfo';
 import { bgColour } from '../../constants/UIConstant';
 import { cameraControls } from './cameraControls';
 import { loadModel } from './modelLoader';
 import { ObjViewerControls } from './objViewerControls';
 
+const creaturePreviewId = 'creature-preview';
+
 interface IProps {
     creatureId: string;
     meshesToHide: string;
     hideControls?: boolean;
+    cameraInitZoom?: number;
+    cameraPositionZ?: number;
+    initPositionY?: number;
 }
 
 interface IState {
@@ -27,8 +31,9 @@ export class ObjViewer extends Component<IProps, IState> {
     clock = new Clock();
     origCreatureMesh: Object3D<Event> | undefined;
     creatureMesh: Object3D<Event> | undefined;
-    initPositionY: number = 0;
+    initPositionY: number = this.props.initPositionY ?? -1;
     frameId: number = 0;
+    rotationY: number = 0;
     controls: any = {};
     repeatIconRef: any = createRef();
     enableRotate: boolean = false;
@@ -44,12 +49,11 @@ export class ObjViewer extends Component<IProps, IState> {
     componentDidMount() {
         const width = this.mount.clientWidth;
         const height = this.mount.clientHeight;
-        const petExtraInfoObj = PetExtraInfo[this.props.creatureId];
-        const cameraInit = petExtraInfoObj.initialZoom ?? 1;
-        this.initPositionY = petExtraInfoObj.initialHeight ?? -1;
+        const cameraInit = this.props.cameraInitZoom ?? 1;
+        const cameraPositionZ = this.props.cameraPositionZ ?? 8;
 
         this.camera = new PerspectiveCamera((cameraInit * 40), width / height, 0.1, 1000);
-        this.camera.position.z = 8;
+        this.camera.position.z = cameraPositionZ;
         this.camera.position.y = 5;
 
         this.renderer = new WebGLRenderer({
@@ -96,7 +100,7 @@ export class ObjViewer extends Component<IProps, IState> {
             fileName: this.props.creatureId,
             onLoad: this.onObjLoad,
             onProgressChange: (xhr: any) => {
-                // console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+                console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
             },
             onError: (error: any) => {
                 console.log("An error happened" + error);
@@ -166,7 +170,7 @@ export class ObjViewer extends Component<IProps, IState> {
         console.log('load OBJ');
         this.origCreatureMesh = object;
         this.origCreatureMesh.position.y = this.initPositionY;
-        this.origCreatureMesh.rotation.y = 180;
+        this.origCreatureMesh.rotation.y = -180;
 
         this.origCreatureMesh.traverse((n: any) => {
             if (n.isMesh) {
@@ -198,10 +202,10 @@ export class ObjViewer extends Component<IProps, IState> {
         const delta = this.clock.getDelta();
 
         if (this.enableRotate && this.creatureMesh != null) {
-            const rotationY = this.creatureMesh.rotation.y + (0.25 * Math.abs(delta));
-            this.creatureMesh.rotation.y = rotationY;
+            this.rotationY = this.creatureMesh.rotation.y + (0.25 * delta);
+            this.creatureMesh.rotation.y = this.rotationY;
             if (this.origCreatureMesh != null) {
-                this.origCreatureMesh.rotation.y = rotationY;
+                this.origCreatureMesh!.rotation.y = this.rotationY;
             }
         }
 
@@ -212,9 +216,10 @@ export class ObjViewer extends Component<IProps, IState> {
     render() {
         return (
             <div
-                id="creature-preview"
+                id={creaturePreviewId}
                 ref={mount => { this.mount = mount; }}
-                className={`obj-preview ${this.state.hasLoaded ? '' : 'opacity-0'}`}
+                draggable="false"
+                className={`obj-preview noselect drag ${this.state.hasLoaded ? '' : 'opacity-0'}`}
             >
                 {
                     (this.state.hasFailed) && (
@@ -222,8 +227,9 @@ export class ObjViewer extends Component<IProps, IState> {
                             pos="absolute"
                             top="0"
                             zIndex="1"
-                            className="obj-preview"
+                            className="obj-preview bg"
                             flexDir="column"
+                            draggable="false"
                         >
                             <CloseIcon />
                             <Text mt="0.5em">Something went wrong</Text>
@@ -234,6 +240,7 @@ export class ObjViewer extends Component<IProps, IState> {
                     (this.state.hasLoaded && this.props.hideControls !== true) && (
                         <ObjViewerControls
                             creatureId={this.props.creatureId}
+                            enableRotate={this.enableRotate}
                             accessRenderer={() => this.renderer}
                             onRepeatClick={(enable: boolean) => {
                                 this.enableRotate = enable;

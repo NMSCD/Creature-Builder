@@ -27,6 +27,7 @@ export const SettingSwitch: React.FC<IProps> = (props: IProps) => {
                 id={props.id}
                 ref={switchRef}
                 isChecked={props.value}
+                colorScheme="purple"
                 onChange={(data: any) => props.onChange(data.target.checked ?? false)}
             />
         </FormControl>

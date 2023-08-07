@@ -1,9 +1,9 @@
-import { RepeatIcon } from '@chakra-ui/icons';
-import { Box, Button, Center, Container, Flex, HStack, Select, Text, Tooltip } from '@chakra-ui/react';
+import { Box, Button, Container, Flex } from '@chakra-ui/react';
 import React, { useContext, useEffect, useState } from 'react';
 import petJsonData from '../../assets/IPetData.json';
+import { CreatureIdDropdown } from '../../components/creatureIdDropdown';
 import { DescriptorSelector } from '../../components/descriptorSelector';
-import { defaultPetJson } from '../../constants/creatureDefault';
+import { defaultPetJson, noDescriptorOptionKey } from '../../constants/creatureDefault';
 import { PetExtraInfo } from '../../constants/petExtraInfo';
 import { StorageKey } from '../../constants/storageKey';
 import { CreatureSave } from '../../contracts/creatureSave';
@@ -67,10 +67,14 @@ export const BuilderPage: React.FC = () => {
 
   const onChangeCreatureDropDown = (e: any) => {
     e?.persist?.();
-    const creatureId = e?.target?.value ?? '';
+    const creatureId = (e?.target?.value ?? '').replaceAll('^', '');
     if (creatureId == null || creatureId.length < 1) return;
 
     const selectedItemIndex = petData.findIndex(p => p.CreatureId === creatureId);
+    if (selectedItemIndex < 0) {
+      toastService.error(`CreatureID (${creatureId}) not supported`);
+      return;
+    }
     const selectedItem: any = petData[selectedItemIndex];
     setSelectedPet(selectedItem);
     triggerJsonInterval();
@@ -113,14 +117,16 @@ export const BuilderPage: React.FC = () => {
       }
     }
 
-    return descriptors;
+    return descriptors.filter(d => d !== noDescriptorOptionKey);
   }
 
   const getJsonFromMappings = (localMappingString: string): string => {
     if (selectedPet.CreatureId == null) return '';
 
     const descriptors: Array<string> = localMappingString.split(',');
-    const displayDescrips = descriptors.map(descr => `^${descr}`);
+    const displayDescrips = descriptors
+      .filter(descr => descr.length > 0)
+      .map(descr => `^${descr}`);
 
     const finalObj = {
       ...saveJson,
@@ -170,106 +176,83 @@ export const BuilderPage: React.FC = () => {
     return petExtraAttr;
   }
 
+  const applyChangesToSettings = (func: (prev: IBuilderPageSettings) => IBuilderPageSettings) => {
+    setSettings((prev) => {
+      const newV = func(prev);
+      localStorage.setItem(StorageKey.settings, JSON.stringify(newV));
+      return newV;
+    })
+  }
+
   const creatureIdIsNotNull = (selectedPet.CreatureId != null);
-  const builderSettings = (
-    <BuilderPageSettingsRow
-      key="builder-page-settings-row"
-      settings={settings}
-      setSettings={(func) => {
-        setSettings((prev) => {
-          const newV = func(prev);
-          localStorage.setItem(StorageKey.settings, JSON.stringify(newV));
-          return newV;
-        })
-      }}
-      triggerJsonInterval={triggerJsonInterval}
-    />
-  );
 
   return (
     <BasePage>
       <Container>
-        <HStack>
-          <Select
-            className="noselect"
-            mr="0.5em"
-            placeholder='Select creature type'
-            value={selectedPet?.CreatureId ?? 'nothing-selected'}
-            onChange={onChangeCreatureDropDown}
-          >
-            {
-              petData.map((pet, index) => (
-                <option key={pet.CreatureId + index} value={pet.CreatureId}>{pet.FriendlyName}</option>
-              ))
-            }
-          </Select>
-          {
-            (creatureIdIsNotNull) && (
-              <Tooltip label="Reset selection">
-                <RepeatIcon boxSize="30" className="pointer" onClick={() => setSelectedPet({} as any)} />
-              </Tooltip>
-            )
-          }
-        </HStack>
-        <Box w='100%' p={4} color='white'></Box>
+        <CreatureIdDropdown
+          creatureId={selectedPet?.CreatureId}
+          petData={petData}
+          setSelectedPet={setSelectedPet}
+          onChangeCreatureDropDown={onChangeCreatureDropDown}
+        />
+        <Box p={2}></Box>
       </Container>
-      {
-        (!creatureIdIsNotNull) && (
-          <>
-            <BuilderPageIntro getMappingsFromJson={getMappingsFromJson}>
-              <Center className="attributes" mx={0} my={10} flexDir="column">
-                <Text mb={1}>Settings</Text>
-                {builderSettings}
-              </Center>
-            </BuilderPageIntro>
-          </>
-        )
-      }
 
-      {
-        creatureIdIsNotNull && (
-          <Box className="attributes">
-            <Flex>
-              <BuilderPageResultPreview
-                selectedPet={selectedPet}
-                mappingString={mappingString}
-                descriptorId={descriptorId}
-                getJsonFromMappings={getJsonFromMappings}
-                getMappingsFromJson={getMappingsFromJson}
-              />
-              <Box width="20px" className="hidden-in-mobile"></Box>
-              <Box flex="5" className="builder-controls">
-                {builderSettings}
-                <DescriptorSelector
-                  petDetails={selectedPet.Details}
-                  selectedDescriptors={mappingString.split(',')}
-                  enforceDescriptorRestrictions={settings.enforceDescriptorRestrictions}
-                  getFriendlyName={getFriendlyName}
-                  triggerJsonInterval={triggerJsonInterval}
+      <Box className={creatureIdIsNotNull ? 'hidden' : ''}>
+        <BuilderPageIntro getMappingsFromJson={getMappingsFromJson} />
+      </Box>
+
+      <Box className={creatureIdIsNotNull ? 'attributes' : 'hidden'}>
+        <BuilderPageSettingsRow
+          key="builder-page-settings-row"
+          settings={settings}
+          setSettings={applyChangesToSettings}
+          triggerJsonInterval={triggerJsonInterval}
+          getMappingsFromJson={e => {
+            console.log(e);
+            getMappingsFromJson(e)
+          }}
+        />
+        <Flex mt="1em">
+          <BuilderPageResultPreview
+            selectedPet={selectedPet}
+            mappingString={mappingString}
+            descriptorId={descriptorId}
+            settings={settings}
+            setSettings={applyChangesToSettings}
+            getJsonFromMappings={getJsonFromMappings}
+            getMappingsFromJson={getMappingsFromJson}
+          />
+          <Box width="20px" className="hidden-in-mobile"></Box>
+          <Box flex="10" className="builder-controls">
+            <DescriptorSelector
+              petDetails={selectedPet.Details}
+              selectedDescriptors={mappingString.split(',')}
+              enforceDescriptorRestrictions={settings.enforceDescriptorRestrictions}
+              getFriendlyName={getFriendlyName}
+              triggerJsonInterval={triggerJsonInterval}
+            />
+
+            {
+              (saveJson.CreatureID != null) && (
+                <BuilderPageControls
+                  creatureId={selectedPet.CreatureId}
+                  pastedJson={saveJson}
+                  regenDescriptoId={() => setDescriptorId(newDescriptorId())}
+                  modifyJsonObj={modifyJsonObj}
                 />
+              )
+            }
 
-                {
-                  (saveJson.CreatureID != null) && (
-                    <BuilderPageControls
-                      creatureId={selectedPet.CreatureId}
-                      pastedJson={saveJson}
-                      regenDescriptoId={() => setDescriptorId(newDescriptorId())}
-                      modifyJsonObj={modifyJsonObj}
-                    />
-                  )
-                }
-
-              </Box>
-            </Flex>
-            <Box mt="12" className="hidden-in-desktop ta-center">
-              <Button width="100%" colorScheme="green">
-                <span>Copy JSON result</span>
-              </Button>
-            </Box>
-            {/* <DonationFAB /> */}
           </Box>
-        )
-      }
+        </Flex>
+        <Box mt="12" className="hidden-in-desktop ta-center">
+          <Button width="100%" colorScheme="green">
+            <span>Copy JSON result</span>
+          </Button>
+        </Box>
+        {/* <DonationFAB /> */}
+      </Box>
 
     </BasePage>
   );
