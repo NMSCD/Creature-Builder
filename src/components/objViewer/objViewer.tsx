@@ -1,5 +1,5 @@
 import { CloseIcon } from '@chakra-ui/icons';
-import { Center, Text } from '@chakra-ui/react';
+import { Center, Spinner, Text } from '@chakra-ui/react';
 import { Component, createRef } from "react";
 import { Camera, Clock, HemisphereLight, Object3D, PerspectiveCamera, Scene, SpotLight, WebGLRenderer } from "three";
 import { bgColour } from '../../constants/UIConstant';
@@ -110,8 +110,7 @@ export class ObjViewer extends Component<IProps, IState> {
                     hasFailed: true,
                 }))
             }
-        }
-        );
+        });
     }
 
     componentDidUpdate(prevProps: IProps) {
@@ -146,14 +145,17 @@ export class ObjViewer extends Component<IProps, IState> {
 
         const descriptorsToHide = this.props.meshesToHide.split(',');
         for (const meshToHide of descriptorsToHide) {
-            const removePart = this.creatureMesh.getObjectByName(meshToHide);
+            let removePart = this.creatureMesh.getObjectByName(meshToHide);
+            if (removePart == null) {
+                removePart = this.creatureMesh.getObjectByName(`${meshToHide}Shape`);
+            }
             if (removePart == null) {
                 // console.warn(`mesh to hide not found: ${meshToHide}`);
                 continue;
             }
             const parent = removePart.parent;
             if (parent == null) {
-                // console.error(`could not remove mesh from parent: ${meshToHide}`);
+                console.error(`could not remove mesh from parent: ${meshToHide}`);
                 continue;
             }
             parent.remove(removePart);
@@ -172,6 +174,8 @@ export class ObjViewer extends Component<IProps, IState> {
         this.origCreatureMesh.position.y = this.initPositionY;
         this.origCreatureMesh.rotation.y = -180;
 
+        console.log(this.origCreatureMesh)
+
         this.origCreatureMesh.traverse((n: any) => {
             if (n.isMesh) {
                 n.castShadow = true;
@@ -182,17 +186,10 @@ export class ObjViewer extends Component<IProps, IState> {
         });
 
         this.updateCreatureMeshes();
-
-        this.start();
-        this.setState((prev) => ({
+        this.frameId = requestAnimationFrame(this.animate);
+        this.setState(() => ({
             hasLoaded: true,
         }));
-    };
-
-    start = () => {
-        if (!this.frameId) {
-            this.frameId = requestAnimationFrame(this.animate);
-        }
     };
 
     animate = () => {
@@ -219,8 +216,20 @@ export class ObjViewer extends Component<IProps, IState> {
                 id={creaturePreviewId}
                 ref={mount => { this.mount = mount; }}
                 draggable="false"
-                className={`obj-preview noselect drag ${this.state.hasLoaded ? '' : 'opacity-0'}`}
+                className="obj-preview wrapper noselect drag"
             >
+                {
+                    (this.state.hasLoaded && this.props.hideControls !== true) && (
+                        <ObjViewerControls
+                            creatureId={this.props.creatureId}
+                            enableRotate={this.enableRotate}
+                            accessRenderer={() => this.renderer}
+                            onRepeatClick={(enable: boolean) => {
+                                this.enableRotate = enable;
+                            }}
+                        />
+                    )
+                }
                 {
                     (this.state.hasFailed) && (
                         <Center
@@ -237,15 +246,19 @@ export class ObjViewer extends Component<IProps, IState> {
                     )
                 }
                 {
-                    (this.state.hasLoaded && this.props.hideControls !== true) && (
-                        <ObjViewerControls
-                            creatureId={this.props.creatureId}
-                            enableRotate={this.enableRotate}
-                            accessRenderer={() => this.renderer}
-                            onRepeatClick={(enable: boolean) => {
-                                this.enableRotate = enable;
-                            }}
-                        />
+                    (this.state.hasLoaded !== true) && (
+                        <Center
+                            id="obj-preview-loader"
+                            pos="absolute"
+                            className="obj-preview bg"
+                            flexDir="column"
+                            borderRadius="10em"
+                            draggable="false"
+                            zIndex="2"
+                        >
+                            <Spinner />
+                            <Text mt="0.5em">Loading...</Text>
+                        </Center>
                     )
                 }
             </div>
