@@ -125,6 +125,12 @@ body {
     }
 }
 
+.builder-page-flex {
+    @media screen and (max-width: 980px) {
+        flex-direction: column;
+    }
+}
+
 .attributes {
     margin: 0 2em;
 

@@ -4,7 +4,7 @@ import petJsonData from '../../assets/IPetData.json';
 import { CreatureIdDropdown } from '../../components/creatureIdDropdown';
 import { DescriptorSelector } from '../../components/descriptorSelector';
 import { defaultPetJson, noDescriptorOptionKey } from '../../constants/creatureDefault';
-import { PetExtraInfo } from '../../constants/petExtraInfo';
+import { creaturesToExclude, PetExtraInfo } from '../../constants/petExtraInfo';
 import { StorageKey } from '../../constants/storageKey';
 import { CreatureSave } from '../../contracts/creatureSave';
 import { PetMainDetails } from '../../contracts/petDetails';
@@ -27,7 +27,8 @@ export const BuilderPage: React.FC = () => {
   const { toastService } = useContext(DependencyInjectionContext);
 
   const petData: Array<PetMainDetails> = (petJsonData as any)
-    .filter((p: any) => p.CreatureId.includes('FLOCK') === false);
+    .filter((p: any) => p.CreatureId.includes('FLOCK') === false)
+    .filter((p: any) => creaturesToExclude.includes(p.CreatureId) === false);
 
   useEffect(() => {
     try {
@@ -213,7 +214,7 @@ export const BuilderPage: React.FC = () => {
             getMappingsFromJson(e)
           }}
         />
-        <Flex mt="1em">
+        <Flex className="builder-page-flex">
           <BuilderPageResultPreview
             selectedPet={selectedPet}
             mappingString={mappingString}

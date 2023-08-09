@@ -164,3 +164,11 @@ export const PetExtraInfo: IPetExtraInfoContainer = {
     WEIRDRIG: {},
     WEIRDRIGGROUND: {},
 }
+
+export const creaturesToExclude = [
+    'GROUNDCREATURE',
+    'ROLLERCREATURE',
+    'FISHFIENDSMALL',
+    'WEIRDRIG',
+    'WEIRDRIGGROUND',
+]

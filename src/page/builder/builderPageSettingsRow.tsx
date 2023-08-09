@@ -72,15 +72,15 @@ export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
                 width: '250px'
             }
         },
-        // {
-        //     id: 'enforceDescriptorRestrictions',
-        //     propName: 'enforceDescriptorRestrictions',
-        //     label: 'Enforce descriptor restrictions',
-        //     component: SettingSwitch,
-        //     additionalProps: {
-        //         width: '320px'
-        //     }
-        // },
+        {
+            id: 'enforceDescriptorRestrictions',
+            propName: 'enforceDescriptorRestrictions',
+            label: 'Enforce descriptor restrictions',
+            component: SettingSwitch,
+            additionalProps: {
+                width: '320px'
+            }
+        },
     ];
 
     return (

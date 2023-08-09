@@ -1,10 +1,10 @@
-import { Box, Button, Center, Spinner, Text } from '@chakra-ui/react';
-import React, { useContext, useEffect, useState } from 'react';
+import { Box, Button } from '@chakra-ui/react';
+import React, { useContext } from 'react';
+import { DelayedRender } from '../../components/common/delayedRender';
 import { JsonViewer } from '../../components/jsonViewer';
 import { ObjViewer } from '../../components/objViewer/objViewer';
 import { PetExtraInfo } from '../../constants/petExtraInfo';
 import { PetMainDetails } from '../../contracts/petDetails';
-import { delay } from '../../helper/asyncHelper';
 import { petGetDescriptorsToHide } from '../../helper/descriptorHelper';
 import { DependencyInjectionContext } from '../../integration/DependencyInjectionProvider';
 import { IBuilderPageSettings } from './builderPageSettingsRow';
@@ -26,24 +26,22 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
     const showJsonPreview = props.settings.showJsonPreview;
     const json = props.getJsonFromMappings(props.mappingString + ',' + props.descriptorId);
 
-    const [showObjPreview, setShowObjPreview] = useState<boolean>(false);
+    if (props.selectedPet.CreatureId == null) {
+        return (
+            <Box flex="2" mt="3" className="hidden-in-mobile"></Box>
+        );
+    }
+
+    const creatureId = props.selectedPet.CreatureId;
+    const petExtraInfoObj = PetExtraInfo[creatureId];
+    const cameraInitZoom = petExtraInfoObj.initialZoom ?? 1;
+    const cameraPositionZ = petExtraInfoObj.initialCameraZ ?? 8;
+    const initPositionY = petExtraInfoObj.initialHeight ?? -1;
 
     const copyJson = () => {
         navigator?.clipboard?.writeText?.(json)?.then?.(() => {
             toastService.success(<span>Copied!</span>)
         });
-    }
-
-    useEffect(() => {
-        const effectShowPreview = props.settings.showModelPreview;
-        if (effectShowPreview !== showObjPreview) {
-            handleShowPreview(effectShowPreview);
-        }
-    }, [props.settings.showModelPreview, showObjPreview]);
-
-    const handleShowPreview = async (show: boolean) => {
-        await delay(300);
-        setShowObjPreview(show);
     }
 
     const getMeshesToHide = (selectedPet: PetMainDetails, mappingString: string): string => {
@@ -63,51 +61,25 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
         return 4;
     }
 
-    if (props.selectedPet.CreatureId == null) {
-        return (
-            <Box flex="2" mt="3" className="hidden-in-mobile"></Box>
-        );
-    }
-
-    const creatureId = props.selectedPet.CreatureId;
-    const petExtraInfoObj = PetExtraInfo[creatureId];
-    const cameraInitZoom = petExtraInfoObj.initialZoom ?? 1;
-    const cameraPositionZ = petExtraInfoObj.initialCameraZ ?? 8;
-    const initPositionY = petExtraInfoObj.initialHeight ?? -1;
-
     return (
         <Box
             flex={getFlex(showPreview, showJsonPreview)}
             pos="relative"
-            className="builder-preview hidden-in-mobile">
+            className="builder-preview">
             {
                 showPreview && (
-                    <Box className="obj-preview noselect wrapper">
-                        <Center
-                            id="obj-preview-loader"
-                            pos="absolute"
-                            className="obj-preview bg"
-                            flexDir="column"
-                            borderRadius="10em"
-                            draggable="false"
-                            zIndex="0"
-                        >
-                            <Spinner />
-                            <Text mt="0.5em">Loading...</Text>
-                        </Center>
-                        {
-                            showObjPreview && (
-                                <ObjViewer
-                                    key={`preview-${creatureId}`}
-                                    creatureId={creatureId}
-                                    cameraInitZoom={cameraInitZoom}
-                                    cameraPositionZ={cameraPositionZ}
-                                    initPositionY={initPositionY}
-                                    meshesToHide={getMeshesToHide(props.selectedPet, props.mappingString)}
-                                />
-                            )
-                        }
-                    </Box>
+                    <DelayedRender delay={300} /*allow for css transitions*/>
+                        <Box className="obj-preview wrapper">
+                            <ObjViewer
+                                key={`preview-${creatureId}`}
+                                creatureId={creatureId}
+                                cameraInitZoom={cameraInitZoom}
+                                cameraPositionZ={cameraPositionZ}
+                                initPositionY={initPositionY}
+                                meshesToHide={getMeshesToHide(props.selectedPet, props.mappingString)}
+                            />
+                        </Box>
+                    </DelayedRender>
                 )
             }
             {
@@ -120,7 +92,7 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
                         />
                     )
                     : (
-                        <Button width="100%" colorScheme="purple" onClick={copyJson}>Copy JSON to clipboard</Button>
+                        <Button width="100%" colorScheme="purple" mb="1em" onClick={copyJson}>Copy JSON to clipboard</Button>
                     )
             }
         </Box>
