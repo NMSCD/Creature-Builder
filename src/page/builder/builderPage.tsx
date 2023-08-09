@@ -28,7 +28,7 @@ export const BuilderPage: React.FC = () => {
 
   const petData: Array<PetMainDetails> = (petJsonData as any)
     .filter((p: any) => p.CreatureId.includes('FLOCK') === false)
-    .filter((p: any) => creaturesToExclude.includes(p.CreatureId) == false);
+    .filter((p: any) => creaturesToExclude.includes(p.CreatureId) === false);
 
   useEffect(() => {
     try {
