@@ -27,7 +27,7 @@ export const ChangelogPage: React.FC = () => {
             languageCode: 'en', page: 1, platforms: [],
         };
         const itemsResult = await assistantAppsApiService.getWhatIsNewItems(search)
-        if (itemsResult.isSuccess == false) {
+        if (itemsResult.isSuccess === false) {
             toastService.error('Could not fetch changelog details');
             setNetworkState(NetworkState.Error);
             return;
