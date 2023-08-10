@@ -1,5 +1,5 @@
 interface ISettingsToForce {
-    enforceDescriptorRestrictions?: boolean;
+    advancedMode?: boolean;
 }
 
 export interface IContentCreatorCreatures {
@@ -26,7 +26,7 @@ export const contentCreatorCreatures: Array<IContentCreatorCreatures> = [
             'worm2.jpg'
         ],
         settingsToForce: {
-            enforceDescriptorRestrictions: false,
+            advancedMode: true,
         },
     },
     {
@@ -41,7 +41,7 @@ export const contentCreatorCreatures: Array<IContentCreatorCreatures> = [
             'worm2.jpg'
         ],
         settingsToForce: {
-            enforceDescriptorRestrictions: false,
+            advancedMode: true,
         },
     },
     {
@@ -56,7 +56,7 @@ export const contentCreatorCreatures: Array<IContentCreatorCreatures> = [
             'worm2.jpg'
         ],
         settingsToForce: {
-            enforceDescriptorRestrictions: false,
+            advancedMode: true,
         },
     }
 ];

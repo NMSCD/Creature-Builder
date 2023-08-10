@@ -52,7 +52,23 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
             selectedDescriptors
         );
 
+        const additionalDescriptors = petExtraInfoObj.conditionalDescriptors?.(selectedDescriptors);
+        for (const addDescr of (additionalDescriptors ?? [])) {
+            allDescriptorsToHide.includes(addDescr)
+            allDescriptorsToHide.push(addDescr);
+        }
+
         return allDescriptorsToHide.join(',');
+    }
+
+    const getMeshesToFilterOutOnObjLoad = (localSettings: IBuilderPageSettings): Array<string> => {
+        const filters: Array<string> = ['_coll'];
+
+        if (localSettings.showPetAccessory === false) {
+            filters.push('petacc_');
+        }
+
+        return filters;
     }
 
     const getFlex = (showModelPreview: boolean, showJsonPreview: boolean): number => {
@@ -66,35 +82,38 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
             flex={getFlex(showPreview, showJsonPreview)}
             pos="relative"
             className="builder-preview">
-            {
-                showPreview && (
-                    <DelayedRender delay={300} /*allow for css transitions*/>
-                        <Box className="obj-preview wrapper">
-                            <ObjViewer
-                                key={`preview-${creatureId}`}
-                                creatureId={creatureId}
-                                cameraInitZoom={cameraInitZoom}
-                                cameraPositionZ={cameraPositionZ}
-                                initPositionY={initPositionY}
-                                meshesToHide={getMeshesToHide(props.selectedPet, props.mappingString)}
+            <Box position="sticky" top="2em">
+                {
+                    showPreview && (
+                        <DelayedRender delay={300} /*allow for css transitions*/>
+                            <Box className="obj-preview wrapper">
+                                <ObjViewer
+                                    key={`preview-${creatureId}-${getMeshesToFilterOutOnObjLoad(props.settings).join()}`}
+                                    creatureId={creatureId}
+                                    cameraInitZoom={cameraInitZoom}
+                                    cameraPositionZ={cameraPositionZ}
+                                    initPositionY={initPositionY}
+                                    meshesToHide={getMeshesToHide(props.selectedPet, props.mappingString)}
+                                    meshNamesToFilterOutOnObjLoad={getMeshesToFilterOutOnObjLoad(props.settings)}
+                                />
+                            </Box>
+                        </DelayedRender>
+                    )
+                }
+                {
+                    showJsonPreview
+                        ? (
+                            <JsonViewer
+                                json={json}
+                                copyJson={copyJson}
+                                getMappingsFromJson={props.getMappingsFromJson}
                             />
-                        </Box>
-                    </DelayedRender>
-                )
-            }
-            {
-                showJsonPreview
-                    ? (
-                        <JsonViewer
-                            json={json}
-                            copyJson={copyJson}
-                            getMappingsFromJson={props.getMappingsFromJson}
-                        />
-                    )
-                    : (
-                        <Button width="100%" colorScheme="purple" mb="1em" onClick={copyJson}>Copy JSON to clipboard</Button>
-                    )
-            }
+                        )
+                        : (
+                            <Button width="100%" colorScheme="purple" mb="1em" onClick={copyJson}>Copy JSON to clipboard</Button>
+                        )
+                }
+            </Box>
         </Box>
     );
 }

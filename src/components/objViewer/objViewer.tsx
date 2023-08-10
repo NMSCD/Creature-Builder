@@ -16,6 +16,7 @@ interface IProps {
     cameraInitZoom?: number;
     cameraPositionZ?: number;
     initPositionY?: number;
+    meshNamesToFilterOutOnObjLoad?: Array<string>;
 }
 
 interface IState {
@@ -128,6 +129,25 @@ export class ObjViewer extends Component<IProps, IState> {
         this.mount.removeChild(this.renderer.domElement);
     }
 
+    filterOutByName = (childMeshes: Array<Object3D>, names: Array<string>) => {
+        const clean: Array<Object3D | null> = childMeshes.map(child => {
+            if (child.type !== 'Mesh') {
+                return null;
+            }
+
+            const lowerName = child.name.toLowerCase();
+            for (const name of names) {
+                if (lowerName.includes(name.toLowerCase())) {
+                    return null;
+                }
+            }
+
+            child.children = this.filterOutByName(child.children ?? [], names);
+            return child;
+        });
+        return clean.filter(child => child != null) as Array<Object3D>;
+    }
+
     updateCreatureMeshes = () => {
         if (this.creatureMesh != null) {
             this.scene.remove(this.creatureMesh);
@@ -142,6 +162,11 @@ export class ObjViewer extends Component<IProps, IState> {
         //     this.origCreatureMesh.rotation.y = this.creatureMesh.rotation.y;
         // }
         this.creatureMesh = this.origCreatureMesh.clone();
+
+        this.creatureMesh.children = this.filterOutByName(
+            this.creatureMesh.children,
+            this.props.meshNamesToFilterOutOnObjLoad ?? [],
+        );
 
         const descriptorsToHide = this.props.meshesToHide.split(',');
         for (const meshToHide of descriptorsToHide) {
@@ -173,8 +198,6 @@ export class ObjViewer extends Component<IProps, IState> {
         this.origCreatureMesh = object;
         this.origCreatureMesh.position.y = this.initPositionY;
         this.origCreatureMesh.rotation.y = -180;
-
-        console.log(this.origCreatureMesh)
 
         this.origCreatureMesh.traverse((n: any) => {
             if (n.isMesh) {
@@ -216,7 +239,7 @@ export class ObjViewer extends Component<IProps, IState> {
                 id={creaturePreviewId}
                 ref={mount => { this.mount = mount; }}
                 draggable="false"
-                className="obj-preview wrapper noselect drag"
+                className="obj-preview noselect drag"
             >
                 {
                     (this.state.hasLoaded && this.props.hideControls !== true) && (

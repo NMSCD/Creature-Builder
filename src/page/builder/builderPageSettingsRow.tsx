@@ -9,16 +9,18 @@ import { toggleHtmlNodeClass } from '../../helper/documentHelper';
 
 export interface IBuilderPageSettings {
     showSimplifiedNames: boolean;
-    enforceDescriptorRestrictions: boolean;
+    advancedMode: boolean;
     showJsonPreview: boolean;
     showModelPreview: boolean;
+    showPetAccessory: boolean;
 }
 
 export const initialSettings: IBuilderPageSettings = {
     showSimplifiedNames: false,
-    enforceDescriptorRestrictions: true,
+    advancedMode: true,
     showJsonPreview: true,
     showModelPreview: true,
+    showPetAccessory: false,
 }
 
 interface ISettingOption {
@@ -26,6 +28,7 @@ interface ISettingOption {
     propName: string,
     label: string,
     additionalProps?: ISettingOptionAttrMapping;
+    show?: (currentSettings: IBuilderPageSettings) => boolean;
     component: React.FC<ISettingOptionCompProps<any>>,
 }
 
@@ -73,13 +76,22 @@ export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
             }
         },
         {
-            id: 'enforceDescriptorRestrictions',
-            propName: 'enforceDescriptorRestrictions',
-            label: 'Enforce descriptor restrictions',
+            id: 'showPetAccessory',
+            propName: 'showPetAccessory',
+            label: 'Show pet accessory attachment point',
             component: SettingSwitch,
+            show: (current: IBuilderPageSettings) => (
+                current.showModelPreview === true
+            ),
             additionalProps: {
-                width: '320px'
+                width: '370px'
             }
+        },
+        {
+            id: 'advancedMode',
+            propName: 'advancedMode',
+            label: 'Enable Advanced Mode',
+            component: SettingSwitch,
         },
     ];
 
@@ -105,6 +117,10 @@ export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
                     (showSettings ? settingOptions : []).map((opt: ISettingOption) => {
                         const Comp = opt.component;
                         const value = (props.settings as any)?.[opt.propName];
+
+                        const hideOpt = opt.show?.(props.settings) === false;
+                        if (hideOpt) return null;
+
                         return (
                             <WrapItem key={opt.id}>
                                 <Comp
@@ -127,7 +143,7 @@ export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
                 <Spacer />
                 {/* <WrapItem key="creator-creatures">
                     <Button key="creator-creatures" colorScheme="purple" onClick={() => setContentCreatorModalOpen(true)}>
-                        <span>Content creator creatures</span>
+                        <span>Template creatures</span>
                     </Button>
                 </WrapItem> */}
             </Wrap>

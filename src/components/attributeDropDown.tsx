@@ -1,10 +1,12 @@
 import { Box, Center, Flex, Select } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { noDescriptorOptionKey } from '../constants/creatureDefault';
+import { PetExtraInfo } from '../constants/petExtraInfo';
 import { depthSpacingInPx } from '../constants/UIConstant';
 import { PetDetailDescriptor, PetDetails } from '../contracts/petDetails';
 
 interface IProps {
+    creatureId: string;
     petDetail: PetDetails;
     placeholder?: string;
     isNested?: boolean;
@@ -15,6 +17,7 @@ interface IProps {
 }
 
 export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
+    const petExtraInfoObj = PetExtraInfo[props.creatureId];
     const groupId = props.petDetail.GroupId;
     const descriptors = props.petDetail?.Descriptors ?? [];
     const [selectedPetDescrips, setSelectedPetDescrips] = useState<Array<PetDetails> | undefined>();
@@ -67,31 +70,32 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
         return petDetail?.Descriptors?.[0]?.Children ?? [];
     }
 
-    const getDefaultValue = (descriptors: Array<PetDetailDescriptor>, selectedDescriptors: Array<string>): string => {
-        for (const descriptor of descriptors) {
+    const getDefaultValue = (localDescriptors: Array<PetDetailDescriptor>, selectedDescriptors: Array<string>): string => {
+        for (const descriptor of localDescriptors) {
             if (selectedDescriptors.includes(descriptor.Id)) {
                 return descriptor.Id;
             }
         }
-        return descriptors?.[0]?.Id;
+        return localDescriptors?.[0]?.Id;
     }
 
-    // const getLocalDescriptors = (descriptors: Array<PetDetailDescriptor>, isNested?: boolean): Array<PetDetailDescriptor> => {
-    //     const addNoneOption = ((isNested ?? false) && descriptors.length < 2);
+    const getLocalDescriptors = (localDescriptors: Array<PetDetailDescriptor>, groupId: string): Array<PetDetailDescriptor> => {
 
-    //     if (addNoneOption) {
-    //         const noneDescriptor = {
-    //             Id: noDescriptorOptionKey,
-    //             Name: 'NONE',
-    //             Children: [],
-    //         };
-    //         return [noneDescriptor, ...descriptors];
-    //     }
+        const addNoneOption = (petExtraInfoObj?.optionalDescriptors ?? []).includes(groupId);
 
-    //     return descriptors;
-    // }
+        if (addNoneOption) {
+            const noneDescriptor = {
+                Id: noDescriptorOptionKey,
+                Name: 'NONE',
+                Children: [],
+            };
+            return [noneDescriptor, ...localDescriptors];
+        }
 
-    // const localDescriptors = getLocalDescriptors(descriptors, props.isNested);
+        return localDescriptors;
+    }
+
+    const localDescriptors = getLocalDescriptors(descriptors, groupId);
 
     return (
         <Box
@@ -112,12 +116,12 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
                         placeholder={props.placeholder}
                         className="descriptor"
                         draggable="false"
-                        defaultValue={getDefaultValue(descriptors, props.selectedDescriptors)}
-                        disabled={descriptors.length < 2}
+                        defaultValue={getDefaultValue(localDescriptors, props.selectedDescriptors)}
+                        disabled={localDescriptors.length < 2}
                         onChange={onChangeDescriptorDropDown}
                     >
                         {
-                            descriptors.map((descrip, index) => (
+                            localDescriptors.map((descrip, index) => (
                                 <option key={descrip.Id + index} value={descrip.Id}>{props.getFriendlyName(descrip.Id)}</option>
                             ))
                         }
@@ -130,6 +134,7 @@ export const AttributeDropDown: React.FC<IProps> = (props: IProps) => {
                         key={`${groupId}-${selectedPetDescrip.GroupId}-descriptor`}
                         data-key={`${groupId}-${selectedPetDescrip.GroupId}-descriptor`}
                         isNested={true}
+                        creatureId={props.creatureId}
                         petDetail={selectedPetDescrip}
                         selectedDescriptors={props.selectedDescriptors}
                         getFriendlyName={props.getFriendlyName}

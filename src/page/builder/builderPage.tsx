@@ -98,7 +98,7 @@ export const BuilderPage: React.FC = () => {
   const getDescriptorValue = (): Array<string> => {
     let descriptors: Array<string> = [];
 
-    if (settings.enforceDescriptorRestrictions) {
+    if (settings.advancedMode === false) {
       const selectElems = document.querySelectorAll('.attributes .chakra-select.descriptor');
       for (let selectElemIndex = 0; selectElemIndex < selectElems.length; selectElemIndex++) {
         const selectElem: any = selectElems[selectElemIndex];
@@ -227,9 +227,10 @@ export const BuilderPage: React.FC = () => {
           <Box width="20px" className="hidden-in-mobile"></Box>
           <Box flex="10" className="builder-controls">
             <DescriptorSelector
+              creatureId={selectedPet.CreatureId}
               petDetails={selectedPet.Details}
               selectedDescriptors={mappingString.split(',')}
-              enforceDescriptorRestrictions={settings.enforceDescriptorRestrictions}
+              advancedMode={settings.advancedMode}
               getFriendlyName={getFriendlyName}
               triggerJsonInterval={triggerJsonInterval}
             />
