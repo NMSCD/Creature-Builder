@@ -8,6 +8,8 @@ interface IPetExtraInfo {
     initialCameraZ?: number;
     disablePreview?: boolean;
     attr?: IPetExtraInfoAttrMapping;
+    optionalDescriptors?: Array<string>;
+    conditionalDescriptors?: (selectedDescriptors: Array<string>) => Array<string>;
 }
 
 interface IPetExtraInfoContainer {
@@ -35,8 +37,20 @@ export const PetExtraInfo: IPetExtraInfoContainer = {
     },
     CAT: {
         initialZoom: 0.9,
+        conditionalDescriptors: (selectedDescriptors: Array<string>) => {
+            if (selectedDescriptors.includes('_MESH_LIZ')) {
+                return [
+                    '_BLBack_6',
+                    '_BLBack_13',
+                ];
+            }
+            return [];
+        }
     },
     COW: {
+        optionalDescriptors: [
+            '_WINGS_'
+        ],
         attr: {
             '_TAIL_': 'Tail',
             '_TAIL_ALIEN': 'Alien',

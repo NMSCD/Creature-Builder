@@ -3,4 +3,5 @@ export const Routes = {
     builder: '/builder',
     login: '/login',
     about: '/about',
+    changelog: '/changelog',
 }

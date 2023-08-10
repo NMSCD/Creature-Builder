@@ -76,4 +76,15 @@ describe('Pet descriptors', () => {
         expect(descriptors.includes('_Tail_Thin')).toBeTruthy();
         expect(descriptors.includes('_Tail_Turtle')).toBeTruthy();
     });
+
+    test('Get All descriptors of CAT', () => {
+        const selectedPet = (petJson as Array<PetMainDetails>).find(p => p.CreatureId === 'CAT');
+        expect(selectedPet != null).toBeTruthy();
+        if (selectedPet == null) return;
+
+        const descriptors = petGetDescriptorsToHide(selectedPet, []);
+
+        // Just some CAT descriptors should be returned
+        expect(descriptors.includes('_BCA_12')).toBeTruthy();
+    });
 });

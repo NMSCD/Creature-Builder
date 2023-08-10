@@ -14,6 +14,7 @@ import { HomePage } from './page/homePage';
 import { AppDrawer } from './components/common/appDrawer';
 import { AboutPage } from './page/aboutPage';
 import { NotFoundPage } from './page/notFoundPage';
+import { ChangelogPage } from './page/changelogPage';
 
 const currentLocation = () =>
     window.location.hash.replace(/^#/, "") || "/";
@@ -71,6 +72,7 @@ export const AppShell: React.FC = () => {
                 <Route path={Routes.login} component={LoginPage} />
                 <Route path={Routes.builder} component={BuilderPage} />
                 <Route path={Routes.about} component={AboutPage} />
+                <Route path={Routes.changelog} component={ChangelogPage} />
                 <Route path="/" component={HomePage} />
                 <Route path="/:rest*" component={NotFoundPage} />
             </Router>

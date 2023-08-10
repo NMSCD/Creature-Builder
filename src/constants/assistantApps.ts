@@ -11,5 +11,5 @@ export const apiPatronOAuthResponseUrl = 'https://api.assistantapps.com/OAuth/Pa
 // export const assistantAppsApiUrl = 'http://localhost:55555';
 // export const apiPatronOAuthResponseUrl = 'https://b389-85-144-243-17.eu.ngrok.io/OAuth/Patreon';
 
-export const whatIsNewGuid = '495e8777-5201-4245-b453-662ab46f9123';
-export const currentServerVersionNum = 6;
+// export const whatIsNewGuid = '495e8777-5201-4245-b453-662ab46f9123';
+export const currentServerVersionNum = 70;
