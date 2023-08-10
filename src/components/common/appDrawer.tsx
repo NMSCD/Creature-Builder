@@ -1,4 +1,4 @@
-import { ArrowForwardIcon, EditIcon, ExternalLinkIcon, HamburgerIcon, QuestionOutlineIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon, EditIcon, ExternalLinkIcon, HamburgerIcon, QuestionOutlineIcon, RepeatClockIcon } from '@chakra-ui/icons';
 import { Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, List, ListIcon, ListItem, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { Link } from 'wouter';
@@ -57,6 +57,10 @@ export const AppDrawer: React.FC<IAppDrawer> = (props: IAppDrawer) => {
                             <ListItem>
                                 <ListIcon as={EditIcon} />
                                 <Link to={Routes.home + Routes.builder} onClick={onMenuClick}>Builder</Link>
+                            </ListItem>
+                            <ListItem>
+                                <ListIcon as={RepeatClockIcon} />
+                                <Link to={Routes.home + Routes.changelog} onClick={onMenuClick}>Changelog</Link>
                             </ListItem>
                             <ListItem>
                                 <ListIcon as={QuestionOutlineIcon} />
