@@ -74,6 +74,7 @@
         window.config = {
             apiUrl: 'https://api.assistantapps.com',
             assistantAppsImgRoot: 'https://webcomp.assistantapps.com',
+            enableAnalytics: '%REACT_APP_ENABLE_ANALYTICS%' == 'true',
         };
     </script>
     <script nonce="schema" type="application/ld+json">
@@ -106,5 +107,6 @@
 
 <script async defer src="./assets/js/bundle.js"></script>
 <script async defer src="https://webcomp.assistantapps.com/build/bundle.js"></script>
+<script async defer src="./assets/js/analytics.js"></script>
 
 </html>
