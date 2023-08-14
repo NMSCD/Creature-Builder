@@ -65,46 +65,19 @@
     <meta name="msapplication-TileColor" content="#ff0000">
     <meta name="msapplication-starturl" content="/?pwa-app">
     <style>
-        html,
-        body {
-            background-color: rgb(26, 32, 44);
+        body,
+        html {
+            background-color: #1a202c
         }
     </style>
-    <script>
-        window.config = {
-            apiUrl: 'https://api.assistantapps.com',
-            assistantAppsImgRoot: 'https://webcomp.assistantapps.com',
-            enableAnalytics: '%REACT_APP_ENABLE_ANALYTICS%' == 'true',
-        };
-    </script>
-    <script nonce="schema" type="application/ld+json">
-        {
-            "@context": "https://schema.org/",
-            "@type": "Person",
-            "name": "Kurt Lourens",
-            "givenName": "Kurt Lourens",
-            "familyName": "Kurt Lourens",
-            "additionalName": "KhaozTopsy",
-            "url": "https://creature.nmscd.com",
-            "image": "https://kurtlourens.com/assets/images/KurtAvatar.svg",
-            "description": "This app allows you to build NMS creatures based on the rules defined in the game files.",
-            "jobTitle": "",
-            "owns": [
-                {
-                    "@type": "OwnershipInfo",
-                    "name": "Creature Builder",
-                    "url": "https://creature.nmscd.com"
-                }
-            ]
-        }
-    </script>
+    <script>window.config = { apiUrl: "https://api.assistantapps.com", assistantAppsImgRoot: "https://webcomp.assistantapps.com", enableAnalytics: !1 }</script>
+    <script nonce="schema"
+        type="application/ld+json">{ "@context": "https://schema.org/", "@type": "Person", "name": "Kurt Lourens", "givenName": "Kurt Lourens", "familyName": "Kurt Lourens", "additionalName": "KhaozTopsy", "url": "https://creature.nmscd.com", "image": "https://kurtlourens.com/assets/images/KurtAvatar.svg", "description": "This app allows you to build NMS creatures based on the rules defined in the game files.", "jobTitle": "", "owns": [ { "@type": "OwnershipInfo", "name": "Creature Builder", "url": "https://creature.nmscd.com" } ] }</script>
 </head>
 
-<body class="chakra-ui-dark">
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+<body class="chakra-ui-dark"><noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="creature-builder"></div>
 </body>
-
 <script async defer src="./assets/js/bundle.js"></script>
 <script async defer src="https://webcomp.assistantapps.com/build/bundle.js"></script>
 <script async defer src="./assets/js/analytics.js"></script>
