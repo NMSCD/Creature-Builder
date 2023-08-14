@@ -24,6 +24,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
+      - name: Setup Secrets
+        env:
+          REACT_APP_ENABLE_ANALYTICS: ${{ secrets.REACT_APP_ENABLE_ANALYTICS }}
+        run: |
+          touch .env
+          echo REACT_APP_ENABLE_ANALYTICS="$REACT_APP_ENABLE_ANALYTICS" >> .env
+
       - name: Install packages
         run: |
           npm ci --force
