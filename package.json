@@ -1,6 +1,6 @@
 {
   "name": "creature-builder",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Creature builder built for the No Man's Sky Hub built by AssistantNMS",
   "author": "AssistantNMS (Kurt Lourens)",
   "main": "public/electron.js",

@@ -7,7 +7,7 @@ const options = {
         removeOptionalTags: false,
         removeComments: true,
         minifyCSS: true,
-        minifyJS: true,
+        minifyJS: false,
         processScripts: ['application/ld+json']
     },
     css: {
