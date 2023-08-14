@@ -70,6 +70,19 @@
     <meta name="msapplication-config" content="browserconfig.xml">
     <meta name="msapplication-TileColor" content="{{theme.maskColour}}">
     <meta name="msapplication-starturl" content="/?pwa-app" />
+    <style>
+        html,
+        body {
+            background-color: rgb(26, 32, 44);
+        }
+    </style>
+    <script>
+        window.config = {
+            apiUrl: 'https://api.assistantapps.com',
+            assistantAppsImgRoot: 'https://webcomp.assistantapps.com',
+            enableAnalytics: '%REACT_APP_ENABLE_ANALYTICS%' == 'true',
+        };
+    </script>
 
     {{#each preconnectLinks}}
     <link rel="preconnect" href="{{this}}">
@@ -105,6 +118,7 @@
 </body>
 
 <script async defer src="./assets/js/bundle.js"></script>
+<script async defer src="https://webcomp.assistantapps.com/build/bundle.js"></script>
 <script async defer src="./assets/js/analytics.js"></script>
 
 </html>
