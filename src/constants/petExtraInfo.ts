@@ -57,7 +57,20 @@ export const PetExtraInfo: IPetExtraInfoContainer = {
         }
     },
     COWFLOATING: {},
-    COWHINDLEGS: {},
+    COWHINDLEGS: {
+        optionalDescriptors: [
+            '_EXT_'
+        ],
+        conditionalDescriptors: (selectedDescriptors: Array<string>) => {
+            if (selectedDescriptors.includes('_BODY_COW')) {
+                return [
+                    '_BCA_RocksxRARE',
+                    '_BCA_CowHump',
+                ];
+            }
+            return [];
+        }
+    },
     DRILL: {
         initialHeight: 0.25,
         initialCameraZ: 24,
