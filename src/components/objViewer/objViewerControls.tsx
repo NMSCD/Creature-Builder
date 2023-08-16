@@ -63,7 +63,7 @@ export const ObjViewerControls: React.FC<IProps> = (props: IProps) => {
                         const watermarkImgHeight = 80;
                         const watermarkImgPadding = 10;
                         const watermarkImgFromDataStr = await createImageFromSrcAsync(
-                            '/assets/img/watermark.png',
+                            './assets/img/watermark.png',
                             watermarkImgWidth,
                             watermarkImgHeight
                         );

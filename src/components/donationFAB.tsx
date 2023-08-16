@@ -10,7 +10,7 @@ export const DonationFAB: React.FC<IProps> = (props: IProps) => {
     return (
         <>
             <div className="fab pointer" onClick={onOpen}>
-                <Image src="/assets/img/donation.png" maxW="80px" />
+                <Image src="./assets/img/donation.png" maxW="80px" />
             </div>
 
             <Modal size="4xl" isOpen={isOpen} onClose={onClose}>

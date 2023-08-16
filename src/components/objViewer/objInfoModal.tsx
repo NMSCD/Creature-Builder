@@ -64,7 +64,7 @@ export const ObjInfoModal: React.FC<IProps> = (props: IProps) => {
                                 fileExtensions.map(fe => (
                                     <Button
                                         as={Link} key={fe.ext} m="0.25em" colorScheme={fe.scheme}
-                                        href={`/assets/3d/${props.creatureId}.${fe.ext}`}
+                                        href={`./assets/3d/${props.creatureId}.${fe.ext}`}
                                         target="_blank" rel="noopener noreferrer"
                                     >Download {props.creatureId}.{fe.ext}</Button>
                                 ))
