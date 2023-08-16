@@ -253,37 +253,35 @@ export class ObjViewer extends Component<IProps, IState> {
                         />
                     )
                 }
-                {
-                    (this.state.hasFailed) && (
-                        <Center
-                            pos="absolute"
-                            top="0"
-                            zIndex="1"
-                            className="obj-preview bg"
-                            flexDir="column"
-                            draggable="false"
-                        >
-                            <CloseIcon />
-                            <Text mt="0.5em">Something went wrong</Text>
-                        </Center>
-                    )
-                }
-                {
-                    (this.state.hasLoaded !== true) && (
-                        <Center
-                            id="obj-preview-loader"
-                            pos="absolute"
-                            className="obj-preview bg"
-                            flexDir="column"
-                            borderRadius="10em"
-                            draggable="false"
-                            zIndex="2"
-                        >
-                            <Spinner />
-                            <Text mt="0.5em">Loading...</Text>
-                        </Center>
-                    )
-                }
+
+                <Center
+                    pos="absolute"
+                    top="0"
+                    zIndex="1"
+                    className="obj-preview bg"
+                    flexDir="column"
+                    draggable="false"
+                    pointerEvents="none"
+                    opacity={(this.state.hasFailed !== true) ? 0 : 1}
+                >
+                    <CloseIcon />
+                    <Text mt="0.5em">Something went wrong</Text>
+                </Center>
+
+                <Center
+                    id="obj-preview-loader"
+                    pos="absolute"
+                    className="obj-preview bg"
+                    flexDir="column"
+                    borderRadius="10em"
+                    draggable="false"
+                    pointerEvents="none"
+                    opacity={(this.state.hasLoaded !== true) ? 1 : 0}
+                    zIndex="2"
+                >
+                    <Spinner />
+                    <Text mt="0.5em">Loading...</Text>
+                </Center>
             </div>
         );
     }
