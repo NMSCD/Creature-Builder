@@ -36,7 +36,7 @@ export const HomePage: React.FC = () => {
 
             <br className="noselect" />
 
-            <section>
+            <section className="intro">
                 <Flex direction="row">
                     <Spacer className="hidden-in-mobile" maxW="200px" />
                     <Box p={5}>
@@ -59,7 +59,7 @@ export const HomePage: React.FC = () => {
 
             <br className="noselect" />
 
-            <section>
+            <section className="intro">
                 <Flex direction="row">
                     <Spacer className="hidden-in-mobile" maxW="200px" />
                     <Box flex="1" p={5}>
@@ -81,7 +81,7 @@ export const HomePage: React.FC = () => {
 
             <br className="noselect" />
 
-            <section>
+            <section className="intro">
                 <Flex direction="row">
                     <Spacer className="hidden-in-mobile" maxW="200px" />
                     <Box p={5}>

@@ -85,8 +85,8 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
             <Box position="sticky" top="2em">
                 {
                     showPreview && (
-                        <DelayedRender delay={300} /*allow for css transitions*/>
-                            <Box className="obj-preview wrapper">
+                        <Box className="obj-preview wrapper">
+                            <DelayedRender delay={300} /*allow for css transitions*/>
                                 <ObjViewer
                                     key={`preview-${creatureId}-${getMeshesToFilterOutOnObjLoad(props.settings).join()}`}
                                     creatureId={creatureId}
@@ -96,8 +96,8 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
                                     meshesToHide={getMeshesToHide(props.selectedPet, props.mappingString)}
                                     meshNamesToFilterOutOnObjLoad={getMeshesToFilterOutOnObjLoad(props.settings)}
                                 />
-                            </Box>
-                        </DelayedRender>
+                            </DelayedRender>
+                        </Box>
                     )
                 }
                 {

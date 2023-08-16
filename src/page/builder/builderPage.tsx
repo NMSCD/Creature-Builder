@@ -1,6 +1,7 @@
 import { Box, Button, Container, Flex } from '@chakra-ui/react';
 import React, { useContext, useEffect, useState } from 'react';
 import petJsonData from '../../assets/IPetData.json';
+import { AlertDismissable } from '../../components/common/alertDismissable';
 import { CreatureIdDropdown } from '../../components/creatureIdDropdown';
 import { DescriptorSelector } from '../../components/descriptorSelector';
 import { defaultPetJson, noDescriptorOptionKey } from '../../constants/creatureDefault';
@@ -204,6 +205,14 @@ export const BuilderPage: React.FC = () => {
       </Box>
 
       <Box className={creatureIdIsNotNull ? 'attributes' : 'hidden'}>
+        <Box className="hidden-in-desktop">
+          <AlertDismissable status="warning"
+            title="Use a larger screen for a better experience"
+            description={[
+              'We do our best to support smaller screens but in this situation, it is very difficult to display the 3D preview and pet JSON on smaller screens.',
+            ]}
+          />
+        </Box>
         <BuilderPageSettingsRow
           key="builder-page-settings-row"
           settings={settings}
