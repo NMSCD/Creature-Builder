@@ -1,7 +1,8 @@
 import { CloseIcon } from '@chakra-ui/icons';
 import { Center, Spinner, Text } from '@chakra-ui/react';
 import { Component, createRef } from "react";
-import { Camera, Clock, HemisphereLight, Object3D, PerspectiveCamera, Scene, SpotLight, WebGLRenderer } from "three";
+import Stats from 'stats.js';
+import { Camera, Clock, FogExp2, HemisphereLight, Object3D, PerspectiveCamera, Scene, SpotLight, WebGLRenderer } from "three";
 import { bgColour } from '../../constants/UIConstant';
 import { cameraControls } from './cameraControls';
 import { loadModel } from './modelLoader';
@@ -17,6 +18,8 @@ interface IProps {
     cameraPositionZ?: number;
     initPositionY?: number;
     meshNamesToFilterOutOnObjLoad?: Array<string>;
+    showStats?: boolean;
+    lowQualityMode?: boolean;
 }
 
 interface IState {
@@ -30,6 +33,7 @@ export class ObjViewer extends Component<IProps, IState> {
     renderer: any = {};
     scene = new Scene();
     clock = new Clock();
+    stats = new Stats();
     origCreatureMesh: Object3D<Event> | undefined;
     creatureMesh: Object3D<Event> | undefined;
     initPositionY: number = this.props.initPositionY ?? -1;
@@ -53,19 +57,28 @@ export class ObjViewer extends Component<IProps, IState> {
         const cameraInit = this.props.cameraInitZoom ?? 1;
         const cameraPositionZ = this.props.cameraPositionZ ?? 8;
 
-        this.camera = new PerspectiveCamera((cameraInit * 40), width / height, 0.1, 1000);
+        this.camera = new PerspectiveCamera((cameraInit * 40), width / height, 0.1, 3000);
         this.camera.position.z = cameraPositionZ;
         this.camera.position.y = 5;
 
+        this.scene.fog = new FogExp2(0xcccccc, 0.002);
         this.renderer = new WebGLRenderer({
-            alpha: true,
-            antialias: true,
-            preserveDrawingBuffer: true,
+            alpha: this.props.lowQualityMode !== true,
+            antialias: this.props.lowQualityMode !== true,
+            // preserveDrawingBuffer: true,
+            powerPreference: 'high-performance',
         });
         this.renderer.shadowMap.enabled = true;
         this.renderer.setClearColor(bgColour);
         this.renderer.setSize(width, height);
+        this.renderer.setPixelRatio(window.devicePixelRatio);
         this.mount.appendChild(this.renderer.domElement);
+
+        this.stats.showPanel(0);
+        this.stats.dom.style.position = 'absolute';
+        this.stats.dom.style.top = 'unset';
+        this.stats.dom.style.bottom = '0';
+        this.handleShowStatChange(this.props.showStats ?? false);
 
         this.controls = cameraControls({
             camera: this.camera,
@@ -121,6 +134,9 @@ export class ObjViewer extends Component<IProps, IState> {
             } catch (ex) {
                 console.error('Error occurred while updating creature meshes', ex);
             }
+        }
+        if (prevProps.showStats !== this.props.showStats) {
+            this.handleShowStatChange(this.props.showStats ?? false);
         }
     }
 
@@ -187,7 +203,7 @@ export class ObjViewer extends Component<IProps, IState> {
         }
 
         this.scene.add(this.creatureMesh);
-    }
+    };
 
     onObjLoad = (object: Object3D<Event>) => {
         if (this.origCreatureMesh != null) {
@@ -201,8 +217,8 @@ export class ObjViewer extends Component<IProps, IState> {
 
         this.origCreatureMesh.traverse((n: any) => {
             if (n.isMesh) {
-                n.castShadow = true;
-                n.receiveShadow = true;
+                n.castShadow = this.props.lowQualityMode !== true;
+                n.receiveShadow = this.props.lowQualityMode !== true;
                 if (n.material.map) n.material.map.anisotropy = 16;
                 n.geometry.computeVertexNormals();
             }
@@ -215,7 +231,17 @@ export class ObjViewer extends Component<IProps, IState> {
         }));
     };
 
+    handleShowStatChange = (showStats: boolean) => {
+        const statsExists = this.mount.contains(this.stats.dom);
+        if (showStats === true && statsExists === false) {
+            this.mount.appendChild(this.stats.dom);
+        } else if (showStats === false && statsExists === true) {
+            this.mount.removeChild(this.stats.dom)
+        }
+    }
+
     animate = () => {
+        if (this.props.showStats === true) this.stats.begin();
         this.controls.update();
 
         // const time = Date.now() * 0.0005;
@@ -230,6 +256,7 @@ export class ObjViewer extends Component<IProps, IState> {
         }
 
         this.renderer?.render?.(this.scene, this.camera);
+        if (this.props.showStats === true) this.stats.end();
         this.frameId = window.requestAnimationFrame(this.animate);
     };
 
@@ -246,7 +273,25 @@ export class ObjViewer extends Component<IProps, IState> {
                         <ObjViewerControls
                             creatureId={this.props.creatureId}
                             enableRotate={this.enableRotate}
-                            accessRenderer={() => this.renderer}
+                            getScreenshotData={() => {
+                                this.setState(() => ({
+                                    hasLoaded: false,
+                                }));
+                                this.renderer.setClearColor(bgColour, 0);
+                                this.renderer?.render?.(this.scene, this.camera);
+
+                                const screenshotDataUrl = this.renderer.domElement.toDataURL();
+
+                                this.renderer.setClearColor(bgColour);
+                                this.renderer?.render?.(this.scene, this.camera);
+
+                                return {
+                                    dataUrl: screenshotDataUrl,
+                                    width: this.mount.clientWidth,
+                                    height: this.mount.clientHeight,
+                                };
+                            }}
+                            setHasLoaded={(hasLoaded: boolean) => this.setState(() => ({ hasLoaded }))}
                             onRepeatClick={(enable: boolean) => {
                                 this.enableRotate = enable;
                             }}

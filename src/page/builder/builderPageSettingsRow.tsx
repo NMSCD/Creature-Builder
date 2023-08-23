@@ -1,3 +1,4 @@
+import { SettingsIcon } from '@chakra-ui/icons';
 import { Button, Spacer, Wrap, WrapItem } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { ContentCreatorCreaturesBottomModalSheet } from '../../components/dialog/contentCreatorCreaturesBottomModalSheet';
@@ -13,6 +14,8 @@ export interface IBuilderPageSettings {
     showJsonPreview: boolean;
     showModelPreview: boolean;
     showPetAccessory: boolean;
+    showStats: boolean;
+    lowQualityMode: boolean;
 }
 
 export const initialSettings: IBuilderPageSettings = {
@@ -21,6 +24,8 @@ export const initialSettings: IBuilderPageSettings = {
     showJsonPreview: true,
     showModelPreview: true,
     showPetAccessory: false,
+    showStats: false,
+    lowQualityMode: false,
 }
 
 interface ISettingOption {
@@ -42,8 +47,7 @@ interface IProps {
 export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
     const [isJsonExplanationOpen, setJsonExplanationOpen] = useState<boolean>(false);
     const [isContentCreatorModalOpen, setContentCreatorModalOpen] = useState<boolean>(false);
-    const showSettings = true
-    // const [showSettings, setShowSettings] = useState<boolean>(true);
+    const [showSettings, setShowSettings] = useState<boolean>(false);
 
     const toggleJsonExplanation = (isOpen: boolean) => {
         toggleHtmlNodeClass('body', 'noscroll', isOpen);
@@ -76,6 +80,15 @@ export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
             }
         },
         {
+            id: 'advancedMode',
+            propName: 'advancedMode',
+            label: 'Enable Advanced Mode',
+            component: SettingSwitch,
+        },
+    ];
+
+    const miscSettingOptions: Array<ISettingOption> = [
+        {
             id: 'showPetAccessory',
             propName: 'showPetAccessory',
             label: 'Show pet accessory attachment point',
@@ -88,58 +101,80 @@ export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
             }
         },
         {
-            id: 'advancedMode',
-            propName: 'advancedMode',
-            label: 'Enable Advanced Mode',
+            id: 'lowQualityMode',
+            propName: 'lowQualityMode',
+            label: 'Reduce preview quality',
             component: SettingSwitch,
+            show: (current: IBuilderPageSettings) => (
+                current.showModelPreview === true
+            ),
+        },
+        {
+            id: 'showStats',
+            propName: 'showStats',
+            label: 'Show FPS',
+            component: SettingSwitch,
+            additionalProps: {
+                width: '170px'
+            }
         },
     ];
 
+    const renderSettingOption = (opt: ISettingOption) => {
+        const Comp = opt.component;
+        const value = (props.settings as any)?.[opt.propName];
+
+        const hideOpt = opt.show?.(props.settings) === false;
+        if (hideOpt) return null;
+
+        return (
+            <WrapItem key={opt.id}>
+                <Comp
+                    {...opt.additionalProps}
+                    id={opt.id}
+                    label={opt.label}
+                    value={value}
+                    onChange={(newValue: any) => {
+                        props.setSettings((prev: IBuilderPageSettings) => ({
+                            ...prev,
+                            [opt.propName]: newValue,
+                        }));
+                        props.triggerJsonInterval();
+                    }}
+                />
+            </WrapItem>
+        );
+    }
+
     return (
         <>
-            <Wrap mb={settingOptions.length > 0 ? '3' : ''} spacing={controlSpacing / 2}>
+            <Wrap
+                position="absolute"
+                transform="translateY(-3.25em)"
+                mb={settingOptions.length > 0 ? '3' : ''}
+                spacing={controlSpacing / 2}
+            >
                 <WrapItem key="how-to-wrap-item">
-                    <Button key="how-to" colorScheme="gray" onClick={() => toggleJsonExplanation(true)}>
+                    <Button
+                        key="how-to"
+                        colorScheme="gray"
+                        onClick={() => toggleJsonExplanation(true)}
+                    >
                         <span>How to use the JSON</span>
                     </Button>
                 </WrapItem>
-                {/* <WrapItem key="hide-settings-wrap-item" className={showSettings ? '' : 'hidden'}>
-                    <Button rightIcon={<ChevronLeftIcon />} onClick={() => setShowSettings(prev => !prev)}>
-                        Hide settings
-                    </Button>
-                </WrapItem>
-                <WrapItem key="show-settings-wrap-item" className={showSettings ? 'hidden' : ''} >
-                    <Button rightIcon={<SettingsIcon />} onClick={() => setShowSettings(prev => !prev)}>
-                        Show settings
-                    </Button>
-                </WrapItem> */}
                 {
-                    (showSettings ? settingOptions : []).map((opt: ISettingOption) => {
-                        const Comp = opt.component;
-                        const value = (props.settings as any)?.[opt.propName];
-
-                        const hideOpt = opt.show?.(props.settings) === false;
-                        if (hideOpt) return null;
-
-                        return (
-                            <WrapItem key={opt.id}>
-                                <Comp
-                                    {...opt.additionalProps}
-                                    id={opt.id}
-                                    label={opt.label}
-                                    value={value}
-                                    onChange={(newValue: any) => {
-                                        props.setSettings((prev: IBuilderPageSettings) => ({
-                                            ...prev,
-                                            [opt.propName]: newValue,
-                                        }));
-                                        props.triggerJsonInterval();
-                                    }}
-                                />
-                            </WrapItem>
-                        );
-                    })
+                    (miscSettingOptions.filter(so => so.show?.(props.settings) === true).length > 0) && (
+                        <WrapItem key="settings-item">
+                            <Button rightIcon={<SettingsIcon />} onClick={() => setShowSettings(prev => !prev)}>
+                                {showSettings ? 'Hide' : 'Show'} additional settings
+                            </Button>
+                        </WrapItem>
+                    )
                 }
+            </Wrap>
+            <Wrap mb={settingOptions.length > 0 ? '3' : ''} spacing={controlSpacing / 2}>
+                {settingOptions.map(renderSettingOption)}
                 <Spacer />
                 {/* <WrapItem key="creator-creatures">
                     <Button key="creator-creatures" colorScheme="purple" onClick={() => setContentCreatorModalOpen(true)}>
@@ -147,6 +182,14 @@ export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
                     </Button>
                 </WrapItem> */}
             </Wrap>
+            {
+                showSettings && (
+                    <Wrap mb={settingOptions.length > 0 ? '3' : ''} spacing={controlSpacing / 2}>
+                        {miscSettingOptions.map(renderSettingOption)}
+                        <Spacer />
+                    </Wrap>
+                )
+            }
             <JsonExplanationBottomModalSheet
                 isDetailPaneOpen={isJsonExplanationOpen}
                 setDetailPaneOpen={toggleJsonExplanation}

@@ -22,8 +22,12 @@ interface IBuilderPageResultPreviewProps {
 export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> = (props: IBuilderPageResultPreviewProps) => {
     const { toastService } = useContext(DependencyInjectionContext);
 
-    const showPreview = props.settings.showModelPreview;
-    const showJsonPreview = props.settings.showJsonPreview;
+    const {
+        showModelPreview,
+        showJsonPreview,
+        showStats,
+        lowQualityMode,
+    } = props.settings;
     const json = props.getJsonFromMappings(props.mappingString + ',' + props.descriptorId);
 
     if (props.selectedPet.CreatureId == null) {
@@ -79,20 +83,22 @@ export const BuilderPageResultPreview: React.FC<IBuilderPageResultPreviewProps> 
 
     return (
         <Box
-            flex={getFlex(showPreview, showJsonPreview)}
+            flex={getFlex(showModelPreview, showJsonPreview)}
             pos="relative"
             className="builder-preview">
             <Box position="sticky" top="2em">
                 {
-                    showPreview && (
+                    showModelPreview && (
                         <Box className="obj-preview wrapper">
                             <DelayedRender delay={300} /*allow for css transitions*/>
                                 <ObjViewer
-                                    key={`preview-${creatureId}-${getMeshesToFilterOutOnObjLoad(props.settings).join()}`}
+                                    key={`preview-${creatureId}-lowQ:${lowQualityMode}-${getMeshesToFilterOutOnObjLoad(props.settings).join()}`}
                                     creatureId={creatureId}
                                     cameraInitZoom={cameraInitZoom}
                                     cameraPositionZ={cameraPositionZ}
                                     initPositionY={initPositionY}
+                                    showStats={showStats}
+                                    lowQualityMode={lowQualityMode}
                                     meshesToHide={getMeshesToHide(props.selectedPet, props.mappingString)}
                                     meshNamesToFilterOutOnObjLoad={getMeshesToFilterOutOnObjLoad(props.settings)}
                                 />
