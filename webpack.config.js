@@ -1,6 +1,9 @@
+const fs = require('fs');
 const path = require('path');
 const HandlebarsPlugin = require("handlebars-webpack-plugin");
 const moveFile = require('@npmcli/move-file');
+
+const dotenv = require('dotenv');
 
 const bundleFileName = 'bundle';
 const dirName = 'public';
@@ -21,6 +24,12 @@ const moveNonHtmlHandlebarGeneratedFile = (filename, handlebarFilename, newName)
 }
 
 module.exports = (env, argv) => {
+    const projectData = fs.readFileSync(path.join(__dirname, "seo/data/project.json"), { encoding: 'utf8' });
+    const localData = {
+        ...JSON.parse(projectData),
+        enableAnalytics: dotenv.config().parsed.REACT_APP_ENABLE_ANALYTICS == 'true'
+    };
+
     return {
         mode: argv.mode === "production" ? "production" : "development",
         entry: [
@@ -45,7 +54,7 @@ module.exports = (env, argv) => {
                 // // data passed to main hbs template: `main-template(data)`
                 // data: require("./webpack/data/project.json"),
                 // or add it as filepath to rebuild data on change using webpack-dev-server
-                data: path.join(__dirname, "seo/data/project.json"),
+                data: localData,
 
                 // globbed path to partials, where folder/filename is unique
                 partials: [

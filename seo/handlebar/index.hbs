@@ -80,7 +80,6 @@
         window.config = {
             apiUrl: 'https://api.assistantapps.com',
             assistantAppsImgRoot: 'https://webcomp.assistantapps.com',
-            enableAnalytics: '%REACT_APP_ENABLE_ANALYTICS%' == 'true',
         };
     </script>
 
@@ -115,10 +114,14 @@
 <body class="chakra-ui-dark">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="creature-builder"></div>
+
+    {{#if enableAnalytics}}
+    <assistant-apps-posthog-analytics-no-cookie
+        analyticscode="phc_z2RdrVWTdB091SxgpVnfBX8oHsJjJnSdybcEYniJlGQ"></assistant-apps-posthog-analytics-no-cookie>
+    {{/if}}
 </body>
 
 <script async defer src="./assets/js/bundle.js"></script>
 <script async defer src="https://webcomp.assistantapps.com/build/bundle.js"></script>
-<script async defer src="./assets/js/analytics.js"></script>
 
 </html>
