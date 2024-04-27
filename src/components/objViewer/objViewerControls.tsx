@@ -1,8 +1,8 @@
-import { DownloadIcon, RepeatIcon, InfoOutlineIcon } from '@chakra-ui/icons';
+import { DownloadIcon, InfoOutlineIcon, RepeatIcon } from '@chakra-ui/icons';
 import { Tooltip } from '@chakra-ui/react';
 import { useState } from "react";
-import { bgColour } from '../../constants/UIConstant';
-import { delay } from '../../helper/asyncHelper';
+import { IScreenshotDataProps } from '../../contracts/screenshotDataProps';
+import { addWatermarkToImage } from '../../helper/canvasHelper';
 import { createImageFromSrcAsync, downloadFile } from '../../helper/fileHelper';
 import { ObjInfoModal } from './objInfoModal';
 
@@ -10,7 +10,8 @@ interface IProps {
     creatureId: string;
     enableRotate: boolean;
     onRepeatClick: (enable: boolean) => void;
-    accessRenderer: () => any;
+    getScreenshotData: () => IScreenshotDataProps;
+    setHasLoaded: (hasLoaded: boolean) => void;
 }
 
 export const ObjViewerControls: React.FC<IProps> = (props: IProps) => {
@@ -43,54 +44,19 @@ export const ObjViewerControls: React.FC<IProps> = (props: IProps) => {
                     boxSize={iconSize}
                     className="pointer"
                     onClick={async () => {
-                        const renderer = props.accessRenderer();
-                        renderer.setClearColor(bgColour, 0);
-                        const loaderNode = document.querySelector('#obj-preview-loader');
-                        if (loaderNode) {
-                            (loaderNode as any).style.zIndex = 4;
-                        }
-
-                        const tempCanvas = document.createElement('canvas');
-                        const canvasWidth = renderer.domElement.width;
-                        const canvasHeight = renderer.domElement.height;
-                        tempCanvas.width = canvasWidth;
-                        tempCanvas.height = canvasHeight;
-
-                        const tempCanvasCtx = tempCanvas.getContext('2d');
-                        if (tempCanvasCtx == null) return;
-
-                        const watermarkImgWidth = 150;
-                        const watermarkImgHeight = 80;
-                        const watermarkImgPadding = 10;
-                        const watermarkImgFromDataStr = await createImageFromSrcAsync(
-                            '/assets/img/watermark.png',
-                            watermarkImgWidth,
-                            watermarkImgHeight
-                        );
+                        const screenshotData = props.getScreenshotData();
 
                         const imgFromDataStr = await createImageFromSrcAsync(
-                            renderer.domElement.toDataURL(),
-                            canvasWidth,
-                            canvasHeight,
+                            screenshotData.dataUrl,
+                            screenshotData.width,
+                            screenshotData.height,
                         );
 
-                        tempCanvasCtx.drawImage(imgFromDataStr, 0, 0);
-                        tempCanvasCtx.drawImage(
-                            watermarkImgFromDataStr,
-                            canvasWidth - (watermarkImgWidth + watermarkImgPadding),
-                            canvasHeight - watermarkImgHeight,
-                            watermarkImgWidth,
-                            watermarkImgHeight,
-                        );
+                        const finalImage = await addWatermarkToImage(imgFromDataStr, screenshotData);
+                        if (finalImage == null) return;
 
-                        await delay(250);
-
-                        const finalImage = tempCanvas.toDataURL();
                         downloadFile(finalImage, props.creatureId);
-                        renderer.setClearColor(bgColour);
-                        if (loaderNode) {
-                            (loaderNode as any).style.zIndex = null;
-                        }
+                        props.setHasLoaded(true);
                     }}
                 />
             </Tooltip>

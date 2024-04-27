@@ -1,9 +1,9 @@
+import { VersionViewModel } from '@assistantapps/assistantapps.api.client';
 import { Box, Card, CardBody, CardHeader, Center, Container, Spinner, Text } from '@chakra-ui/react';
 import React, { useContext, useEffect, useState } from 'react';
 import { Markdown } from '../components/common/markdown';
 import { assistantAppsAppGuid } from '../constants/assistantApps';
 import { NetworkState } from '../contracts/enum/networkState';
-import { VersionViewModel } from '../contracts/generated/AssistantApps/ViewModel/Version/versionViewModel';
 import { DependencyInjectionContext } from '../integration/DependencyInjectionProvider';
 import { BasePage } from './basePage';
 

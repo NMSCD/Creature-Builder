@@ -1,20 +1,20 @@
+import { PlatformType } from '@assistantapps/assistantapps.api.client';
 import { Box } from '@chakra-ui/react';
 import React, { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { BuilderPage } from './page/builder/builderPage';
+import { Route, Router } from "wouter";
+import { AppDrawer } from './components/common/appDrawer';
 import { Footer } from './components/common/footer';
 import { Header } from './components/common/header';
 import { currentServerVersionNum } from './constants/assistantApps';
-import { PlatformType } from './contracts/generated/AssistantApps/Enum/platformType';
-import { DependencyInjectionContext } from './integration/DependencyInjectionProvider';
-import { LoginPage } from './page/loginPage';
 import { Routes } from './constants/routes';
-import { Route, Router } from "wouter";
-import { HomePage } from './page/homePage';
-import { AppDrawer } from './components/common/appDrawer';
+import { DependencyInjectionContext } from './integration/DependencyInjectionProvider';
 import { AboutPage } from './page/aboutPage';
-import { NotFoundPage } from './page/notFoundPage';
+import { BuilderPage } from './page/builder/builderPage';
 import { ChangelogPage } from './page/changelogPage';
+import { HomePage } from './page/homePage';
+import { LoginPage } from './page/loginPage';
+import { NotFoundPage } from './page/notFoundPage';
 
 const currentLocation = () =>
     window.location.hash.replace(/^#/, "") || "/";
@@ -46,7 +46,7 @@ export const AppShell: React.FC = () => {
     }, []);
 
     const updateCheck = async () => {
-        const apiResult = await assistantAppsApiService.getLatest([PlatformType.Windows]);
+        const apiResult = await assistantAppsApiService.getLatest([PlatformType.githubWindowsInstaller]);
         console.log({ updateCheck: { ...apiResult }, hasCheckedUpdate })
         if (apiResult.isSuccess === false) return;
 

@@ -8,7 +8,7 @@ export const loadModel = ({
 }) => {
     const loader = new FBXLoader();
     loader.load(
-        `/assets/3d/${fileName}.fbx`,
+        `./assets/3d/${fileName}.fbx`,
         (model) => {
             model.scale.set(0.01, 0.01, 0.01);
             onLoad(model);

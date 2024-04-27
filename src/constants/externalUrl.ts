@@ -1,6 +1,6 @@
 export const ExternalUrl = {
     nmsHubDiscord: 'https://discord.gg/5hrYrjtWQg',
-    meogiYT: 'https://www.youtube.com/c/MEOGI',
+    meogiYT: 'https://www.youtube.com/@Meogione',
     silent: 'https://www.youtube.com/channel/UC9G1Ds0NlZngSvhIaJDgLWQ',
     assistantNMS: 'https://nmsassistant.com',
     nmscd: 'https://nmscd.com',
@@ -18,7 +18,7 @@ export const ExternalImages = {
     meogi: 'https://yt3.ggpht.com/GAZQndl844qHRyPW7vDwDJJos01TFx7i4OqKX-Qco293KN3q9YAB5QC2aCJ3XxSS-uSdIrYHVg=s88-c-k-c0x00ffffff-no-rj',
     nmsHub: 'https://cdn.discordapp.com/icons/780508359375454208/a_82923637ed4e1c4a1f7ac1b1c3aa4410.webp',
     monkeyMan: 'https://avatars.githubusercontent.com/u/8000597?v=4',
-    nmsdk: '/assets/img/nmsdk.png',
+    nmsdk: './assets/img/nmsdk.png',
 }
 
 
