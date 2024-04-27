@@ -1,6 +1,6 @@
 export const ExternalUrl = {
     nmsHubDiscord: 'https://discord.gg/5hrYrjtWQg',
-    meogiYT: 'https://www.youtube.com/c/MEOGI',
+    meogiYT: 'https://www.youtube.com/@Meogione',
     silent: 'https://www.youtube.com/channel/UC9G1Ds0NlZngSvhIaJDgLWQ',
     assistantNMS: 'https://nmsassistant.com',
     nmscd: 'https://nmscd.com',
