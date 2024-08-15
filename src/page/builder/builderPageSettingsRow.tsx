@@ -149,8 +149,7 @@ export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
     return (
         <>
             <Wrap
-                position="absolute"
-                transform="translateY(-3.25em)"
+                className="settings-row"
                 mb={settingOptions.length > 0 ? '3' : ''}
                 spacing={controlSpacing / 2}
             >

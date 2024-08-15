@@ -1,36 +1,41 @@
 .builder-controls,
 .builder-preview {
-    transition: all 250ms;
+  transition: all 250ms;
 }
 
 .obj-preview {
-    width: 100%;
-    min-width: 50vh;
-    min-height: 50vh;
-    transition: opacity 250ms ease-in-out;
+  width: 100%;
+  min-width: 50vh;
+  min-height: 50vh;
+  transition: opacity 250ms ease-in-out;
 
-    &.bg {
-        background: var(--chakra-colors-chakra-body-bg);
-    }
+  &.bg {
+    background: var(--chakra-colors-chakra-body-bg);
+  }
 
-    &.wrapper {
-        position: relative;
-        margin-bottom: 1em;
-        border-radius: 5px;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        overflow: hidden;
-    }
+  &.wrapper {
+    position: relative;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    overflow: hidden;
+  }
 
-    .disabled {
-        opacity: 0.2;
-    }
+  .disabled {
+    opacity: 0.2;
+  }
 
-    .hide {
-        opacity: 0;
-    }
+  .hide {
+    opacity: 0;
+  }
+}
+
+.settings-row {
+  position: absolute;
+  transform: translateY(-3.25em);
 }
 
 #creature-preview {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 }
