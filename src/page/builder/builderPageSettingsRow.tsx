@@ -20,7 +20,7 @@ export interface IBuilderPageSettings {
 
 export const initialSettings: IBuilderPageSettings = {
     showSimplifiedNames: false,
-    advancedMode: true,
+    advancedMode: false,
     showJsonPreview: true,
     showModelPreview: true,
     showPetAccessory: false,
