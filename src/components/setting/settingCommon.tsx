@@ -1,5 +1,7 @@
+type SimpleStringFunc = (input: string) => void
+
 export interface ISettingOptionAttrMapping {
-    [name: string]: string;
+    [name: string]: string | SimpleStringFunc;
 }
 
 export interface ISettingOptionCompProps<T> {
@@ -8,4 +10,5 @@ export interface ISettingOptionCompProps<T> {
     value: T,
     additionalProps?: ISettingOptionAttrMapping;
     onChange: (newValue: T) => void
+    getCurrentJson: () => string
 }
