@@ -1,12 +1,16 @@
 import { SettingsIcon } from '@chakra-ui/icons';
 import { Button, Spacer, Wrap, WrapItem } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ContentCreatorCreaturesBottomModalSheet } from '../../components/dialog/contentCreatorCreaturesBottomModalSheet';
 import { JsonExplanationBottomModalSheet } from '../../components/dialog/jsonExplanationBottomModalSheet';
 import { ISettingOptionAttrMapping, ISettingOptionCompProps } from '../../components/setting/settingCommon';
+import { SettingLink } from '../../components/setting/settingLink';
 import { SettingSwitch } from '../../components/setting/settingSwitch';
 import { controlSpacing } from '../../constants/UIConstant';
 import { toggleHtmlNodeClass } from '../../helper/documentHelper';
+import { AppImages } from '../../constants/image';
+import { navigateToNmsCenterEggDelivery } from '../../integration/nmsCenter';
+import { DependencyInjectionContext } from '../../integration/DependencyInjectionProvider';
 
 export interface IBuilderPageSettings {
     showSimplifiedNames: boolean;
@@ -39,12 +43,15 @@ interface ISettingOption {
 
 interface IProps {
     settings: IBuilderPageSettings;
+    getCurrentJson: () => string;
     triggerJsonInterval: () => void;
     getMappingsFromJson: (event: any) => void;
     setSettings: (func: (newState: IBuilderPageSettings) => IBuilderPageSettings) => void;
 }
 
 export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
+    const { toastService } = useContext(DependencyInjectionContext);
+
     const [isJsonExplanationOpen, setJsonExplanationOpen] = useState<boolean>(false);
     const [isContentCreatorModalOpen, setContentCreatorModalOpen] = useState<boolean>(false);
     const [showSettings, setShowSettings] = useState<boolean>(false);
@@ -84,6 +91,16 @@ export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
             propName: 'advancedMode',
             label: 'Enable Advanced Mode',
             component: SettingSwitch,
+        },
+        {
+            id: 'deliverViaNmsCenter',
+            propName: 'deliverViaNmsCenter',
+            label: 'Deliver via Service Bot',
+            component: SettingLink,
+            additionalProps: {
+                icon: AppImages.nmsCenter,
+                customOnClick: navigateToNmsCenterEggDelivery(toastService)
+            },
         },
     ];
 
@@ -128,12 +145,13 @@ export const BuilderPageSettingsRow: React.FC<IProps> = (props: IProps) => {
         if (hideOpt) return null;
 
         return (
-            <WrapItem key={opt.id}>
+            <WrapItem key={opt.id} className='pointer'>
                 <Comp
                     {...opt.additionalProps}
                     id={opt.id}
                     label={opt.label}
                     value={value}
+                    getCurrentJson={props.getCurrentJson}
                     onChange={(newValue: any) => {
                         props.setSettings((prev: IBuilderPageSettings) => ({
                             ...prev,

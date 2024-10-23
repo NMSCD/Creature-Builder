@@ -47,6 +47,10 @@ body {
 
 .pointer {
     cursor: pointer;
+
+    label {
+        cursor: pointer;
+    }
 }
 
 .drag {

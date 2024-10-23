@@ -186,6 +186,13 @@ export const BuilderPage: React.FC = () => {
     })
   }
 
+  const copyJson = () => {
+    const json = getJsonFromMappings(mappingString + ',' + descriptorId);
+    navigator?.clipboard?.writeText?.(json)?.then?.(() => {
+      toastService.success(<span>Copied!</span>)
+    });
+  }
+
   const creatureIdIsNotNull = (selectedPet.CreatureId != null);
 
   return (
@@ -218,10 +225,8 @@ export const BuilderPage: React.FC = () => {
           settings={settings}
           setSettings={applyChangesToSettings}
           triggerJsonInterval={triggerJsonInterval}
-          getMappingsFromJson={e => {
-            console.log(e);
-            getMappingsFromJson(e)
-          }}
+          getMappingsFromJson={getMappingsFromJson}
+          getCurrentJson={() => getJsonFromMappings(mappingString + ',' + descriptorId)}
         />
         <Flex className="builder-page-flex">
           <BuilderPageResultPreview
@@ -258,7 +263,7 @@ export const BuilderPage: React.FC = () => {
           </Box>
         </Flex>
         <Box mt="12" className="hidden-in-desktop ta-center">
-          <Button width="100%" colorScheme="green">
+          <Button width="100%" colorScheme="green" onClick={copyJson}>
             <span>Copy JSON result</span>
           </Button>
         </Box>
