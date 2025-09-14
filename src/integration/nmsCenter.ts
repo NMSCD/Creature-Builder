@@ -28,7 +28,7 @@ export const minifyPetJson = (jsonObj: any): string => {
 
   if (encoded.length > maxLength) {
     jsonObj.CustomName = "";
-    jsonObj.CustomSpeciesName = "";
+    jsonObj.CustomSpeciesName = "^";
 
     encoded = btoa(JSON.stringify(jsonObj));
   }
