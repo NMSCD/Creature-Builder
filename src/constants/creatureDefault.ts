@@ -22,7 +22,7 @@ export const defaultPetJson = (): CreatureSave => {
         ],
         SpeciesSeed: '0x0000000000000000',
         GenusSeed: '0x0000000000000000',
-        CustomSpeciesName: '',
+        CustomSpeciesName: '^',
         Predator: false,
         UA: 1111111111111111,
         AllowUnmodifiedReroll: true,

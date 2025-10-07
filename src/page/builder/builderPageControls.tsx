@@ -51,7 +51,7 @@ export const BuilderPageControls: React.FC<IBuilderPageControlsProps> = (props: 
                         </Center>
                         <Box flex="1">
                             <Input
-                                onChange={(inp: any) => props.modifyJsonObj('CustomSpeciesName', (inp.target.value ?? ''))}
+                                onChange={(inp: any) => props.modifyJsonObj('CustomSpeciesName', (inp.target.value ?? '^'))}
                                 value={((props?.pastedJson)?.CustomSpeciesName ?? '').replaceAll('^', '')}
                             />
                         </Box>
